@@ -80,15 +80,6 @@ public class Pannello extends JPanel implements Runnable {
 
             if(timer>=1000000000){
                 System.out.println("FPS ="+drawCount);
-                String out="";
-                for(int i=0; i<Pannello.pix_row;i++){
-                    for(int j=0; j<Pannello.pix_cols;j++){
-                        out = out+tileManager.mapGraphic[i][j];
-
-                    }
-                    out=out+"\n";
-                }
-                System.out.println(out);
                 drawCount=0;
                 timer=0;
             }

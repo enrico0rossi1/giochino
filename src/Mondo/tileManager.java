@@ -19,7 +19,7 @@ public class tileManager {
     public tileManager(Pannello pezzo){
         this.pezzo=pezzo;
 
-        Tile= new tile[3];
+        Tile= new tile[5];
         mapGraphic= new int[Pannello.pix_row][Pannello.pix_cols];
         
         getTileImage();
@@ -28,8 +28,6 @@ public class tileManager {
     }
 
     public void getTileImage(){
-        
-
         try {
             Tile[0]=new tile();
             Tile[0].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DirtTile/Dirt1.png"));
@@ -39,32 +37,16 @@ public class tileManager {
             
             Tile[2]=new tile();
             Tile[2].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/WaterTile/Water.png"));
+
+            Tile[3]=new tile();
+            Tile[3].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesVert.png"));
+
+            Tile[4]=new tile();
+            Tile[4].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencescHor.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    //public void  fillRow(Graphics2D g2){
-    //    for (int i=0; i<=15; i++){
-    //        g2.drawImage(Tile[1].image, i*48, 0, Pannello.ingame_size, Pannello.ingame_size, null);
-    //    }
-    //}
-//
-    //public void fillCol(Graphics2D g2){
-    //    for (int i=0; i<=15; i++){
-    //        g2.drawImage(Tile[2].image, 0,i*48, Pannello.ingame_size, Pannello.ingame_size, null);
-    //    }
-//
-    //} 
-
-    //public void fillScreen(Graphics2D g2){
-    //    for (int i=0; i<=Pannello.pix_cols; i++){
-    //        for(int a=0; a<=Pannello.pix_row; a++){
-    //            g2.drawImage(Tile[2].image, a*48,i*48, Pannello.ingame_size, Pannello.ingame_size, null);
-    //        }
-    //    }
-//
-    //}
 
     public void caricaMappa(){
         try {
@@ -112,7 +94,7 @@ public class tileManager {
 
         while (row<Pannello.pix_row && cols<Pannello.pix_cols){
             while(cols<Pannello.pix_cols){
-                numTile = mapGraphic[row][cols];
+                    numTile = mapGraphic[row][cols];
                 g2.drawImage(Tile[numTile].image,x*48,y*48,Pannello.ingame_size, Pannello.ingame_size,null);
                 cols++;
                 x++;
