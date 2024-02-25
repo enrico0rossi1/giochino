@@ -1,10 +1,10 @@
-package Main.Player;
+package Player;
 
 
 import Main.InputTastiera;
 import Main.Pannello;
-import java.awt.Graphics2D;
 
+import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 
 
