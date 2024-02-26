@@ -3,30 +3,43 @@ package Player;
 
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
-
-import main.InputTastiera;
-import main.Pannello;
-
 import java.io.IOException;
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
+
+import main.Pannello;
+import main.InputTastiera;
+import main.CollisionManager;
 
 public class Giocatore extends Entità {
 
     Pannello gp;
     InputTastiera keyh;
+    public final int ScreenX, ScreenY;
     
 
     public Giocatore(Pannello gp, InputTastiera keyh){
 
         this.gp=gp;
         this.keyh=keyh;
+        
+        collArea = new Rectangle();
+        collArea.x=8;
+        collArea.y=16;
+        collArea.width=32;
+        collArea.height=32; //area di collisione del giocatore
+        
+        ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
+        ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
+
         setValoriPredefiniti();
         getPlayerImage();
+        
     }
     public void setValoriPredefiniti(){
-        x=100;
-        y=100;
-        velocità=4;
+        GiocatoreX=gp.ingame_size*25;  
+        GiocatoreY=gp.ingame_size*25; //posizione iniziale su mappa 
+        velocità=3;
         direzione="down";
     }
     public void getPlayerImage(){
@@ -70,27 +83,41 @@ public class Giocatore extends Entità {
     public void update(){
         if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true){
             if(keyh.s==true){
-                y =y+ velocità;
+                
                 direzione = "down";
             }
     
             if(keyh.w==true){
-                y =y- velocità;
+                
                 direzione="up";
             }
     
             if(keyh.d==true){
-                x =x+velocità;
+                
                 direzione="right";
             }
             
             if(keyh.a==true){
-                x=x-velocità;
+                
                 direzione="left";
             }
 
+            solid = false;
+            gp.CollisionManager.checkTile(this);
+
+            if (solid == false){
+                switch(direzione){
+                    case "up": GiocatoreY -= velocità; break;
+                    case "down": GiocatoreY += velocità; break;
+                    case "right": GiocatoreX += velocità; break;
+                    case "left": GiocatoreX-= velocità; break;
+                }
+
+            }
+           
+
             spriteCount++;
-            if (spriteCount>7){
+            if(spriteCount>7){
                 if(spriteNum==1){
                     spriteNum=2;
                 }else if(spriteNum==2){
@@ -104,12 +131,14 @@ public class Giocatore extends Entità {
                 }else if (spriteNum==6){
                     spriteNum=1;
                 }
+                spriteCount=0;
+            }
             
-            spriteCount=0;
+            
         }
 
         }
-    }
+    
     public void draw(Graphics2D graphics2){
 
         
@@ -179,7 +208,7 @@ public class Giocatore extends Entità {
         
         
 
-        graphics2.drawImage(image, x, y, Pannello.ingame_size, Pannello.ingame_size,null);
+        graphics2.drawImage(image, ScreenX, ScreenY, gp.ingame_size, gp.ingame_size,null);
 
        
     }

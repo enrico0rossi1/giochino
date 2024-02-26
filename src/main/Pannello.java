@@ -12,25 +12,32 @@ import Mondo.tileManager;
 
 public class Pannello extends JPanel implements Runnable {
 
-    public final static int character_size = 16;
-    public final static int scale = 3;
-    public final static int ingame_size = character_size*scale;
-    public final static int pix_row = 12;
-    public final static int pix_cols = 15;
-    final int screen_width = ingame_size*pix_cols;
-    final int screen_length = ingame_size*pix_row;
+    public final int character_size = 16;
+    public final int scale = 3;
+    public final int ingame_size = character_size*scale;
+    public final int pix_row = 12;
+    public final int pix_cols = 15;
+    public final int screen_width = ingame_size*pix_cols;
+    public final int screen_height = ingame_size*pix_row;
+
+
+    //Impostazioni di mappa
+    public final int worldCol = 50, worldRow=50;
+    public final int worldWidth = ingame_size*worldCol;
+    public final int worldHeight = ingame_size*worldRow;
 
     Thread ThreadGioco;
     InputTastiera keyh= new InputTastiera();
-    Giocatore giocatore = new Giocatore(this, keyh);
-    tileManager mappa = new tileManager(this);
+    public tileManager mappa = new tileManager(this);
+    public Giocatore giocatore = new Giocatore(this, keyh);
+    public CollisionManager CollisionManager = new CollisionManager(this);
     
     //FPS
     int FPS = 60;
     
      
     public Pannello(){
-        this.setPreferredSize(new Dimension(screen_width,screen_length));
+        this.setPreferredSize(new Dimension(screen_width,screen_height));
         this.setBackground(new Color(46,75,255));
         this.setDoubleBuffered(true);
         this.addKeyListener(keyh);
@@ -95,6 +102,7 @@ public class Pannello extends JPanel implements Runnable {
         giocatore.update();
 
     }
+    
     public void paintComponent(Graphics graphics){
 
 

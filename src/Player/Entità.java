@@ -1,11 +1,12 @@
 package Player;
 
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 
 public class Entità {
 
-    public int x,y;
+    public int GiocatoreX,GiocatoreY;
     public int velocità;
 
     public BufferedImage down1,down2,down3,down4,down5,down6;
@@ -16,6 +17,9 @@ public class Entità {
 
     public int spriteCount=0;
     public int spriteNum=1;
+
+    public Rectangle collArea;
+    public boolean solid = false;
 }
 
     
