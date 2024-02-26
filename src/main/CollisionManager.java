@@ -1,6 +1,6 @@
 package main;
 
-import Mondo.tileManager;
+
 import Player.Entità;
 
 public class CollisionManager {
