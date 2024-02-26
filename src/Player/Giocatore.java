@@ -28,8 +28,8 @@ public class Giocatore extends Entità {
         collArea = new Rectangle();
         collArea.x=8;
         collArea.y=16;
-        collArea.width=32;
-        collArea.height=32; //area di collisione del giocatore
+        collArea.width=20;
+        collArea.height=20; //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
@@ -54,6 +54,7 @@ public class Giocatore extends Entità {
             down4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/down4.png"));
             down5=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/down5.png"));
             down6=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/down6.png"));
+            
             moveDown1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/moveDown1.png"));
             moveDown2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/moveDown2.png"));
             moveDown3=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/moveDown3.png"));
@@ -71,6 +72,7 @@ public class Giocatore extends Entità {
             up4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/up4.png"));
             up5=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/up5.png"));
             up6=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/up6.png"));
+            
             moveUp1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/moveUp1.png"));
             moveUp2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/moveUp2.png"));
             moveUp3=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/moveUp3.png"));
@@ -88,6 +90,7 @@ public class Giocatore extends Entità {
             left4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/left4.png"));
             left5=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/left5.png"));
             left6=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/left6.png"));
+            
             moveLeft1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/moveLeft1.png"));
             moveLeft5=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/moveLeft5.png"));
             moveLeft2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/moveLeft2.png"));
@@ -105,6 +108,7 @@ public class Giocatore extends Entità {
             right4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/right4.png"));
             right5=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/right5.png"));
             right6=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/right6.png"));
+            
             moveRight1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/moveRight1.png"));
             moveRight5=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/moveRight5.png"));
             moveRight2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/moveRight2.png"));
@@ -176,8 +180,8 @@ public class Giocatore extends Entità {
                 }else if (spriteNum==6){
                     spriteNum=1;
                 }
-            
-        }
+                spriteCount=0;
+            }
 
         }
     }
@@ -388,14 +392,6 @@ public class Giocatore extends Entità {
             
             
             }
-
-       
-
-   
-        
-           
-        
-
         graphics2.drawImage(image, ScreenX, ScreenY, gp.ingame_size, gp.ingame_size,null);
 
        

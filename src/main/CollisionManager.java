@@ -29,8 +29,8 @@ public class CollisionManager {
         switch(e.direzione){
             case "up":
                 entitàTopRow = (entitàTopBound - e.velocità)/gp.ingame_size;
-                num1 = gp.mappa.mapGraphic[entitàLeftCol][entitàTopRow];
-                num2 = gp.mappa.mapGraphic[entitàRightCol][entitàTopRow];
+                num1 = gp.mappa.mapGraphic[entitàTopRow][entitàLeftCol];
+                num2 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
                 System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
@@ -39,10 +39,37 @@ public class CollisionManager {
                 }
              break;
             case "down":
+                entitàBottomRow = (entitàBottomBound + e.velocità)/gp.ingame_size;
+                num1 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
+                num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
+                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+
+                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
+                    e.solid = true;
+
+                }
              break;
             case "right":
+                entitàRightCol = (entitàRightBound + e.velocità)/gp.ingame_size;
+                num1 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
+                num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
+                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+
+                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
+                    e.solid = true;
+
+                }
              break;
             case "left":
+                entitàLeftCol = (entitàLeftBound + e.velocità)/gp.ingame_size;
+                num1 = gp.mappa.mapGraphic[entitàTopRow][entitàLeftCol];
+                num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
+                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+
+                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
+                    e.solid = true;
+
+                }
              break;
         }
 
