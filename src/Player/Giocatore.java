@@ -37,8 +37,6 @@ public class Giocatore extends Entità {
 
         setValoriPredefiniti();
         getPlayerImage();
-        //getPlayerImageSPERIMENTAL();
-        
     }
 
     public void setValoriPredefiniti(){
@@ -51,14 +49,11 @@ public class Giocatore extends Entità {
 
     public BufferedImage[] loadAnimation (int Dimension, String Passata){
         BufferedImage[] appoggio = new BufferedImage [Dimension];
-        int index = 0;
-        String help = "Sprites/NewSprites/"+Passata;
-        
         
         try {
-            while (index < Dimension){
-                appoggio[index]= ImageIO.read(getClass().getResourceAsStream(help));
-                index++;
+           
+            for(int i=1; i<=Dimension;i++){
+                appoggio[i-1]=ImageIO.read(getClass().getResourceAsStream(Passata+i+".png"));
             }
            
         } catch (Exception e) {
@@ -70,84 +65,23 @@ public class Giocatore extends Entità {
     }
 
     public void getPlayerImage(){
+        
+        MoveUpAnimation=loadAnimation(6,"Sprites/NewSprites/Up/moveUp");
+        MoveDownAnimation=loadAnimation(6,"Sprites/NewSprites/Down/moveDown");
+        MoveRightAnimation=loadAnimation(6,"Sprites/NewSprites/Right/moveRight");
+        MoveLeftAnimation=loadAnimation(6,"Sprites/NewSprites/Left/moveLeft");
+
+        UpAnimation=loadAnimation(6, "Sprites/NewSprites/Up/up");
+        DownAnimation=loadAnimation(6, "Sprites/NewSprites/Down/down");
+        RightAnimation=loadAnimation(6, "Sprites/NewSprites/Right/right");
+        LeftAnimation=loadAnimation(6, "Sprites/NewSprites/Left/left");
+
+        AttackDown=loadAnimation(4, "Sprites/NewSprites/Down/attackDown");
+        AttackUp=loadAnimation(4, "Sprites/NewSprites/Up/attackUp");
+        AttackLeft=loadAnimation(4, "Sprites/NewSprites/Left/attackLeft");
+        AttackRight=loadAnimation(4, "Sprites/NewSprites/Right/attackRight");
 
         
-        try {
-            int index=1;
-            String indexString=null;
-            String anmImage_Moveup,anmImage_Moveright,anmImage_Moveleft,anmImage_Movedown;
-            String anmImage_up,anmImage_down,anmImage_right,anmImage_left;
-
-            attackDown1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/attackDown1.png"));
-            attackDown2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/attackDown2.png"));
-            attackDown3=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/attackDown3.png"));
-            attackDown4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Down/attackDown4.png"));
-            attackUp1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/attackUp1.png"));
-            attackUp2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/attackUp2.png"));
-            attackUp3=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/attackUp3.png"));
-            attackUp4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Up/attackUp4.png"));          
-            attackLeft1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/attackLeft1.png"));
-            attackLeft2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/attackLeft2.png"));
-            attackLeft3=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/attackLeft3.png"));
-            attackLeft4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Left/attackLeft4.png"));
-            attackRight1=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/attackRight1.png"));
-            attackRight2=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/attackRight2.png"));
-            attackRight3=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/attackRight3.png"));
-            attackRight4=ImageIO.read(getClass().getResourceAsStream("Sprites/NewSprites/Right/attackRight4.png"));
-             
-            while (index<=6){
-                indexString = Integer.toString(index);
-                
-                anmImage_Moveup = "Sprites/NewSprites/Up/moveUp"+indexString+".png";
-                anmImage_Movedown= "Sprites/NewSprites/Down/moveDown"+indexString+".png";
-                anmImage_Moveleft= "Sprites/NewSprites/Left/moveLeft"+indexString+".png";
-                anmImage_Moveright= "Sprites/NewSprites/Right/moveRight"+indexString+".png";
-                MoveUpAnimation[index-1]= ImageIO.read(getClass().getResourceAsStream(anmImage_Moveup));
-                MoveDownAnimation[index-1]= ImageIO.read(getClass().getResourceAsStream(anmImage_Movedown));
-                MoveRightAnimation[index-1]= ImageIO.read(getClass().getResourceAsStream(anmImage_Moveright));
-                MoveLeftAnimation[index-1]= ImageIO.read(getClass().getResourceAsStream(anmImage_Moveleft));
-
-                anmImage_up= "Sprites/NewSprites/Up/up"+indexString+".png";
-                anmImage_down= "Sprites/NewSprites/Down/down"+indexString+".png";
-                anmImage_right= "Sprites/NewSprites/Right/right"+indexString+".png";
-                anmImage_left= "Sprites/NewSprites/Left/left"+indexString+".png";
-                UpAnimation[index-1]=ImageIO.read(getClass().getResourceAsStream(anmImage_up));
-                DownAnimation[index-1]=ImageIO.read(getClass().getResourceAsStream(anmImage_down));
-                RightAnimation[index-1]=ImageIO.read(getClass().getResourceAsStream(anmImage_right));
-                LeftAnimation[index-1]=ImageIO.read(getClass().getResourceAsStream(anmImage_left));
-                index++;
-            } index=1;
-
-                
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-    }
-
-    public void getPlayerImageSPERIMENTAL(){
-        try {
-            int index=1;
-            String indexString;
-            String anmImage_Moveup,anmImage_Moveright,anmImage_Moveleft,anmImage_Movedown;
-            String anmImage_up,anmImage_down,anmImage_right,anmImage_left;
-
-            while (index<=6){
-                indexString = Integer.toString(index);
-                anmImage_Moveup  = "Up/moveUp"+indexString+".png";
-                anmImage_Movedown= "Down/moveDown"+indexString+".png";
-                anmImage_Moveleft= "Left/moveLeft"+indexString+".png";
-                anmImage_Moveright="Right/moveRight"+indexString+".png";
-                MoveUpAnimation=loadAnimation(6,anmImage_Moveup);
-                MoveDownAnimation=loadAnimation(6,anmImage_Movedown);
-                MoveRightAnimation=loadAnimation(6,anmImage_Moveright);
-                MoveLeftAnimation=loadAnimation(6,anmImage_Moveleft);
-                 
-            }
-             
-          } catch (Exception e) {
-              e.printStackTrace();
-          }
     }
 
 
@@ -192,7 +126,11 @@ public class Giocatore extends Entità {
             }else if (spriteNum==2){
                     spriteNum=3;
             }else if (spriteNum==3){
+                if(keyh.p==true){
+                    spriteNum=0;
+                }else{
                     spriteNum=4;
+                }
             }else if (spriteNum==4){
                     spriteNum=5;
             }else if (spriteNum==5){
@@ -216,45 +154,19 @@ public class Giocatore extends Entità {
                image = MoveUpAnimation[spriteNum]; 
             } 
         else if (keyh.p==true){
-                if(spriteNum==1){
-                image = attackUp1;
-            }else if(spriteNum==2){
-                image=attackUp2;
-            }else if(spriteNum==3){
-                image=attackUp2;
-            }else if(spriteNum==4){
-                image=attackUp3;
-        
-            }else if(spriteNum==5){
-                image=attackUp3;
-            }else if(spriteNum==6){
-                image=attackUp4;
-            }
+                image = AttackUp[spriteNum];
         }
              else if (keyh.w==false){
                 image = UpAnimation[spriteNum];
              
-        };
+        }
             break;
             case "down": if (keyh.s==true && keyh.p==false){ 
                image = MoveDownAnimation[spriteNum]; 
                   
             } 
             else if (keyh.p==true){
-                    if(spriteNum==1){
-                    image = attackDown1;
-                }else if(spriteNum==2){
-                    image=attackDown2;
-                }else if(spriteNum==3){
-                    image=attackDown2;
-                }else if(spriteNum==4){
-                    image=attackDown3;
-            
-                }else if(spriteNum==5){
-                    image=attackDown3;
-                }else if(spriteNum==6){
-                    image=attackDown4;
-                }
+                image =AttackDown[spriteNum];
             }
             else if (keyh.s==false){
                 image = DownAnimation[spriteNum];
@@ -267,19 +179,7 @@ public class Giocatore extends Entità {
                
             }
             else if (keyh.p==true){
-                if(spriteNum==1){
-                    image = attackRight1;
-                }else if(spriteNum==2){
-                    image=attackRight2;
-                }else if(spriteNum==3){
-                    image=attackRight2;
-                }else if(spriteNum==4){
-                    image=attackRight3;
-                }else if(spriteNum==5){
-                    image=attackRight3;
-                }else if(spriteNum==6){
-                    image=attackRight4;
-                }
+                image=AttackRight[spriteNum];
             }
             else if (keyh.d==false){ 
                 image = RightAnimation[spriteNum];
@@ -288,34 +188,25 @@ public class Giocatore extends Entità {
             break;
       
             case "left": 
-            if (keyh.a==true || keyh.p==false){ 
+            if (keyh.a==true && keyh.p==false){ 
                 image = MoveLeftAnimation[spriteNum];
                 
             }
             else if (keyh.p==true){
-                if(spriteNum==1){
-                    image = attackLeft1;
-                }else if(spriteNum==2){
-                    image=attackLeft2;
-                }else if(spriteNum==3){
-                    image=attackLeft2;
-                }else if(spriteNum==4){
-                    image=attackLeft3;
-                }else if(spriteNum==5){
-                image=attackLeft3;
-                }else if(spriteNum==6){
-                image=attackLeft4;
+                image =AttackLeft[spriteNum];
                 }
-            }
+            
             else if (keyh.a==false){ 
                 image = LeftAnimation[spriteNum];
             };
             break;
         }
         graphics2.drawImage(image, ScreenX, ScreenY, gp.ingame_size, gp.ingame_size,null);
+    }
+        
 
        
     }
-}
+
 
     
