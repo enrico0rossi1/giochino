@@ -266,7 +266,8 @@ public class Giocatore extends Entità {
                 image = MoveRightAnimation[spriteNum];
                
             }
-            else if (keyh.p==true){if(spriteNum==1){
+            else if (keyh.p==true){
+                if(spriteNum==1){
                     image = attackRight1;
                 }else if(spriteNum==2){
                     image=attackRight2;
