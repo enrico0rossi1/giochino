@@ -196,36 +196,36 @@ public class Giocatore extends Entità {
         switch (direzione) {
 
             case "up": if (keyh.w==true && keyh.p==false){ 
-                if(spriteNum==1){
-                    image = moveUp1;
-                }else if(spriteNum==2){
-                    image=moveUp2;
-                }else if(spriteNum==3){
-                    image=moveUp3;
-                }else if(spriteNum==4){
-                    image=moveUp4;
-                
-                }else if (spriteNum==5){
-                    image=moveUp5;
-                }else if (spriteNum==6){
-                    image=moveUp6;}
-               
-            } 
-            else if (keyh.p==true){
                     if(spriteNum==1){
-                    image = attackUp1;
-                }else if(spriteNum==2){
-                    image=attackUp2;
-                }else if(spriteNum==3){
-                    image=attackUp2;
-                }else if(spriteNum==4){
-                    image=attackUp3;
-            
-                }else if(spriteNum==5){
-                    image=attackUp3;
-                }else if(spriteNum==6){
-                    image=attackUp4;
-                }
+                        image = moveUp1;
+                    }else if(spriteNum==2){
+                        image=moveUp2;
+                    }else if(spriteNum==3){
+                        image=moveUp3;
+                    }else if(spriteNum==4){
+                        image=moveUp4;
+                    
+                    }else if (spriteNum==5){
+                        image=moveUp5;
+                    }else if (spriteNum==6){
+                        image=moveUp6;}
+               
+                } 
+                else if (keyh.p==true){
+                    if(spriteNum==1){
+                        image = attackUp1;
+                    }else if(spriteNum==2){
+                        image=attackUp2;
+                    }else if(spriteNum==3){
+                        image=attackUp2;
+                    }else if(spriteNum==4){
+                        image=attackUp3;
+                    
+                    }else if(spriteNum==5){
+                        image=attackUp3;
+                    }else if(spriteNum==6){
+                        image=attackUp4;
+                    }
             }
                  else if (keyh.w==false){
                     if(spriteNum==1){
