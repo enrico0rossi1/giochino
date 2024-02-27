@@ -31,7 +31,7 @@ public class CollisionManager {
                 entitàTopRow = (entitàTopBound - e.velocità)/gp.ingame_size;
                 num1 = gp.mappa.mapGraphic[entitàTopRow][entitàLeftCol];
                 num2 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
-                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+                
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
                     e.solid = true;
@@ -42,7 +42,7 @@ public class CollisionManager {
                 entitàBottomRow = (entitàBottomBound + e.velocità)/gp.ingame_size;
                 num1 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
                 num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
-                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+                
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
                     e.solid = true;
@@ -53,7 +53,7 @@ public class CollisionManager {
                 entitàRightCol = (entitàRightBound + e.velocità)/gp.ingame_size;
                 num1 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
                 num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
-                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+                
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
                     e.solid = true;
@@ -64,7 +64,7 @@ public class CollisionManager {
                 entitàLeftCol = (entitàLeftBound + e.velocità)/gp.ingame_size;
                 num1 = gp.mappa.mapGraphic[entitàTopRow][entitàLeftCol];
                 num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
-                System.out.println(""+entitàLeftCol+" "+entitàTopRow+" "+num1);
+                
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true){
                     e.solid = true;

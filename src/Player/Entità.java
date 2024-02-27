@@ -14,12 +14,26 @@ public class Entità {
     public BufferedImage left1,left2,left3,left4,left5,left6,moveLeft1,moveLeft2,moveLeft3,moveLeft4,moveLeft5,moveLeft6,attackLeft1,attackLeft2,attackLeft3,attackLeft4;
     public BufferedImage right1,right2,right3,right4,right5,right6,moveRight1,moveRight2,moveRight3,moveRight4,moveRight5,moveRight6,attackRight1,attackRight2,attackRight3,attackRight4;
     public String direzione;
+
     
-    //public String attack;
+    public BufferedImage[]UpAnimation=new BufferedImage[6];
+    public BufferedImage[]DownAnimation=new BufferedImage[6];
+    public BufferedImage[]RightAnimation=new BufferedImage[6];
+    public BufferedImage[]LeftAnimation=new BufferedImage[6];
+    public BufferedImage[]MoveUpAnimation=new BufferedImage[6];
+    public BufferedImage[]MoveDownAnimation=new BufferedImage[6];
+    public BufferedImage[]MoveRightAnimation=new BufferedImage[6];
+    public BufferedImage[]MoveLeftAnimation=new BufferedImage[6];
+    public BufferedImage[]AttackDown = new BufferedImage[6];
+    public BufferedImage[]AttackUp = new BufferedImage[6];
+    public BufferedImage[]AttackLeft = new BufferedImage[6];
+    public BufferedImage[]AttackRight = new BufferedImage[6];
+    
+    public String attack;
     
 
     public int spriteCount=0;
-    public int spriteNum=1;
+    public int spriteNum=0;
 
     public Rectangle collArea;
     public boolean solid = false;

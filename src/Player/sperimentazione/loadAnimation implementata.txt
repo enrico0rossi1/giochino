@@ -1,0 +1,22 @@
+try {
+            int index=1;
+            String indexString;
+            String anmImage_Moveup,anmImage_Moveright,anmImage_Moveleft,anmImage_Movedown;
+            String anmImage_up,anmImage_down,anmImage_right,anmImage_left;
+
+            while (index<=6){
+                indexString = Integer.toString(index);
+                anmImage_Moveup  = "Up/moveUp"+indexString+".png";
+                anmImage_Movedown= "Down/moveDown"+indexString+".png";
+                anmImage_Moveleft= "Left/moveLeft"+indexString+".png";
+                anmImage_Moveright="Right/moveRight"+indexString+".png";
+                MoveUpAnimation=loadAnimation(6,anmImage_Moveup);
+                MoveDownAnimation=loadAnimation(6,anmImage_Movedown);
+                MoveRightAnimation=loadAnimation(6,anmImage_Moveright);
+                MoveLeftAnimation=loadAnimation(6,anmImage_Moveleft);
+                 
+            }
+             
+          } catch (Exception e) {
+              e.printStackTrace();
+          }
