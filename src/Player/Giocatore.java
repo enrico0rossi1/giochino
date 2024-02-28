@@ -7,12 +7,9 @@ import java.awt.Graphics2D;
 
 import javax.imageio.ImageIO;
 
-import java.io.IOException;
+
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
-
-
-
 
 public class Giocatore extends Entità {
 
@@ -43,8 +40,7 @@ public class Giocatore extends Entità {
         GiocatoreX=gp.ingame_size*25;  
         GiocatoreY=gp.ingame_size*25; //posizione iniziale su mappa 
         velocità=3;
-        direzione="up";
-        
+        direzione="down";
     }
 
     public BufferedImage[] loadAnimation (int Dimension, String Passata){
@@ -137,8 +133,8 @@ public class Giocatore extends Entità {
                     spriteNum=0;
             }
             spriteCount=0; 
+            }
         }
-    }
     }
     
     
@@ -148,7 +144,7 @@ public class Giocatore extends Entità {
        BufferedImage image = null;
         
   
-    switch (direzione) {
+     switch (direzione) {
         case "up": 
             if (keyh.w==true && keyh.p==false){ 
                image = MoveUpAnimation[spriteNum]; 
@@ -156,8 +152,8 @@ public class Giocatore extends Entità {
         else if (keyh.p==true){
                 image = AttackUp[spriteNum];
         }
-             else if (keyh.w==false){
-                image = UpAnimation[spriteNum];
+             else if (keyh.w==false && keyh.p==true){
+                image = AttackUp[spriteNum];
              
         }
             break;
@@ -206,7 +202,7 @@ public class Giocatore extends Entità {
         
 
        
-    }
+}
 
 
     
