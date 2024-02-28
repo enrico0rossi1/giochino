@@ -1,13 +1,10 @@
 package Player;
 
-
 import main.InputTastiera;
 import main.Pannello;
+
 import java.awt.Graphics2D;
-
 import javax.imageio.ImageIO;
-
-
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 
@@ -17,17 +14,20 @@ public class Giocatore extends Entità {
     InputTastiera keyh;
     public final int ScreenX, ScreenY;
     
+    
 
     public Giocatore(Pannello gp, InputTastiera keyh){
 
         this.gp=gp;
         this.keyh=keyh;
-        
+       
         collArea = new Rectangle();
-        collArea.x=8;
-        collArea.y=16;
-        collArea.width=20;
-        collArea.height=20; //area di collisione del giocatore
+        collArea.x=12;
+        collArea.y=18;
+        solidAreaDefaultX = collArea.x;
+        solidAreaDefaultY = collArea.y;
+        collArea.width=gp.ingame_size-(collArea.x*2);
+        collArea.height=(gp.ingame_size-collArea.y)-9; //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
@@ -109,6 +109,8 @@ public class Giocatore extends Entità {
 
             solid = false;
             gp.CollisionManager.checkTile(this);
+            int objVerifier = gp.CollisionManager.checkObject(this,true);
+            pickUpObj(objVerifier);
 
             if (solid == false){
                 switch(direzione){
@@ -144,11 +146,16 @@ public class Giocatore extends Entità {
         }
     }
     
+    public void pickUpObj (int i){
+        if(i !=999){
+            gp.obj[i]= null;
+        }
+
+    }
     
     public void draw(Graphics2D graphics2){
 
-        
-       BufferedImage image = null;
+     BufferedImage image = null;
         
   
      switch (direzione) {
@@ -156,14 +163,16 @@ public class Giocatore extends Entità {
             if (keyh.w==true && keyh.p==false){ 
                image = MoveUpAnimation[spriteNum]; 
             } 
-        else if (keyh.p==true){
+            else if (keyh.p==true){
                 image = AttackUp[spriteNum];
-        }
-             else if (keyh.w==false && keyh.p==true){
+            }
+            else if (keyh.w==false && keyh.p==true){
                 image = AttackUp[spriteNum];
-             
-        }
-            break;
+            }
+            else if (keyh.w==false){
+                image = UpAnimation[spriteNum];
+            }
+        break;
             case "down": if (keyh.s==true && keyh.p==false){ 
                image = MoveDownAnimation[spriteNum]; 
                   
@@ -174,7 +183,7 @@ public class Giocatore extends Entità {
             else if (keyh.s==false){
                 image = DownAnimation[spriteNum];
             };
-            break;
+        break;
       
             case "right": 
             if (keyh.d==true && keyh.p==false){ 
@@ -188,7 +197,7 @@ public class Giocatore extends Entità {
                 image = RightAnimation[spriteNum];
                 
             };
-            break;
+        break;
       
             case "left": 
             if (keyh.a==true && keyh.p==false){ 
@@ -202,7 +211,7 @@ public class Giocatore extends Entità {
             else if (keyh.a==false){ 
                 image = LeftAnimation[spriteNum];
             };
-            break;
+        break;
         }
         graphics2.drawImage(image, ScreenX, ScreenY, gp.ingame_size, gp.ingame_size,null);
     }

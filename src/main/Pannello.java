@@ -31,6 +31,7 @@ public class Pannello extends JPanel implements Runnable {
     Thread ThreadGioco;
     InputTastiera keyh= new InputTastiera();
     public tileManager mappa = new tileManager(this);
+    public tileManager mappa2 = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[8];
@@ -52,7 +53,8 @@ public class Pannello extends JPanel implements Runnable {
     public void setUpGioco() {
         aSetter.setObject();
     }
-    public void startThreadGioco(){
+    
+     public void startThreadGioco(){
         
         // qui ci assicuriamo che il thread starti 
         ThreadGioco = new Thread(this);
@@ -116,18 +118,19 @@ public class Pannello extends JPanel implements Runnable {
 
         super.paintComponent(graphics);
         Graphics2D graphics2= (Graphics2D)graphics;
+        Graphics2D graphics3= (Graphics2D)graphics;
         
-        mappa.draw(graphics2);
+        //MAPPA
+        mappa.draw(graphics2,graphics3);
 
-            int i = 0;
-            do {
-               if (obj[i] != null){
-               obj[i].draw(graphics2,this);
-               }
-               i++;
-               }
-                while ( i <= obj.length-1 );
-// ho usato il do while per disegnare gli oggetti nell'array perché il ciclo for non li disegnava tutti
+        //OGGETTI
+        for (int i =0; i<obj.length;i++){
+            if (obj[i]!=null){
+                obj[i].draw(graphics2,this);
+            }
+        }
+        
+        //GIOCATORE
         giocatore.draw(graphics2);
         
         graphics2.dispose();

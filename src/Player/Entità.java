@@ -34,5 +34,6 @@ public class Entità {
     public int spriteNum=0;
 
     public Rectangle collArea;
+    public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean solid = false;
 }

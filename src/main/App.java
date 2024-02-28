@@ -16,8 +16,10 @@ public class App {
         finestra.setLocationRelativeTo(null);
         finestra.setVisible(true);
 
-        pannello1.startThreadGioco();
+
         pannello1.setUpGioco();
+        pannello1.startThreadGioco();
+        
         
         
         
