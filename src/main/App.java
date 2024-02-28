@@ -17,7 +17,7 @@ public class App {
         finestra.setVisible(true);
 
         pannello1.startThreadGioco();
-
+        pannello1.setUpGioco();
         
         
         

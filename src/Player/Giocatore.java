@@ -82,7 +82,7 @@ public class Giocatore extends Entità {
 
 
     public void update(){
-        if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true){
+        if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true||keyh.o==true){
 
             if(keyh.s==true){
                 direzione = "down";
@@ -98,6 +98,13 @@ public class Giocatore extends Entità {
             
             if(keyh.a==true){
                 direzione="left";
+            }
+
+            if(keyh.o==true){
+                velocità=5;
+            }
+            if(keyh.o==false){
+                velocità=3;
             }
 
             solid = false;
