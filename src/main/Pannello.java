@@ -1,6 +1,8 @@
 package main;
 
 import Player.Giocatore;
+import object.GameObject;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -31,6 +33,8 @@ public class Pannello extends JPanel implements Runnable {
     public tileManager mappa = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
+    public GameObject obj[] = new GameObject[8];
+    public AssetSetter aSetter = new AssetSetter(this);
     
     //FPS
     int FPS = 60;
@@ -43,6 +47,10 @@ public class Pannello extends JPanel implements Runnable {
         this.addKeyListener(keyh);
         this.setFocusable(true);
 
+    }
+
+    public void setUpGioco() {
+        aSetter.setObject();
     }
     public void startThreadGioco(){
         
@@ -110,12 +118,21 @@ public class Pannello extends JPanel implements Runnable {
         Graphics2D graphics2= (Graphics2D)graphics;
         
         mappa.draw(graphics2);
+
+            int i = 0;
+            do {
+               if (obj[i] != null){
+               obj[i].draw(graphics2,this);
+               }
+               i++;
+               }
+                while ( i <= obj.length-1 );
+// ho usato il do while per disegnare gli oggetti nell'array perché il ciclo for non li disegnava tutti
         giocatore.draw(graphics2);
         
         graphics2.dispose();
        
     };
-
 
 }
 

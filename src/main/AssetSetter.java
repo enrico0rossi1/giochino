@@ -1,0 +1,24 @@
+package main;
+
+import object.*;
+
+public class AssetSetter {
+	Pannello gp;
+	public AssetSetter (Pannello gp){
+		this.gp = gp;
+	}
+	public void setObject () {
+
+		gp.obj[0] = new ObjSkull();
+		gp.obj[0].worldX = 15*gp.ingame_size;
+		gp.obj[0].worldY = 17*gp.ingame_size; 
+
+		gp.obj[1] = new ObjSkull();
+		gp.obj[1].worldX = 17*gp.ingame_size;
+		gp.obj[1].worldY = 16*gp.ingame_size; 
+
+		gp.obj[2] = new ObjHeart();
+		gp.obj[2].worldX = 20*gp.ingame_size;
+		gp.obj[2].worldY = 17*gp.ingame_size; 
+	}
+}

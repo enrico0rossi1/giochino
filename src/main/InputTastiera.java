@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 public class InputTastiera implements KeyListener {
 
-    public boolean w,a,s,d,p;
+    public boolean w,a,s,d,p,o;
 
     public InputTastiera(){}
     public void keyTyped(KeyEvent e){}
@@ -36,6 +36,11 @@ public class InputTastiera implements KeyListener {
             p=true;
 
         }
+
+        if(premuto == KeyEvent.VK_O){
+            o=true;
+
+        }
     }
 
     @Override
@@ -60,6 +65,9 @@ public class InputTastiera implements KeyListener {
         }
         if(rilasciato == KeyEvent.VK_P){
             p=false;
+        } 
+        if(rilasciato == KeyEvent.VK_O){
+            o=false;
         } 
     }
     
