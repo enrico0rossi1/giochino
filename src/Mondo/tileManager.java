@@ -13,14 +13,14 @@ import main.Pannello;
 public class tileManager {
     
     Pannello pezzo;
-    public tile[] Tile;
-    public int[][] mapGraphic;
-    public int[][] mapGraphic2; 
-
+    public tile[] Tile,Tile2;
+    public int[][] mapGraphic,mapGraphic2;
+    
     public tileManager(Pannello pezzo){
         this.pezzo=pezzo;
 
-        Tile= new tile[12];
+        Tile= new tile[30];
+        
         mapGraphic= new int[pezzo.worldCol][pezzo.worldRow];
         mapGraphic2= new int[pezzo.worldCol][pezzo.worldRow];
         
@@ -42,9 +42,9 @@ public class tileManager {
             Tile[2].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/WaterTile/Water.png"));
             Tile[2].collisione =true;
 
-            Tile[11]=new tile();
-            Tile[11].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesVert.png"));
-            Tile[11].collisione = true;
+            Tile[3]=new tile();
+            Tile[3].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesVert.png"));
+            Tile[3].collisione = true;
 
             Tile[4]=new tile();
             Tile[4].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/Albero1.png"));
@@ -53,9 +53,9 @@ public class tileManager {
             Tile[5]=new tile();
             Tile[5].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/vuoto.png"));
 
-            Tile[10]=new tile();
-            Tile[10].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesHor.png"));
-            Tile[10].collisione=true;
+            Tile[6]=new tile();
+            Tile[6].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesHor.png"));
+            Tile[6].collisione=true;
 
             Tile[7]=new tile();
             Tile[7].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wallBottom.png"));
@@ -69,13 +69,32 @@ public class tileManager {
             Tile[9].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/topWall.png"));
             Tile[9].collisione=true;
 
-            Tile[3]=new tile();
-            Tile[3].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorLeft.png"));
-            Tile[3].collisione=true;
+            Tile[10]=new tile();
+            Tile[10].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorLeft.png"));
+            Tile[10].collisione=true;
+            
+            Tile[11]=new tile();
+            Tile[11].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorRight.png"));
+            Tile[11].collisione=true;
 
-            Tile[6]=new tile();
-            Tile[6].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorRight.png"));
-            Tile[6].collisione=true;
+            Tile[12]=new tile();
+            Tile[12].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkdown.png"));
+
+            Tile[13]=new tile();
+            Tile[13].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkleft.png"));
+
+            Tile[14]=new tile();
+            Tile[14].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkright.png"));
+
+            Tile[15]=new tile();
+            Tile[15].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/dark1.png"));
+
+            Tile[16]=new tile();
+            Tile[16].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkMid.png"));
+
+            Tile[17]=new tile();
+            Tile[17].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/alberosciucco.png"));
+            Tile[17].collisione=true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -147,6 +166,7 @@ public class tileManager {
 
                 g2.drawImage(Tile[numTile].image,screenX,screenY,pezzo.ingame_size, pezzo.ingame_size,null);
                 g3.drawImage(Tile[numTile2].image,screenX,screenY,pezzo.ingame_size, pezzo.ingame_size,null);
+                
                 
 
             }

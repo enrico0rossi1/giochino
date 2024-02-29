@@ -1,19 +1,20 @@
 package object;
 
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
-public class ObjKey extends GameObject {
+public class Door_Left extends GameObject{
 
-    public ObjKey(){
-        name = "key";
+    public Door_Left() {
+        name = "door";
         try {
-           image = ImageIO.read(getClass().getResourceAsStream("Objects/GoldKey.png"));
+           image = ImageIO.read(getClass().getResourceAsStream("Objects/wooden_doorLeft.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
         collision=true;
-        
     }
     
 }
+

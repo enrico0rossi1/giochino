@@ -7,7 +7,7 @@ public class GoldCoin extends GameObject {
     public GoldCoin() {
         name = "GoldCoin";
         try {
-           image = ImageIO.read(getClass().getResourceAsStream("Treasure/GoldCoin.png"));
+           image = ImageIO.read(getClass().getResourceAsStream("Objects/GoldCoin.png"));
         }catch(IOException e){
             e.printStackTrace();
         }

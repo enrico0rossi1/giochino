@@ -13,6 +13,7 @@ public class Giocatore extends Entità {
     Pannello gp;
     InputTastiera keyh;
     public final int ScreenX, ScreenY;
+    int numKeys=0;
     
     
 
@@ -154,7 +155,24 @@ public class Giocatore extends Entità {
     
     public void pickUpObj (int i){
         if(i !=999){
-            gp.obj[i]= null;
+            
+            String objName = gp.obj[i].name;
+
+            switch(objName){
+                case "key":
+                    gp.obj[i]= null;
+                    numKeys++;
+                break;
+
+                case "door":
+                    if(numKeys>0){
+                        gp.obj[i]=null;
+                        numKeys=0;
+
+                    }
+                break;
+
+            }
         }
 
     }

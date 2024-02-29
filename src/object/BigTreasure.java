@@ -7,11 +7,11 @@ public class BigTreasure extends GameObject {
     public BigTreasure() {
         name = "BigTreasure";
         try {
-           image = ImageIO.read(getClass().getResourceAsStream("Treasure/BigTreasureChest.png"));
+           image = ImageIO.read(getClass().getResourceAsStream("Objects/BigTreasureChest.png"));
         }catch(IOException e) {
             e.printStackTrace();
         }
-        collision=true;
+        
         
     }
 }

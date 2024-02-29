@@ -38,7 +38,7 @@ public class Pannello extends JPanel implements Runnable {
     public AssetSetter aSetter = new AssetSetter(this);
     
     //FPS
-    int FPS = 60;
+    double FPS = 60;
     
      
     public Pannello(){
@@ -61,52 +61,34 @@ public class Pannello extends JPanel implements Runnable {
         ThreadGioco.start();
     }
 
+    
     @Override
-    public void run() {
-        
+    public void run(){
+        double drawInterval=1000000000/FPS;
+        double delta=0;
+        long lastTime = System.nanoTime();
+        long currentTime;
 
-        double intervallo = 1000000000/FPS; //refreshiamo lo schermo 
-        double prox_int = System.nanoTime() + intervallo;
-        long timer =0;
-        long ultimoTempo = System.nanoTime();
-        long tempoCorrente;
-        int drawCount=0;
+        while(ThreadGioco!=null){
+            currentTime=System.nanoTime();
+            delta+= (currentTime-lastTime)/drawInterval;
+            lastTime=currentTime;
 
-        while (ThreadGioco != null){
-            tempoCorrente=System.nanoTime();
-            timer += tempoCorrente - ultimoTempo;
-            ultimoTempo = tempoCorrente;
-            update();
-            repaint();
-            drawCount++;
-            
+            if(delta >=1){
+                update();
+                repaint();
+                delta--;
+            }
+
             try {
-                double tempoRimasto = prox_int - System.nanoTime();
-                tempoRimasto=tempoRimasto/1000000;
-                
-
-                if (tempoRimasto<0){
-                    tempoRimasto=0;
-                }
-                Thread.sleep((long) tempoRimasto);
-
-                prox_int = prox_int+intervallo;
+                Thread.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            if(timer>=1000000000){
-                System.out.println("FPS ="+drawCount);
-                drawCount=0;
-                timer=0;
-            }
-            
-
-            
         }
-         
-
     }
+
     public void update(){
         
         giocatore.update();
@@ -119,6 +101,7 @@ public class Pannello extends JPanel implements Runnable {
         super.paintComponent(graphics);
         Graphics2D graphics2= (Graphics2D)graphics;
         Graphics2D graphics3= (Graphics2D)graphics;
+        
         
         //MAPPA
         mappa.draw(graphics2,graphics3);

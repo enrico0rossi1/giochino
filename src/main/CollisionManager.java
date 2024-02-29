@@ -34,7 +34,7 @@ public class CollisionManager {
                 num2 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
                 num3 = gp.mappa.mapGraphic2[entitàTopRow][entitàLeftCol];
                 num4 = gp.mappa.mapGraphic2[entitàTopRow][entitàRightCol];
-                // System.out.println(""+entitàTopRow+" "+entitàLeftCol);
+                System.out.println(""+entitàTopRow+" "+entitàLeftCol);
                 
                 
 
@@ -51,7 +51,7 @@ public class CollisionManager {
                 num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
                 num3 = gp.mappa.mapGraphic2[entitàBottomRow][entitàLeftCol];
                 num4 = gp.mappa.mapGraphic2[entitàBottomRow][entitàRightCol];
-                // System.out.println(""+entitàBottomRow+" "+entitàLeftCol);
+                System.out.println(""+entitàBottomRow+" "+entitàLeftCol);
                 
                 
 
@@ -68,7 +68,7 @@ public class CollisionManager {
                 num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
                 num3 = gp.mappa.mapGraphic2[entitàTopRow][entitàRightCol];
                 num4 = gp.mappa.mapGraphic2[entitàBottomRow][entitàRightCol];
-                // System.out.println(""+entitàTopRow+" "+entitàRightCol);
+                System.out.println(""+entitàTopRow+" "+entitàRightCol);
                 
                 
 
@@ -85,7 +85,7 @@ public class CollisionManager {
                 num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
                 num3 = gp.mappa.mapGraphic2[entitàTopRow][entitàLeftCol];
                 num4 = gp.mappa.mapGraphic2[entitàBottomRow][entitàLeftCol];
-                // System.out.println(""+entitàTopRow+" "+entitàLeftCol);
+                System.out.println(""+entitàTopRow+" "+entitàLeftCol);
                 
                 
 
@@ -115,7 +115,7 @@ public class CollisionManager {
                     case "up":
                         e.collArea.y -= e.velocità;
                         if(e.collArea.intersects(gp.obj[i].solidArea)){
-                            //System.out.println("up collision!");
+                            
                             if (gp.obj[i].collision==true){
                                 e.solid = true;
                                 System.out.println("up collision!");
