@@ -3,9 +3,12 @@ package object;
 import main.Pannello;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import Player.Entità;
+
 import java.awt.Rectangle;
 
-public class GameObject {
+public class GameObject extends Entità {
 
     public BufferedImage image;
     public String name;

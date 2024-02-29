@@ -20,7 +20,7 @@ public class tileManager {
     public tileManager(Pannello pezzo){
         this.pezzo=pezzo;
 
-        Tile= new tile[6];
+        Tile= new tile[12];
         mapGraphic= new int[pezzo.worldCol][pezzo.worldRow];
         mapGraphic2= new int[pezzo.worldCol][pezzo.worldRow];
         
@@ -42,9 +42,9 @@ public class tileManager {
             Tile[2].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/WaterTile/Water.png"));
             Tile[2].collisione =true;
 
-            Tile[3]=new tile();
-            Tile[3].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesVert.png"));
-            
+            Tile[11]=new tile();
+            Tile[11].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesVert.png"));
+            Tile[11].collisione = true;
 
             Tile[4]=new tile();
             Tile[4].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/Albero1.png"));
@@ -52,6 +52,30 @@ public class tileManager {
 
             Tile[5]=new tile();
             Tile[5].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/vuoto.png"));
+
+            Tile[10]=new tile();
+            Tile[10].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesHor.png"));
+            Tile[10].collisione=true;
+
+            Tile[7]=new tile();
+            Tile[7].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wallBottom.png"));
+            Tile[7].collisione=true;
+
+            Tile[8]=new tile();
+            Tile[8].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wallMid.png"));
+            Tile[8].collisione=true;
+
+            Tile[9]=new tile();
+            Tile[9].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/topWall.png"));
+            Tile[9].collisione=true;
+
+            Tile[3]=new tile();
+            Tile[3].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorLeft.png"));
+            Tile[3].collisione=true;
+
+            Tile[6]=new tile();
+            Tile[6].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorRight.png"));
+            Tile[6].collisione=true;
         } catch (Exception e) {
             e.printStackTrace();
         }

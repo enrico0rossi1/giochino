@@ -115,14 +115,17 @@ public class CollisionManager {
                     case "up":
                         e.collArea.y -= e.velocità;
                         if(e.collArea.intersects(gp.obj[i].solidArea)){
-                            System.out.println("up collision!");
+                            //System.out.println("up collision!");
                             if (gp.obj[i].collision==true){
                                 e.solid = true;
-                            }
-                            if(player==true){
+                                System.out.println("up collision!");
                                 
-                                index=i;
+                                if(player==true){
+                                
+                                    index=i;
+                                }
                             }
+                            
 
                         }
                         break;
@@ -132,11 +135,12 @@ public class CollisionManager {
                             System.out.println("down collision!");
                             if (gp.obj[i].collision==true){
                                 e.solid = true;
-                            }
-                            if(player==true){
+                                if(player==true){
                                 
-                                index=i;
+                                    index=i;
+                                }
                             }
+                            
 
                         }
                         break;
@@ -146,12 +150,12 @@ public class CollisionManager {
                             System.out.println("right collision!");
                             if (gp.obj[i].collision==true){
                                 e.solid = true;
-                            }
-                            if(player==true){
+                                if(player==true){
                                 
-                                index=i;
+                                    index=i;
+                                }
                             }
-
+                            
                         }
                         break;
                     case "left":
@@ -160,11 +164,12 @@ public class CollisionManager {
                             System.out.println("left collision!");
                             if (gp.obj[i].collision==true){
                                 e.solid = true;
-                            }
-                            if(player==true){
+                                if(player==true){
                                 
-                                index=i;
+                                    index=i;
+                                }
                             }
+                            
 
                         }
                         break;
