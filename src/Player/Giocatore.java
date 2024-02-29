@@ -100,9 +100,15 @@ public class Giocatore extends Entità {
                 direzione="left";
             }
 
-            if(keyh.o==true){
-                velocità=5;
-            }
+            if(keyh.o==true && 
+               (keyh.w==true ||
+                keyh.a==true ||
+                keyh.s==true ||
+                keyh.d==true)){
+                  velocità=5;
+             } else {velocità = 0;
+                    }
+            
             if(keyh.o==false){
                 velocità=3;
             }
