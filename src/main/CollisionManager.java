@@ -100,7 +100,8 @@ public class CollisionManager {
     }
 
     public int checkObject (Entità e, boolean player){
-        int index=999;
+        int indexWarranty=999-gp.obj.length;
+        int index= indexWarranty + gp.obj.length;
        
 
         for(int i =0; i<gp.obj.length;i++){
