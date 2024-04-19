@@ -82,7 +82,28 @@ public class Giocatore extends Entità {
     }
 
 
-    public void update(){
+    public void update(){ 
+        spriteCount++;
+            if(spriteCount>7){
+                if (spriteNum==0){
+                    spriteNum=1;
+            }else if (spriteNum==1){
+                    spriteNum=2;
+            }else if (spriteNum==2){
+                    spriteNum=3;
+            }else if (spriteNum==3){
+                if(keyh.p==true){
+                    spriteNum=0;
+                }else{
+                    spriteNum=4;
+                }
+            }else if (spriteNum==4){
+                    spriteNum=5;
+            }else if (spriteNum==5){
+                    spriteNum=0;
+            }
+            spriteCount=0; 
+            }
         if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true||keyh.o==true){
 
             if(keyh.s==true){
@@ -127,28 +148,6 @@ public class Giocatore extends Entità {
                     case "left": GiocatoreX-= velocità; break;
                 }
 
-            }
-
-            spriteCount++;
-            if(spriteCount>7){
-                if (spriteNum==0){
-                    spriteNum=1;
-            }else if (spriteNum==1){
-                    spriteNum=2;
-            }else if (spriteNum==2){
-                    spriteNum=3;
-            }else if (spriteNum==3){
-                if(keyh.p==true){
-                    spriteNum=0;
-                }else{
-                    spriteNum=4;
-                }
-            }else if (spriteNum==4){
-                    spriteNum=5;
-            }else if (spriteNum==5){
-                    spriteNum=0;
-            }
-            spriteCount=0; 
             }
         }
     }
