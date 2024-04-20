@@ -82,28 +82,28 @@ public class Giocatore extends Entità {
     }
 
 
-    public void update(){ 
+    public void update(){
         spriteCount++;
-            if(spriteCount>7){
-                if (spriteNum==0){
-                    spriteNum=1;
-            }else if (spriteNum==1){
-                    spriteNum=2;
-            }else if (spriteNum==2){
-                    spriteNum=3;
-            }else if (spriteNum==3){
-                if(keyh.p==true){
-                    spriteNum=0;
-                }else{
-                    spriteNum=4;
-                }
-            }else if (spriteNum==4){
-                    spriteNum=5;
-            }else if (spriteNum==5){
-                    spriteNum=0;
+        if(spriteCount>7){
+            if (spriteNum==0){
+                spriteNum=1;
+        }else if (spriteNum==1){
+                spriteNum=2;
+        }else if (spriteNum==2){
+                spriteNum=3;
+        }else if (spriteNum==3){
+            if(keyh.p==true){
+                spriteNum=0;
+            }else{
+                spriteNum=4;
             }
-            spriteCount=0; 
-            }
+        }else if (spriteNum==4){
+                spriteNum=5;
+        }else if (spriteNum==5){
+                spriteNum=0;
+        }
+        spriteCount=0; 
+        }
         if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true||keyh.o==true){
 
             if(keyh.s==true){
@@ -122,11 +122,11 @@ public class Giocatore extends Entità {
                 direzione="left";
             }
 
-            if(keyh.o==true && 
+            if(
                (keyh.w==true ||
                 keyh.a==true ||
                 keyh.s==true ||
-                keyh.d==true)){
+                keyh.d==true) && keyh.o==true ){
                   velocità=5;
              } else {velocità = 0;
                     }
@@ -149,6 +149,7 @@ public class Giocatore extends Entità {
                 }
 
             }
+
         }
     }
     
@@ -160,13 +161,15 @@ public class Giocatore extends Entità {
             switch(objName){
                 case "key":
                     gp.obj[i]= null;
+                    gp.playSFX(1);
                     numKeys++;
                 break;
 
                 case "door":
                     if(numKeys>0){
                         gp.obj[i]=null;
-                        numKeys=0;
+                        numKeys--;
+                        gp.playSFX(1);
 
                     }
                 break;
@@ -192,7 +195,7 @@ public class Giocatore extends Entità {
             else if (keyh.w==false && keyh.p==true){
                 image = AttackUp[spriteNum];
             }
-            else if (keyh.w==false){
+            else {//(keyh.w==false){
                 image = UpAnimation[spriteNum];
             }
         break;
