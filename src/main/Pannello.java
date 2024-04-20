@@ -128,19 +128,19 @@ public class Pannello extends JPanel implements Runnable {
 
     public void playMusic (int i){
 
-        sound.setFile(i);
-        sound.play();
-        sound.loop();
+        music.setFile(i);
+        music.play();
+        music.loop();
     }
 
     public void stopMusic(int i){
-        sound.stop();
+        music.stop();
     }
 
     public void playSFX(int i) {
 
-        sound.setFile(i);
-        sound.play();
+        sfx.setFile(i);
+        sfx.play();
     }
 
 }
