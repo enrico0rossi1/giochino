@@ -38,7 +38,8 @@ public class Pannello extends JPanel implements Runnable {
     public GameObject obj[] = new GameObject[8];
     public AssetSetter aSetter = new AssetSetter(this);
     
-    Sound sound = new Sound();
+    Sound music = new Sound();
+    Sound sfx = new Sound();
     
     //FPS
     double FPS = 60;
