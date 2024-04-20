@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
 
 import Mondo.tileManager;
@@ -37,6 +38,8 @@ public class Pannello extends JPanel implements Runnable {
     public GameObject obj[] = new GameObject[8];
     public AssetSetter aSetter = new AssetSetter(this);
     
+    Sound sound = new Sound();
+    
     //FPS
     double FPS = 60;
     
@@ -52,6 +55,8 @@ public class Pannello extends JPanel implements Runnable {
 
     public void setUpGioco() {
         aSetter.setObject();
+
+        playMusic(0);
     }
     
      public void startThreadGioco(){
@@ -119,6 +124,23 @@ public class Pannello extends JPanel implements Runnable {
         graphics2.dispose();
        
     };
+
+    public void playMusic (int i){
+
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic(int i){
+        sound.stop();
+    }
+
+    public void playSFX(int i) {
+
+        sound.setFile(i);
+        sound.play();
+    }
 
 }
 
