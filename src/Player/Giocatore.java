@@ -13,7 +13,7 @@ public class Giocatore extends Entità {
     Pannello gp;
     InputTastiera keyh;
     public final int ScreenX, ScreenY;
-    int numKeys=0;
+    public int numKeys=0;
     
     
 
