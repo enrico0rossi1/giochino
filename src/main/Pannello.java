@@ -37,6 +37,7 @@ public class Pannello extends JPanel implements Runnable {
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[8];
     public AssetSetter aSetter = new AssetSetter(this);
+    public UI ui = new UI(this;)
     
     Sound music = new Sound();
     Sound sfx = new Sound();
@@ -118,6 +119,9 @@ public class Pannello extends JPanel implements Runnable {
                 obj[i].draw(graphics2,this);
             }
         }
+
+        //INTERFACCIA
+        ui.draw(graphics2);
         
         //GIOCATORE
         giocatore.draw(graphics2);
