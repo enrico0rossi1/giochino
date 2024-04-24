@@ -35,15 +35,15 @@ public class Pannello extends JPanel implements Runnable {
     public tileManager mappa2 = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
-    public GameObject obj[] = new GameObject[8];
-    public AssetSetter aSetter = new AssetSetter(this);
-    public UI ui = new UI(this;)
+    public GameObject obj[] = new GameObject[15];
+    public ObjectPlacer oPlacer = new ObjectPlacer(this);
+    public UI ui = new UI(this);
     
     Sound music = new Sound();
     Sound sfx = new Sound();
-    
+   
     //FPS
-    double FPS = 60;
+    public double FPS = 60;
     
      
     public Pannello(){
@@ -56,7 +56,7 @@ public class Pannello extends JPanel implements Runnable {
     }
 
     public void setUpGioco() {
-        aSetter.setObject();
+        oPlacer.setObject();
 
         playMusic(0);
     }
@@ -113,16 +113,17 @@ public class Pannello extends JPanel implements Runnable {
         //MAPPA
         mappa.draw(graphics2,graphics3);
 
+      
+
         //OGGETTI
         for (int i =0; i<obj.length;i++){
             if (obj[i]!=null){
                 obj[i].draw(graphics2,this);
             }
         }
-
-        //INTERFACCIA
+          //INTERFACCIA
         ui.draw(graphics2);
-        
+
         //GIOCATORE
         giocatore.draw(graphics2);
         
