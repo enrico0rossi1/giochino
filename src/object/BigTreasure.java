@@ -11,7 +11,7 @@ public class BigTreasure extends GameObject {
         }catch(IOException e) {
             e.printStackTrace();
         }
-        
+        collision = true;
         
     }
 }
