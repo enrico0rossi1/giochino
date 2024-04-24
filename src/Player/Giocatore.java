@@ -204,6 +204,7 @@ public class Giocatore extends Entità {
                 {
                     gp.obj[i]=null;
                     gp.playSFX(1);
+                    gp.stopMusic(0);
                     gp.ui.endGame = true;
                     
                     
