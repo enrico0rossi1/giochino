@@ -1,8 +1,8 @@
-versione aggiornata al 24/04/2024
-ridenominazione della calsse AssetSetter in ObjectPlacer per eliminare ambiguità e rendere il nome più esplicativo
-ingrandimento dell' arrray degli oggetti e aggiunta di oggetti nel momdo di gioco
+versione aggiornata al 24/04/2024 \n
+ridenominazione della calsse AssetSetter in ObjectPlacer per eliminare ambiguità e rendere il nome più esplicativo \n
+ingrandimento dell' arrray degli oggetti e aggiunta di oggetti nel momdo di gioco \n
 aggiunta di interfaccia rudimentale con contatore chiavi e notifiche diverse alla collisione con vari oggetti
-ora per correre è necessario raccogliere prima la moneta dorata e poi si ptrà correre premendo il tasto O
+ora per correre è necessario raccogliere prima la moneta dorata e poi si ptrà correre premendo il tasto O \n
 aggiunta di musica ed effetti sonori (una canzone durante il gioco e un effetto sonoro alla raccolta di ogggetti o apertura porte)
 la collisione con l'oggetto BigTreasure causa la fine del gioco
 
