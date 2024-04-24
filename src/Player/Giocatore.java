@@ -13,7 +13,8 @@ public class Giocatore extends Entità {
     Pannello gp;
     InputTastiera keyh;
     public final int ScreenX, ScreenY;
-    public int numKeys=0;
+    public static int numKeys=0;
+    public boolean speedUp = false;
     
     
 
@@ -126,9 +127,16 @@ public class Giocatore extends Entità {
                (keyh.w==true ||
                 keyh.a==true ||
                 keyh.s==true ||
-                keyh.d==true) && keyh.o==true ){
+                keyh.d==true) && keyh.o==true && speedUp==true ){
                   velocità=5;
-             } else {velocità = 0;
+             } else if(
+                (keyh.w==true ||
+                 keyh.a==true ||
+                 keyh.s==true ||
+                 keyh.d==true) && keyh.o==true){
+                    velocità = 3;
+                 }
+                  else {velocità = 0;
                     }
             
             if(keyh.o==false){
@@ -161,18 +169,47 @@ public class Giocatore extends Entità {
             switch(objName){
                 case "key":
                     gp.obj[i]= null;
+                    gp.ui.showMessage("u got a key!,that's cool");
                     gp.playSFX(1);
+                    
                     numKeys++;
+                   
+                    
                 break;
 
                 case "door":
                     if(numKeys>0){
                         gp.obj[i]=null;
+                        gp.ui.showMessage("u unlocked a door! Let's gooo");
                         numKeys--;
+                        gp.playSFX(1);}
+                        if (numKeys==0){
+                            gp.ui.showMessage2("no keys? so lame...");
+                        }
+
+                    
+                break;
+
+                case "GoldCoin":
+                    {
+                        gp.obj[i]=null;
+                        speedUp=true;
+                        gp.ui.showMessage("press O to run");
                         gp.playSFX(1);
 
                     }
                 break;
+
+                case "BigTreasure":
+                {
+                    gp.obj[i]=null;
+                    gp.playSFX(1);
+                    gp.ui.endGame = true;
+                    
+                    
+
+                }
+            break;
 
             }
         }
@@ -195,7 +232,7 @@ public class Giocatore extends Entità {
             else if (keyh.w==false && keyh.p==true){
                 image = AttackUp[spriteNum];
             }
-            else {//(keyh.w==false){
+            else {
                 image = UpAnimation[spriteNum];
             }
         break;
@@ -206,7 +243,8 @@ public class Giocatore extends Entità {
             else if (keyh.p==true){
                 image =AttackDown[spriteNum];
             }
-            else if (keyh.s==false){
+            else
+            {
                 image = DownAnimation[spriteNum];
             };
         break;
@@ -219,7 +257,8 @@ public class Giocatore extends Entità {
             else if (keyh.p==true){
                 image=AttackRight[spriteNum];
             }
-            else if (keyh.d==false){ 
+            else 
+            { 
                 image = RightAnimation[spriteNum];
                 
             };
@@ -234,7 +273,8 @@ public class Giocatore extends Entità {
                 image =AttackLeft[spriteNum];
                 }
             
-            else if (keyh.a==false){ 
+            else 
+            { 
                 image = LeftAnimation[spriteNum];
             };
         break;
