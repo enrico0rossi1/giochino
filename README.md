@@ -1,5 +1,6 @@
-versione aggiornata al 24/04/2024 \n
+versione aggiornata al 26/04/2024 \n
 
+NOVITà
 
 ridenominazione della calsse AssetSetter in ObjectPlacer per eliminare ambiguità e rendere il nome più esplicativo \n
 
@@ -13,9 +14,12 @@ aggiunta di musica ed effetti sonori (una canzone durante il gioco e un effetto 
 
 la collisione con l'oggetto BigTreasure causa la fine del gioco
 
+aggiunto un menù di pausa da attivare e disattivare col tasto "m"
 
-Problemi da risolvere notati finora
+PROBLEMI da risolvere notati finora
 
 l'animazione dell'attacco causa un blocco temporaneo delle animazioni forse a causa el fatto che sono 4 immagini mentre il ciclo di animazione ne ha 6
 
 l'animazione dell'attacco prosegue solo fintanto che il tasto P è premuto e non prosegue fino al termine naturale in caso di rilascio del pulsante
+
+Quando il gioco è in pausa il personaggio viene animato quando si tenta di farlo muovere o attaccare, si potrebbe ignorare il problema e coprire il personaggio con un'interfaccia
