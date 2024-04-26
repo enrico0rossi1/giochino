@@ -4,15 +4,32 @@ import java.awt.event.KeyEvent;
 
 public class InputTastiera implements KeyListener {
 
-    public boolean w,a,s,d,p,o;
+    public boolean w,a,s,d,p,o,m;
+    Pannello gp;
 
-    public InputTastiera(){}
+    public InputTastiera(Pannello gp){
+        this.gp = gp;
+    }
+
+    
+
     public void keyTyped(KeyEvent e){}
     
     @Override 
     public void keyPressed(KeyEvent e) {
 
         int premuto = e.getKeyCode();
+
+        if(premuto == KeyEvent.VK_M){
+           if (gp.gameState == gp.playState){
+            gp.gameState = gp.pauseState;
+            gp.stopMusic(0);
+           }
+          else if (gp.gameState == gp.pauseState){
+            gp.gameState = gp.playState;
+            gp.playMusic(0);
+           } 
+        }
         
         if(premuto == KeyEvent.VK_W){
             w=true;
@@ -41,6 +58,7 @@ public class InputTastiera implements KeyListener {
             o=true;
 
         }
+    
     }
 
     @Override

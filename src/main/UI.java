@@ -59,18 +59,20 @@ if (endGame == true) {
     
     gp.ThreadGioco = null;
 }
-else {
+else if(gp.gameState==gp.playState){
         g2.setFont(arial_30);
         g2.setColor(Color.red);
         g2.drawString(" = "+Giocatore.numKeys, 32, 553);  
       
         g2.drawImage(keyImage,10,530,25,25,null);
+
         if(messageOn == true) {
             int messageX = (gp.screen_width /2)- 80 ;
             int messageY = gp.screen_height - (gp.screen_height / 6) ;
             g2.drawString(message, messageX,messageY);
             messageCounter++;
         }
+
         if(message2On == true){
             int message2X = (gp.screen_width /2)- 80 ;
             int message2Y = gp.screen_height - (gp.screen_height / 6 - 20) ; 
@@ -86,10 +88,15 @@ else {
                 message2On = false;
             }
         }
-      }
     }
+       else if (gp.gameState==gp.pauseState){
+            g2.setFont(winnerFont);
+            g2.drawString("Resting a bit \n press M to resume",(gp.screen_width)/4,gp.screen_height/2-4);
+        }
+      }
+    
 
    
       
-    }
+}
 
