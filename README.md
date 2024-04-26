@@ -22,4 +22,4 @@ l'animazione dell'attacco causa un blocco temporaneo delle animazioni forse a ca
 
 l'animazione dell'attacco prosegue solo fintanto che il tasto P è premuto e non prosegue fino al termine naturale in caso di rilascio del pulsante
 
-mentre il gioco è in pausa il personaggio viene animato quando si tenta di farlo muovere o attaccare, si potrebbe ignorare il problema e coprire il personaggio con un'interfaccia
+mentre il gioco è in pausa il personaggio viene animato quando si tenta di farlo muovere nella direzione a cui punta o attaccare, si potrebbe ignorare il problema e coprire il personaggio con un'interfaccia
