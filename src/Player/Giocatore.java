@@ -70,7 +70,7 @@ public class Giocatore extends Entità {
         MoveLeftAnimation=loadAnimation(6,"Sprites/NewSprites/Left/moveLeft");
 
         UpAnimation=loadAnimation(6, "Sprites/NewSprites/Up/up");
-        DownAnimation=loadAnimation(6, "Sprites/NewSprites/Down/down");
+        DownAnimation=loadAnimation(4, "Sprites/NewSprites/Down/down");
         RightAnimation=loadAnimation(6, "Sprites/NewSprites/Right/right");
         LeftAnimation=loadAnimation(6, "Sprites/NewSprites/Left/left");
 
@@ -221,10 +221,11 @@ public class Giocatore extends Entità {
 
      BufferedImage image = null;
         
-  
+    
      switch (direzione) {
         case "up": 
-            if (keyh.w==true && keyh.p==false){ 
+           
+                if (keyh.w==true && keyh.p==false){ 
                image = MoveUpAnimation[spriteNum]; 
             } 
             else if (keyh.p==true){
@@ -233,6 +234,7 @@ public class Giocatore extends Entità {
             else if (keyh.w==false && keyh.p==true){
                 image = AttackUp[spriteNum];
             }
+        
             else {
                 image = UpAnimation[spriteNum];
             }
@@ -280,6 +282,7 @@ public class Giocatore extends Entità {
             };
         break;
         }
+    
         graphics2.drawImage(image, ScreenX, ScreenY, gp.ingame_size, gp.ingame_size,null);
     }
         
