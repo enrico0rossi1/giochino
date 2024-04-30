@@ -2,6 +2,8 @@ versione aggiornata al 26/04/2024 \n
 
 NOVITà
 
+aggiunto il menù principale
+
 ridenominazione della calsse AssetSetter in ObjectPlacer per eliminare ambiguità e rendere il nome più esplicativo \n
 
 ingrandimento dell' arrray degli oggetti e aggiunta di oggetti nel momdo di gioco \n
