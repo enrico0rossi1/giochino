@@ -70,7 +70,7 @@ public class Giocatore extends Entità {
         MoveLeftAnimation=loadAnimation(6,"Sprites/NewSprites/Left/moveLeft");
 
         UpAnimation=loadAnimation(6, "Sprites/NewSprites/Up/up");
-        DownAnimation=loadAnimation(4, "Sprites/NewSprites/Down/down");
+        DownAnimation=loadAnimation(6, "Sprites/NewSprites/Down/down");
         RightAnimation=loadAnimation(6, "Sprites/NewSprites/Right/right");
         LeftAnimation=loadAnimation(6, "Sprites/NewSprites/Left/left");
 
