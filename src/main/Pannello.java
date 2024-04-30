@@ -43,6 +43,7 @@ public class Pannello extends JPanel implements Runnable {
     Sound sfx = new Sound();
    
     public int gameState;
+    public int titleState = 0;
     public int playState = 1;
     public int pauseState = 2;
     //FPS
@@ -59,10 +60,11 @@ public class Pannello extends JPanel implements Runnable {
     }
 
     public void setUpGioco() {
-        gameState = playState;
+        gameState = titleState;
         oPlacer.setObject();
 
         playMusic(0);
+    
     }
     
      public void startThreadGioco(){
@@ -116,7 +118,12 @@ public class Pannello extends JPanel implements Runnable {
         Graphics2D graphics2= (Graphics2D)graphics;
         Graphics2D graphics3= (Graphics2D)graphics;
         
-        
+        //SCHERMATA INIZIALE
+if (gameState == titleState) {
+  ui.draw(graphics2);
+
+}
+else {
         //MAPPA
         mappa.draw(graphics2,graphics3);
 
@@ -137,6 +144,7 @@ public class Pannello extends JPanel implements Runnable {
         graphics2.dispose();
        
     };
+}
 
     public void playMusic (int i){
 

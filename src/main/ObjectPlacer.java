@@ -32,16 +32,16 @@ public class ObjectPlacer {
 		
 		gp.obj[4] = new BigTreasure();
 		gp.obj[4].worldX = 26*gp.ingame_size;
-		gp.obj[4].worldY = 45*gp.ingame_size;
+		gp.obj[4].worldY = 40*gp.ingame_size;
 
 
 		gp.obj[5] = new Door_Right();
-		gp.obj[5].worldX = 30*gp.ingame_size;
-		gp.obj[5].worldY = 26*gp.ingame_size;
+		gp.obj[5].worldX = 26*gp.ingame_size;
+		gp.obj[5].worldY = 37*gp.ingame_size;
 
 
-		gp.obj[6] = new Door_Right();
-		gp.obj[6].worldX = 32*gp.ingame_size;
-		gp.obj[6].worldY = 22*gp.ingame_size;
+		gp.obj[6] = new Door_Left();
+		gp.obj[6].worldX = 25*gp.ingame_size;
+		gp.obj[6].worldY = 37*gp.ingame_size;
 	}
 }

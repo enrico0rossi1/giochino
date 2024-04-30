@@ -13,7 +13,9 @@ public class InputTastiera implements KeyListener {
 
     
 
-    public void keyTyped(KeyEvent e){}
+    public void keyTyped(KeyEvent t){
+         
+    }
     
     @Override 
     public void keyPressed(KeyEvent e) {
@@ -23,18 +25,26 @@ public class InputTastiera implements KeyListener {
         if(premuto == KeyEvent.VK_M){
            if (gp.gameState == gp.playState){
             gp.gameState = gp.pauseState;
-            gp.stopMusic(0);
+            gp.stopMusic(2);
            }
           else if (gp.gameState == gp.pauseState){
             gp.gameState = gp.playState;
-            gp.playMusic(0);
+            gp.playMusic(2);
            } 
-        }
+        } 
         
         if(premuto == KeyEvent.VK_W){
+            if (gp.gameState == gp.playState) {
             w=true;
-            
-        }
+            }
+            if (gp.gameState == gp.titleState){
+                gp.stopMusic(0);
+                gp.playMusic(2);
+                gp.gameState = gp.playState;
+               
+
+            }
+        }      
 
         if(premuto == KeyEvent.VK_A){
             a=true;
