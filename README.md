@@ -2,6 +2,14 @@ versione aggiornata al 26/04/2024 \n
 
 NOVITà
 
+cambiato colore dello sfondo in verde per ridurre l'effetto sfarfallio
+
+aggiunta classe ObjHeart
+
+aggiunto attributo vita e vitaMax per entità e giocatore
+
+aggiunto indicatore di vita con cuori in alto a sinistra che si aggiorna con la variazione della vita del giocatore
+
 aggiunto il menù principale
 
 ridenominazione della calsse AssetSetter in ObjectPlacer per eliminare ambiguità e rendere il nome più esplicativo \n
