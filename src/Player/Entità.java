@@ -36,4 +36,8 @@ public class Entità {
     public Rectangle collArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean solid = false;
+
+    //stato dell'entità
+    public int vitaMax;
+    public int vita;
 }

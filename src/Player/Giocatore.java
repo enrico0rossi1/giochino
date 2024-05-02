@@ -43,6 +43,9 @@ public class Giocatore extends Entità {
         GiocatoreY=gp.ingame_size*25; //posizione iniziale su mappa 
         velocità=3;
         direzione="down";
+
+        vitaMax = 6;
+        vita = vitaMax;
     }
 
     public BufferedImage[] loadAnimation (int Dimension, String Passata){
