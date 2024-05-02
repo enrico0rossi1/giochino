@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import Player.Giocatore;
+import object.ObjHeart;
 import object.ObjKey;
 
 
@@ -16,7 +17,11 @@ public class UI {
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjKey key = new ObjKey();
+    ObjHeart heart = new ObjHeart();
     Image keyImage = key.image;
+    Image heartFullImage = heart.image;
+    Image heartHalvedImage = heart.image2;
+    Image heartVoidImage = heart.image3;
 
 
     public boolean messageOn = false;
@@ -60,6 +65,7 @@ if (endGame == true) {
     
     gp.ThreadGioco = null;
 }
+// interfaccia nel menu principale
 if (gp.gameState == gp.titleState) {
    // drawTitleScreen();
     graphics2.setColor(new Color(0,40,80));
@@ -81,6 +87,38 @@ if(gp.gameState==gp.playState){
         graphics2.drawString(" = "+Giocatore.numKeys, 32, 553);  
       
         graphics2.drawImage(keyImage,10,530,25,25,null);
+
+ // vita del giocatore
+
+      // drawPlayerLife();
+
+       int x = gp.pix_row/2;
+        int y = gp.pix_cols/2;
+        int i = 0;
+
+        while (i<gp.giocatore.vitaMax/2) {
+            graphics2.drawImage(heartVoidImage, x , y,null);
+            i++;
+            x += 2*gp.pix_row;
+            
+        }
+            x = gp.pix_row/2;
+            y = gp.pix_cols/2;
+            i = 0;
+
+            while (i < gp.giocatore.vita){
+                graphics2.drawImage(heartHalvedImage,x,y,null);
+                i++;
+                if(i < gp.giocatore.vita) {
+                    graphics2.drawImage(heartFullImage,x,y,null);
+                }
+                i++;
+                x += 2*gp.pix_row;
+            }
+        
+   
+   
+        
 
         if(messageOn == true) {
             int messageX = (gp.screen_width /2)- 80 ;
@@ -113,7 +151,7 @@ if(gp.gameState==gp.playState){
        // drawPauseScreen();
        graphics2.setFont(arial_30);
        graphics2.drawString("Resting a bit",gp.screen_width/2+50,gp.screen_height/2+10);
-       graphics2.drawString("press M to resume",gp.screen_width/2+50,gp.screen_height/2+30); }
+       graphics2.drawString("press M to resume",gp.screen_width/2+40,gp.screen_height/2+30); }
       }
 
  
@@ -142,7 +180,33 @@ if(gp.gameState==gp.playState){
          
             graphics2.drawString(pauseText,x,y);
     
-    }     
+    }    
+    public void drawPlayerLife () {
+
+        int x = gp.pix_row/2;
+        int y = gp.pix_cols/2;
+        int i = 0;
+
+        while (i<gp.giocatore.vitaMax/2) {
+            graphics2.drawImage(heartVoidImage, x , y,null);
+            i++;
+            x += 2*gp.pix_row;
+            
+        }
+            x = gp.pix_row/2;
+            y = gp.pix_cols/2;
+            i = 0;
+
+            while (i < gp.giocatore.vita){
+                graphics2.drawImage(heartHalvedImage,x,y,null);
+                i++;
+                if(i < gp.giocatore.vita) {
+                    graphics2.drawImage(heartFullImage,x,y,null);
+                }
+                i++;
+                x += 2*gp.pix_row;
+            }
+    } 
         public int getCenteredXForText (String text,Graphics2D graphics2) {
          //   graphics2.setFont(arial_30);
         int length = (int)graphics2.getFontMetrics().getStringBounds(text, graphics2).getWidth();

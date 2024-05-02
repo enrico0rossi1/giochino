@@ -36,7 +36,7 @@ public class Pannello extends JPanel implements Runnable {
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[15];
-    public ObjectPlacer oPlacer = new ObjectPlacer(this);
+    public ObjectPlacer objPlacer = new ObjectPlacer(this);
     public UI ui = new UI(this);
     
     public Sound music = new Sound();
@@ -46,13 +46,14 @@ public class Pannello extends JPanel implements Runnable {
     public int titleState = 0;
     public int playState = 1;
     public int pauseState = 2;
+
     //FPS
     public double FPS = 60;
     
      
     public Pannello(){
         this.setPreferredSize(new Dimension(screen_width,screen_height));
-        this.setBackground(new Color(46,75,255));
+        this.setBackground(new Color(173,255,47));
         this.setDoubleBuffered(true);
         this.addKeyListener(keyh);
         this.setFocusable(true);
@@ -61,7 +62,7 @@ public class Pannello extends JPanel implements Runnable {
 
     public void setUpGioco() {
         gameState = titleState;
-        oPlacer.setObject();
+        objPlacer.setObject();
 
         playMusic(0);
     
