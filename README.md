@@ -2,6 +2,10 @@ versione aggiornata al 26/04/2024 \n
 
 NOVITà
 
+aggiunta di mappa DarkWoods da modificare e implementare
+
+aggiunta clsse per gestire eventi come trappole,recupero vita e teletrasporto chiamata EventHandler
+
 cambiato colore dello sfondo in verde per ridurre l'effetto sfarfallio
 
 aggiunta classe ObjHeart
@@ -33,3 +37,5 @@ l'animazione dell'attacco causa un blocco temporaneo delle animazioni forse a ca
 l'animazione dell'attacco prosegue solo fintanto che il tasto P è premuto e non prosegue fino al termine naturale in caso di rilascio del pulsante
 
 mentre il gioco è in pausa il personaggio viene animato quando si tenta di farlo muovere nella direzione a cui punta o attaccare, si potrebbe ignorare il problema e coprire il personaggio con un'interfaccia
+
+tenere premuto il tasto m attiva e disattiva ripetutamente il menù di pausa
