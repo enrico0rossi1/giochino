@@ -25,18 +25,21 @@ public class Pannello extends JPanel implements Runnable {
 
 
     //Impostazioni di mappa
-    public final int worldCol = 50, worldRow=50;
+    public final int worldCol = 50, worldRow = 50;
     public final int worldWidth = ingame_size*worldCol;
     public final int worldHeight = ingame_size*worldRow;
 
     Thread ThreadGioco;
     InputTastiera keyh= new InputTastiera(this);
+    public final int numMappe = 10;
+    public int mappaAttuale;
     public tileManager mappa = new tileManager(this);
     public tileManager mappa2 = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[15];
     public ObjectPlacer objPlacer = new ObjectPlacer(this);
+    public EventHandler eventHandler = new EventHandler(this);
     public UI ui = new UI(this);
     
     public Sound music = new Sound();
@@ -46,6 +49,7 @@ public class Pannello extends JPanel implements Runnable {
     public int titleState = 0;
     public int playState = 1;
     public int pauseState = 2;
+    public int gameOver = 5;
 
     //FPS
     public double FPS = 60;
@@ -106,7 +110,7 @@ public class Pannello extends JPanel implements Runnable {
     public void update(){
         if (gameState == playState) {
         giocatore.update();
-
+   
     }
     if (gameState == pauseState) {
  

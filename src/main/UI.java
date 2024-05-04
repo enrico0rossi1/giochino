@@ -93,7 +93,7 @@ if(gp.gameState==gp.playState){
       // drawPlayerLife();
 
        int x = gp.pix_row/2;
-        int y = gp.pix_cols/2;
+        int y = 0;
         int i = 0;
 
         while (i<gp.giocatore.vitaMax/2) {
@@ -103,7 +103,7 @@ if(gp.gameState==gp.playState){
             
         }
             x = gp.pix_row/2;
-            y = gp.pix_cols/2;
+            y = 0;
             i = 0;
 
             while (i < gp.giocatore.vita){
@@ -152,10 +152,15 @@ if(gp.gameState==gp.playState){
        graphics2.setFont(arial_30);
        graphics2.drawString("Resting a bit",gp.screen_width/2+50,gp.screen_height/2+10);
        graphics2.drawString("press M to resume",gp.screen_width/2+40,gp.screen_height/2+30); }
-      }
+      
 
- 
-    
+   if (gameOver == true) {
+    // draw gOverScreen ();
+    graphics2.drawImage(heartVoidImage,gp.screen_width/2+50,gp.screen_height/2+10,100,100,null);
+    graphics2.drawString("LOSER",gp.screen_width/2+50,gp.screen_height/2+10);
+   }
+   
+}
     public void drawTitleScreen(){
 
         graphics2.setColor(new Color(0,40,80));
