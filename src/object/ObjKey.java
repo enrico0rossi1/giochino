@@ -5,6 +5,8 @@ import javax.imageio.ImageIO;
 
 public class ObjKey extends GameObject {
 
+
+
     public ObjKey(){
         name = "key";
         try {
@@ -13,7 +15,9 @@ public class ObjKey extends GameObject {
             e.printStackTrace();
         }
         collision=true;
-        
+        objWidth = 16;
+        objHeight = 16;
+    
     }
     
 }
