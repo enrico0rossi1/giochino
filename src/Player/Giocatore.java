@@ -12,7 +12,8 @@ public class Giocatore extends Entità {
 
     Pannello gp;
     InputTastiera keyh;
-    public final int ScreenX, ScreenY;
+    public int ScreenX;
+    public int ScreenY;
     public static int numKeys=0;
     public boolean speedUp = false;
     
@@ -44,7 +45,7 @@ public class Giocatore extends Entità {
         velocità=3;
         direzione="down";
 
-        vitaMax = 6;
+        vitaMax = 10;
         vita = vitaMax;
     }
 
@@ -87,6 +88,8 @@ public class Giocatore extends Entità {
 
 
     public void update(){
+
+      
         spriteCount++;
         if(spriteCount>7){
             if (spriteNum==0){
@@ -150,6 +153,8 @@ public class Giocatore extends Entità {
             gp.CollisionManager.checkTile(this);
             int objVerifier = gp.CollisionManager.checkObject(this,true);
             pickUpObj(objVerifier);
+
+            gp.eventHandler.checkEvent();
 
             if (solid == false){
                 switch(direzione){
