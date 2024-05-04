@@ -13,8 +13,9 @@ import main.Pannello;
 public class tileManager {
     
     Pannello pezzo;
+
     public tile[] Tile,Tile2;
-    public int[][] mapGraphic,mapGraphic2;
+    public int [][] mapGraphic,mapGraphic2;
     
     public tileManager(Pannello pezzo){
         this.pezzo=pezzo;
@@ -102,8 +103,8 @@ public class tileManager {
 
     public void caricaMappa(){
         try {
-            InputStream mid = getClass().getResourceAsStream("Mappe/mappa.txt");
-            InputStream mid2 = getClass().getResourceAsStream("Mappe/decorazioni.txt");
+            InputStream mid = getClass().getResourceAsStream("Mappe/StartingWoods.txt");
+            InputStream mid2 = getClass().getResourceAsStream("Mappe/StartingWoodsDeco.txt");
             BufferedReader qp = new BufferedReader(new InputStreamReader(mid));
             BufferedReader qp2 = new BufferedReader(new InputStreamReader(mid2));
             int row=0;
@@ -138,6 +139,44 @@ public class tileManager {
 
 
     }
+    /*public void caricaMappaDARK(){
+        try {
+            InputStream mid = getClass().getResourceAsStream("Mappe/DarkWoods.txt");
+            InputStream mid2 = getClass().getResourceAsStream("Mappe/DarkWoodsDeco.txt");
+            BufferedReader qp = new BufferedReader(new InputStreamReader(mid));
+            BufferedReader qp2 = new BufferedReader(new InputStreamReader(mid2));
+            int row=0;
+            int cols=0;
+            while (row<pezzo.worldRow && cols<pezzo.worldCol){
+                String app = qp.readLine();
+                String app2 = qp2.readLine();
+                while(cols<pezzo.worldCol){
+                    
+                    
+                    String[]number = app.split(" ");
+                    String[]number2 =app2.split(" ");
+                    int num = Integer.parseInt(number[cols]);
+                    int num2 = Integer.parseInt(number2[cols]);
+
+                    mapGraphic[row][cols]=num;
+                    mapGraphic2[row][cols]=num2;
+                    cols++;
+                }
+                if(cols==pezzo.worldCol) {
+                    cols=0;
+                    row++;
+                }
+                
+                
+
+            } 
+            qp.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    } */
 
 
 
@@ -159,10 +198,10 @@ public class tileManager {
             int screenX = worldX-pezzo.giocatore.GiocatoreX + pezzo.giocatore.ScreenX;
             int screenY = worldY-pezzo.giocatore.GiocatoreY + pezzo.giocatore.ScreenY;
 
-            if(worldX + pezzo.ingame_size>pezzo.giocatore.GiocatoreX-pezzo.giocatore.ScreenX &&
+            /*if(worldX + pezzo.ingame_size>pezzo.giocatore.GiocatoreX-pezzo.giocatore.ScreenX &&
                worldX - pezzo.ingame_size<pezzo.giocatore.GiocatoreX+pezzo.giocatore.ScreenX &&
                worldY + pezzo.ingame_size>pezzo.giocatore.GiocatoreY-pezzo.giocatore.ScreenY &&
-               worldY - pezzo.ingame_size<pezzo.giocatore.GiocatoreY+pezzo.giocatore.ScreenY){
+               worldY - pezzo.ingame_size<pezzo.giocatore.GiocatoreY+pezzo.giocatore.ScreenY)*/{
 
                 g2.drawImage(Tile[numTile].image,screenX,screenY,pezzo.ingame_size, pezzo.ingame_size,null);
                 g3.drawImage(Tile[numTile2].image,screenX,screenY,pezzo.ingame_size, pezzo.ingame_size,null);
