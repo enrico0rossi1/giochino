@@ -88,9 +88,12 @@ public class Giocatore extends Entità {
 
 
     public void update(){
-
-      
+if (vita == 0) {
+    gp.gameState = gp.gameOver;
+}
+   
         spriteCount++;
+     
         if(spriteCount>7){
             if (spriteNum==0){
                 spriteNum=1;
@@ -134,13 +137,14 @@ public class Giocatore extends Entità {
                 keyh.a==true ||
                 keyh.s==true ||
                 keyh.d==true) && keyh.o==true && speedUp==true ){
-                  velocità=5;
+                  velocità = 5 ;
              } else if(
                 (keyh.w==true ||
                  keyh.a==true ||
                  keyh.s==true ||
                  keyh.d==true) && keyh.o==true){
                     velocità = 3;
+                    velocità = 0;
                  }
                   else {velocità = 0;
                     }
@@ -199,6 +203,14 @@ public class Giocatore extends Entità {
                 break;
 
                 case "GoldCoin":
+                {
+                    gp.obj[i]=null;
+                    gp.ui.showMessage2("richer");
+                    gp.playSFX(1);
+
+                }
+            break;
+                case "Shoes":
                     {
                         gp.obj[i]=null;
                         speedUp=true;
