@@ -6,9 +6,9 @@ aggiunta di mappa DarkWoods da modificare e implementare
 
 aggiunta clsse per gestire eventi come trappole,recupero vita e teletrasporto chiamata EventHandler
 
-cambiato colore dello sfondo in verde per ridurre l'effetto sfarfallio
+cambiato colore dello sfondo in verde perché nasconde un po' lo sfarfallio
 
-aggiunta classe ObjHeart
+aggiunte classi ObjHeart,ObjShoes,ObjSpike
 
 aggiunto attributo vita e vitaMax per entità e giocatore
 
@@ -22,7 +22,7 @@ ingrandimento dell' arrray degli oggetti e aggiunta di oggetti nel momdo di gioc
 
 aggiunta di interfaccia rudimentale con contatore chiavi e notifiche diverse alla collisione con vari oggetti
 
-ora per correre è necessario raccogliere prima la moneta dorata e poi si ptrà correre premendo il tasto O \n
+ora per correre è necessario raccogliere prima le jordan e poi si potrà correre premendo il tasto O \n
 
 aggiunta di musica ed effetti sonori (una canzone durante il gioco e un effetto sonoro alla raccolta di ogggetti o apertura porte)
 
