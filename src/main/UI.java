@@ -31,7 +31,7 @@ public class UI {
     int messageCounter = 0;
     int message2Counter = 0;
     public boolean endGame;
-    public boolean gameOver;
+   
 
     public UI (Pannello gp) {
         
@@ -154,7 +154,7 @@ if(gp.gameState==gp.playState){
        graphics2.drawString("press M to resume",gp.screen_width/2+40,gp.screen_height/2+30); }
       
 
-   if (gameOver == true) {
+   if (gp.gameState == gp.gameOver) {
     // draw gOverScreen ();
     graphics2.drawImage(heartVoidImage,gp.screen_width/2+50,gp.screen_height/2+10,100,100,null);
     graphics2.drawString("LOSER",gp.screen_width/2+50,gp.screen_height/2+10);
