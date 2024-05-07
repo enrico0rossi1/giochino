@@ -11,6 +11,8 @@ public class GoldCoin extends GameObject {
         }catch(IOException e){
             e.printStackTrace();
         }
-        collision=true;
+        objWidth = 22;
+        objHeight = 22;
+        collision = true;
     }
 }
