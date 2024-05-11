@@ -17,7 +17,7 @@ public class ObjKey extends GameObject {
         collision=true;
         objWidth = 16;
         objHeight = 16;
-    
+        
     }
     
 }

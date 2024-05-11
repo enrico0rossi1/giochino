@@ -17,7 +17,7 @@ public class GameObject extends Entità {
     public int objWidth = 48;
     public int objHeight = 48;
    
-    public Rectangle solidArea =new Rectangle(0,0,48,48);
+    public Rectangle solidArea =new Rectangle(worldX,worldY,objWidth,objHeight);
     public int solidAreaDefaultX=0;
     public int solidAreaDefaultY=0;
 
