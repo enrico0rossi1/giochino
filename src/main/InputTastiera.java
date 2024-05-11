@@ -31,6 +31,9 @@ public class InputTastiera implements KeyListener {
             gp.gameState = gp.playState;
             gp.playMusic(2);
            } 
+           if (gp.gameState==gp.gameOver){
+            gp.gameState =gp.titleState;
+           }
         } 
         
         if(premuto == KeyEvent.VK_W){
