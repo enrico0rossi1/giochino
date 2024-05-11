@@ -144,7 +144,6 @@ if (vita == 0) {
                  keyh.s==true ||
                  keyh.d==true) && keyh.o==true){
                     velocità = 3;
-                    velocità = 0;
                  }
                   else {velocità = 0;
                     }
