@@ -51,5 +51,10 @@ public class ObjectPlacer {
 		gp.obj[9] = new GoldCoin();
 		gp.obj[9].worldX = 26*gp.ingame_size;
 		gp.obj[9].worldY = 23*gp.ingame_size;
+	
+		gp.obj[10] = new ObjSpike();
+		gp.obj[10].worldX = 23*gp.ingame_size;
+		gp.obj[10].worldY = 23*gp.ingame_size;
+
 	}
 }

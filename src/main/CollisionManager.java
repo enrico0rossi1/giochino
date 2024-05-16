@@ -1,7 +1,7 @@
 package main;
 
 
-import Player.Entità;
+import Personaggi.Entità;
 
 public class CollisionManager {
 
@@ -15,10 +15,10 @@ public class CollisionManager {
 
     public void checkTile(Entità e){
 
-        int entitàLeftBound = e.GiocatoreX + e.collArea.x;
-        int entitàRightBound = e.GiocatoreX + e.collArea.x + e.collArea.width;
-        int entitàTopBound = e.GiocatoreY + e.collArea.y;
-        int entitàBottomBound = e.GiocatoreY + e.collArea.y + e.collArea.height;
+        int entitàLeftBound = e.posizioneX+ e.collArea.x;
+        int entitàRightBound = e.posizioneX+ e.collArea.x + e.collArea.width;
+        int entitàTopBound = e.posizioneY + e.collArea.y;
+        int entitàBottomBound = e.posizioneY + e.collArea.y + e.collArea.height;
 
         int entitàLeftCol = entitàLeftBound/gp.ingame_size;
         int entitàRightCol = entitàRightBound/gp.ingame_size;
@@ -106,8 +106,8 @@ public class CollisionManager {
 
         for(int i =0; i<gp.obj.length;i++){
             if(gp.obj[i]!=null){
-                e.collArea.x= e.GiocatoreX + e.collArea.x;
-                e.collArea.y= e.GiocatoreY + e.collArea.y;
+                e.collArea.x= e.posizioneX+ e.collArea.x;
+                e.collArea.y= e.posizioneY + e.collArea.y;
 
                 gp.obj[i].solidArea.x= gp.obj[i].worldX + gp.obj[i].solidArea.x;
                 gp.obj[i].solidArea.y= gp.obj[i].worldY + gp.obj[i].solidArea.y;

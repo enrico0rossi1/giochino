@@ -1,6 +1,5 @@
 package main;
 
-import Player.Giocatore;
 import object.GameObject;
 
 import java.awt.Color;
@@ -11,6 +10,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Mondo.tileManager;
+import Personaggi.Giocatore;
 
 
 public class Pannello extends JPanel implements Runnable {
@@ -49,6 +49,7 @@ public class Pannello extends JPanel implements Runnable {
     public int titleState = 0;
     public int playState = 1;
     public int pauseState = 2;
+    public int dialogueState = 3;
     public int gameOver = 5;
 
     //FPS

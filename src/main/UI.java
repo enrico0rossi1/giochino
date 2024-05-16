@@ -4,7 +4,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import Player.Giocatore;
+
+import Personaggi.Giocatore;
 import object.ObjHeart;
 import object.ObjKey;
 
@@ -72,10 +73,10 @@ if (gp.gameState == gp.titleState) {
     graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
     graphics2.setFont(winnerFont);
     graphics2.setColor(Color.GRAY);
-    graphics2.drawString("WARRIOR ADVENTURE",(gp.screen_width)/4-22,gp.screen_height/2-83);
+    graphics2.drawString("WARRIOR ADVENTURE",(gp.screen_width)/4-20,gp.screen_height/2-83);
   
     graphics2.setColor(Color.red);
-    graphics2.drawString("WARRIOR ADVENTURE",(gp.screen_width)/4-20,gp.screen_height/2-80);
+    graphics2.drawString("WARRIOR ADVENTURE",(gp.screen_width)/4-18,gp.screen_height/2-80);
     graphics2.setColor(Color.WHITE);
     graphics2.drawString("PRESS W TO START GAME",(gp.screen_width)/4-60,gp.screen_height/2+180);
     graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
@@ -156,7 +157,7 @@ if(gp.gameState==gp.playState){
 
    if (gp.gameState == gp.gameOver) {
     // draw gOverScreen ();
-    graphics2.drawImage(heartVoidImage,gp.screen_width/2+50,gp.screen_height/2+10,100,100,null);
+    graphics2.drawImage(heartHalvedImage,gp.screen_width/2,gp.screen_height/2+10,300,200,null);
     graphics2.drawString("LOSER",gp.screen_width/2+50,gp.screen_height/2+10);
    }
    
