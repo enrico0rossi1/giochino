@@ -1,7 +1,7 @@
 package Mondo;
 
 import java.awt.Graphics2D;
-
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,18 +12,20 @@ import main.Pannello;
 
 public class tileManager {
     
-    Pannello pezzo;
+    Pannello gp;
 
     public tile[] Tile,Tile2;
+    public BufferedImage[] scaledTile;
+    public Graphics2D[] scalingTool;
     public int [][] mapGraphic,mapGraphic2;
     
-    public tileManager(Pannello pezzo){
-        this.pezzo=pezzo;
+    public tileManager(Pannello gp){
+        this.gp=gp;
 
         Tile= new tile[30];
         
-        mapGraphic= new int[pezzo.worldCol][pezzo.worldRow];
-        mapGraphic2= new int[pezzo.worldCol][pezzo.worldRow];
+        mapGraphic= new int[gp.worldCol][gp.worldRow];
+        mapGraphic2= new int[gp.worldCol][gp.worldRow];
         
         getTileImage();
         caricaMappa();
@@ -35,10 +37,11 @@ public class tileManager {
             Tile[0]=new tile();
             Tile[0].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DirtTile/Dirt1.png"));
             
-
+         
             Tile[1]=new tile();
             Tile[1].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/GrassTile/grass1.png"));
-            
+           
+
             Tile[2]=new tile();
             Tile[2].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/WaterTile/Water.png"));
             Tile[2].collisione =true;
@@ -109,10 +112,10 @@ public class tileManager {
             BufferedReader qp2 = new BufferedReader(new InputStreamReader(mid2));
             int row=0;
             int cols=0;
-            while (row<pezzo.worldRow && cols<pezzo.worldCol){
+            while (row<gp.worldRow && cols<gp.worldCol){
                 String app = qp.readLine();
                 String app2 = qp2.readLine();
-                while(cols<pezzo.worldCol){
+                while(cols<gp.worldCol){
                     
                     
                     String[]number = app.split(" ");
@@ -124,7 +127,7 @@ public class tileManager {
                     mapGraphic2[row][cols]=num2;
                     cols++;
                 }
-                if(cols==pezzo.worldCol) {
+                if(cols==gp.worldCol) {
                     cols=0;
                     row++;
                 }
@@ -139,44 +142,6 @@ public class tileManager {
 
 
     }
-    /*public void caricaMappaDARK(){
-        try {
-            InputStream mid = getClass().getResourceAsStream("Mappe/DarkWoods.txt");
-            InputStream mid2 = getClass().getResourceAsStream("Mappe/DarkWoodsDeco.txt");
-            BufferedReader qp = new BufferedReader(new InputStreamReader(mid));
-            BufferedReader qp2 = new BufferedReader(new InputStreamReader(mid2));
-            int row=0;
-            int cols=0;
-            while (row<pezzo.worldRow && cols<pezzo.worldCol){
-                String app = qp.readLine();
-                String app2 = qp2.readLine();
-                while(cols<pezzo.worldCol){
-                    
-                    
-                    String[]number = app.split(" ");
-                    String[]number2 =app2.split(" ");
-                    int num = Integer.parseInt(number[cols]);
-                    int num2 = Integer.parseInt(number2[cols]);
-
-                    mapGraphic[row][cols]=num;
-                    mapGraphic2[row][cols]=num2;
-                    cols++;
-                }
-                if(cols==pezzo.worldCol) {
-                    cols=0;
-                    row++;
-                }
-                
-                
-
-            } 
-            qp.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    } */
 
 
 
@@ -188,30 +153,26 @@ public class tileManager {
         int numTile,numTile2;
     
 
-        while (row<pezzo.worldRow && cols<pezzo.worldCol){
+        while (row<gp.worldRow && cols<gp.worldCol){
             
             numTile = mapGraphic[row][cols];
             numTile2 = mapGraphic2[row][cols];
 
-            int worldX= cols*pezzo.ingame_size;
-            int worldY= row*pezzo.ingame_size;
-            int screenX = worldX-pezzo.giocatore.GiocatoreX + pezzo.giocatore.ScreenX;
-            int screenY = worldY-pezzo.giocatore.GiocatoreY + pezzo.giocatore.ScreenY;
+            int worldX= cols*gp.ingame_size;
+            int worldY= row*gp.ingame_size;
+            int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
+            int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY;
+      {
 
-            /*if(worldX + pezzo.ingame_size>pezzo.giocatore.GiocatoreX-pezzo.giocatore.ScreenX &&
-               worldX - pezzo.ingame_size<pezzo.giocatore.GiocatoreX+pezzo.giocatore.ScreenX &&
-               worldY + pezzo.ingame_size>pezzo.giocatore.GiocatoreY-pezzo.giocatore.ScreenY &&
-               worldY - pezzo.ingame_size<pezzo.giocatore.GiocatoreY+pezzo.giocatore.ScreenY)*/{
-
-                g2.drawImage(Tile[numTile].image,screenX,screenY,pezzo.ingame_size, pezzo.ingame_size,null);
-                g3.drawImage(Tile[numTile2].image,screenX,screenY,pezzo.ingame_size, pezzo.ingame_size,null);
+                g2.drawImage(Tile[numTile].image,screenX,screenY,gp.ingame_size, gp.ingame_size,null);
+                g3.drawImage(Tile[numTile2].image,screenX,screenY,gp.ingame_size, gp.ingame_size,null);
                 
                 
 
             }
             cols++; 
 
-            if(cols==pezzo.worldCol) {
+            if(cols==gp.worldCol) {
                 cols=0;
                 row++;
                
