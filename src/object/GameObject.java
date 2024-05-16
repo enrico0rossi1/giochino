@@ -4,7 +4,7 @@ import main.Pannello;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import Player.Entità;
+import Personaggi.Entità;
 
 import java.awt.Rectangle;
 
@@ -23,8 +23,8 @@ public class GameObject extends Entità {
 
     public void draw(Graphics2D graphics2,Pannello gp){
 
-        int screenX = worldX-gp.giocatore.GiocatoreX + gp.giocatore.ScreenX;
-        int screenY = worldY-gp.giocatore.GiocatoreY + gp.giocatore.ScreenY; 
+        int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
+        int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY; 
        
         // if(worldX + gp.ingame_size>gp.giocatore.GiocatoreX-gp.giocatore.ScreenX &&
         // worldX - gp.ingame_size<gp.giocatore.GiocatoreX+gp.giocatore.ScreenX &&
