@@ -4,12 +4,17 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Door_Right extends GameObject{
+import main.Pannello;
 
-    public Door_Right() {
+public class Door_Right extends GameObject{
+    Pannello gp;
+
+    public Door_Right(Pannello gp) {
         name = "door";
+        this.gp=gp;
         try {
            image = ImageIO.read(getClass().getResourceAsStream("Objects/wooden_doorRight.png"));
+           image = uTool.scaleImage(image, gp.ingame_size, gp.ingame_size);
         }catch(IOException e){
             e.printStackTrace();
         }

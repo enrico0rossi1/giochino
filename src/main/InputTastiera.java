@@ -6,6 +6,11 @@ public class InputTastiera implements KeyListener {
 
     public boolean w,a,s,d,p,o,m;
     Pannello gp;
+    
+    //debug 
+    public boolean z=false;
+
+    
 
     public InputTastiera(Pannello gp){
         this.gp = gp;
@@ -76,6 +81,16 @@ public class InputTastiera implements KeyListener {
             o=true;
 
         }
+
+        //debug
+        if(premuto == KeyEvent.VK_Z){
+            if(z==false){
+                z=true;
+            }else if (z==true){
+                z=false;
+            }
+        }
+
     
     }
 

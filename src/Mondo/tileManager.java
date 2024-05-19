@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 import main.Pannello;
+import main.UtilityTool;
 
 
 public class tileManager {
@@ -34,74 +35,46 @@ public class tileManager {
 
     public void getTileImage(){
         try {
-            Tile[0]=new tile();
-            Tile[0].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DirtTile/Dirt1.png"));
+            setup(0,"DirtTile/Dirt1",false);
+            setup(1,"GrassTile/grass1",false);
+            setup(2,"WaterTile/Water",true);
+            setup(3,"Additional/FencesVert",true);
+            setup(4,"Additional/Albero1",true);
+            setup(5,"Additional/vuoto",false);
+            setup(6,"Additional/FencesHor",true);
+            setup(7,"Additional/wallBottom",true);
+            setup(8,"Additional/wallMid",true);
+            setup(9,"Additional/topWall",true);
+            setup(10,"Additional/wooden_doorLeft",true);
+            setup(11,"Additional/wooden_doorRight",true);
+            setup(12,"DarkTile/darkdown",false);
+            setup(13,"DarkTile/darkleft",false);
+            setup(14,"DarkTile/darkright",false);
+            setup(15,"DarkTile/dark1",false);
+            setup(16,"DarkTile/darkMid",false);
+            setup(17,"Additional/alberosciucco",false);
+
             
-         
-            Tile[1]=new tile();
-            Tile[1].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/GrassTile/grass1.png"));
-           
-
-            Tile[2]=new tile();
-            Tile[2].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/WaterTile/Water.png"));
-            Tile[2].collisione =true;
-
-            Tile[3]=new tile();
-            Tile[3].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesVert.png"));
-            Tile[3].collisione = true;
-
-            Tile[4]=new tile();
-            Tile[4].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/Albero1.png"));
-            Tile[4].collisione=true;
-
-            Tile[5]=new tile();
-            Tile[5].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/vuoto.png"));
-
-            Tile[6]=new tile();
-            Tile[6].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/FencesHor.png"));
-            Tile[6].collisione=true;
-
-            Tile[7]=new tile();
-            Tile[7].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wallBottom.png"));
-            Tile[7].collisione=true;
-
-            Tile[8]=new tile();
-            Tile[8].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wallMid.png"));
-            Tile[8].collisione=true;
-
-            Tile[9]=new tile();
-            Tile[9].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/topWall.png"));
-            Tile[9].collisione=true;
-
-            Tile[10]=new tile();
-            Tile[10].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorLeft.png"));
-            Tile[10].collisione=true;
-            
-            Tile[11]=new tile();
-            Tile[11].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/wooden_doorRight.png"));
-            Tile[11].collisione=true;
-
-            Tile[12]=new tile();
-            Tile[12].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkdown.png"));
-
-            Tile[13]=new tile();
-            Tile[13].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkleft.png"));
-
-            Tile[14]=new tile();
-            Tile[14].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkright.png"));
-
-            Tile[15]=new tile();
-            Tile[15].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/dark1.png"));
-
-            Tile[16]=new tile();
-            Tile[16].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/DarkTile/darkMid.png"));
-
-            Tile[17]=new tile();
-            Tile[17].image = ImageIO.read(getClass().getResourceAsStream("Costruzioni/Additional/alberosciucco.png"));
-            Tile[17].collisione=true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setup(int index, String imagePath, boolean collision){
+
+        UtilityTool uTool = new UtilityTool();
+        try {
+            Tile[index]=new tile();
+            Tile[index].image=ImageIO.read(getClass().getResourceAsStream("Costruzioni/"+imagePath+".png"));
+            Tile[index].image=uTool.scaleImage(Tile[index].image, gp.ingame_size, gp.ingame_size);
+            Tile[index].collisione = collision; 
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void caricaMappa(){
@@ -162,14 +135,14 @@ public class tileManager {
             int worldY= row*gp.ingame_size;
             int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
             int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY;
-      {
+      
 
-                g2.drawImage(Tile[numTile].image,screenX,screenY,gp.ingame_size, gp.ingame_size,null);
-                g3.drawImage(Tile[numTile2].image,screenX,screenY,gp.ingame_size, gp.ingame_size,null);
+            g2.drawImage(Tile[numTile].image,screenX,screenY,null);
+            g3.drawImage(Tile[numTile2].image,screenX,screenY,null);
                 
                 
 
-            }
+            
             cols++; 
 
             if(cols==gp.worldCol) {

@@ -4,9 +4,11 @@ package Personaggi;
 
 import main.InputTastiera;
 import main.Pannello;
+import main.UtilityTool;
 
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
+
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
 
@@ -51,20 +53,22 @@ public class Giocatore extends Entità {
         vita = vitaMax;
     }
 
-    public BufferedImage[] loadAnimation (int Dimension, String Passata){
-        BufferedImage[] appoggio = new BufferedImage [Dimension];
+    public BufferedImage[] loadAnimation (int Dimension, String Import){
+        BufferedImage[] animation = new BufferedImage [Dimension];
+        UtilityTool uTool = new UtilityTool();
         
         try {
            
             for(int i=1; i<=Dimension;i++){
-                appoggio[i-1]=ImageIO.read(getClass().getResourceAsStream(Passata+i+".png"));
+                animation[i-1]=ImageIO.read(getClass().getResourceAsStream(Import+i+".png"));
+                animation[i-1]= uTool.scaleImage(animation[i-1], gp.ingame_size,gp.ingame_size);
             }
            
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return appoggio;
+        return animation;
         
     }
 
@@ -240,11 +244,11 @@ if (vita == 0) {
     
     public void draw(Graphics2D graphics2){
 
-     BufferedImage image = null;
+        BufferedImage image = null;
+
         
-    
-     switch (direzione) {
-        case "up": 
+        switch (direzione) {
+            case "up": 
            
                 if (keyh.w==true && keyh.p==false){ 
                image = MoveUpAnimation[spriteNum]; 
@@ -259,52 +263,53 @@ if (vita == 0) {
             else {
                 image = UpAnimation[spriteNum];
             }
-        break;
-            case "down": if (keyh.s==true && keyh.p==false){ 
-               image = MoveDownAnimation[spriteNum]; 
-                  
-            } 
-            else if (keyh.p==true){
-                image =AttackDown[spriteNum];
-            }
-            else
-            {
-                image = DownAnimation[spriteNum];
-            };
-        break;
-      
-            case "right": 
-            if (keyh.d==true && keyh.p==false){ 
-                image = MoveRightAnimation[spriteNum];
-               
-            }
-            else if (keyh.p==true){
-                image=AttackRight[spriteNum];
-            }
-            else 
-            { 
-                image = RightAnimation[spriteNum];
-                
-            };
-        break;
-      
-            case "left": 
-            if (keyh.a==true && keyh.p==false){ 
-                image = MoveLeftAnimation[spriteNum];
-                
-            }
-            else if (keyh.p==true){
-                image =AttackLeft[spriteNum];
+            break;
+
+                case "down": if (keyh.s==true && keyh.p==false){ 
+                   image = MoveDownAnimation[spriteNum]; 
+                      
+                } 
+                else if (keyh.p==true){
+                    image =AttackDown[spriteNum];
                 }
-            
-            else 
-            { 
-                image = LeftAnimation[spriteNum];
-            };
-        break;
+                else
+                {
+                    image = DownAnimation[spriteNum];
+                };
+            break;
+      
+                case "right": 
+                if (keyh.d==true && keyh.p==false){ 
+                    image = MoveRightAnimation[spriteNum];
+                
+                }
+                else if (keyh.p==true){
+                    image=AttackRight[spriteNum];
+                }
+                else 
+                { 
+                    image = RightAnimation[spriteNum];
+
+                };
+            break;
+      
+                case "left": 
+                if (keyh.a==true && keyh.p==false){ 
+                    image = MoveLeftAnimation[spriteNum];
+
+                }
+                else if (keyh.p==true){
+                    image =AttackLeft[spriteNum];
+                    }
+                
+                else 
+                { 
+                    image = LeftAnimation[spriteNum];
+                };
+            break;
         }
     
-        graphics2.drawImage(image, ScreenX, ScreenY, gp.ingame_size, gp.ingame_size,null);
+        graphics2.drawImage(image, ScreenX, ScreenY,null);
     }
         
 

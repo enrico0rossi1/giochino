@@ -2,12 +2,17 @@ package object;
 
 import java.io.IOException;
 import javax.imageio.ImageIO;
-public class ObjShoes extends GameObject {
 
-    public ObjShoes() {
+import main.Pannello;
+public class ObjShoes extends GameObject {
+    Pannello gp;
+
+    public ObjShoes(Pannello gp) {
         name = "Shoes";
+        this.gp=gp;
         try {
            image = ImageIO.read(getClass().getResourceAsStream("Objects/Shoes.png"));
+           image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
         }catch(IOException e){
             e.printStackTrace();
         }

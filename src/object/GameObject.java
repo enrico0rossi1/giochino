@@ -1,6 +1,9 @@
 package object;
 
 import main.Pannello;
+import main.UtilityTool;
+
+
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -21,6 +24,8 @@ public class GameObject extends Entità {
     public int solidAreaDefaultX=0;
     public int solidAreaDefaultY=0;
 
+    public UtilityTool uTool=new UtilityTool();
+
     public void draw(Graphics2D graphics2,Pannello gp){
 
         int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
@@ -30,7 +35,7 @@ public class GameObject extends Entità {
         // worldX - gp.ingame_size<gp.giocatore.GiocatoreX+gp.giocatore.ScreenX &&
         // worldY + gp.ingame_size>gp.giocatore.GiocatoreY-gp.giocatore.ScreenY &&
         // worldY - gp.ingame_size<gp.giocatore.GiocatoreY+gp.giocatore.ScreenY){ 
-        graphics2.drawImage(image,screenX,screenY,objWidth,objHeight,null);
+        graphics2.drawImage(image,screenX,screenY,null);
         
     
   }

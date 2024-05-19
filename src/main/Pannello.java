@@ -123,15 +123,25 @@ public class Pannello extends JPanel implements Runnable {
         super.paintComponent(graphics);
         Graphics2D graphics2= (Graphics2D)graphics;
         Graphics2D graphics3= (Graphics2D)graphics;
+
+        //debug
+        long drawStart =0;
+        if(keyh.z==true){
+            
+            drawStart = System.nanoTime();
+        }
+
+
+        
         
         //SCHERMATA INIZIALE
-if (gameState == titleState) {
-  ui.draw(graphics2);
-
-}
-else {
+        if (gameState == titleState) {
+            ui.draw(graphics2);}
+        else {
+        
         //MAPPA
         mappa.draw(graphics2,graphics3);
+        }
 
       
 
@@ -141,15 +151,26 @@ else {
                 obj[i].draw(graphics2,this);
             }
         }
-          //INTERFACCIA
+        
+        //INTERFACCIA
         ui.draw(graphics2);
 
         //GIOCATORE
         giocatore.draw(graphics2);
+
+        //debug 
+        if(keyh.z==true){
+            long drawEnd= System.nanoTime();
+            long passed = drawEnd-drawStart;
+            graphics2.setColor(Color.WHITE);
+            graphics2.drawString("drawTime: "+passed, 10, 400);
+            System.out.println("drawTime: "+passed);
+        }
+        
         
         graphics2.dispose();
        
-    };
+    ;
 }
 
     public void playMusic (int i){
