@@ -156,7 +156,7 @@ public class Pannello extends JPanel implements Runnable {
         ui.draw(graphics2);
 
         //GIOCATORE
-        if (gameState == playState || gameState == pauseState) {
+        if (gameState == playState || gameState == pauseState || gameState == dialogueState) {
         giocatore.draw(graphics2);
         }
 
