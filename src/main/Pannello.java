@@ -38,7 +38,7 @@ public class Pannello extends JPanel implements Runnable {
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[15];
-    public ObjectPlacer objPlacer = new ObjectPlacer(this);
+    public AssetPlacer objPlacer = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this);
     public UI ui = new UI(this);
     
@@ -68,7 +68,7 @@ public class Pannello extends JPanel implements Runnable {
     public void setUpGioco() {
         gameState = titleState;
         objPlacer.setObject();
-
+      
         playMusic(0);
     
     }
@@ -156,7 +156,9 @@ public class Pannello extends JPanel implements Runnable {
         ui.draw(graphics2);
 
         //GIOCATORE
+        if (gameState == playState || gameState == pauseState) {
         giocatore.draw(graphics2);
+        }
 
         //debug 
         if(keyh.z==true){

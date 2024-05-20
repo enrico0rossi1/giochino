@@ -74,8 +74,8 @@ public class UI {
         
         // interfaccia nel menu principale
         if (gp.gameState == gp.titleState) {
-           // drawTitleScreen();
-            graphics2.setColor(new Color(0,40,80));
+         //   drawTitleScreen();
+           graphics2.setColor(new Color(0,40,80));
             graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
             graphics2.setFont(winnerFont);
             graphics2.setColor(Color.GRAY);
@@ -85,7 +85,7 @@ public class UI {
             graphics2.drawString("WARRIOR ADVENTURE",(gp.screen_width)/4-18,gp.screen_height/2-80);
             graphics2.setColor(Color.WHITE);
             graphics2.drawString("PRESS W TO START GAME",(gp.screen_width)/4-60,gp.screen_height/2+180);
-            //graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
+            graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
         }
         
         // interfaccia durante il gioco
@@ -183,7 +183,7 @@ public class UI {
         graphics2.drawString("GIOCHINO PAZZO SGRAVATO",(gp.screen_width)/4-65,gp.screen_height/2-80);
         graphics2.setColor(Color.WHITE);
         graphics2.drawString("PRESS W TO START GAME",(gp.screen_width)/4-60,gp.screen_height/2+180);
-        //graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
+        graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
     
     }
     
