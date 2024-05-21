@@ -10,15 +10,10 @@ public class InputTastiera implements KeyListener {
     //debug 
     public boolean z=false;
 
-    
-
     public InputTastiera(Pannello gp){
         this.gp = gp;
     }
-
-    
-
-    public void keyTyped(KeyEvent t){
+     public void keyTyped(KeyEvent t){
          
     }
     

@@ -18,6 +18,7 @@ public class Giocatore extends Entità {
     InputTastiera keyh;
     public int ScreenX;
     public int ScreenY;
+    public BufferedImage image;
     public static int numKeys=0;
     public boolean speedUp = false;
     
@@ -50,6 +51,7 @@ public class Giocatore extends Entità {
         vitaMax = 10;
         vita = vitaMax;
     }
+    
     public BufferedImage[] loadAnimation (int Dimension, String Import){
         BufferedImage[] animation = new BufferedImage [Dimension];
         UtilityTool uTool = new UtilityTool();
@@ -150,7 +152,73 @@ public class Giocatore extends Entità {
         }
 
     }
-    
+    public void printSprite(){
+        
+        switch (direzione) {
+            case "up": 
+           
+                if (keyh.w==true && keyh.p==false){ 
+               image = MoveUpAnimation[spriteNum]; 
+            } 
+            else if (keyh.p==true){
+                image = AttackUp[spriteNum];
+            }
+            else if (keyh.w==false && keyh.p==true){
+                image = AttackUp[spriteNum];
+            }
+        
+            else {
+                image = UpAnimation[spriteNum];
+            }
+            break;
+
+                case "down": if (keyh.s==true && keyh.p==false){ 
+                   image = MoveDownAnimation[spriteNum]; 
+                      
+                } 
+                else if (keyh.p==true){
+                    image =AttackDown[spriteNum];
+                }
+                else
+                {
+                    image = DownAnimation[spriteNum];
+                };
+            break;
+      
+                case "right": 
+                if (keyh.d==true && keyh.p==false){ 
+                    image = MoveRightAnimation[spriteNum];
+                
+                }
+                else if (keyh.p==true){
+                    image=AttackRight[spriteNum];
+                }
+                else 
+                { 
+                    image = RightAnimation[spriteNum];
+
+                };
+            break;
+      
+                case "left": 
+                if (keyh.a==true && keyh.p==false){ 
+                    image = MoveLeftAnimation[spriteNum];
+
+                }
+                else if (keyh.p==true){
+                    image =AttackLeft[spriteNum];
+                    }
+                
+                else 
+                { 
+                    image = LeftAnimation[spriteNum];
+                };
+            break;
+            
+        }
+        
+
+    }
     
     public void moveOBJChecker(){
 
@@ -249,76 +317,12 @@ public class Giocatore extends Entità {
         
         moveOBJChecker();
         animationRoller();
+        printSprite();
         
 
         
     }
     public void draw(Graphics2D graphics2){
-
-        BufferedImage image = null;
-
-        
-        switch (direzione) {
-            case "up": 
-           
-                if (keyh.w==true && keyh.p==false){ 
-               image = MoveUpAnimation[spriteNum]; 
-            } 
-            else if (keyh.p==true){
-                image = AttackUp[spriteNum];
-            }
-            else if (keyh.w==false && keyh.p==true){
-                image = AttackUp[spriteNum];
-            }
-        
-            else {
-                image = UpAnimation[spriteNum];
-            }
-            break;
-
-                case "down": if (keyh.s==true && keyh.p==false){ 
-                   image = MoveDownAnimation[spriteNum]; 
-                      
-                } 
-                else if (keyh.p==true){
-                    image =AttackDown[spriteNum];
-                }
-                else
-                {
-                    image = DownAnimation[spriteNum];
-                };
-            break;
-      
-                case "right": 
-                if (keyh.d==true && keyh.p==false){ 
-                    image = MoveRightAnimation[spriteNum];
-                
-                }
-                else if (keyh.p==true){
-                    image=AttackRight[spriteNum];
-                }
-                else 
-                { 
-                    image = RightAnimation[spriteNum];
-
-                };
-            break;
-      
-                case "left": 
-                if (keyh.a==true && keyh.p==false){ 
-                    image = MoveLeftAnimation[spriteNum];
-
-                }
-                else if (keyh.p==true){
-                    image =AttackLeft[spriteNum];
-                    }
-                
-                else 
-                { 
-                    image = LeftAnimation[spriteNum];
-                };
-            break;
-        }
     
         graphics2.drawImage(image, ScreenX, ScreenY,null);
     }

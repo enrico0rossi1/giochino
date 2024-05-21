@@ -24,7 +24,7 @@ public class Sound {
     try {
 
         AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]) ;
-        clip = AudioSystem.getClip();
+        this.clip = AudioSystem.getClip();
         clip.open(ais);
 
     } catch(Exception e){

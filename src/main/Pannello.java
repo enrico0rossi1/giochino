@@ -112,11 +112,12 @@ public class Pannello extends JPanel implements Runnable {
         if (gameState == playState) {
         giocatore.update();
    
-    }
-    if (gameState == pauseState) {
+        }
+        if (gameState == pauseState) {
  
+        }
     }
-}
+    
     public void paintComponent(Graphics graphics){
 
 
