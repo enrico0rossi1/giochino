@@ -101,6 +101,7 @@ public class InputTastiera implements KeyListener {
 
         if(rilasciato == KeyEvent.VK_W){
             w=false;
+            
         }
 
         if(rilasciato == KeyEvent.VK_A){

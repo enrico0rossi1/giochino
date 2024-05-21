@@ -31,12 +31,11 @@ public class GameObject extends Entità {
         int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
         int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY; 
        
-        // if(worldX + gp.ingame_size>gp.giocatore.GiocatoreX-gp.giocatore.ScreenX &&
-        // worldX - gp.ingame_size<gp.giocatore.GiocatoreX+gp.giocatore.ScreenX &&
-        // worldY + gp.ingame_size>gp.giocatore.GiocatoreY-gp.giocatore.ScreenY &&
-        // worldY - gp.ingame_size<gp.giocatore.GiocatoreY+gp.giocatore.ScreenY){ 
+        if(worldX + gp.ingame_size>gp.giocatore.posizioneX-gp.giocatore.ScreenX &&
+        worldX - gp.ingame_size<gp.giocatore.posizioneX+gp.giocatore.ScreenX &&
+        worldY + gp.ingame_size>gp.giocatore.posizioneY-gp.giocatore.ScreenY &&
+        worldY - gp.ingame_size<gp.giocatore.posizioneY+gp.giocatore.ScreenY){ 
         graphics2.drawImage(image,screenX,screenY,null);
-        
-    
-  }
+      }
+    }
 }

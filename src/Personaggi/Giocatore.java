@@ -21,8 +21,6 @@ public class Giocatore extends Entità {
     public static int numKeys=0;
     public boolean speedUp = false;
     
-    
-
     public Giocatore(Pannello gp, InputTastiera keyh){
 
         this.gp=gp;
@@ -52,7 +50,6 @@ public class Giocatore extends Entità {
         vitaMax = 10;
         vita = vitaMax;
     }
-
     public BufferedImage[] loadAnimation (int Dimension, String Import){
         BufferedImage[] animation = new BufferedImage [Dimension];
         UtilityTool uTool = new UtilityTool();
@@ -71,7 +68,6 @@ public class Giocatore extends Entità {
         return animation;
         
     }
-
     public void getPlayerImage(){
         
         MoveUpAnimation=loadAnimation(6,"Sprites/NewSprites/Up/moveUp");
@@ -91,93 +87,6 @@ public class Giocatore extends Entità {
 
         
     }
-
-
-    public void update(){
-if (vita == 0) {
-    gp.gameState = gp.gameOver;
-}
-   
-        spriteCount++;
-     
-        if(spriteCount>7){
-            if (spriteNum==0){
-                spriteNum=1;
-        }else if (spriteNum==1){
-                spriteNum=2;
-        }else if (spriteNum==2){
-                spriteNum=3;
-        }else if (spriteNum==3){
-            if(keyh.p==true){
-                spriteNum=0;
-            }else{
-                spriteNum=4;
-            }
-        }else if (spriteNum==4){
-                spriteNum=5;
-        }else if (spriteNum==5){
-                spriteNum=0;
-        }
-        spriteCount=0; 
-        }
-        if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true||keyh.o==true){
-
-            if(keyh.s==true){
-                direzione = "down";
-            }
-           
-            if(keyh.w==true){
-                direzione="up";
-            }
-    
-            if(keyh.d==true){
-                direzione="right";
-            }
-            
-            if(keyh.a==true){
-                direzione="left";
-            }
-
-            if(
-               (keyh.w==true ||
-                keyh.a==true ||
-                keyh.s==true ||
-                keyh.d==true) && keyh.o==true && speedUp==true ){
-                  velocità = 5 ;
-             } else if(
-                (keyh.w==true ||
-                 keyh.a==true ||
-                 keyh.s==true ||
-                 keyh.d==true) && keyh.o==true){
-                    velocità = 3;
-                 }
-                  else {velocità = 0;
-                    }
-            
-            if(keyh.o==false){
-                velocità=3;
-            }
-
-            solid = false;
-            gp.CollisionManager.checkTile(this);
-            int objVerifier = gp.CollisionManager.checkObject(this,true);
-            pickUpObj(objVerifier);
-
-            gp.eventHandler.checkEvent();
-
-            if (solid == false){
-                switch(direzione){
-                    case "up": posizioneY -= velocità; break;
-                    case "down": posizioneY += velocità; break;
-                    case "right": posizioneX += velocità; break;
-                    case "left": posizioneX-= velocità; break;
-                }
-
-            }
-
-        }
-    }
-    
     public void pickUpObj (int i){
         if(i !=999){
             
@@ -242,6 +151,108 @@ if (vita == 0) {
 
     }
     
+    
+    public void moveOBJChecker(){
+
+
+        if(keyh.w==true||keyh.a==true||keyh.s==true||keyh.d==true||keyh.o==true){
+
+            if(keyh.s==true){
+                direzione = "down";
+            }
+           
+            if(keyh.w==true){
+                direzione="up";
+            }
+    
+            if(keyh.d==true){
+                direzione="right";
+            }
+            
+            if(keyh.a==true){
+                direzione="left";
+            }
+
+            if(
+               (keyh.w==true ||
+                keyh.a==true ||
+                keyh.s==true ||
+                keyh.d==true) && keyh.o==true && speedUp==true ){
+                  velocità = 5 ;
+             } else if(
+                (keyh.w==true ||
+                 keyh.a==true ||
+                 keyh.s==true ||
+                 keyh.d==true) && keyh.o==true){
+                    velocità = 3;
+                 }
+                  else {velocità = 0;
+                    }
+            
+            if(keyh.o==false){
+                velocità=3;
+            }
+
+            solid = false;
+            gp.CollisionManager.checkTile(this);
+            int objVerifier = gp.CollisionManager.checkObject(this,true);
+            pickUpObj(objVerifier);
+
+            gp.eventHandler.checkEvent();
+
+            if (solid == false){
+                switch(direzione){
+                    case "up": posizioneY -= velocità; break;
+                    case "down": posizioneY += velocità; break;
+                    case "right": posizioneX += velocità; break;
+                    case "left": posizioneX-= velocità; break;
+                }
+
+            }
+        }
+
+        
+    }
+    public void animationRoller(){
+        spriteCount++;
+     
+        if(spriteCount>7){
+            if (spriteNum==0){
+                spriteNum=1;
+        }else if (spriteNum==1){
+                spriteNum=2;
+        }else if (spriteNum==2){
+                spriteNum=3;
+        }else if (spriteNum==3){
+            if(keyh.p==true){
+                spriteNum=0;
+            }else{
+                spriteNum=4;
+            }
+        }else if (spriteNum==4){
+                spriteNum=5;
+        }else if (spriteNum==5){
+                spriteNum=0;
+        }
+        spriteCount=0; 
+        }
+
+
+    }
+
+    public void update(){
+    
+        if (vita == 0) {
+            gp.gameState = gp.gameOver;
+        }
+   
+        
+        moveOBJChecker();
+        animationRoller();
+        
+
+        
+    }
     public void draw(Graphics2D graphics2){
 
         BufferedImage image = null;
