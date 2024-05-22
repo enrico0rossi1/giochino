@@ -95,7 +95,7 @@ public class Giocatore extends Entità {
             String objName = gp.obj[i].name;
 
             switch(objName){
-                case "key":
+                case "Key":
                     gp.obj[i]= null;
                     gp.ui.showMessage("u got a key!,that's cool");
                     gp.playSFX(1);
@@ -105,7 +105,20 @@ public class Giocatore extends Entità {
                     
                 break;
 
-                case "door":
+                case "Door_Right":
+                    if(numKeys>0){
+                        gp.obj[i]=null;
+                        gp.ui.showMessage("u unlocked a door! Let's gooo");
+                        numKeys--;
+                        gp.playSFX(1);}
+                        if (numKeys==0){
+                            gp.ui.showMessage2("no keys? so lame...");
+                        }
+
+                    
+                break;
+
+                case "Door_Left":
                     if(numKeys>0){
                         gp.obj[i]=null;
                         gp.ui.showMessage("u unlocked a door! Let's gooo");

@@ -7,54 +7,107 @@ public class AssetPlacer {
 	public AssetPlacer (Pannello gp){
 		this.gp = gp;
 	}
-	public void setObject () {
 
-		gp.obj[0] = new ObjShoes(gp);
-		gp.obj[0].worldX = 26*gp.ingame_size;
-		gp.obj[0].worldY = 26*gp.ingame_size; 
+	public void setObject(String objectName,int x,int y, int times){
+
+		switch (objectName) {
+			case "Shoes":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new ObjShoes(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+				
+			break;
+
+			case "Key":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new ObjKey(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+			break;
+
+			case "Door_Right":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new Door_Right(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+			break;
+
+			case "Door_Left":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new Door_Left(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+			break;
+
+			case "BigTreasure":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new BigTreasure(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+			break;
+
+			case "Spike":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new ObjSpike(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+			break;
+
+			case "GoldCoin":
+				for(int i=0; i<gp.obj.length; i++){
+					if(gp.obj[i]==null && times>0){
+						gp.obj[i]=new GoldCoin(gp);
+						gp.obj[i].worldX = x*gp.ingame_size;
+						gp.obj[i].worldY = y*gp.ingame_size;
+						times--;
+					}
+				}
+			break;
+		}
+			
 		
-
-		gp.obj[1] = new ObjKey(gp);
-		gp.obj[1].worldX = 23*gp.ingame_size;
-		gp.obj[1].worldY = 24*gp.ingame_size; 
-		
-		gp.obj[2] = new ObjKey(gp);
-		gp.obj[2].worldX = 28*gp.ingame_size;
-		gp.obj[2].worldY = 24*gp.ingame_size; 
-
-		gp.obj[3] = new Door_Left(gp);
-		gp.obj[3].worldX = 5*gp.ingame_size;
-		gp.obj[3].worldY = 25*gp.ingame_size;
-		
-		gp.obj[4] = new Door_Right(gp);
-		gp.obj[4].worldX = 5*gp.ingame_size;
-		gp.obj[4].worldY = 26*gp.ingame_size;
-		
-		gp.obj[5] = new BigTreasure(gp);
-		gp.obj[5].worldX = 26*gp.ingame_size;
-		gp.obj[5].worldY = 40*gp.ingame_size;
+		 
+	}
 
 
-		gp.obj[6] = new Door_Right(gp);
-		gp.obj[6].worldX = 26*gp.ingame_size;
-		gp.obj[6].worldY = 37*gp.ingame_size;
+	public void placeObject () {
 
-
-		gp.obj[7] = new Door_Left(gp);
-		gp.obj[7].worldX = 25*gp.ingame_size;
-		gp.obj[7].worldY = 37*gp.ingame_size;
-
-		gp.obj[8] = new ObjSpike(gp);
-		gp.obj[8].worldX = 10*gp.ingame_size;
-		gp.obj[8].worldY = 23*gp.ingame_size;
-
-		gp.obj[9] = new GoldCoin(gp);
-		gp.obj[9].worldX = 26*gp.ingame_size;
-		gp.obj[9].worldY = 23*gp.ingame_size;
+		setObject("Shoes",26,26,1);
+		setObject("Key",23,24,1);
+		setObject("Key",28,24,1);
+		setObject("Door_Right", 5, 26, 1);
+		setObject("Door_Left", 5, 25, 1);
+		setObject("Door_Right", 26, 37, 1);
+		setObject("Door_Left", 25, 37, 1);
+		setObject("BigTreasure", 26, 40, 1);
+		setObject("Spike", 10, 23, 1);
+		setObject("Spike", 23, 23, 1);
+		setObject("GoldCoin", 26, 23, 1);
 	
-		gp.obj[10] = new ObjSpike(gp);
-		gp.obj[10].worldX = 23*gp.ingame_size;
-		gp.obj[10].worldY = 23*gp.ingame_size;
-
 	}
 }

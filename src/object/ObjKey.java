@@ -12,7 +12,7 @@ public class ObjKey extends GameObject {
 
 
     public ObjKey(Pannello gp){
-        name = "key";
+        name = "Key";
         this.gp=gp;
         
         try {

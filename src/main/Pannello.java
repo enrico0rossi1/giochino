@@ -37,7 +37,7 @@ public class Pannello extends JPanel implements Runnable {
     public tileManager mappa2 = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
-    public GameObject obj[] = new GameObject[15];
+    public GameObject obj[] = new GameObject[50];
     public AssetPlacer objPlacer = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this);
     public UI ui = new UI(this);
@@ -67,7 +67,7 @@ public class Pannello extends JPanel implements Runnable {
 
     public void setUpGioco() {
         gameState = titleState;
-        objPlacer.setObject();
+        objPlacer.placeObject();
       
         playMusic(0);
     

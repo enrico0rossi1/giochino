@@ -10,7 +10,7 @@ public class Door_Right extends GameObject{
     Pannello gp;
 
     public Door_Right(Pannello gp) {
-        name = "door";
+        name = "Door_Right";
         this.gp=gp;
         try {
            image = ImageIO.read(getClass().getResourceAsStream("Objects/wooden_doorRight.png"));
