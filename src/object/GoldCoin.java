@@ -10,14 +10,15 @@ public class GoldCoin extends GameObject {
     public GoldCoin(Pannello gp) {
         name = "GoldCoin";
         this.gp=gp;
+        objWidth = 18;
+        objHeight = 18;
         try {
            image = ImageIO.read(getClass().getResourceAsStream("Objects/GoldCoin.png"));
-           image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
+           image = uTool.scaleImage(image,  objWidth, objHeight);
         }catch(IOException e){
             e.printStackTrace();
         }
-        objWidth = 22;
-        objHeight = 22;
+        
         collision = true;
     }
 }

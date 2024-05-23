@@ -30,16 +30,16 @@ public class CollisionManager {
         switch(e.direzione){
             case "up":
                 entitàTopRow = (entitàTopBound - e.velocità)/gp.ingame_size;
-                num1 = gp.mappa.mapGraphic[entitàTopRow][entitàLeftCol];
-                num2 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
-                num3 = gp.mappa.mapGraphic2[entitàTopRow][entitàLeftCol];
-                num4 = gp.mappa.mapGraphic2[entitàTopRow][entitàRightCol];
+                num1 = gp.MapHandler.ground[entitàTopRow][entitàLeftCol];
+                num2 = gp.MapHandler.ground[entitàTopRow][entitàRightCol];
+                num3 = gp.MapHandler.deco[entitàTopRow][entitàLeftCol];
+                num4 = gp.MapHandler.deco[entitàTopRow][entitàRightCol];
                 System.out.println(""+entitàTopRow+" "+entitàLeftCol);
                 
                 
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true ||
-                    gp.mappa2.Tile[num3].collisione==true || gp.mappa2.Tile[num4].collisione==true ){
+                    gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true ){
                     e.solid = true;
 
                 }
@@ -47,16 +47,16 @@ public class CollisionManager {
             
             case "down":
                 entitàBottomRow = (entitàBottomBound + e.velocità)/gp.ingame_size;
-                num1 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
-                num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
-                num3 = gp.mappa.mapGraphic2[entitàBottomRow][entitàLeftCol];
-                num4 = gp.mappa.mapGraphic2[entitàBottomRow][entitàRightCol];
+                num1 = gp.MapHandler.ground[entitàBottomRow][entitàLeftCol];
+                num2 = gp.MapHandler.ground[entitàBottomRow][entitàRightCol];
+                num3 = gp.MapHandler.deco[entitàBottomRow][entitàLeftCol];
+                num4 = gp.MapHandler.deco[entitàBottomRow][entitàRightCol];
                 System.out.println(""+entitàBottomRow+" "+entitàLeftCol);
                 
                 
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true 
-                    ||gp.mappa2.Tile[num3].collisione==true || gp.mappa2.Tile[num4].collisione==true){
+                    ||gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true){
                     e.solid = true;
 
                 }
@@ -64,16 +64,16 @@ public class CollisionManager {
             
             case "right":
                 entitàRightCol = (entitàRightBound + e.velocità)/gp.ingame_size;
-                num1 = gp.mappa.mapGraphic[entitàTopRow][entitàRightCol];
-                num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàRightCol];
-                num3 = gp.mappa.mapGraphic2[entitàTopRow][entitàRightCol];
-                num4 = gp.mappa.mapGraphic2[entitàBottomRow][entitàRightCol];
+                num1 = gp.MapHandler.ground[entitàTopRow][entitàRightCol];
+                num2 = gp.MapHandler.ground[entitàBottomRow][entitàRightCol];
+                num3 = gp.MapHandler.deco[entitàTopRow][entitàRightCol];
+                num4 = gp.MapHandler.deco[entitàBottomRow][entitàRightCol];
                 System.out.println(""+entitàTopRow+" "+entitàRightCol);
                 
                 
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true ||
-                    gp.mappa2.Tile[num3].collisione==true || gp.mappa2.Tile[num4].collisione==true){
+                    gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true){
                     e.solid = true;
 
                 }
@@ -81,16 +81,16 @@ public class CollisionManager {
             
             case "left":
                 entitàLeftCol = (entitàLeftBound - e.velocità)/gp.ingame_size;
-                num1 = gp.mappa.mapGraphic[entitàTopRow][entitàLeftCol];
-                num2 = gp.mappa.mapGraphic[entitàBottomRow][entitàLeftCol];
-                num3 = gp.mappa.mapGraphic2[entitàTopRow][entitàLeftCol];
-                num4 = gp.mappa.mapGraphic2[entitàBottomRow][entitàLeftCol];
+                num1 = gp.MapHandler.ground[entitàTopRow][entitàLeftCol];
+                num2 = gp.MapHandler.ground[entitàBottomRow][entitàLeftCol];
+                num3 = gp.MapHandler.deco[entitàTopRow][entitàLeftCol];
+                num4 = gp.MapHandler.deco[entitàBottomRow][entitàLeftCol];
                 System.out.println(""+entitàTopRow+" "+entitàLeftCol);
                 
                 
 
                 if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true ||
-                    gp.mappa2.Tile[num3].collisione==true || gp.mappa2.Tile[num4].collisione==true ){
+                    gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true ){
                     e.solid = true;
 
                 }

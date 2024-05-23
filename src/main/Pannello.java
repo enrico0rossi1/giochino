@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Mondo.tileManager;
+import Mondo.Mappa;
 import Personaggi.Giocatore;
 
 
@@ -33,8 +34,8 @@ public class Pannello extends JPanel implements Runnable {
     InputTastiera keyh= new InputTastiera(this);
     public final int numMappe = 10;
     public int mappaAttuale;
-    public tileManager mappa = new tileManager(this);
-    public tileManager mappa2 = new tileManager(this);
+    public Mappa MapHandler = new Mappa(this);
+    public tileManager mappa = new tileManager(this,MapHandler);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[50];
