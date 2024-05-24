@@ -2,6 +2,7 @@ package main;
 
 
 import Personaggi.Entità;
+import Mondo.Mappa;
 
 public class CollisionManager {
 
@@ -14,6 +15,18 @@ public class CollisionManager {
     }
 
     public void checkTile(Entità e){
+
+        if (gp.eventHandler.telNum==0){
+            checkMap(e, gp.start);
+        }
+        if(gp.eventHandler.telNum==1){
+            checkMap(e, gp.dungeon1);
+        }
+    
+    }
+    
+    
+    public void checkMap(Entità e,Mappa map){
 
         int entitàLeftBound = e.posizioneX+ e.collArea.x;
         int entitàRightBound = e.posizioneX+ e.collArea.x + e.collArea.width;
@@ -30,16 +43,16 @@ public class CollisionManager {
         switch(e.direzione){
             case "up":
                 entitàTopRow = (entitàTopBound - e.velocità)/gp.ingame_size;
-                num1 = gp.MapHandler.ground[entitàTopRow][entitàLeftCol];
-                num2 = gp.MapHandler.ground[entitàTopRow][entitàRightCol];
-                num3 = gp.MapHandler.deco[entitàTopRow][entitàLeftCol];
-                num4 = gp.MapHandler.deco[entitàTopRow][entitàRightCol];
+                num1 = map.ground[entitàTopRow][entitàLeftCol];
+                num2 = map.ground[entitàTopRow][entitàRightCol];
+                num3 = map.deco[entitàTopRow][entitàLeftCol];
+                num4 = map.deco[entitàTopRow][entitàRightCol];
                 System.out.println(""+entitàTopRow+" "+entitàLeftCol);
-                
-                
 
-                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true ||
-                    gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true ){
+
+
+                if(gp.mapHandler.Tile[num1].collisione == true || gp.mapHandler.Tile[num2].collisione == true ||
+                    gp.mapHandler.Tile[num3].collisione==true || gp.mapHandler.Tile[num4].collisione==true ){
                     e.solid = true;
 
                 }
@@ -47,16 +60,16 @@ public class CollisionManager {
             
             case "down":
                 entitàBottomRow = (entitàBottomBound + e.velocità)/gp.ingame_size;
-                num1 = gp.MapHandler.ground[entitàBottomRow][entitàLeftCol];
-                num2 = gp.MapHandler.ground[entitàBottomRow][entitàRightCol];
-                num3 = gp.MapHandler.deco[entitàBottomRow][entitàLeftCol];
-                num4 = gp.MapHandler.deco[entitàBottomRow][entitàRightCol];
+                num1 = map.ground[entitàBottomRow][entitàLeftCol];
+                num2 = map.ground[entitàBottomRow][entitàRightCol];
+                num3 = map.deco[entitàBottomRow][entitàLeftCol];
+                num4 = map.deco[entitàBottomRow][entitàRightCol];
                 System.out.println(""+entitàBottomRow+" "+entitàLeftCol);
-                
-                
 
-                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true 
-                    ||gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true){
+
+
+                if(gp.mapHandler.Tile[num1].collisione == true || gp.mapHandler.Tile[num2].collisione == true 
+                    ||gp.mapHandler.Tile[num3].collisione==true || gp.mapHandler.Tile[num4].collisione==true){
                     e.solid = true;
 
                 }
@@ -64,16 +77,16 @@ public class CollisionManager {
             
             case "right":
                 entitàRightCol = (entitàRightBound + e.velocità)/gp.ingame_size;
-                num1 = gp.MapHandler.ground[entitàTopRow][entitàRightCol];
-                num2 = gp.MapHandler.ground[entitàBottomRow][entitàRightCol];
-                num3 = gp.MapHandler.deco[entitàTopRow][entitàRightCol];
-                num4 = gp.MapHandler.deco[entitàBottomRow][entitàRightCol];
+                num1 = map.ground[entitàTopRow][entitàRightCol];
+                num2 = map.ground[entitàBottomRow][entitàRightCol];
+                num3 = map.deco[entitàTopRow][entitàRightCol];
+                num4 = map.deco[entitàBottomRow][entitàRightCol];
                 System.out.println(""+entitàTopRow+" "+entitàRightCol);
-                
-                
 
-                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true ||
-                    gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true){
+
+
+                if(gp.mapHandler.Tile[num1].collisione == true || gp.mapHandler.Tile[num2].collisione == true ||
+                    gp.mapHandler.Tile[num3].collisione==true || gp.mapHandler.Tile[num4].collisione==true){
                     e.solid = true;
 
                 }
@@ -81,16 +94,16 @@ public class CollisionManager {
             
             case "left":
                 entitàLeftCol = (entitàLeftBound - e.velocità)/gp.ingame_size;
-                num1 = gp.MapHandler.ground[entitàTopRow][entitàLeftCol];
-                num2 = gp.MapHandler.ground[entitàBottomRow][entitàLeftCol];
-                num3 = gp.MapHandler.deco[entitàTopRow][entitàLeftCol];
-                num4 = gp.MapHandler.deco[entitàBottomRow][entitàLeftCol];
+                num1 = map.ground[entitàTopRow][entitàLeftCol];
+                num2 = map.ground[entitàBottomRow][entitàLeftCol];
+                num3 = map.deco[entitàTopRow][entitàLeftCol];
+                num4 = map.deco[entitàBottomRow][entitàLeftCol];
                 System.out.println(""+entitàTopRow+" "+entitàLeftCol);
                 
                 
 
-                if(gp.mappa.Tile[num1].collisione == true || gp.mappa.Tile[num2].collisione == true ||
-                    gp.mappa.Tile[num3].collisione==true || gp.mappa.Tile[num4].collisione==true ){
+                if(gp.mapHandler.Tile[num1].collisione == true || gp.mapHandler.Tile[num2].collisione == true ||
+                    gp.mapHandler.Tile[num3].collisione==true || gp.mapHandler.Tile[num4].collisione==true ){
                     e.solid = true;
 
                 }
@@ -98,7 +111,9 @@ public class CollisionManager {
         }
 
     }
-
+    
+    
+    
     public int checkObject (Entità e, boolean player){
         int indexWarranty=999-gp.obj.length;
         int index= indexWarranty + gp.obj.length;

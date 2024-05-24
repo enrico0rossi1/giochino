@@ -16,17 +16,17 @@ public class tileManager {
     public tile[] Tile,Tile2;
     public BufferedImage[] scaledTile;
     public Graphics2D[] scalingTool;
-    public Mappa start;
+    
    
     
-    public tileManager(Pannello gp, Mappa start){
+    public tileManager(Pannello gp){
         this.gp=gp;
 
         Tile= new tile[30];
-        this.start = start;
+        
         
         getTileImage();
-        start.loadMap("Mappe/StartingWoods", "Mappe/StartingWoodsDeco");
+        
 
     }
 
@@ -75,37 +75,6 @@ public class tileManager {
     }
 
     
-    public void draw (Graphics2D g2,Graphics2D g3){
-
-        int row=0;
-        int cols=0;
-        int numTile,numTile2;
-    
-
-        while (row<gp.worldRow && cols<gp.worldCol){
-            
-            numTile = start.ground[row][cols];
-            numTile2 = start.deco[row][cols];
-
-            int worldX= cols*gp.ingame_size;
-            int worldY= row*gp.ingame_size;
-            int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
-            int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY;
-      
-
-            g2.drawImage(Tile[numTile].image,screenX,screenY,null);
-            g3.drawImage(Tile[numTile2].image,screenX,screenY,null);
-                
-                
-
-            
-            cols++; 
-
-            if(cols==gp.worldCol) {
-                cols=0;
-                row++;
-               
-            }
-        }
-    }
+ 
 }
+ 

@@ -97,17 +97,24 @@ public class AssetPlacer {
 
 	public void placeObject () {
 
-		setObject("Shoes",26,26,1);
-		setObject("Key",23,24,1);
-		setObject("Key",28,24,1);
-		setObject("Door_Right", 5, 26, 1);
-		setObject("Door_Left", 5, 25, 1);
-		setObject("Door_Right", 26, 37, 1);
-		setObject("Door_Left", 25, 37, 1);
-		setObject("BigTreasure", 26, 40, 1);
-		setObject("Spike", 10, 23, 1);
-		setObject("Spike", 23, 23, 1);
-		setObject("GoldCoin", 26, 23, 1);
+		if (gp.eventHandler.telNum==0){
+			setObject("Shoes",26,26,1);
+			setObject("Key",23,24,1);
+			setObject("Key",28,24,1);
+			setObject("Door_Right", 5, 26, 1);
+			setObject("Door_Left", 5, 25, 1);
+			setObject("Door_Right", 26, 37, 1);
+			setObject("Door_Left", 25, 37, 1);
+			setObject("BigTreasure", 26, 40, 1);
+			setObject("Spike", 10, 23, 1);
+			setObject("Spike", 23, 23, 1);
+			setObject("GoldCoin", 26, 23, 1);
+		}
+
+		if (gp.eventHandler.telNum==1){
+			
+
+		}
 	
 	}
 }

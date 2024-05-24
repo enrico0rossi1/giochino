@@ -7,10 +7,12 @@ public class EventHandler {
 
     int previousEventX,previousEventY;
     boolean canTouchEvent = true;
+    public int telNum;
 
-    public EventHandler (Pannello gp) {
+    public EventHandler (Pannello gp, int telNum) {
 
       this.gp = gp;
+      this.telNum=telNum;
 
       eventRect = new EventRectangle[gp.worldCol][gp.worldRow];
       
@@ -50,7 +52,10 @@ canTouchEvent = true ;
       if (hitEvent(11, 23, "any")) { damagePool(11,23);}
       if (hitEvent(12, 23, "any")) { damagePool(12,23);}
       if (hitEvent(25, 25, "any")) { healingPool();}
-      if (hitEvent(26,6, "any")){teleport();}
+      if (hitEvent(26,6, "any")){
+        teleport();
+        telNum++;
+      }
     }
   }
   
@@ -103,8 +108,9 @@ canTouchEvent = true ;
     }
     public void teleport() {
   
-       gp.giocatore.posizioneX = gp.ingame_size * 27;
-       gp.giocatore.posizioneY = gp.ingame_size * 47;
+       gp.giocatore.posizioneX = gp.ingame_size * 25;
+       gp.giocatore.posizioneY = gp.ingame_size * 25;
+       
    
 
     }

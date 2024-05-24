@@ -3,6 +3,7 @@ package Mondo;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.awt.Graphics2D;
 
 import main.Pannello;
 
@@ -11,16 +12,23 @@ public class Mappa {
     Pannello gp;
     public int[][]ground;
     public int[][]deco;
+    String Ground,Deco;
+    public int mapIdentifier;
 
 
-    public Mappa(Pannello gp){
+    public Mappa(Pannello gp,String Ground, String Deco, int mapIdentifier){
         this.gp=gp;
+        this.Ground=Ground;
+        this.Deco=Deco;
+        this.mapIdentifier = mapIdentifier;
         this.ground= new int[gp.worldRow][gp.worldCol];
         this.deco=new int [gp.worldCol][gp.worldRow];
 
+        loadMap();
+
     }
 
-    public void loadMap(String Ground, String Deco){
+    public void loadMap(){
 
         try{
         InputStream mid = getClass().getResourceAsStream(Ground+".txt");
@@ -58,6 +66,40 @@ public class Mappa {
             qp.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void draw (Graphics2D g2,Graphics2D g3, tileManager tm){
+
+        int row=0;
+        int cols=0;
+        int numTile,numTile2;
+    
+
+        while (row<gp.worldRow && cols<gp.worldCol){
+            
+            numTile = ground[row][cols];
+            numTile2 = deco[row][cols];
+
+            int worldX= cols*gp.ingame_size;
+            int worldY= row*gp.ingame_size;
+            int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
+            int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY;
+      
+
+            g2.drawImage(tm.Tile[numTile].image,screenX,screenY,null);
+            g3.drawImage(tm.Tile[numTile2].image,screenX,screenY,null);
+                
+                
+
+            
+            cols++; 
+
+            if(cols==gp.worldCol) {
+                cols=0;
+                row++;
+               
+            }
         }
     }
     

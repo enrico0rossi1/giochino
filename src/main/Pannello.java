@@ -34,13 +34,15 @@ public class Pannello extends JPanel implements Runnable {
     InputTastiera keyh= new InputTastiera(this);
     public final int numMappe = 10;
     public int mappaAttuale;
-    public Mappa MapHandler = new Mappa(this);
-    public tileManager mappa = new tileManager(this,MapHandler);
+    public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco",0);
+    public Mappa dungeon1= new Mappa(this, "Mappe/dungeon1","Mappe/DarkWoodsDeco",1);
+    public tileManager mapHandler = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[50];
     public AssetPlacer objPlacer = new AssetPlacer(this);
-    public EventHandler eventHandler = new EventHandler(this);
+    public AssetPlacer objPlacer2 = new AssetPlacer(this);
+    public EventHandler eventHandler = new EventHandler(this,0);
     public UI ui = new UI(this);
     
     public Sound music = new Sound();
@@ -142,17 +144,28 @@ public class Pannello extends JPanel implements Runnable {
         else {
         
         //MAPPA
-        mappa.draw(graphics2,graphics3);
+        if(eventHandler.telNum==0){
+            start.draw(graphics2,graphics3,mapHandler);
+        }
+        if(eventHandler.telNum==1){
+            dungeon1.draw(graphics2, graphics3, mapHandler);
         }
 
       
 
         //OGGETTI
-        for (int i =0; i<obj.length;i++){
-            if (obj[i]!=null){
-                obj[i].draw(graphics2,this);
+        if(eventHandler.telNum==0){
+            for (int i =0; i<obj.length;i++){
+                if (obj[i]!=null){
+                    obj[i].draw(graphics2,this);
+                }
             }
+            
         }
+        if(eventHandler.telNum==1){
+            
+        }
+
         
         //INTERFACCIA
         ui.draw(graphics2);
@@ -173,8 +186,9 @@ public class Pannello extends JPanel implements Runnable {
         
         
         graphics2.dispose();
+    }
        
-    ;
+    
 }
 
     public void playMusic (int i){
