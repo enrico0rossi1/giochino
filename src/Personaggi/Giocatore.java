@@ -94,7 +94,8 @@ public class Giocatore extends Entità {
             
             String objName = gp.obj[i].name;
 
-            switch(objName){
+            if(gp.eventHandler.telNum == gp.obj[i].mapVerifier){  
+                switch(objName){
                 case "Key":
                     gp.obj[i]= null;
                     gp.ui.showMessage("u got a key!,that's cool");
@@ -162,6 +163,9 @@ public class Giocatore extends Entità {
             break;
 
             }
+            }
+        
+        
         }
 
     }
@@ -276,8 +280,12 @@ public class Giocatore extends Entità {
 
             solid = false;
             gp.CollisionManager.checkTile(this);
-            int objVerifier = gp.CollisionManager.checkObject(this,true);
+            int objVerifier=999;
+            //oggetti in base alla mappa
+            
+            objVerifier = gp.CollisionManager.checkObject(this,true);
             pickUpObj(objVerifier);
+            
 
             gp.eventHandler.checkEvent();
 

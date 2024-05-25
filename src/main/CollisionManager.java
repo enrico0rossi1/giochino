@@ -120,7 +120,7 @@ public class CollisionManager {
        
 
         for(int i =0; i<gp.obj.length;i++){
-            if(gp.obj[i]!=null){
+            if(gp.obj[i]!=null && gp.obj[i].mapVerifier == gp.eventHandler.telNum){
                 e.collArea.x= e.posizioneX+ e.collArea.x;
                 e.collArea.y= e.posizioneY + e.collArea.y;
 

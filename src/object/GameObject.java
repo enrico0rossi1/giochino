@@ -19,6 +19,7 @@ public class GameObject extends Entità {
     public int worldX,worldY;
     public int objWidth = 48;
     public int objHeight = 48;
+    public int mapVerifier=0;
    
     public Rectangle solidArea =new Rectangle(worldX,worldY,objWidth,objHeight);
     public int solidAreaDefaultX=0;

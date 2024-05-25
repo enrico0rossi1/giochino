@@ -154,17 +154,15 @@ public class Pannello extends JPanel implements Runnable {
       
 
         //OGGETTI
-        if(eventHandler.telNum==0){
-            for (int i =0; i<obj.length;i++){
-                if (obj[i]!=null){
-                    obj[i].draw(graphics2,this);
-                }
+        
+        for (int i =0; i<obj.length;i++){
+            if (obj[i]!=null && obj[i].mapVerifier == eventHandler.telNum){
+                obj[i].draw(graphics2,this);
             }
-            
         }
-        if(eventHandler.telNum==1){
             
-        }
+        
+        
 
         
         //INTERFACCIA
