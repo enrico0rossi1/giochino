@@ -35,13 +35,14 @@ public class Mappa {
         InputStream mid2 = getClass().getResourceAsStream(Deco+".txt");
         BufferedReader qp = new BufferedReader(new InputStreamReader(mid));
         BufferedReader qp2 = new BufferedReader(new InputStreamReader(mid2));
-
+        
             
             int row=0;
             int cols=0;
             while (row<gp.worldRow && cols<gp.worldCol){
                 String app = qp.readLine();
                 String app2 = qp2.readLine();
+                
                 while(cols<gp.worldCol){
                     
                     
@@ -64,6 +65,7 @@ public class Mappa {
 
             } 
             qp.close();
+            qp2.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

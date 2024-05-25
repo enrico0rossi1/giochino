@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         JFrame finestra = new JFrame();
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        finestra.setResizable(true);
+        finestra.setResizable(false);
         finestra.setTitle("Warrior Adventure");
         Pannello pannello1= new Pannello();
         finestra.add(pannello1);

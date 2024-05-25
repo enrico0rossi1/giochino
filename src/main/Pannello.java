@@ -35,7 +35,7 @@ public class Pannello extends JPanel implements Runnable {
     public final int numMappe = 10;
     public int mappaAttuale;
     public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco",0);
-    public Mappa dungeon1= new Mappa(this, "Mappe/dungeon1","Mappe/DarkWoodsDeco",1);
+    public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco",1);
     public tileManager mapHandler = new tileManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh);
     public CollisionManager CollisionManager = new CollisionManager(this);
