@@ -6,6 +6,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -19,8 +22,8 @@ public class Pannello extends JPanel implements Runnable {
     public final int character_size = 16;
     public final int scale = 3;
     public final int ingame_size = character_size*scale;
-    public final int pix_row = 12;
-    public final int pix_cols = 15;
+    public final int pix_row = 12;  // for full screen 20
+    public final int pix_cols = 20; // for full screen 40
     public final int screen_width = ingame_size*pix_cols;
     public final int screen_height = ingame_size*pix_row;
 
@@ -29,6 +32,13 @@ public class Pannello extends JPanel implements Runnable {
     public final int worldCol = 50, worldRow = 50;
     public final int worldWidth = ingame_size*worldCol;
     public final int worldHeight = ingame_size*worldRow;
+
+    //Impostazioni Schermo Intero
+int fullScreen_width = screen_width;
+int fullScreen_height = screen_height;
+BufferedImage gameScreen ;
+Graphics2D graphics2;
+Graphics2D graphics3;
 
     Thread ThreadGioco;
     InputTastiera keyh= new InputTastiera(this);
@@ -74,8 +84,23 @@ public class Pannello extends JPanel implements Runnable {
       
         playMusic(0);
     
+        gameScreen = new BufferedImage(screen_width,screen_height,BufferedImage.TYPE_INT_ARGB);
+        graphics2 = (Graphics2D)gameScreen.getGraphics();
+        graphics3 = (Graphics2D)gameScreen.getGraphics();
+        setFullScreen();
+
     }
-    
+
+    public void setFullScreen() {
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        gd.setFullScreenWindow(App.finestra);
+
+          fullScreen_width = App.finestra.getWidth();
+          fullScreen_height = App.finestra.getHeight();
+
+    }
+
      public void startThreadGioco(){
         
         // qui ci assicuriamo che il thread starti 
@@ -98,7 +123,8 @@ public class Pannello extends JPanel implements Runnable {
 
             if(delta >=1){
                 update();
-                repaint();
+                drawToSizedScreen();
+                drawToFullScreen();
                 delta--;
             }
 
@@ -120,13 +146,8 @@ public class Pannello extends JPanel implements Runnable {
  
         }
     }
-    
-    public void paintComponent(Graphics graphics){
 
-
-        super.paintComponent(graphics);
-        Graphics2D graphics2= (Graphics2D)graphics;
-        Graphics2D graphics3= (Graphics2D)graphics;
+    public void drawToSizedScreen(){
 
         //debug
         long drawStart =0;
@@ -182,11 +203,17 @@ public class Pannello extends JPanel implements Runnable {
             System.out.println("drawTime: "+passed);
         }
         
-        
-        graphics2.dispose();
     }
        
+  }
+
+   
     
+public void drawToFullScreen() {
+
+Graphics graphics = getGraphics();
+graphics.drawImage(gameScreen,0,0,fullScreen_width,fullScreen_height,null);
+graphics.dispose();
 }
 
     public void playMusic (int i){

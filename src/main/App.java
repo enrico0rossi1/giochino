@@ -4,16 +4,22 @@ import javax.swing.JFrame;
 
 
 public class App {
+
+    public static JFrame finestra;
     public static void main(String[] args) throws Exception {
-        JFrame finestra = new JFrame();
+       
+       
+        finestra = new JFrame();
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        finestra.setResizable(false);
+        finestra.setResizable(true);
         finestra.setTitle("Warrior Adventure");
-        Pannello pannello1= new Pannello();
+        finestra.setUndecorated(false);
+        Pannello pannello1 = new Pannello();
         finestra.add(pannello1);
         finestra.pack();
         finestra.setLocationRelativeTo(null);
         finestra.setVisible(true);
+      
         pannello1.setUpGioco();
         pannello1.startThreadGioco();
         
