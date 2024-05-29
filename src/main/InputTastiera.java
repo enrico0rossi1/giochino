@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 public class InputTastiera implements KeyListener {
 
-    public boolean w,a,s,d,p,o,m;
+    public boolean w,a,s,d,p,o,m,n,f,esc;
     Pannello gp;
     
     //debug 
@@ -22,6 +22,25 @@ public class InputTastiera implements KeyListener {
 
         int premuto = e.getKeyCode();
 
+    if(premuto == KeyEvent.VK_ESCAPE)  {
+            if (gp.fullScreenOn == true) {
+              gp.setSizedScreen();
+              gp.fullScreenOn = false;
+        }
+        if(gp.fullScreenOn == false)  {
+            gp.setFullScreen();
+            gp.fullScreenOn = true;
+        }
+    }
+    if (premuto == KeyEvent.VK_N){
+            if (gp.gameState == gp.pauseState){
+                 gp.gameState = gp.optionsState;
+}
+            else if (gp.gameState == gp.optionsState){
+                        gp.gameState = gp.pauseState;
+       }
+
+    }
         if(premuto == KeyEvent.VK_M){
            if (gp.gameState == gp.playState){
             gp.gameState = gp.pauseState;

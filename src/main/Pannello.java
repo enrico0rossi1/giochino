@@ -39,7 +39,7 @@ public class Pannello extends JPanel implements Runnable {
     BufferedImage gameScreen ;
     Graphics2D graphics2;
     Graphics2D graphics3;
-    public boolean fullScreenOn;
+    public boolean fullScreenOn = false;
 
 
     Thread ThreadGioco;
