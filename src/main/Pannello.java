@@ -34,11 +34,13 @@ public class Pannello extends JPanel implements Runnable {
     public final int worldHeight = ingame_size*worldRow;
 
     //Impostazioni Schermo Intero
-int fullScreen_width = screen_width;
-int fullScreen_height = screen_height;
-BufferedImage gameScreen ;
-Graphics2D graphics2;
-Graphics2D graphics3;
+    int fullScreen_width = screen_width;
+    int fullScreen_height = screen_height;
+    BufferedImage gameScreen ;
+    Graphics2D graphics2;
+    Graphics2D graphics3;
+    public boolean fullScreenOn;
+
 
     Thread ThreadGioco;
     InputTastiera keyh= new InputTastiera(this);
@@ -63,6 +65,7 @@ Graphics2D graphics3;
     public int playState = 1;
     public int pauseState = 2;
     public int dialogueState = 3;
+    public int optionsState = 4;
     public int gameOver = 5;
 
     //FPS
@@ -84,10 +87,10 @@ Graphics2D graphics3;
       
         playMusic(0);
     
-        gameScreen = new BufferedImage(screen_width,screen_height,BufferedImage.TYPE_INT_ARGB);
+        gameScreen = new BufferedImage(screen_width,screen_height,BufferedImage.TYPE_INT_ARGB_PRE);
         graphics2 = (Graphics2D)gameScreen.getGraphics();
         graphics3 = (Graphics2D)gameScreen.getGraphics();
-        setFullScreen();
+       
 
     }
 
@@ -98,6 +101,10 @@ Graphics2D graphics3;
 
           fullScreen_width = App.finestra.getWidth();
           fullScreen_height = App.finestra.getHeight();
+
+    }
+
+    public void setSizedScreen () {
 
     }
 
