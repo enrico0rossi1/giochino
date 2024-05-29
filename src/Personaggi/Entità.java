@@ -3,11 +3,15 @@ package Personaggi;
 
 
 import java.awt.image.BufferedImage;
+
+import main.Pannello;
+
 import java.awt.Rectangle;
 
 
 public class Entità {
 
+    public Pannello gp;
     public int posizioneX,posizioneY;
     public int velocità;
 
@@ -35,11 +39,15 @@ public class Entità {
     public int spriteCount=0;
     public int spriteNum=0;
 
-    public Rectangle collArea;
+    public Rectangle collArea;//= new Rectangle(0,0,gp.ingame_size,gp.ingame_size);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean solid = false;
 
     //stato dell'entità
     public int vitaMax;
     public int vita;
+
+    public Entità(Pannello gp) {
+        this.gp = gp;
+    }
 }

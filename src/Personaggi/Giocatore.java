@@ -24,7 +24,8 @@ public class Giocatore extends Entità {
     
     public Giocatore(Pannello gp, InputTastiera keyh){
 
-        this.gp=gp;
+        super(gp);
+        this.gp = gp;
         this.keyh=keyh;
        
         collArea = new Rectangle();
