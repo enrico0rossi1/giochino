@@ -12,8 +12,9 @@ public class ObjHeart extends GameObject {
     
 
     public ObjHeart(Pannello gp) {
+        super(gp);  
         name = "Heart";
-        this.gp=gp;
+      
         try {
            image = ImageIO.read(getClass().getResourceAsStream("Objects/Heart.png"));
            image2 = ImageIO.read(getClass().getResourceAsStream("Objects/HeartHalved.png"));

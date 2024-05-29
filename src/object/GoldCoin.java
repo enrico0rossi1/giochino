@@ -8,8 +8,9 @@ public class GoldCoin extends GameObject {
     Pannello gp;
 
     public GoldCoin(Pannello gp) {
+        super(gp); 
         name = "GoldCoin";
-        this.gp=gp;
+      
         objWidth = 18;
         objHeight = 18;
         try {

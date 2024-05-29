@@ -12,8 +12,8 @@ public class ObjKey extends GameObject {
 
 
     public ObjKey(Pannello gp){
+        super(gp); 
         name = "Key";
-        this.gp=gp;
         
         try {
            image = ImageIO.read(getClass().getResourceAsStream("Objects/GoldKey.png"));

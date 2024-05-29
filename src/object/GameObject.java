@@ -13,6 +13,8 @@ import java.awt.Rectangle;
 
 public class GameObject extends Entità {
 
+  
+
     public BufferedImage image,image2,image3;
     public String name;
     public boolean collision = false;
@@ -27,6 +29,10 @@ public class GameObject extends Entità {
 
     public UtilityTool uTool=new UtilityTool();
 
+    public GameObject(Pannello gp) {
+    super(gp);
+    this.gp = gp; 
+  }
     public void draw(Graphics2D graphics2,Pannello gp){
 
         int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
