@@ -4,6 +4,7 @@ package Personaggi;
 
 import main.InputTastiera;
 import main.Pannello;
+import main.ScreenManager;
 import main.UtilityTool;
 
 import java.awt.Graphics2D;
@@ -16,17 +17,20 @@ public class Giocatore extends Entità {
 
     Pannello gp;
     InputTastiera keyh;
+    ScreenManager screenManager;
     public int ScreenX;
     public int ScreenY;
     public BufferedImage image;
     public static int numKeys=0;
     public boolean speedUp = false;
+
     
-    public Giocatore(Pannello gp, InputTastiera keyh){
+    public Giocatore(Pannello gp, InputTastiera keyh,ScreenManager screenManager){
 
         super(gp);
         this.gp = gp;
         this.keyh=keyh;
+        this.screenManager=screenManager;
        
         collArea = new Rectangle();
         collArea.x=12;
@@ -289,13 +293,14 @@ public class Giocatore extends Entità {
             
 
             gp.eventHandler.checkEvent();
+            
 
             if (solid == false){
                 switch(direzione){
-                    case "up": posizioneY -= velocità; break;
-                    case "down": posizioneY += velocità; break;
-                    case "right": posizioneX += velocità; break;
-                    case "left": posizioneX-= velocità; break;
+                    case "up": posizioneY -= velocità*screenManager.scaleY; break;
+                    case "down": posizioneY += velocità*screenManager.scaleY; break;
+                    case "right": posizioneX += velocità*screenManager.scaleX; break;
+                    case "left": posizioneX-= velocità*screenManager.scaleX; break;
                 }
 
             }

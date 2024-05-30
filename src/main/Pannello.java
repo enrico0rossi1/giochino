@@ -4,10 +4,7 @@ import object.GameObject;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -45,16 +42,17 @@ public class Pannello extends JPanel implements Runnable {
     Thread ThreadGioco;
     InputTastiera keyh= new InputTastiera(this);
     public final int numMappe = 10;
-    public int mappaAttuale;
     public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco",0);
     public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco",1);
     public tileManager mapHandler = new tileManager(this);
-    public Giocatore giocatore = new Giocatore(this, keyh);
+    public ScreenManager screenManager = new ScreenManager(this);
+    public Giocatore giocatore = new Giocatore(this, keyh,screenManager);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[50];
     public AssetPlacer objPlacer = new AssetPlacer(this);
     public AssetPlacer objPlacer2 = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this,0);
+    
     public UI ui = new UI(this);
     
     public Sound music = new Sound();
@@ -69,7 +67,7 @@ public class Pannello extends JPanel implements Runnable {
     public int gameOver = 5;
 
     //FPS
-    public double FPS = 60;
+    public double FPS = 120;
     
      
     public Pannello(){
@@ -94,21 +92,7 @@ public class Pannello extends JPanel implements Runnable {
 
     }
 
-    public void setFullScreen() {
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice gd = ge.getDefaultScreenDevice();
-        gd.setFullScreenWindow(App.finestra);
-
-          fullScreen_width = App.finestra.getWidth();
-          fullScreen_height = App.finestra.getHeight();
-
-    }
-
-    public void setSizedScreen () {
-
-    }
-
-     public void startThreadGioco(){
+    public void startThreadGioco(){
         
         // qui ci assicuriamo che il thread starti 
         ThreadGioco = new Thread(this);
@@ -117,30 +101,34 @@ public class Pannello extends JPanel implements Runnable {
 
     
     @Override
-    public void run(){
-        double drawInterval=1000000000/FPS;
-        double delta=0;
+    public void run() {
+        double drawInterval = 1000000000 / FPS;
+        double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
-
-        while(ThreadGioco!=null){
-            currentTime=System.nanoTime();
-            delta+= (currentTime-lastTime)/drawInterval;
-            lastTime=currentTime;
-
-            if(delta >=1){
+    
+        boolean isRunning = true;
+    
+        while (isRunning) {
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
+            lastTime = currentTime;
+    
+            if (delta >= 1) {
                 update();
                 drawToSizedScreen();
-                drawToFullScreen();
+                screenManager.drawScreen();
+                
                 delta--;
             }
-
+    
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
+                
                 e.printStackTrace();
             }
-
+    
         }
     }
   
@@ -198,7 +186,7 @@ public class Pannello extends JPanel implements Runnable {
 
         //GIOCATORE
         if (gameState == playState || gameState == pauseState || gameState == dialogueState) {
-        giocatore.draw(graphics2);
+            giocatore.draw(graphics2);
         }
 
         //debug 
@@ -214,14 +202,6 @@ public class Pannello extends JPanel implements Runnable {
        
   }
 
-   
-    
-public void drawToFullScreen() {
-
-Graphics graphics = getGraphics();
-graphics.drawImage(gameScreen,0,0,fullScreen_width,fullScreen_height,null);
-graphics.dispose();
-}
 
     public void playMusic (int i){
 

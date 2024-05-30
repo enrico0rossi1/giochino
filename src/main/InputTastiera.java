@@ -22,25 +22,28 @@ public class InputTastiera implements KeyListener {
 
         int premuto = e.getKeyCode();
 
-    if(premuto == KeyEvent.VK_ESCAPE)  {
+        if(premuto == KeyEvent.VK_ESCAPE)  {
             if (gp.fullScreenOn == true) {
-              gp.setSizedScreen();
-              gp.fullScreenOn = false;
+            
+                gp.fullScreenOn = false;
+            }
+            
+            if(gp.fullScreenOn == false)  {
+
+                gp.fullScreenOn = true;
+            }
         }
-        if(gp.fullScreenOn == false)  {
-            gp.setFullScreen();
-            gp.fullScreenOn = true;
-        }
-    }
-    if (premuto == KeyEvent.VK_N){
+    
+        if (premuto == KeyEvent.VK_N){
             if (gp.gameState == gp.pauseState){
                  gp.gameState = gp.optionsState;
-}
+            }
             else if (gp.gameState == gp.optionsState){
                         gp.gameState = gp.pauseState;
-       }
+            }
 
-    }
+        }
+        
         if(premuto == KeyEvent.VK_M){
            if (gp.gameState == gp.playState){
             gp.gameState = gp.pauseState;

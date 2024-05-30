@@ -36,14 +36,14 @@ public class Mappa {
         BufferedReader qp = new BufferedReader(new InputStreamReader(mid));
         BufferedReader qp2 = new BufferedReader(new InputStreamReader(mid2));
         
-            
-            int row=0;
-            int cols=0;
-            while (row<gp.worldRow && cols<gp.worldCol){
-                String app = qp.readLine();
-                String app2 = qp2.readLine();
+        int row=0;
+        int cols=0;
+
+        while (row<gp.worldRow && cols<gp.worldCol){
+            String app = qp.readLine();
+            String app2 = qp2.readLine();
                 
-                while(cols<gp.worldCol){
+            while(cols<gp.worldCol){
                     
                     
                     String[]number = app.split(" ");
