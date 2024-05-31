@@ -10,8 +10,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import Mondo.tileManager;
+import Mondo.MapMemory;
 import Mondo.Mappa;
 import Personaggi.Giocatore;
+import Personaggi.PlayerTools;
 
 
 public class Pannello extends JPanel implements Runnable {
@@ -40,10 +42,12 @@ public class Pannello extends JPanel implements Runnable {
 
 
     Thread ThreadGioco;
-    InputTastiera keyh= new InputTastiera(this);
+    public InputTastiera keyh= new InputTastiera(this);
     public final int numMappe = 10;
-    public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco",0);
-    public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco",1);
+    public PlayerTools pTools = new PlayerTools(this);
+    public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco");
+    public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco");
+    public MapMemory mapMemory = new MapMemory();
     public tileManager mapHandler = new tileManager(this);
     public ScreenManager screenManager = new ScreenManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh,screenManager);
@@ -65,6 +69,8 @@ public class Pannello extends JPanel implements Runnable {
     public int dialogueState = 3;
     public int optionsState = 4;
     public int gameOver = 5;
+    public long lastTime = System.nanoTime();
+    public long currentTime;
 
     //FPS
     public double FPS = 120;
@@ -160,12 +166,10 @@ public class Pannello extends JPanel implements Runnable {
         else {
         
         //MAPPA
-        if(eventHandler.telNum==0){
-            start.draw(graphics2,graphics3,mapHandler);
-        }
-        if(eventHandler.telNum==1){
-            dungeon1.draw(graphics2, graphics3, mapHandler);
-        }
+        mapMemory.loadToMapMemory(start);
+        mapMemory.loadToMapMemory(dungeon1);
+        Mappa currentMap = mapMemory.mapHandler[eventHandler.telNum];
+        currentMap.draw(graphics3, graphics2, mapHandler);
 
       
 

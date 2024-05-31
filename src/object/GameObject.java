@@ -27,7 +27,7 @@ public class GameObject extends Entità {
     public int solidAreaDefaultX=0;
     public int solidAreaDefaultY=0;
 
-    public UtilityTool uTool=new UtilityTool();
+    public UtilityTool uTool=new UtilityTool(gp);
 
     public GameObject(Pannello gp) {
     super(gp);

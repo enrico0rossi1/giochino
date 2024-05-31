@@ -46,20 +46,19 @@ public class EventHandler {
     }
     
     if (canTouchEvent == true) {
-      if (hitEvent(23, 23, "any")) {hiddenTrap(23,23);}
-      if (hitEvent(10, 23, "any")) { damagePool(10,23);}
-      if (hitEvent(11, 23, "any")) { damagePool(11,23);}
-      if (hitEvent(12, 23, "any")) { damagePool(12,23);}
-      if (hitEvent(25, 25, "any")) { healingPool();}
-      if (hitEvent(26,6, "any")){
-        teleport();
-        telNum++;
-      }
+      if (hitEvent(23, 23, "any",0)) {hiddenTrap(23,23);}
+      if (hitEvent(10, 23, "any",0)) {damagePool(10,23);}
+      if (hitEvent(11, 23, "any",0)) {damagePool(11,23);}
+      if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
+      if (hitEvent(25, 25, "any",0)) {healingPool();}
+      if (hitEvent(26,6, "any",0)){teleport();}
+      if (hitEvent(25,6, "any",0)){teleport();}
+      if (hitEvent(20,18, "any",1)){antiTeleport();}
     }
   }
   
   
-  public boolean hitEvent (int col , int row, String reqDirection) {
+  public boolean hitEvent (int col , int row, String reqDirection, int mapindex) {
 
     boolean hit = false;
     
@@ -68,7 +67,8 @@ public class EventHandler {
     eventRect[col][row].x = col*gp.ingame_size + eventRect[col][row].x ;
     eventRect[col][row].y = row*gp.ingame_size + eventRect[col][row].y ;
         
-    if(gp.giocatore.collArea.intersects(eventRect[col][row]) && eventRect[col][row].happened == false) {
+    if(gp.giocatore.collArea.intersects(eventRect[col][row]) && eventRect[col][row].happened == false
+        && mapindex==telNum) {
       
       if (gp.giocatore.direzione.contentEquals(reqDirection) || reqDirection.contentEquals("any") ) {
         hit = true;
@@ -110,7 +110,14 @@ public class EventHandler {
 
     gp.giocatore.posizioneX = gp.ingame_size * 25;
     gp.giocatore.posizioneY = gp.ingame_size * 25;
+    telNum++;
      
   
+  }
+
+  public void antiTeleport(){
+    gp.giocatore.posizioneX = gp.ingame_size * 25;
+    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    telNum--;
   }
 }

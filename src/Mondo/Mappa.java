@@ -13,14 +13,13 @@ public class Mappa {
     public int[][]ground;
     public int[][]deco;
     String Ground,Deco;
-    public int mapIdentifier;
+    
 
 
-    public Mappa(Pannello gp,String Ground, String Deco, int mapIdentifier){
+    public Mappa(Pannello gp,String Ground, String Deco){
         this.gp=gp;
         this.Ground=Ground;
         this.Deco=Deco;
-        this.mapIdentifier = mapIdentifier;
         this.ground= new int[gp.worldRow][gp.worldCol];
         this.deco=new int [gp.worldCol][gp.worldRow];
 

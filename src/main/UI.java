@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import Personaggi.Giocatore;
 import object.ObjHeart;
 import object.ObjKey;
 
@@ -126,7 +125,7 @@ public class UI {
         if(gp.gameState==gp.playState){
             graphics2.setFont(arial_30);
             graphics2.setColor(Color.red);
-            graphics2.drawString(" = "+Giocatore.numKeys, 32, 553);  
+            graphics2.drawString(" = "+gp.giocatore.numKeys, 32, 553);  
 
             graphics2.drawImage(keyImage,10,530,25,25,null);
 

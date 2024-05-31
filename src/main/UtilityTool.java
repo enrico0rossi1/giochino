@@ -3,7 +3,15 @@ package main;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+
+
 public class UtilityTool {
+
+    Pannello gp;
+
+    public UtilityTool (Pannello gp){
+        this.gp=gp;
+    }
 
     public BufferedImage scaleImage(BufferedImage original, int width, int height){
         BufferedImage scaledImage=new BufferedImage(width, height, original.getType());
@@ -13,5 +21,9 @@ public class UtilityTool {
         return scaledImage;
 
     }
+
+    
+
+    
     
 }
