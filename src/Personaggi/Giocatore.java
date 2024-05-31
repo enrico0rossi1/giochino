@@ -87,10 +87,10 @@ public class Giocatore extends Entità {
         RightAnimation=loadAnimation(6, "Sprites/NewSprites/Right/right");
         LeftAnimation=loadAnimation(6, "Sprites/NewSprites/Left/left");
 
-        AttackDown=loadAnimation(4, "Sprites/NewSprites/Down/attackDown");
-        AttackUp=loadAnimation(4, "Sprites/NewSprites/Up/attackUp");
-        AttackLeft=loadAnimation(4, "Sprites/NewSprites/Left/attackLeft");
-        AttackRight=loadAnimation(4, "Sprites/NewSprites/Right/attackRight");
+        AttackDown=loadAnimation(6, "Sprites/NewSprites/Down/attackDown");
+        AttackUp=loadAnimation(6, "Sprites/NewSprites/Up/attackUp");
+        AttackLeft=loadAnimation(6, "Sprites/NewSprites/Left/attackLeft");
+        AttackRight=loadAnimation(6, "Sprites/NewSprites/Right/attackRight");
 
         
     }
@@ -311,7 +311,7 @@ public class Giocatore extends Entità {
     public void animationRoller(){
         spriteCount++;
      
-        if(spriteCount>7){
+        if(spriteCount>3){
             if (spriteNum==0){
                 spriteNum=1;
         }else if (spriteNum==1){
@@ -319,11 +319,7 @@ public class Giocatore extends Entità {
         }else if (spriteNum==2){
                 spriteNum=3;
         }else if (spriteNum==3){
-            if(keyh.p==true){
-                spriteNum=0;
-            }else{
                 spriteNum=4;
-            }
         }else if (spriteNum==4){
                 spriteNum=5;
         }else if (spriteNum==5){

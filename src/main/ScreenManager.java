@@ -38,14 +38,14 @@ public class ScreenManager {
         
         if(gp.fullScreenOn==false){
             setStandardScreen();
-            scaleX =2.5;
-            scaleY =2.5;
+            scaleX =2.3;
+            scaleY =2.3;
         }
         
         if(gp.fullScreenOn==true){
             setFullScreen();
-            scaleX=3;
-            scaleY=3;
+            scaleX=3.2;
+            scaleY=3.2;
         }
         
         Graphics graphics = gp.getGraphics();
