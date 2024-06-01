@@ -43,19 +43,19 @@ public class Pannello extends JPanel implements Runnable {
 
     Thread ThreadGioco;
     public InputTastiera keyh= new InputTastiera(this);
-    public final int numMappe = 10;
     public PlayerTools pTools = new PlayerTools(this);
     public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco");
     public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco");
+    public Mappa dungeon2 = new Mappa(this, "Mappe/dungeon2", "Mappe/dungeon2Deco");
     public MapMemory mapMemory = new MapMemory();
-    public tileManager mapHandler = new tileManager(this);
+    public tileManager tileManager = new tileManager(this);
     public ScreenManager screenManager = new ScreenManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh,screenManager);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[50];
     public AssetPlacer objPlacer = new AssetPlacer(this);
     public AssetPlacer objPlacer2 = new AssetPlacer(this);
-    public EventHandler eventHandler = new EventHandler(this,0);
+    public EventHandler eventHandler = new EventHandler(this);
     
     public UI ui = new UI(this);
     
@@ -168,15 +168,16 @@ public class Pannello extends JPanel implements Runnable {
         //MAPPA
         mapMemory.loadToMapMemory(start);
         mapMemory.loadToMapMemory(dungeon1);
-        Mappa currentMap = mapMemory.mapHandler[eventHandler.telNum];
-        currentMap.draw(graphics3, graphics2, mapHandler);
+        mapMemory.loadToMapMemory(dungeon2);
+        Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMap];
+        currentMap.draw(graphics3, graphics2, tileManager);
 
       
 
         //OGGETTI
         
         for (int i =0; i<obj.length;i++){
-            if (obj[i]!=null && obj[i].mapVerifier == eventHandler.telNum){
+            if (obj[i]!=null && obj[i].mapVerifier == eventHandler.currentMap){
                 obj[i].draw(graphics2,this);
             }
         }

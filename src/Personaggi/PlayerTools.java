@@ -1,9 +1,13 @@
 package Personaggi;
 
+import main.InputTastiera;
 import main.Pannello;
 import main.UtilityTool;
+import object.GameObject;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 
@@ -16,173 +20,140 @@ public class PlayerTools {
         this.gp=gp;
     }
 
-    public void pickUpObj (int i){
-        if(i !=999){
-            
-            String objName = gp.obj[i].name;
-
-            if(gp.eventHandler.telNum == gp.obj[i].mapVerifier){  
-                switch(objName){
-                case "Key":
-                    gp.obj[i]= null;
-                    gp.ui.showMessage("u got a key!,that's cool");
-                    gp.playSFX(1);
-                    
-                    gp.giocatore.numKeys++;
-                   
-                    
-                break;
-
-                case "Door_Right":
-                    if(gp.giocatore.numKeys>0){
-                        gp.obj[i]=null;
-                        gp.ui.showMessage("u unlocked a door! Let's gooo");
-                        gp.giocatore.numKeys--;
-                        gp.playSFX(1);}
-                        if (gp.giocatore.numKeys==0){
-                            gp.ui.showMessage2("no keys? so lame...");
-                        }
-
-                    
-                break;
-
-                case "Door_Left":
-                    if(gp.giocatore.numKeys>0){
-                        gp.obj[i]=null;
-                        gp.ui.showMessage("u unlocked a door! Let's gooo");
-                        gp.giocatore.numKeys--;
-                        gp.playSFX(1);}
-                        if (gp.giocatore.numKeys==0){
-                            gp.ui.showMessage2("no keys? so lame...");
-                        }
-
-                    
-                break;
-
-                case "GoldCoin":
-                {
-                    gp.obj[i]=null;
-                    gp.ui.showMessage2("richer");
-                    gp.playSFX(1);
-
-                }
-            break;
-                case "Shoes":
-                    {
-                        gp.obj[i]=null;
-                        gp.giocatore.speedUp=true;
-                        gp.ui.showMessage("press O to run");
-                        gp.playSFX(1);
-
-                    }
-                break;
-
-                case "BigTreasure":
-                {
-                    gp.obj[i]=null;
-                    gp.playSFX(1);
-                    gp.stopMusic(0);
-                    gp.ui.endGame = true;
-                    
-                    
-
-                }
-            break;
-
-            }
-            }
-        
-        
+    public void pickUpObj(int i) {
+        if (i == 999) {
+            return;
         }
 
+        GameObject obj = gp.obj[i];
+        if (obj == null || gp.eventHandler.currentMap != obj.mapVerifier) {
+            return;
+        }
+
+        String objName = obj.name;
+
+        switch (objName) {
+            case "Key":
+                handleKeyPickup(i);
+                break;
+            case "Door_Right":
+            case "Door_Left":
+                handleDoorUnlock(i);
+                break;
+            case "GoldCoin":
+                handleGoldCoinPickup(i);
+                break;
+            case "Shoes":
+                handleShoesPickup(i);
+                break;
+            case "BigTreasure":
+                handleBigTreasurePickup(i);
+                break;
+        }
     }
+
+    private void handleKeyPickup(int i) {
+        gp.obj[i] = null;
+        gp.ui.showMessage("You got a key! That's cool.");
+        gp.playSFX(1);
+        gp.giocatore.numKeys++;
+    }
+
+    private void handleDoorUnlock(int i) {
+        if (gp.giocatore.numKeys > 0) {
+            gp.obj[i] = null;
+            gp.ui.showMessage("You unlocked a door! Let's go!");
+            gp.giocatore.numKeys--;
+            gp.playSFX(1);
+        } else {
+            gp.ui.showMessage2("No keys? So lame...");
+        }
+    }
+
+    private void handleGoldCoinPickup(int i) {
+        gp.obj[i] = null;
+        gp.ui.showMessage2("Richer!");
+        gp.playSFX(1);
+    }
+
+    private void handleShoesPickup(int i) {
+        gp.obj[i] = null;
+        gp.giocatore.speedUp = true;
+        gp.ui.showMessage("Press O to run.");
+        gp.playSFX(1);
+    }
+
+    private void handleBigTreasurePickup(int i) {
+        gp.obj[i] = null;
+        gp.playSFX(1);
+        gp.stopMusic(0);
+        gp.ui.endGame = true;
+    }
+
     
-    public BufferedImage[] loadAnimation (int Dimension, String Import){
-        BufferedImage[] animation = new BufferedImage [Dimension];
+    public BufferedImage[] loadAnimation(int dimension, String importPath) {
+        BufferedImage[] animation = new BufferedImage[dimension];
         UtilityTool uTool = new UtilityTool(gp);
-        
+        int ingameSize = gp.ingame_size; // Variabile locale per migliorare leggibilità e ridurre chiamate ripetitive
+
         try {
-           
-            for(int i=1; i<=Dimension;i++){
-                animation[i-1]=ImageIO.read(getClass().getResourceAsStream(Import+i+".png"));
-                animation[i-1]= uTool.scaleImage(animation[i-1], gp.ingame_size,gp.ingame_size);
+            for (int i = 0; i < dimension; i++) {
+                // Legge l'immagine
+                BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + (i + 1) + ".png"));
+                // Scala l'immagine
+                animation[i] = uTool.scaleImage(image, ingameSize, ingameSize);
             }
-           
+        } catch (IOException e) {
+            System.err.println("Errore nel caricamento dell'animazione: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
+            System.err.println("Errore inaspettato: " + e.getMessage());
             e.printStackTrace();
         }
 
         return animation;
-        
     }
 
-    public void printSprite(){
+
+    public void printSprite() {
+        Giocatore giocatore = gp.giocatore;
+        InputTastiera keyh = gp.keyh;
+        String direzione = giocatore.direzione;
+        int spriteNum = giocatore.spriteNum;
         
-        switch (gp.giocatore.direzione) {
-            case "up": 
-           
-                if (gp.keyh.w==true && gp.keyh.p==false){ 
-               gp.giocatore.image = gp.giocatore.UpAnimation[gp.giocatore.spriteNum]; 
-            } 
-            else if (gp.keyh.p==true){
-                gp.giocatore.image = gp.giocatore.AttackUp[gp.giocatore.spriteNum];
+        if (keyh.p) {
+            switch (direzione) {
+                case "up":
+                    giocatore.image = giocatore.AttackUp[spriteNum];
+                    break;
+                case "down":
+                    giocatore.image = giocatore.AttackDown[spriteNum];
+                    break;
+                case "right":
+                    giocatore.image = giocatore.AttackRight[spriteNum];
+                    break;
+                case "left":
+                    giocatore.image = giocatore.AttackLeft[spriteNum];
+                    break;
             }
-            else if (gp.keyh.w==false && gp.keyh.p==true){
-                gp.giocatore.image = gp.giocatore.AttackUp[gp.giocatore.spriteNum];
+        } else {
+            switch (direzione) {
+                case "up":
+                    giocatore.image = keyh.w ? giocatore.MoveUpAnimation[spriteNum] : giocatore.UpAnimation[spriteNum];
+                    break;
+                case "down":
+                    giocatore.image = keyh.s ? giocatore.MoveDownAnimation[spriteNum] : giocatore.DownAnimation[spriteNum];
+                    break;
+                case "right":
+                    giocatore.image = keyh.d ? giocatore.MoveRightAnimation[spriteNum] : giocatore.RightAnimation[spriteNum];
+                    break;
+                case "left":
+                    giocatore.image = keyh.a ? giocatore.MoveLeftAnimation[spriteNum] : giocatore.LeftAnimation[spriteNum];
+                    break;
             }
-        
-            else {
-                gp.giocatore.image = gp.giocatore.UpAnimation[gp.giocatore.spriteNum];
-            }
-            break;
-
-                case "down": if (gp.keyh.s==true && gp.keyh.p==false){ 
-                   gp.giocatore.image = gp.giocatore.MoveDownAnimation[gp.giocatore.spriteNum]; 
-                      
-                } 
-                else if (gp.keyh.p==true){
-                    gp.giocatore.image =gp.giocatore.AttackDown[gp.giocatore.spriteNum];
-                }
-                else
-                {
-                    gp.giocatore.image = gp.giocatore.DownAnimation[gp.giocatore.spriteNum];
-                };
-            break;
-      
-                case "right": 
-                if (gp.keyh.d==true && gp.keyh.p==false){ 
-                    gp.giocatore.image = gp.giocatore.MoveRightAnimation[gp.giocatore.spriteNum];
-                
-                }
-                else if (gp.keyh.p==true){
-                    gp.giocatore.image=gp.giocatore.AttackRight[gp.giocatore.spriteNum];
-                }
-                else 
-                { 
-                    gp.giocatore.image = gp.giocatore.RightAnimation[gp.giocatore.spriteNum];
-
-                };
-            break;
-      
-                case "left": 
-                if (gp.keyh.a==true && gp.keyh.p==false){ 
-                    gp.giocatore.image = gp.giocatore.MoveLeftAnimation[gp.giocatore.spriteNum];
-
-                }
-                else if (gp.keyh.p==true){
-                    gp.giocatore.image =gp.giocatore.AttackLeft[gp.giocatore.spriteNum];
-                    }
-                
-                else 
-                { 
-                    gp.giocatore.image = gp.giocatore.LeftAnimation[gp.giocatore.spriteNum];
-                };
-            break;
-            
         }
-        
-
     }
+    
 
     public void moveOBJChecker(){
 

@@ -4,7 +4,9 @@ public class MapMemory {
 
     public Mappa[]mapHandler=new Mappa[6];
 
-    public MapMemory(){}
+    public MapMemory(){
+        
+    }
 
     public void loadToMapMemory (Mappa map){
 

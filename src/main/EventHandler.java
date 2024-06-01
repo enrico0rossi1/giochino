@@ -6,12 +6,13 @@ public class EventHandler {
   EventRectangle eventRect[][];
   int previousEventX,previousEventY;
   boolean canTouchEvent = true;
-  public int telNum;
+  public int telNum=0;
+  public int currentMap =0;
+  public int dungeonRoller =1;
   
-  public EventHandler (Pannello gp, int telNum) {
+  public EventHandler (Pannello gp) {
     
     this.gp = gp;
-    this.telNum=telNum;
     eventRect = new EventRectangle[gp.worldCol][gp.worldRow];
     
     int col = 0;
@@ -53,7 +54,9 @@ public class EventHandler {
       if (hitEvent(25, 25, "any",0)) {healingPool();}
       if (hitEvent(26,6, "any",0)){teleport();}
       if (hitEvent(25,6, "any",0)){teleport();}
-      if (hitEvent(20,18, "any",1)){antiTeleport();}
+      if (hitEvent(20,18, "any",1)){teleport();}
+      if (hitEvent(18,25, "any",0)){teleport();}
+
     }
   }
   
@@ -68,7 +71,7 @@ public class EventHandler {
     eventRect[col][row].y = row*gp.ingame_size + eventRect[col][row].y ;
         
     if(gp.giocatore.collArea.intersects(eventRect[col][row]) && eventRect[col][row].happened == false
-        && mapindex==telNum) {
+        && mapindex==currentMap) {
       
       if (gp.giocatore.direzione.contentEquals(reqDirection) || reqDirection.contentEquals("any") ) {
         hit = true;
@@ -111,6 +114,13 @@ public class EventHandler {
     gp.giocatore.posizioneX = gp.ingame_size * 25;
     gp.giocatore.posizioneY = gp.ingame_size * 25;
     telNum++;
+
+    if(telNum%2==0){
+      currentMap=0;
+      dungeonRoller++;
+    }else{
+      currentMap=dungeonRoller;
+    }
      
   
   }
