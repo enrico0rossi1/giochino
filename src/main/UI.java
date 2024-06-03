@@ -88,77 +88,82 @@ public class UI {
            }
     
     }
-    public void drawPlayerLife () {
 
+    public void drawPlayerLife() {
         Image heartFullImage = heart.image;
         Image heartHalvedImage = heart.image2;
         Image heartVoidImage = heart.image3;
-
-
-        int x = gp.pix_row/2;
-        int y = gp.pix_cols/2;
-        int i = 0;
-
-        while (i<gp.giocatore.vitaMax/2) {
-            graphics2.drawImage(heartVoidImage, x , y,null);
-            i++;
-            x += 2*gp.pix_row;
-            
+    
+        int x = gp.pix_row / 2;
+        int y = gp.pix_cols / 2;
+        
+        // Disegna cuori vuoti
+        for (int i = 0; i < gp.giocatore.vitaMax / 2; i++) {
+            graphics2.drawImage(heartVoidImage, x, y, null);
+            x += 2 * gp.pix_row;
         }
-            x = gp.pix_row/2;
-            y = gp.pix_cols/2;
-            i = 0;
-
-            while (i < gp.giocatore.vita){
-                graphics2.drawImage(heartHalvedImage,x,y,null);
-                i++;
-                if(i < gp.giocatore.vita) {
-                    graphics2.drawImage(heartFullImage,x,y,null);
-                }
-                i++;
-                x += 2*gp.pix_row;
-            }
-    } 
-    public void drawPlayState(){
+    
+        // Ripristina le coordinate per disegnare i cuori pieni e mezzi
+        x = gp.pix_row / 2;
+        int vita = gp.giocatore.vita;
+        
+        for (int i = 0; i < vita / 2; i++) {
+            graphics2.drawImage(heartFullImage, x, y, null);
+            x += 2 * gp.pix_row;
+        }
+        
+        // Disegna mezzo cuore se la vita è dispari
+        if (vita % 2 == 1) {
+            graphics2.drawImage(heartHalvedImage, x, y, null);
+        }
+    }
+    
+    public void drawPlayState() {
         Image keyImage = key.image;
         
-        if(gp.gameState==gp.playState){
+        if (gp.gameState == gp.playState) {
             graphics2.setFont(arial_30);
             graphics2.setColor(Color.red);
-            graphics2.drawString(" = "+gp.giocatore.numKeys, 32, 553);  
-
-            graphics2.drawImage(keyImage,10,530,25,25,null);
-
-            // vita del giocatore
+            graphics2.drawString(" = " + gp.giocatore.numKeys, 32, 553);
+            graphics2.drawImage(keyImage, 10, 530, 25, 25, null);
+    
+            // Disegna la vita del giocatore
             drawPlayerLife();
-
-            if(messageOn == true) {
-                int messageX = (gp.screen_width /2)- 80 ;
-                int messageY = gp.screen_height - (gp.screen_height / 6) ;
-                graphics2.drawString(message, messageX,messageY);
-                messageCounter++;
-            
-                if (messageCounter >gp.FPS*5 ){
-                    messageOn = false;
-                }
-            }
-
-            if(message2On == true){
-                int message2X = (gp.screen_width /2)- 80 ;
-                int message2Y = gp.screen_height - (gp.screen_height / 6 - 20) ; 
-                graphics2.drawString(message2, message2X,message2Y); 
-                message2Counter++;
-
-                // considerando 60 frame 
-        
-           
-                if (message2Counter >gp.FPS*5 ){
-                    message2On = false;
-                }   
-            }
-        }   
-
+    
+            // Disegna i messaggi
+            drawMessages();
+        }
     }
+    
+    private void drawMessages() {
+        if (messageOn) {
+            drawMessage(message, messageCounter);
+            messageCounter++;
+            if (messageCounter > gp.FPS * 5) {
+                messageOn = false;
+            }
+        }
+    
+        if (message2On) {
+            drawMessage(message2, message2Counter, -20);
+            message2Counter++;
+            if (message2Counter > gp.FPS * 5) {
+                message2On = false;
+            }
+        }
+    }
+    
+    private void drawMessage(String message, int counter) {
+        drawMessage(message, counter, 0);
+    }
+    
+    private void drawMessage(String message, int counter, int offsetY) {
+        int messageX = (gp.screen_width / 2) - 80;
+        int messageY = gp.screen_height - (gp.screen_height / 6) + offsetY;
+        graphics2.drawString(message, messageX, messageY);
+    }
+    
+
     public void drawPauseScreen () {
         
         if (gp.gameState==gp.pauseState){
@@ -168,7 +173,8 @@ public class UI {
             graphics2.drawString("press M to resume",gp.screen_width/2+40,gp.screen_height/2+30); 
         }
     
-    }      
+    }  
+        
     public void drawGameOverScreen(){
         Image heartHalvedImage = heart.image2;
         

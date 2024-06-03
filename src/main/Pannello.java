@@ -73,7 +73,7 @@ public class Pannello extends JPanel implements Runnable {
     public long currentTime;
 
     //FPS
-    public double FPS = 120;
+    public double FPS = 60;
     
      
     public Pannello(){
@@ -108,15 +108,15 @@ public class Pannello extends JPanel implements Runnable {
     
     @Override
     public void run() {
-        double drawInterval = 1000000000 / FPS;
+        final double drawInterval = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
-        long currentTime;
-    
+        long timer = System.currentTimeMillis();
+        int frames = 0;
         boolean isRunning = true;
     
         while (isRunning) {
-            currentTime = System.nanoTime();
+            long currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
     
@@ -124,20 +124,25 @@ public class Pannello extends JPanel implements Runnable {
                 update();
                 drawToSizedScreen();
                 screenManager.drawScreen();
-                
                 delta--;
+                frames++;
             }
     
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
-                
                 e.printStackTrace();
             }
     
+            // Optional: Print FPS every second for debugging
+            if (System.currentTimeMillis() - timer >= 1000) {
+                System.out.println("FPS: " + frames);
+                frames = 0;
+                timer += 1000;
+            }
         }
     }
-  
+    
     public void update(){
         if (gameState == playState) {
         giocatore.update();

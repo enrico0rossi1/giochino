@@ -70,38 +70,32 @@ public class Mappa {
         }
     }
 
-    public void draw (Graphics2D g2,Graphics2D g3, tileManager tm){
-
-        int row=0;
-        int cols=0;
-        int numTile,numTile2;
+    public void draw(Graphics2D g2, Graphics2D g3, tileManager tm) {
+        int numTile, numTile2;
+        int ingameSize = gp.ingame_size;
+        int playerX = gp.giocatore.posizioneX;
+        int playerY = gp.giocatore.posizioneY;
+        int screenXOffset = gp.giocatore.ScreenX;
+        int screenYOffset = gp.giocatore.ScreenY;
+        
+        for (int row = 0; row < gp.worldRow; row++) {
+            for (int col = 0; col < gp.worldCol; col++) {
+                numTile = ground[row][col];
+                numTile2 = deco[row][col];
     
-
-        while (row<gp.worldRow && cols<gp.worldCol){
-            
-            numTile = ground[row][cols];
-            numTile2 = deco[row][cols];
-
-            int worldX= cols*gp.ingame_size;
-            int worldY= row*gp.ingame_size;
-            int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
-            int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY;
-      
-
-            g2.drawImage(tm.Tile[numTile].image,screenX,screenY,null);
-            g3.drawImage(tm.Tile[numTile2].image,screenX,screenY,null);
-                
-                
-
-            
-            cols++; 
-
-            if(cols==gp.worldCol) {
-                cols=0;
-                row++;
-               
+                int worldX = col * ingameSize;
+                int worldY = row * ingameSize;
+                int screenX = worldX - playerX + screenXOffset;
+                int screenY = worldY - playerY + screenYOffset;
+    
+                if (screenX + ingameSize > 0 && screenX < gp.screen_width && 
+                    screenY + ingameSize > 0 && screenY < gp.screen_height) {
+                    g2.drawImage(tm.Tile[numTile].image, screenX, screenY, null);
+                    g3.drawImage(tm.Tile[numTile2].image, screenX, screenY, null);
+                }
             }
         }
     }
+    
     
 }

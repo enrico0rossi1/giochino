@@ -98,18 +98,12 @@ public class PlayerTools {
 
         try {
             for (int i = 0; i < dimension; i++) {
-                // Legge l'immagine
                 BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + (i + 1) + ".png"));
-                // Scala l'immagine
                 animation[i] = uTool.scaleImage(image, ingameSize, ingameSize);
             }
         } catch (IOException e) {
-            System.err.println("Errore nel caricamento dell'animazione: " + e.getMessage());
             e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("Errore inaspettato: " + e.getMessage());
-            e.printStackTrace();
-        }
+        } 
 
         return animation;
     }
@@ -215,6 +209,7 @@ public class PlayerTools {
                     case "right": gp.giocatore.posizioneX += gp.giocatore.velocità*gp.screenManager.scaleX; break;
                     case "left": gp.giocatore.posizioneX-= gp.giocatore.velocità*gp.screenManager.scaleX; break;
                 }
+                
 
             }
         }

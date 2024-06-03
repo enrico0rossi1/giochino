@@ -55,7 +55,7 @@ public class EventHandler {
       if (hitEvent(26,6, "any",0)){teleport();}
       if (hitEvent(25,6, "any",0)){teleport();}
       if (hitEvent(20,18, "any",1)){teleport();}
-      if (hitEvent(18,25, "any",0)){teleport();}
+      
 
     }
   }
