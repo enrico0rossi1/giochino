@@ -1,5 +1,7 @@
 package main;
 
+import Personaggi.NPC;
+import Personaggi.SquaredCat;
 import object.*;
 
 public class AssetPlacer {
@@ -67,5 +69,40 @@ public class AssetPlacer {
 
 		
 	
+	}
+
+
+	private NPC createNPC(String npcName) {	
+		switch (npcName) {
+			case ("SquaredCat"):
+               return new SquaredCat(gp);
+			   case("SqrdCat"):
+			   return new SquaredCat(gp);
+		   default:
+		return null;
+		
+		}
+
+	}
+
+	public void setNPC(String npcName, int x, int y, int times, int mapVerifier) {
+		for (int i = 0; i < gp.npc.length; i++) {
+			if (gp.npc[i] == null && times !=0) {
+				gp.npc[i] = createNPC(npcName);
+				if (gp.npc[i] != null) {
+					gp.npc[i].posizioneX = x * gp.ingame_size;
+					gp.npc[i].posizioneY = y * gp.ingame_size;
+					gp.npc[i].mapVerifier = mapVerifier;
+					times--;
+				}
+			}
+		}
+	}
+	public void placeNPC(){
+		setNPC("SquaredCat", 25, 26, 1, 0);
+		setNPC("SquaredCat", 23, 26, 1, 0);
+		setNPC("SquaredCat", 23, 30, 1, 0);
+		setNPC("SquaredCat", 26, 24, 1, 0);
+
 	}
 }

@@ -150,4 +150,63 @@ public class CollisionManager {
 
         return index;
     }
+
+
+public int checkNpc(Entità e, boolean player) {
+ 
+
+    for (int i = 0; i < gp.npc.length; i++) {
+        if (gp.npc[i] != null && gp.npc[i].mapVerifier == gp.eventHandler.currentMap) {
+            // Backup original positions
+            int originalCollAreaX = e.collArea.x;
+            int originalCollAreaY = e.collArea.y;
+            int originalSolidAreaX = gp.npc[i].solidArea.x;
+            int originalSolidAreaY = gp.npc[i].solidArea.y;
+
+            // Update positions based on current object
+            e.collArea.x = e.posizioneX + e.collArea.x;
+            e.collArea.y = e.posizioneY + e.collArea.y;
+            gp.npc[i].solidArea.x = gp.npc[i].posizioneX + gp.npc[i].solidArea.x;
+            gp.obj[i].solidArea.y = gp.npc[i].posizioneY + gp.npc[i].solidArea.y;
+
+            // Adjust collision area based on direction
+            switch (e.direzione) {
+                case "up":
+                    e.collArea.y -= e.velocità;
+                    break;
+                case "down":
+                    e.collArea.y += e.velocità;
+                    break;
+                case "right":
+                    e.collArea.x += e.velocità;
+                    break;
+                case "left":
+                    e.collArea.x -= e.velocità;
+                    break;
+            }
+
+            // Check for collision
+            if (e.collArea.intersects(gp.npc[i].solidArea)) {
+                System.out.println(e.direzione + " collision!");
+
+                if (gp.npc[i].collision) {
+                    e.solid = true;
+
+                    if (player) {
+                        index = i;
+                    }
+                }
+            }
+
+            // Reset positions to original values
+            e.collArea.x = originalCollAreaX;
+            e.collArea.y = originalCollAreaY;
+            gp.npc[i].solidArea.x = originalSolidAreaX;
+            gp.npc[i].solidArea.y = originalSolidAreaY;
+        }
+    }
+
+    return index;
 }
+}
+

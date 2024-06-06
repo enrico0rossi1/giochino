@@ -13,6 +13,7 @@ import Mondo.tileManager;
 import Mondo.MapMemory;
 import Mondo.Mappa;
 import Personaggi.Giocatore;
+import Personaggi.NPC;
 import Personaggi.PlayerTools;
 
 
@@ -53,8 +54,8 @@ public class Pannello extends JPanel implements Runnable {
     public Giocatore giocatore = new Giocatore(this, keyh,screenManager);
     public CollisionManager CollisionManager = new CollisionManager(this);
     public GameObject obj[] = new GameObject[50];
-    public AssetPlacer objPlacer = new AssetPlacer(this);
-    public AssetPlacer objPlacer2 = new AssetPlacer(this);
+    public NPC npc[] = new NPC[5];
+    public AssetPlacer assetPlacer = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this);
     
     public UI ui = new UI(this);
@@ -69,6 +70,8 @@ public class Pannello extends JPanel implements Runnable {
     public int dialogueState = 3;
     public int optionsState = 4;
     public int gameOver = 5;
+    public int endGame = 6;
+
     public long lastTime = System.nanoTime();
     public long currentTime;
 
@@ -87,7 +90,8 @@ public class Pannello extends JPanel implements Runnable {
 
     public void setUpGioco() {
         gameState = titleState;
-        objPlacer.placeObject();
+        assetPlacer.placeObject();
+        assetPlacer.placeNPC();
       
         playMusic(0);
     
@@ -115,7 +119,7 @@ public class Pannello extends JPanel implements Runnable {
         int frames = 0;
         boolean isRunning = true;
     
-        while (isRunning) {
+        while (isRunning == true) {
             long currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
@@ -186,9 +190,15 @@ public class Pannello extends JPanel implements Runnable {
                 obj[i].draw(graphics2,this);
             }
         }
-            
-        
-        
+
+        //NPC
+        for (int j =0; j<npc.length;j++){
+            if (npc[j]!=null && npc[j].mapVerifier == eventHandler.currentMap){
+                npc[j].draw(graphics2,this);
+            }
+        }
+           
+                    
 
         
         //INTERFACCIA
