@@ -1,25 +1,26 @@
 package object;
 
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
+import Personaggi.Entità;
 import main.Pannello;
-public class GoldCoin extends GameObject {
-    Pannello gp;
+
+public class GoldCoin extends Entità {
+  
 
     public GoldCoin(Pannello gp) {
         super(gp); 
         name = "GoldCoin";
-      
+
+        BufferedImage handle[]=new BufferedImage[1];
+        handle = loadAnimation(1, "Objects/GoldCoin");
+        image = handle[0];
+        image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
+
         objWidth = 18;
         objHeight = 18;
-        try {
-           image = ImageIO.read(getClass().getResourceAsStream("Objects/GoldCoin.png"));
-           image = uTool.scaleImage(image,  objWidth, objHeight);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
         
-        collision = true;
+        
+        solid = true;
     }
 }

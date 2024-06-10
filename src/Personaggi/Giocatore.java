@@ -12,7 +12,7 @@ import java.awt.Rectangle;
 
 public class Giocatore extends Entità {
 
-    Pannello gp;
+
     InputTastiera keyh;
     ScreenManager screenManager;
     public int ScreenX;
@@ -25,7 +25,6 @@ public class Giocatore extends Entità {
     public Giocatore(Pannello gp, InputTastiera keyh,ScreenManager screenManager){
 
         super(gp);
-        this.gp = gp;
         this.keyh=keyh;
         this.screenManager=screenManager;
        
@@ -56,20 +55,20 @@ public class Giocatore extends Entità {
     
     public void getPlayerImage(){
         
-        MoveUpAnimation=gp.pTools.loadAnimation(6,"Sprites/NewSprites/Up/moveUp");
-        MoveDownAnimation=gp.pTools.loadAnimation(6,"Sprites/NewSprites/Down/moveDown");
-        MoveRightAnimation=gp.pTools.loadAnimation(6,"Sprites/NewSprites/Right/moveRight");
-        MoveLeftAnimation=gp.pTools.loadAnimation(6,"Sprites/NewSprites/Left/moveLeft");
+        MoveUpAnimation=loadAnimation(6,"Sprites/NewSprites/Up/moveUp");
+        MoveDownAnimation=loadAnimation(6,"Sprites/NewSprites/Down/moveDown");
+        MoveRightAnimation=loadAnimation(6,"Sprites/NewSprites/Right/moveRight");
+        MoveLeftAnimation=loadAnimation(6,"Sprites/NewSprites/Left/moveLeft");
 
-        UpAnimation=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Up/up");
-        DownAnimation=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Down/down");
-        RightAnimation=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Right/right");
-        LeftAnimation=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Left/left");
+        UpAnimation=loadAnimation(6, "Sprites/NewSprites/Up/up");
+        DownAnimation=loadAnimation(6, "Sprites/NewSprites/Down/down");
+        RightAnimation=loadAnimation(6, "Sprites/NewSprites/Right/right");
+        LeftAnimation=loadAnimation(6, "Sprites/NewSprites/Left/left");
 
-        AttackDown=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Down/attackDown");
-        AttackUp=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Up/attackUp");
-        AttackLeft=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Left/attackLeft");
-        AttackRight=gp.pTools.loadAnimation(6, "Sprites/NewSprites/Right/attackRight");
+        AttackDown=loadAnimation(6, "Sprites/NewSprites/Down/attackDown");
+        AttackUp=loadAnimation(6, "Sprites/NewSprites/Up/attackUp");
+        AttackLeft=loadAnimation(6, "Sprites/NewSprites/Left/attackLeft");
+        AttackRight=loadAnimation(6, "Sprites/NewSprites/Right/attackRight");
 
         
     }
@@ -80,17 +79,17 @@ public class Giocatore extends Entità {
             gp.gameState = gp.gameOver;
         }
    
-        
+        mapVerifier=gp.eventHandler.currentMap;
         gp.pTools.moveOBJChecker();
-        gp.pTools.animationRoller();
+        animationRoller();
         gp.pTools.printSprite();
+        
         
 
         
     }
     
     public void draw(Graphics2D graphics2){
-    
         graphics2.drawImage(image, ScreenX, ScreenY,null);
     }
         

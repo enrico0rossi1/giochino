@@ -59,7 +59,7 @@ public class tileManager {
 
     public void setup(int index, String imagePath, boolean collision){
 
-        UtilityTool uTool = new UtilityTool(gp);
+        UtilityTool uTool = new UtilityTool();
         try {
             Tile[index]=new tile();
             Tile[index].image=ImageIO.read(getClass().getResourceAsStream("Costruzioni/"+imagePath+".png"));

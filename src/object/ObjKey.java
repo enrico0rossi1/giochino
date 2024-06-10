@@ -1,30 +1,24 @@
 package object;
 
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
+import Personaggi.Entità;
 import main.Pannello;
 
-public class ObjKey extends GameObject {
-
-
-    Pannello gp;
-
+public class ObjKey extends Entità {
 
     public ObjKey(Pannello gp){
         super(gp); 
         name = "Key";
-        
-        try {
-           image = ImageIO.read(getClass().getResourceAsStream("Objects/GoldKey.png"));
-           image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        collision=true;
+        BufferedImage handle[]=new BufferedImage[1];
+        handle = loadAnimation(1, "Objects/GoldKey");
+        image = handle[0];
+        image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
+    
+        solid=true;
         objWidth = 16;
         objHeight = 16;
-        
-    }
-    
+
+
+    } 
 }

@@ -1,23 +1,23 @@
 package object;
 
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
+import Personaggi.Entità;
 import main.Pannello;
-public class BigTreasure extends GameObject {
+
+public class BigTreasure extends Entità {
     Pannello gp;
 
     public BigTreasure(Pannello gp) {
         super(gp); 
         name = "BigTreasure";
-      
-        try {
-           image = ImageIO.read(getClass().getResourceAsStream("Objects/BigTreasureChest.png"));
-           image = uTool.scaleImage(image, gp.ingame_size, gp.ingame_size);
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
-        collision = true;
+
+        BufferedImage handle[]=new BufferedImage[1];
+        handle = loadAnimation(1, "Objects/BigTreasureChest");
+        image = handle[0];
+        image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
+     
+        solid = true;
         
     }
 }

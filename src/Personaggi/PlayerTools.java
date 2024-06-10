@@ -1,14 +1,7 @@
 package Personaggi;
 
 import main.InputTastiera;
-import main.Pannello;
-import main.UtilityTool;
-import object.GameObject;
-
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import main.Pannello; 
 
 
 
@@ -25,7 +18,7 @@ public class PlayerTools {
             return;
         }
 
-        GameObject obj = gp.obj[i];
+        Entità obj = gp.obj[i];
         if (obj == null || gp.eventHandler.currentMap != obj.mapVerifier) {
             return;
         }
@@ -88,24 +81,6 @@ public class PlayerTools {
         gp.playSFX(1);
         gp.stopMusic(0);
         gp.ui.endGame = true;
-    }
-
-    
-    public BufferedImage[] loadAnimation(int dimension, String importPath) {
-        BufferedImage[] animation = new BufferedImage[dimension];
-        UtilityTool uTool = new UtilityTool(gp);
-        int ingameSize = gp.ingame_size; // Variabile locale per migliorare leggibilità e ridurre chiamate ripetitive
-
-        try {
-            for (int i = 0; i < dimension; i++) {
-                BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + (i + 1) + ".png"));
-                animation[i] = uTool.scaleImage(image, ingameSize, ingameSize);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } 
-
-        return animation;
     }
 
 
@@ -216,19 +191,6 @@ public class PlayerTools {
 
         
     }
-
-    public void animationRoller(){
-        final int frameInterval = 200* 1000000;
-        long currentTime = System.nanoTime();
-        
-        
-        if (currentTime - gp.lastTime >= frameInterval) {
-            gp.giocatore.spriteNum = (gp.giocatore.spriteNum + 1) % gp.giocatore.MoveDownAnimation.length;
-            gp.lastTime = currentTime;
-        }
-
-    }
-
     
 
 }

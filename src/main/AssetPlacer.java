@@ -1,14 +1,18 @@
 package main;
 
-import Personaggi.NPC;
-import Personaggi.SquaredCat;
+import Monsters.Mon_sqrdCat;
+import Personaggi.Entità;
 import object.*;
 
 public class AssetPlacer {
 	Pannello gp;
+
 	public AssetPlacer (Pannello gp){
 		this.gp = gp;
+		
 	}
+
+	//GESTIONE OGGETTI
 
 	public void setObject(String objectName, int x, int y, int times, int mapVerifier) {
 		for (int i = 0; i < gp.obj.length && times > 0; i++) {
@@ -24,7 +28,7 @@ public class AssetPlacer {
 		}
 	}
 	
-	private GameObject createObject(String objectName) {
+	private Entità createObject(String objectName) {
 		switch (objectName) {
 			case "Shoes":
 				return new ObjShoes(gp);
@@ -48,8 +52,6 @@ public class AssetPlacer {
 
 	
 	public void placeObject () {
-
-		
 		setObject("Shoes",26,26,1,0);
 		setObject("Key",23,24,1,0);
 		setObject("Key",28,24,1,0);
@@ -65,44 +67,37 @@ public class AssetPlacer {
 		setObject("Shoes",26,26,1,1);
 		setObject("Key",25,30,1,1);
 		setObject("GoldCoin", 26, 23, 1,1);
-			
-
-		
-	
 	}
 
+	//GESTIONE NEMICI
 
-	private NPC createNPC(String npcName) {	
-		switch (npcName) {
-			case ("SquaredCat"):
-               return new SquaredCat(gp);
-			   case("SqrdCat"):
-			   return new SquaredCat(gp);
-		   default:
-		return null;
-		
-		}
-
-	}
-
-	public void setNPC(String npcName, int x, int y, int times, int mapVerifier) {
-		for (int i = 0; i < gp.npc.length; i++) {
-			if (gp.npc[i] == null && times !=0) {
-				gp.npc[i] = createNPC(npcName);
-				if (gp.npc[i] != null) {
-					gp.npc[i].posizioneX = x * gp.ingame_size;
-					gp.npc[i].posizioneY = y * gp.ingame_size;
-					gp.npc[i].mapVerifier = mapVerifier;
+	public void setEnemy(String enemyType, int x, int y, int times, int mapVerifier) {
+		for (int i = 0; i < gp.mon.length && times > 0; i++) {
+			if (gp.mon[i] == null) {
+				gp.mon[i] = createEnemy(enemyType);
+				if (gp.mon[i] != null) {
+					gp.mon[i].worldX = x * gp.ingame_size;
+					gp.mon[i].worldY = y * gp.ingame_size;
+					gp.mon[i].mapVerifier = mapVerifier;
 					times--;
 				}
 			}
 		}
 	}
-	public void placeNPC(){
-		setNPC("SquaredCat", 25, 26, 1, 0);
-		setNPC("SquaredCat", 23, 26, 1, 0);
-		setNPC("SquaredCat", 23, 30, 1, 0);
-		setNPC("SquaredCat", 26, 24, 1, 0);
 
+	private Entità createEnemy(String enemyType) {
+		switch (enemyType) {
+			case "Squared_cat":
+				return new Mon_sqrdCat(gp);
+			default:
+				return null;
+		}
 	}
+
+	public void placeEnemy () {
+		setEnemy("Squared_cat", 23, 25, 1, 1);
+		setEnemy("Squared_cat", 24, 25, 1, 1);
+	}
+
+
 }

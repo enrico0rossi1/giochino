@@ -1,22 +1,21 @@
 package object;
 
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
+import Personaggi.Entità;
 import main.Pannello;
-public class ObjShoes extends GameObject {
-    Pannello gp;
+public class ObjShoes extends Entità {
+   
 
     public ObjShoes(Pannello gp) {
         super(gp); 
         name = "Shoes";
+        BufferedImage handle[]=new BufferedImage[1];
+        handle = loadAnimation(1, "Objects/Shoes");
+        image = handle[0];
+        image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
         
-        try {
-           image = ImageIO.read(getClass().getResourceAsStream("Objects/Shoes.png"));
-           image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        collision=true;
+    
+        solid=true;
     }
 }

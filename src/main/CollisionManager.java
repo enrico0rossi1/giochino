@@ -102,14 +102,14 @@ public class CollisionManager {
                 // Backup original positions
                 int originalCollAreaX = e.collArea.x;
                 int originalCollAreaY = e.collArea.y;
-                int originalSolidAreaX = gp.obj[i].solidArea.x;
-                int originalSolidAreaY = gp.obj[i].solidArea.y;
+                int originalSolidAreaX = gp.obj[i].collArea.x;
+                int originalSolidAreaY = gp.obj[i].collArea.y;
 
                 // Update positions based on current object
                 e.collArea.x = e.posizioneX + e.collArea.x;
                 e.collArea.y = e.posizioneY + e.collArea.y;
-                gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
-                gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
+                gp.obj[i].collArea.x = gp.obj[i].worldX + gp.obj[i].collArea.x;
+                gp.obj[i].collArea.y = gp.obj[i].worldY + gp.obj[i].collArea.y;
 
                 // Adjust collision area based on direction
                 switch (e.direzione) {
@@ -128,10 +128,10 @@ public class CollisionManager {
                 }
 
                 // Check for collision
-                if (e.collArea.intersects(gp.obj[i].solidArea)) {
+                if (e.collArea.intersects(gp.obj[i].collArea)) {
                     System.out.println(e.direzione + " collision!");
 
-                    if (gp.obj[i].collision) {
+                    if (gp.obj[i].solid) {
                         e.solid = true;
 
                         if (player) {
@@ -143,8 +143,8 @@ public class CollisionManager {
                 // Reset positions to original values
                 e.collArea.x = originalCollAreaX;
                 e.collArea.y = originalCollAreaY;
-                gp.obj[i].solidArea.x = originalSolidAreaX;
-                gp.obj[i].solidArea.y = originalSolidAreaY;
+                gp.obj[i].collArea.x = originalSolidAreaX;
+                gp.obj[i].collArea.y = originalSolidAreaY;
             }
         }
 
@@ -152,61 +152,6 @@ public class CollisionManager {
     }
 
 
-public int checkNpc(Entità e, boolean player) {
- 
 
-    for (int i = 0; i < gp.npc.length; i++) {
-        if (gp.npc[i] != null && gp.npc[i].mapVerifier == gp.eventHandler.currentMap) {
-            // Backup original positions
-            int originalCollAreaX = e.collArea.x;
-            int originalCollAreaY = e.collArea.y;
-            int originalSolidAreaX = gp.npc[i].solidArea.x;
-            int originalSolidAreaY = gp.npc[i].solidArea.y;
-
-            // Update positions based on current object
-            e.collArea.x = e.posizioneX + e.collArea.x;
-            e.collArea.y = e.posizioneY + e.collArea.y;
-            gp.npc[i].solidArea.x = gp.npc[i].posizioneX + gp.npc[i].solidArea.x;
-            gp.obj[i].solidArea.y = gp.npc[i].posizioneY + gp.npc[i].solidArea.y;
-
-            // Adjust collision area based on direction
-            switch (e.direzione) {
-                case "up":
-                    e.collArea.y -= e.velocità;
-                    break;
-                case "down":
-                    e.collArea.y += e.velocità;
-                    break;
-                case "right":
-                    e.collArea.x += e.velocità;
-                    break;
-                case "left":
-                    e.collArea.x -= e.velocità;
-                    break;
-            }
-
-            // Check for collision
-            if (e.collArea.intersects(gp.npc[i].solidArea)) {
-                System.out.println(e.direzione + " collision!");
-
-                if (gp.npc[i].collision) {
-                    e.solid = true;
-
-                    if (player) {
-                        index = i;
-                    }
-                }
-            }
-
-            // Reset positions to original values
-            e.collArea.x = originalCollAreaX;
-            e.collArea.y = originalCollAreaY;
-            gp.npc[i].solidArea.x = originalSolidAreaX;
-            gp.npc[i].solidArea.y = originalSolidAreaY;
-        }
-    }
-
-    return index;
-}
 }
 

@@ -7,10 +7,10 @@ import java.awt.image.BufferedImage;
 
 public class UtilityTool {
 
-    Pannello gp;
+    
 
-    public UtilityTool (Pannello gp){
-        this.gp=gp;
+    public UtilityTool (){
+        
     }
 
     public BufferedImage scaleImage(BufferedImage original, int width, int height){

@@ -1,25 +1,22 @@
 package object;
 
-import java.io.IOException;
+import java.awt.image.BufferedImage;
 
-import javax.imageio.ImageIO;
-
+import Personaggi.Entità;
 import main.Pannello;
 
-public class Door_Right extends GameObject{
-    Pannello gp;
+public class Door_Right extends Entità{
 
     public Door_Right(Pannello gp) {
         super(gp); 
         name = "Door_Right";
+        BufferedImage handle[]=new BufferedImage[1];
+        handle = loadAnimation(1, "Objects/wooden_doorRight");
+        image = handle[0];
+        image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
        
-        try {
-           image = ImageIO.read(getClass().getResourceAsStream("Objects/wooden_doorRight.png"));
-           image = uTool.scaleImage(image, gp.ingame_size, gp.ingame_size);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        collision=true;
+
+        solid=true;
     }
     
 }

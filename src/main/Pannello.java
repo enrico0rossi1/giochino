@@ -1,19 +1,18 @@
 package main;
 
-import object.GameObject;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 import Mondo.tileManager;
 import Mondo.MapMemory;
 import Mondo.Mappa;
+import Personaggi.Entità;
 import Personaggi.Giocatore;
-import Personaggi.NPC;
 import Personaggi.PlayerTools;
 
 
@@ -37,8 +36,8 @@ public class Pannello extends JPanel implements Runnable {
     int fullScreen_width = screen_width;
     int fullScreen_height = screen_height;
     BufferedImage gameScreen ;
-    Graphics2D graphics2;
-    Graphics2D graphics3;
+    public Graphics2D graphics2;
+    public Graphics2D graphics3;
     public boolean fullScreenOn = false;
 
 
@@ -53,10 +52,12 @@ public class Pannello extends JPanel implements Runnable {
     public ScreenManager screenManager = new ScreenManager(this);
     public Giocatore giocatore = new Giocatore(this, keyh,screenManager);
     public CollisionManager CollisionManager = new CollisionManager(this);
-    public GameObject obj[] = new GameObject[50];
-    public NPC npc[] = new NPC[5];
+    public Entità obj[] = new Entità[20];   
+    public Entità mon[] = new Entità[20]; 
     public AssetPlacer assetPlacer = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this);
+    public ArrayList <Entità> entityList = new ArrayList<>();
+
     
     public UI ui = new UI(this);
     
@@ -91,7 +92,7 @@ public class Pannello extends JPanel implements Runnable {
     public void setUpGioco() {
         gameState = titleState;
         assetPlacer.placeObject();
-        assetPlacer.placeNPC();
+        assetPlacer.placeEnemy();
       
         playMusic(0);
     
@@ -149,7 +150,13 @@ public class Pannello extends JPanel implements Runnable {
     
     public void update(){
         if (gameState == playState) {
-        giocatore.update();
+            giocatore.update();
+
+            for(int i=0; i<mon.length; i++){
+                if(mon[i]!=null){
+                    mon[i].update();
+                }
+            }
    
         }
         if (gameState == pauseState) {
@@ -166,9 +173,7 @@ public class Pannello extends JPanel implements Runnable {
             drawStart = System.nanoTime();
         }
 
-
-        
-        
+       
         //SCHERMATA INIZIALE
         if (gameState == titleState) {
             ui.draw(graphics2);}
@@ -181,33 +186,33 @@ public class Pannello extends JPanel implements Runnable {
         Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMap];
         currentMap.draw(graphics3, graphics2, tileManager);
 
-      
-
-        //OGGETTI
+        //AGGIUNGIAMO LE ENTITà ALLA LISTA
         
-        for (int i =0; i<obj.length;i++){
-            if (obj[i]!=null && obj[i].mapVerifier == eventHandler.currentMap){
-                obj[i].draw(graphics2,this);
+        for(int i =0; i<obj.length; i++ ){
+            if(obj[i]!= null){
+                entityList.add(obj[i]);
+            }
+            if(mon[i]!=null){
+                entityList.add(mon[i]);
+            }
+        }
+        entityList.add(giocatore);
+ 
+        //DISEGNIAMO LE ENTITà
+        for(int i =0; i<entityList.size(); i++){
+            if(entityList.get(i).mapVerifier == eventHandler.currentMap){
+                entityList.get(i).draw(graphics2);
+
             }
         }
 
-        //NPC
-        for (int j =0; j<npc.length;j++){
-            if (npc[j]!=null && npc[j].mapVerifier == eventHandler.currentMap){
-                npc[j].draw(graphics2,this);
-            }
+        //SVUOTIAMO LA LISTA
+        for(int i =0; i<entityList.size(); i++){
+            entityList.remove(i);
         }
-           
-                    
-
-        
-        //INTERFACCIA
+ 
+       //INTERFACCIA
         ui.draw(graphics2);
-
-        //GIOCATORE
-        if (gameState == playState || gameState == pauseState || gameState == dialogueState) {
-            giocatore.draw(graphics2);
-        }
 
         //debug 
         if(keyh.z==true){
