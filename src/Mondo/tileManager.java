@@ -35,7 +35,6 @@ public class tileManager {
             setup(0,"DirtTile/Dirt1",false);
             setup(1,"GrassTile/grass1",false);
             setup(2,"WaterTile/Water",true);
-            setup(20,"WaterTile/Water1",true);
             setup(3,"Additional/FencesVert",true);
             setup(4,"Additional/Albero1",true);
             setup(5,"Additional/vuoto",false);
@@ -51,10 +50,12 @@ public class tileManager {
             setup(15,"DarkTile/dark1",false);
             setup(16,"DarkTile/darkMid",false);
             setup(17,"Additional/alberosciucco",true);
+            setup(20,"WaterTile/Water1",true);
             setup(21,"DirtTile/Grassy_dirt_vert1",false);
             setup(22,"DirtTile/Grassy_dirt_vert2",false);
             setup(23,"DirtTile/Grassy_dirt_hor1",false);
             setup(24,"DirtTile/Grassy_dirt_hor2",false);
+            setup(25, "Additional/Albero2", true);
 
             
         } catch (Exception e) {

@@ -55,12 +55,9 @@ public class AssetPlacer {
 		setObject("Shoes",26,26,1,0);
 		setObject("Key",23,24,1,0);
 		setObject("Key",28,24,1,0);
-		setObject("Door_Right", 5, 26, 1,0);
-		setObject("Door_Left", 5, 25, 1,0);
 		setObject("Door_Right", 26, 37, 1,0);
 		setObject("Door_Left", 25, 37, 1,0);
 		setObject("BigTreasure", 26, 40, 1,0);
-		setObject("Spike", 10, 23, 1,0);
 		setObject("Spike", 23, 23, 1,0);
 		setObject("GoldCoin", 26, 23, 1,0);
 		
