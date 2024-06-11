@@ -40,8 +40,8 @@ public class EventHandler {
   
   public void checkEvent() {
 
-    int xDistance = Math.abs(gp.giocatore.posizioneX - previousEventX);
-    int yDistance = Math.abs(gp.giocatore.posizioneY - previousEventY);
+    int xDistance = Math.abs(gp.giocatore.worldX - previousEventX);
+    int yDistance = Math.abs(gp.giocatore.worldY - previousEventY);
     int distance = Math.max(xDistance,yDistance);
 
     if (distance > gp.ingame_size){
@@ -72,8 +72,8 @@ public class EventHandler {
 
     boolean hit = false;
     
-    gp.giocatore.collArea.x = gp.giocatore.posizioneX + gp.giocatore.collArea.x ; 
-    gp.giocatore.collArea.y = gp.giocatore.posizioneY + gp.giocatore.collArea.y ;
+    gp.giocatore.collArea.x = gp.giocatore.worldX + gp.giocatore.collArea.x ; 
+    gp.giocatore.collArea.y = gp.giocatore.worldY + gp.giocatore.collArea.y ;
     eventRect[col][row].x = col*gp.ingame_size + eventRect[col][row].x ;
     eventRect[col][row].y = row*gp.ingame_size + eventRect[col][row].y ;
         
@@ -82,8 +82,8 @@ public class EventHandler {
       
       if (gp.giocatore.direzione.contentEquals(reqDirection) || reqDirection.contentEquals("any") ) {
         hit = true;
-        previousEventX = gp.giocatore.posizioneX;
-        previousEventY = gp.giocatore.posizioneY;
+        previousEventX = gp.giocatore.worldX;
+        previousEventY = gp.giocatore.worldY;
       }
         
     }
@@ -117,26 +117,26 @@ public class EventHandler {
   }
 
  public void teleportTostartingWoods() {
-    gp.giocatore.posizioneX = gp.ingame_size * 25;
-    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    gp.giocatore.worldX = gp.ingame_size * 25;
+    gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = startingWoodsMap;
   }
 
   public void teleportToDarkWoods() {
-    gp.giocatore.posizioneX = gp.ingame_size * 25;
-    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    gp.giocatore.worldX = gp.ingame_size * 25;
+    gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = darkWoodsMap;
   }
 
   public void teleportToJungle() {
-    gp.giocatore.posizioneX = gp.ingame_size * 25;
-    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    gp.giocatore.worldX = gp.ingame_size * 25;
+    gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = jungleMap;
   }
 
   public void teleportToBeach() {
-    gp.giocatore.posizioneX = gp.ingame_size * 25;
-    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    gp.giocatore.worldX = gp.ingame_size * 25;
+    gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = beachMap;
   }
 

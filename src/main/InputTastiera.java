@@ -57,8 +57,8 @@ public class InputTastiera implements KeyListener {
             gp.gameState =gp.titleState;
             gp.stopMusic(2);
             gp.playMusic(0);
-            gp.giocatore.posizioneX= gp.ingame_size*25 ;
-            gp.giocatore.posizioneY = gp.ingame_size*25;
+            gp.giocatore.worldX= gp.ingame_size*25 ;
+            gp.giocatore.worldY = gp.ingame_size*25;
             gp.giocatore.vita = gp.giocatore.vitaMax;
            }
         } 

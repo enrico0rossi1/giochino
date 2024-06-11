@@ -73,8 +73,8 @@ public class Mappa {
     public void draw(Graphics2D g2, Graphics2D g3, tileManager tm) {
         int numTile, numTile2;
         int ingameSize = gp.ingame_size;
-        int playerX = gp.giocatore.posizioneX;
-        int playerY = gp.giocatore.posizioneY;
+        int playerX = gp.giocatore.worldX;
+        int playerY = gp.giocatore.worldY;
         int screenXOffset = gp.giocatore.ScreenX;
         int screenYOffset = gp.giocatore.ScreenY;
         

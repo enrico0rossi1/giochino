@@ -17,9 +17,8 @@ import java.awt.Rectangle;
 public class Entità{
 
     public Pannello gp;
-    public int posizioneX,posizioneY;
+   
     public int velocità;
-
     public String direzione="down";
     public String anmImage_Moveup,anmImage_Moveright,anmImage_Moveleft,anmImage_Movedown;
     public String anmImage_up,anmImage_down,anmImage_right,anmImage_left;
@@ -117,13 +116,13 @@ public class Entità{
 
     public void draw(Graphics2D graphics2){
         
-        int screenX = worldX-gp.giocatore.posizioneX + gp.giocatore.ScreenX;
-        int screenY = worldY-gp.giocatore.posizioneY + gp.giocatore.ScreenY; 
+        int screenX = worldX-gp.giocatore.worldX + gp.giocatore.ScreenX;
+        int screenY = worldY-gp.giocatore.worldY + gp.giocatore.ScreenY; 
        
-        if(worldX + gp.ingame_size>gp.giocatore.posizioneX-gp.giocatore.ScreenX &&
-        worldX - gp.ingame_size<gp.giocatore.posizioneX+gp.giocatore.ScreenX &&
-        worldY + gp.ingame_size>gp.giocatore.posizioneY-gp.giocatore.ScreenY &&
-        worldY - gp.ingame_size<gp.giocatore.posizioneY+gp.giocatore.ScreenY){ 
+        if(worldX + gp.ingame_size>gp.giocatore.worldX-gp.giocatore.ScreenX &&
+        worldX - gp.ingame_size<gp.giocatore.worldX+gp.giocatore.ScreenX &&
+        worldY + gp.ingame_size>gp.giocatore.worldY-gp.giocatore.ScreenY &&
+        worldY - gp.ingame_size<gp.giocatore.worldY+gp.giocatore.ScreenY){ 
         graphics2.drawImage(image,screenX,screenY,null);
         }
       

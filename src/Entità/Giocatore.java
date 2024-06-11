@@ -44,8 +44,8 @@ public class Giocatore extends Entità {
     }
 
     public void setValoriPredefiniti(){
-        posizioneX=gp.ingame_size*25;  
-        posizioneY=gp.ingame_size*25; //posizione iniziale su mappa 
+        worldX=gp.ingame_size*25;  
+        worldY=gp.ingame_size*25; //posizione iniziale su mappa 
         velocità=3;
         direzione="down";
 

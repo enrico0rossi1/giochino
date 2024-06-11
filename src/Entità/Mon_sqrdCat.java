@@ -10,14 +10,14 @@ public class Mon_sqrdCat extends Entità {
     public Mon_sqrdCat(Pannello gp){
         super(gp);
         name = "Squared_cat";
-        velocità=1;
+        velocità=2;
         vitaMax=4;
         vita=vitaMax;
 
-        collArea.x=3;
-        collArea.y=6;
-        collArea.width=16;
-        collArea.height=16;
+        collArea.x=0;
+        collArea.y=0;
+        collArea.width=48;
+        collArea.height=48;
         solidAreaDefaultX=collArea.x;
         solidAreaDefaultY=collArea.y;
 
@@ -59,7 +59,7 @@ public class Mon_sqrdCat extends Entità {
 
     public void movement(){
         
-        solid=false;
+        
         gp.CollisionManager.checkTile(this);
         System.out.println(solid);
         if(solid==false){    

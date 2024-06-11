@@ -143,7 +143,7 @@ public class Pannello extends JPanel implements Runnable {
     
             // Optional: Print FPS every second for debugging
             if (System.currentTimeMillis() - timer >= 1000) {
-                System.out.println("FPS: " + frames + "  " + giocatore.posizioneX/ingame_size + " " + giocatore.posizioneY/ingame_size);
+                System.out.println("FPS: " + frames + "  " + giocatore.worldX/ingame_size + " " + giocatore.worldY/ingame_size);
                 frames = 0;
                 timer += 1000;
             }

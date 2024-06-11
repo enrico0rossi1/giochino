@@ -26,10 +26,10 @@ public class CollisionManager {
 
 
     public void checkMap(Entità e, Mappa map) {
-        int entitàLeftBound = e.posizioneX + e.collArea.x;
-        int entitàRightBound = e.posizioneX + e.collArea.x + e.collArea.width;
-        int entitàTopBound = e.posizioneY + e.collArea.y;
-        int entitàBottomBound = e.posizioneY + e.collArea.y + e.collArea.height;
+        int entitàLeftBound = e.worldX + e.collArea.x;
+        int entitàRightBound = e.worldX + e.collArea.x + e.collArea.width;
+        int entitàTopBound = e.worldY + e.collArea.y;
+        int entitàBottomBound = e.worldY + e.collArea.y + e.collArea.height;
     
         int entitàLeftCol = entitàLeftBound / gp.ingame_size;
         int entitàRightCol = entitàRightBound / gp.ingame_size;
@@ -109,8 +109,8 @@ public class CollisionManager {
                 int originalSolidAreaY = gp.obj[i].collArea.y;
 
                 // Update positions based on current object
-                e.collArea.x = e.posizioneX + e.collArea.x;
-                e.collArea.y = e.posizioneY + e.collArea.y;
+                e.collArea.x = e.worldX + e.collArea.x;
+                e.collArea.y = e.worldY + e.collArea.y;
                 gp.obj[i].collArea.x = gp.obj[i].worldX + gp.obj[i].collArea.x;
                 gp.obj[i].collArea.y = gp.obj[i].worldY + gp.obj[i].collArea.y;
 

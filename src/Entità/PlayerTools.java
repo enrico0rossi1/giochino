@@ -180,10 +180,10 @@ public class PlayerTools {
 
             if (gp.giocatore.solid == false){
                 switch(gp.giocatore.direzione){
-                    case "up": gp.giocatore.posizioneY -= gp.giocatore.velocità*gp.screenManager.scaleY; break;
-                    case "down": gp.giocatore.posizioneY += gp.giocatore.velocità*gp.screenManager.scaleY; break;
-                    case "right": gp.giocatore.posizioneX += gp.giocatore.velocità*gp.screenManager.scaleX; break;
-                    case "left": gp.giocatore.posizioneX-= gp.giocatore.velocità*gp.screenManager.scaleX; break;
+                    case "up": gp.giocatore.worldY -= gp.giocatore.velocità*gp.screenManager.scaleY; break;
+                    case "down": gp.giocatore.worldY += gp.giocatore.velocità*gp.screenManager.scaleY; break;
+                    case "right": gp.giocatore.worldX += gp.giocatore.velocità*gp.screenManager.scaleX; break;
+                    case "left": gp.giocatore.worldX-= gp.giocatore.velocità*gp.screenManager.scaleX; break;
                 }
                 
 
