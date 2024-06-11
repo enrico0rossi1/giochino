@@ -47,6 +47,7 @@ public class Pannello extends JPanel implements Runnable {
     public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco");
     public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco");
     public Mappa dungeon2 = new Mappa(this, "Mappe/dungeon2", "Mappe/dungeon2Deco");
+    public Mappa dungeon3 = new Mappa(this,"Mappe/Beach","Mappe/BeachDeco");
     public MapMemory mapMemory = new MapMemory();
     public tileManager tileManager = new tileManager(this);
     public ScreenManager screenManager = new ScreenManager(this);
@@ -141,7 +142,7 @@ public class Pannello extends JPanel implements Runnable {
     
             // Optional: Print FPS every second for debugging
             if (System.currentTimeMillis() - timer >= 1000) {
-                System.out.println("FPS: " + frames);
+                System.out.println("FPS: " + frames + "  " + giocatore.posizioneX/ingame_size + " " + giocatore.posizioneY/ingame_size);
                 frames = 0;
                 timer += 1000;
             }
@@ -183,6 +184,7 @@ public class Pannello extends JPanel implements Runnable {
         mapMemory.loadToMapMemory(start);
         mapMemory.loadToMapMemory(dungeon1);
         mapMemory.loadToMapMemory(dungeon2);
+        mapMemory.loadToMapMemory(dungeon3);
         Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMap];
         currentMap.draw(graphics3, graphics2, tileManager);
 

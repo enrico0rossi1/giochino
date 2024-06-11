@@ -54,7 +54,11 @@ public class EventHandler {
       if (hitEvent(25, 25, "any",0)) {healingPool();}
       if (hitEvent(26,6, "any",0)){teleport();}
       if (hitEvent(25,6, "any",0)){teleport();}
-      if (hitEvent(20,18, "any",1)){teleport();}
+      if (hitEvent(20,24, "any",0)){teleport();}
+      if (hitEvent(20,24, "any",1)){teleport();}
+      if (hitEvent(20,24, "any",2)){teleport();}
+      if (hitEvent(20,24, "any",3)){teleport();}
+      if (hitEvent(20,24, "any",4)){teleport();}
       
 
     }
