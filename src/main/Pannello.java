@@ -46,7 +46,7 @@ public class Pannello extends JPanel implements Runnable {
     public PlayerTools pTools = new PlayerTools(this);
     public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco");
     public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco");
-    public Mappa dungeon2 = new Mappa(this, "Mappe/dungeon2", "Mappe/dungeon2Deco");
+    public Mappa dungeon2 = new Mappa(this, "Mappe/Jungle", "Mappe/JungleDeco");
     public Mappa dungeon3 = new Mappa(this,"Mappe/Beach","Mappe/BeachDeco");
     public MapMemory mapMemory = new MapMemory();
     public tileManager tileManager = new tileManager(this);
