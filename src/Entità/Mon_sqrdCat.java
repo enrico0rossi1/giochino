@@ -1,7 +1,8 @@
 package Entità;
 
-import java.awt.image.BufferedImage;
 import java.util.Random;
+
+
 
 import main.Pannello;
 
@@ -25,9 +26,10 @@ public class Mon_sqrdCat extends Entità {
     }
     
     public void getImage(){
-        BufferedImage handle[]=new BufferedImage[6];
-        handle= loadAnimation(1, "Monsters/Sprites/Down");
-        image = handle[0];
+        MoveUpAnimation = loadAnimation(1, "Monsters/Sprites/Up");
+        MoveDownAnimation = loadAnimation(1, "Monsters/Sprites/Down");
+        MoveLeftAnimation = loadAnimation(1, "Monsters/Sprites/Left");
+        MoveRightAnimation = loadAnimation(1, "Monsters/Sprites/Right");
     }
 
     public void setAction(){
@@ -64,10 +66,22 @@ public class Mon_sqrdCat extends Entità {
         System.out.println(solid);
         if(solid==false){    
          switch (direzione) {
-            case "up": worldY+=velocità; break;
-            case "right": worldX+=velocità; break;
-            case "left": worldX+=velocità; break;
-            case "down": worldY+=velocità; break;
+            case "up": 
+                worldY-=velocità; 
+                image = MoveUpAnimation[0];
+            break;
+            case "right": 
+                worldX+=velocità;
+                image = MoveRightAnimation[0]; 
+            break;
+            case "left": 
+                worldX-=velocità; 
+                image = MoveLeftAnimation[0];
+            break;
+            case "down": 
+                worldY+=velocità; 
+                image = MoveDownAnimation[0];
+            break;
         }
     }
         

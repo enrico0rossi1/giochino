@@ -96,7 +96,9 @@ public class AssetPlacer {
 
 	public void placeEnemy () {
 		setEnemy("Squared_cat", 23, 25, 1, 1);
-		// setEnemy("Squared_cat", 24, 25, 1, 1);
+		setEnemy("Squared_cat", 24, 27, 1, 1);
+		setEnemy("Squared_cat", 26, 30, 1, 1);
+		setEnemy("Squared_cat", 29, 29, 1, 1);
 	}
 
 

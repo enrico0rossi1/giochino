@@ -59,7 +59,7 @@ public class EventHandler {
       if (hitEvent(20,27, "any",jungleMap)){teleportTostartingWoods();}
       if (hitEvent(19,25, "any",beachMap)){teleportTostartingWoods();}
       
-      if (hitEvent(4,24, "any",startingWoodsMap)){teleportToJungle();}
+      //if (hitEvent(4,24, "any",startingWoodsMap)){teleportToJungle();}
       if (hitEvent(25,6, "any",startingWoodsMap)){teleportToDarkWoods();}
       if (hitEvent(41,25, "any",startingWoodsMap)){teleportToBeach();}
       
