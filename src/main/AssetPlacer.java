@@ -1,7 +1,7 @@
 package main;
 
-import Monsters.Mon_sqrdCat;
-import Personaggi.Entità;
+import Entità.Entità;
+import Entità.Mon_sqrdCat;
 import object.*;
 
 public class AssetPlacer {
@@ -96,7 +96,7 @@ public class AssetPlacer {
 
 	public void placeEnemy () {
 		setEnemy("Squared_cat", 23, 25, 1, 1);
-		setEnemy("Squared_cat", 24, 25, 1, 1);
+		// setEnemy("Squared_cat", 24, 25, 1, 1);
 	}
 
 

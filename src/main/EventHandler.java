@@ -59,6 +59,7 @@ public class EventHandler {
       if (hitEvent(20,24, "any",2)){teleport();}
       if (hitEvent(20,24, "any",3)){teleport();}
       if (hitEvent(20,24, "any",4)){teleport();}
+      //AGGIORNARE TELEPORT
       
 
     }

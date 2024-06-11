@@ -3,7 +3,7 @@ package object;
 
 import java.awt.image.BufferedImage;
 
-import Personaggi.Entità;
+import Entità.Entità;
 import main.Pannello;
 public class ObjHeart extends Entità {
 

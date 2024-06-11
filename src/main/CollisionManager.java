@@ -1,7 +1,7 @@
 package main;
 
 
-import Personaggi.Entità;
+import Entità.Entità;
 import Mondo.Mappa;
 
 public class CollisionManager {
@@ -22,10 +22,9 @@ public class CollisionManager {
         if(gp.eventHandler.currentMap==1){
             checkMap(e, gp.dungeon1);
         }
-    
     }
-    
-    
+
+
     public void checkMap(Entità e, Mappa map) {
         int entitàLeftBound = e.posizioneX + e.collArea.x;
         int entitàRightBound = e.posizioneX + e.collArea.x + e.collArea.width;
@@ -78,6 +77,8 @@ public class CollisionManager {
             if (gp.tileManager.Tile[num].collisione) {
                 e.solid = true;
                 break;
+            }else{
+                e.solid = false;
             }
         }
     
@@ -85,6 +86,8 @@ public class CollisionManager {
             if (gp.tileManager.Tile[num].collisione) {
                 e.solid = true;
                 break;
+            }else{
+                e.solid=false;
             }
         }
     }

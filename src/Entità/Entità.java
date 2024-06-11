@@ -1,4 +1,4 @@
-package Personaggi;
+package Entità;
 
 
 
@@ -16,7 +16,7 @@ import java.awt.Rectangle;
 
 public class Entità{
 
-    Pannello gp;
+    public Pannello gp;
     public int posizioneX,posizioneY;
     public int velocità;
 
@@ -54,7 +54,7 @@ public class Entità{
 
     public Rectangle collArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
-    public boolean solid = false;
+    public boolean solid;
 
     //stato dell'entità
     public int vitaMax;
@@ -110,7 +110,10 @@ public class Entità{
 
     public void update(){
         
+
+        
     }
+
 
     public void draw(Graphics2D graphics2){
         

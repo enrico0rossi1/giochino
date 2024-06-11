@@ -1,4 +1,4 @@
-package Personaggi;
+package Entità;
 
 
 

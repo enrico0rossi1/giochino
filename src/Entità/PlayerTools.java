@@ -1,4 +1,4 @@
-package Personaggi;
+package Entità;
 
 import main.InputTastiera;
 import main.Pannello; 
@@ -126,7 +126,7 @@ public class PlayerTools {
 
     public void moveOBJChecker(){
 
-
+        //GESTIONE TASTI/DIREZIONE
         if(gp.keyh.w==true||gp.keyh.a==true||gp.keyh.s==true||gp.keyh.d==true||gp.keyh.o==true){
 
             if(gp.keyh.s==true){
@@ -145,6 +145,7 @@ public class PlayerTools {
                 gp.giocatore.direzione="left";
             }
 
+            //GESTIONE VELOCITà PLAYER
             if(
                (gp.keyh.w==true ||
                 gp.keyh.a==true ||

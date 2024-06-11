@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import Entità.Entità;
+import Entità.Giocatore;
+import Entità.PlayerTools;
 import Mondo.tileManager;
 import Mondo.MapMemory;
 import Mondo.Mappa;
-import Personaggi.Entità;
-import Personaggi.Giocatore;
-import Personaggi.PlayerTools;
 
 
 public class Pannello extends JPanel implements Runnable {
@@ -46,7 +46,7 @@ public class Pannello extends JPanel implements Runnable {
     public PlayerTools pTools = new PlayerTools(this);
     public Mappa start = new Mappa(this, "Mappe/StartingWoods", "Mappe/StartingWoodsDeco");
     public Mappa dungeon1= new Mappa(this, "Mappe/DarkWoods","Mappe/DarkWoodsDeco");
-    public Mappa dungeon2 = new Mappa(this, "Mappe/dungeon2", "Mappe/dungeon2Deco");
+    public Mappa dungeon2 = new Mappa(this, "Mappe/Jungle", "Mappe/JungleDeco");
     public Mappa dungeon3 = new Mappa(this,"Mappe/Beach","Mappe/BeachDeco");
     public MapMemory mapMemory = new MapMemory();
     public tileManager tileManager = new tileManager(this);
@@ -55,6 +55,7 @@ public class Pannello extends JPanel implements Runnable {
     public CollisionManager CollisionManager = new CollisionManager(this);
     public Entità obj[] = new Entità[20];   
     public Entità mon[] = new Entità[20]; 
+    public Entità e= new Entità(this);
     public AssetPlacer assetPlacer = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this);
     public ArrayList <Entità> entityList = new ArrayList<>();
@@ -154,12 +155,12 @@ public class Pannello extends JPanel implements Runnable {
             giocatore.update();
 
             for(int i=0; i<mon.length; i++){
-                if(mon[i]!=null){
+                if(mon[i]!=null && mon[i].mapVerifier == eventHandler.currentMap){
                     mon[i].update();
                 }
             }
-   
         }
+
         if (gameState == pauseState) {
  
         }
