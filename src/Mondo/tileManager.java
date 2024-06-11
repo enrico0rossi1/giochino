@@ -51,6 +51,10 @@ public class tileManager {
             setup(15,"DarkTile/dark1",false);
             setup(16,"DarkTile/darkMid",false);
             setup(17,"Additional/alberosciucco",true);
+            setup(21,"DirtTile/Grassy_dirt_vert1",false);
+            setup(22,"DirtTile/Grassy_dirt_vert2",false);
+            setup(23,"DirtTile/Grassy_dirt_hor1",false);
+            setup(24,"DirtTile/Grassy_dirt_hor2",false);
 
             
         } catch (Exception e) {

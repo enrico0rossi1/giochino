@@ -6,9 +6,11 @@ public class EventHandler {
   EventRectangle eventRect[][];
   int previousEventX,previousEventY;
   boolean canTouchEvent = true;
-  public int telNum=0;
   public int currentMap =0;
-  public int dungeonRoller =1;
+  private final int startingWoodsMap = 0;
+  private final int darkWoodsMap = 1;
+  private final int jungleMap = 2;
+  private final int beachMap = 3;
   
   public EventHandler (Pannello gp) {
     
@@ -52,6 +54,14 @@ public class EventHandler {
       if (hitEvent(11, 23, "any",0)) {damagePool(11,23);}
       if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
       if (hitEvent(25, 25, "any",0)) {healingPool();}
+
+      if (hitEvent(20,27, "any",darkWoodsMap)){teleportTostartingWoods();}
+      if (hitEvent(20,27, "any",jungleMap)){teleportTostartingWoods();}
+      if (hitEvent(19,25, "any",beachMap)){teleportTostartingWoods();}
+      
+      if (hitEvent(4,24, "any",startingWoodsMap)){teleportToJungle();}
+      if (hitEvent(25,6, "any",startingWoodsMap)){teleportToDarkWoods();}
+      if (hitEvent(41,25, "any",startingWoodsMap)){teleportToBeach();}
       if (hitEvent(26,6, "any",0)){teleport();}
       if (hitEvent(25,6, "any",0)){teleport();}
       if (hitEvent(20,24, "any",0)){teleport();}
@@ -113,26 +123,29 @@ public class EventHandler {
     if (gp.giocatore.vita < gp.giocatore.vitaMax)
     gp.giocatore.vita += 1 ;
   }
-  
-  public void teleport() {
 
+ public void teleportTostartingWoods() {
     gp.giocatore.posizioneX = gp.ingame_size * 25;
     gp.giocatore.posizioneY = gp.ingame_size * 25;
-    telNum++;
-
-    if(telNum%2==0){
-      currentMap=0;
-      dungeonRoller++;
-    }else{
-      currentMap=dungeonRoller;
-    }
-     
-  
+    currentMap = startingWoodsMap;
   }
 
-  public void antiTeleport(){
+  public void teleportToDarkWoods() {
     gp.giocatore.posizioneX = gp.ingame_size * 25;
     gp.giocatore.posizioneY = gp.ingame_size * 25;
-    telNum--;
+    currentMap = darkWoodsMap;
   }
+
+  public void teleportToJungle() {
+    gp.giocatore.posizioneX = gp.ingame_size * 25;
+    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    currentMap = jungleMap;
+  }
+
+  public void teleportToBeach() {
+    gp.giocatore.posizioneX = gp.ingame_size * 25;
+    gp.giocatore.posizioneY = gp.ingame_size * 25;
+    currentMap = beachMap;
+  }
+
 }
