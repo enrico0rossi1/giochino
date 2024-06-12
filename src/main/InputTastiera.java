@@ -130,29 +130,7 @@ else if (gp.gameState == gp.gameOver){
 }
 
 
-
-
-
-   
-    
-     
-        
-   
-        
-       
-
-
-        //debug
-    //    if(premuto == KeyEvent.VK_Z){
-    //        if(z==false){
-    //            z=true;
-    //        }else if (z==true){
-    //            z=false;
-    //        }
-    //    }
-
-    
-    }
+ }
 
     @Override
     public void keyReleased(KeyEvent e) {

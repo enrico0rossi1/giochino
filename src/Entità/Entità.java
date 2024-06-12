@@ -1,11 +1,9 @@
 package Entità;
 
 
-
+import java.util.Random;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-
 import javax.imageio.ImageIO;
 
 import main.Pannello;
@@ -65,12 +63,14 @@ public class Entità{
         collArea= new Rectangle(0,0,gp.ingame_size,gp.ingame_size);
     }
 
+    //ENTITY TOOLS
     public void animationRoller(){
         final int frameInterval = 200* 1000000;
         long currentTime = System.nanoTime();
         
         
         if (currentTime - gp.lastTime >= frameInterval) {
+            
             gp.giocatore.spriteNum = (gp.giocatore.spriteNum + 1) % gp.giocatore.MoveDownAnimation.length;
             gp.lastTime = currentTime;
         }
@@ -106,6 +106,60 @@ public class Entità{
 
         return animation;
     
+    }
+
+    public void movement(){
+        
+        
+        gp.CollisionManager.checkTile(this);
+        gp.CollisionManager.checkPlayer(this);
+        if(solid==false){    
+         switch (direzione) {
+            case "up": 
+                worldY-=velocità; 
+                image = MoveUpAnimation[0];
+            break;
+            case "right": 
+                worldX+=velocità;
+                image = MoveRightAnimation[0]; 
+            break;
+            case "left": 
+                worldX-=velocità; 
+                image = MoveLeftAnimation[0];
+            break;
+            case "down": 
+                worldY+=velocità; 
+                image = MoveDownAnimation[0];
+            break;
+            }
+        }
+    }
+
+    public void setAction(){
+        
+        actionLockCounter++;
+
+        if(actionLockCounter==120){
+            Random random = new Random();
+            int i = random.nextInt(100)+1;
+
+            if(i>=0 && i<25){
+                direzione="up";
+            }
+            if(i>=25 && i<50){
+                direzione="right";
+            }
+            if(i>=50 && i<75){
+                direzione="left";
+            }
+            if(i>=75 && i<100){
+                direzione="down";
+            }
+
+            actionLockCounter=0;
+        }
+
+
     }
 
     public void update(){

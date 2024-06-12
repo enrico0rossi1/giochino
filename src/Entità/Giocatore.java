@@ -29,12 +29,12 @@ public class Giocatore extends Entità {
         this.screenManager=screenManager;
        
         collArea = new Rectangle();
-        collArea.x=12;
-        collArea.y=18;
+        collArea.x=6;
+        collArea.y=10;
         solidAreaDefaultX = collArea.x;
         solidAreaDefaultY = collArea.y;
         collArea.width=gp.ingame_size-(collArea.x*2);
-        collArea.height=(gp.ingame_size-collArea.y)-9; //area di collisione del giocatore
+        collArea.height=gp.ingame_size-(collArea.y); //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
