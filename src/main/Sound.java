@@ -17,6 +17,8 @@ public class Sound {
     soundURL[0]  = getClass().getResource("/Audio/Music/DriftveilCityBeepBox.wav");
     soundURL[3]  = getClass().getResource("/Audio/Music/GreatFairyFountainBeepBox.wav");
     soundURL[1] = getClass().getResource("/Audio/Music/DarkWoods.wav");
+    soundURL[2] = getClass().getResource("/Audio/Music/DarkWoods.wav");
+   
   }
 
   public void setFile(int i){

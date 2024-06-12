@@ -1,13 +1,17 @@
 package main;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.IOException;
+import java.io.InputStream;
 
 import object.ObjHeart;
 import object.ObjKey;
+import object.ObjShoes;
 
 
 public class UI {
@@ -15,10 +19,13 @@ public class UI {
     Pannello gp;
     Font arial_30;
     Font winnerFont;
+    Font zeldaFont;
+    Font zeldaFont_60;
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjHeart heart;
     ObjKey key;
+    ObjShoes shoes;
     
     public boolean messageOn = false;
     public boolean message2On = false;
@@ -27,7 +34,8 @@ public class UI {
     int messageCounter = 0;
     int message2Counter = 0;
     public boolean endGame;
-    public String currentDialogue = "la mamma di Enrico gioca a fare la gym bro alla McFit";
+    public String currentDialogue = "la mamma di Enrico gioca a fare la gym bro alla McFit e le \npiacciono i fagioli";
+    public int commandNum;
    
 
     public UI (Pannello gp) {
@@ -35,13 +43,24 @@ public class UI {
         this.gp = gp;
         this.key = new ObjKey(gp);
         this.heart = new ObjHeart(gp);
+        this.shoes = new ObjShoes(gp);
         
         
         //elenco dei font utilizzati nell'interfaccia
        arial_30 = new Font ("Arial", Font.BOLD,30);
        winnerFont = new Font("Arial", Font.BOLD, 36);
-
+       
+       InputStream is = getClass().getResourceAsStream("font/ZeldaFont.ttf");
+       
+       try {
+       zeldaFont = Font.createFont(Font.TRUETYPE_FONT, is);
+    } catch (FontFormatException e) {
+        e.printStackTrace();
+    } catch (IOException e)         {
+            e.printStackTrace();
     }
+
+}
 
 
     public void showMessage (String text){
@@ -190,7 +209,11 @@ public class UI {
         graphics2.setFont(graphics2.getFont().deriveFont(Font.PLAIN));
         x += gp.ingame_size;
         y += gp.ingame_size;
-        graphics2.drawString(currentDialogue,x,y);
+
+        for (String line : currentDialogue.split("\n")) {
+        graphics2.drawString(line,x,y);
+        y += 40;
+       }
 
     }
 
@@ -201,7 +224,9 @@ public class UI {
             graphics2.setFont(arial_30);
             graphics2.drawString("Resting a bit",gp.screen_width/2+50,gp.screen_height/2+10);
             graphics2.drawString("press M to resume",gp.screen_width/2+40,gp.screen_height/2+30); 
-        }
+            drawCharacterScreen(); 
+    }
+       
     
     }  
         
@@ -242,5 +267,38 @@ public class UI {
         graphics2.drawRoundRect(x+3,y+3,width-5,height-5,25,25);
     
     } 
+public void drawCharacterScreen () {
+    final int x = gp.ingame_size;
+    final int y = gp.ingame_size ;
+    final int width = gp.ingame_size*5;
+    final int height = gp.ingame_size*10 ;
+
+    drawSubWindow(x, y, height, width);
+
+    graphics2.setFont(zeldaFont);
+    graphics2.setColor(Color.BLUE);
+
+    int textX = x +20;
+    int textY = y + gp.ingame_size;
+    final int lineHeight = 32;
+
+
+    graphics2.drawString("STATUS",textX,textY);
+    textY +=lineHeight;
+    graphics2.setColor(Color.WHITE);
+    graphics2.drawString("vita  "+ gp.giocatore.vita+"/"+gp.giocatore.vitaMax,textX,textY);
+    textY += lineHeight;
+    graphics2.drawString("armato",textX,textY);
+    textY += lineHeight;
+    if (gp.giocatore.speedUp == false) {graphics2.drawString("no drip",textX,textY);
+    textY += lineHeight;}
+    if (gp.giocatore.speedUp == true) {graphics2.drawString("flash",textX,textY);
+    graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight,null);
+    textY += lineHeight;}
+    graphics2.drawString("povero",textX,textY);
+    textY += lineHeight;
+
+}
+
 }
 

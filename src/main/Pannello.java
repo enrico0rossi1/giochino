@@ -192,12 +192,12 @@ public class Pannello extends JPanel implements Runnable {
         //AGGIUNGIAMO LE ENTITà ALLA LISTA
         
         for(int i =0; i<obj.length; i++ ){
-            if(obj[i]!= null){
+             if(mon[i]!=null){
+                entityList.add(mon[i]);
+            } if(obj[i]!= null){
                 entityList.add(obj[i]);
             }
-            if(mon[i]!=null){
-                entityList.add(mon[i]);
-            }
+          
         }
         entityList.add(giocatore);
  
