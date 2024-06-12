@@ -7,10 +7,10 @@ public class EventHandler {
   int previousEventX,previousEventY;
   boolean canTouchEvent = true;
   public int currentMap =0;
-  private final int startingWoodsMap = 0;
-  private final int darkWoodsMap = 1;
-  private final int jungleMap = 2;
-  private final int beachMap = 3;
+  final int startingWoodsMap = 0;
+  final int darkWoodsMap = 1;
+ final int jungleMap = 2;
+  final int beachMap = 3;
   
   public EventHandler (Pannello gp) {
     
@@ -62,10 +62,11 @@ public class EventHandler {
       if (hitEvent(39,25, "any",startingWoodsMap)){teleportToJungle();}
       if (hitEvent(25,5, "any",startingWoodsMap)){teleportToDarkWoods();}
       if (hitEvent(26,5, "any",startingWoodsMap)){teleportToDarkWoods();}
-      //if (hitEvent(41,25, "any",startingWoodsMap)){teleportToBeach();}
+      if (hitEvent(9,25, "any",startingWoodsMap)){teleportToBeach();}
       
-      if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
-
+      // eventi di prova
+      //if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
+      //if (hitEvent(30,23, "any",startingWoodsMap)){stopMusicTest();}
     }
   }
   
@@ -129,8 +130,9 @@ public class EventHandler {
   public void teleportToDarkWoods() {
     gp.giocatore.worldX = gp.ingame_size * 25;
     gp.giocatore.worldY = gp.ingame_size * 25;
+    gp.stopMusic(currentMap);
     currentMap = darkWoodsMap;
-    gp.playMusic(darkWoodsMap);
+  //gp.playMusic(darkWoodsMap);
     }
 
 
@@ -138,19 +140,26 @@ public class EventHandler {
     gp.giocatore.worldX = gp.ingame_size * 25;
     gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = jungleMap;
-    gp.playMusic(jungleMap);
+   // gp.playMusic(jungleMap);
   }
 
   public void teleportToBeach() {
     gp.giocatore.worldX = gp.ingame_size * 25;
     gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = beachMap;
+    //gp.playMusic(beachMap);
   }
   public void dialogueTest (int col,int row) {
 
     gp.gameState = gp.dialogueState;
+    gp.stopMusic(currentMap);
     canTouchEvent = false;
 
+  }
+
+  public void stopMusicTest () {
+    gp.stopMusic(currentMap);
+    gp.playMusic(jungleMap);
   }
 
 }

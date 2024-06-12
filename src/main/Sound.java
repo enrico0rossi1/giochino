@@ -9,16 +9,16 @@ import java.net.URL;
 public class Sound {
   
   Clip clip;
-  URL soundURL[] = new URL[20];
+  URL soundURL[] = new URL[6];
   
-  public Sound () {
-    soundURL[10]  = getClass().getResource("/Audio/Music/GreatFairyFountainBeepBox.wav");
-    soundURL[11]  = getClass().getResource("/Audio/SFX/sampleSFX.wav");
+  public Sound () {  
     soundURL[0]  = getClass().getResource("/Audio/Music/DriftveilCityBeepBox.wav");
-    soundURL[3]  = getClass().getResource("/Audio/Music/GreatFairyFountainBeepBox.wav");
     soundURL[1] = getClass().getResource("/Audio/Music/DarkWoods.wav");
-    soundURL[2] = getClass().getResource("/Audio/Music/DarkWoods.wav");
-   
+    soundURL[2] = getClass().getResource("/Audio/Music/Jungle.wav");
+    soundURL[3]  = getClass().getResource("/Audio/Music/Beach.wav");
+    soundURL[4]  = getClass().getResource("/Audio/Music/GreatFairyFountainBeepBox.wav");
+    soundURL[5]  = getClass().getResource("/Audio/SFX/sampleSFX.wav");
+
   }
 
   public void setFile(int i){

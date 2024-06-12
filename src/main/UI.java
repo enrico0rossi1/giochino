@@ -19,8 +19,7 @@ public class UI {
     Pannello gp;
     Font arial_30;
     Font winnerFont;
-    Font zeldaFont;
-    Font zeldaFont_60;
+   // Font zeldaFont;
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjHeart heart;
@@ -35,7 +34,7 @@ public class UI {
     int message2Counter = 0;
     public boolean endGame;
     public String currentDialogue = "la mamma di Enrico gioca a fare la gym bro alla McFit e le \npiacciono i fagioli";
-    public int commandNum;
+    
    
 
     public UI (Pannello gp) {
@@ -50,15 +49,15 @@ public class UI {
        arial_30 = new Font ("Arial", Font.BOLD,30);
        winnerFont = new Font("Arial", Font.BOLD, 36);
        
-       InputStream is = getClass().getResourceAsStream("font/ZeldaFont.ttf");
-       
-       try {
-       zeldaFont = Font.createFont(Font.TRUETYPE_FONT, is);
-    } catch (FontFormatException e) {
-        e.printStackTrace();
-    } catch (IOException e)         {
-            e.printStackTrace();
-    }
+  //     InputStream is = getClass().getResourceAsStream("font/ZeldaFont.ttf");
+  //     
+  //     try {
+  //     zeldaFont = Font.createFont(Font.TRUETYPE_FONT, is);
+  //  } catch (FontFormatException e) {
+  //      e.printStackTrace();
+  //  } catch (IOException e)         {
+  //          e.printStackTrace();
+  //  }
 
 }
 
@@ -275,7 +274,7 @@ public void drawCharacterScreen () {
 
     drawSubWindow(x, y, height, width);
 
-    graphics2.setFont(zeldaFont);
+    graphics2.setFont(winnerFont);
     graphics2.setColor(Color.BLUE);
 
     int textX = x +20;

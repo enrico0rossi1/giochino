@@ -96,7 +96,7 @@ public class Pannello extends JPanel implements Runnable {
         assetPlacer.placeObject();
         assetPlacer.placeEnemy();
       
-        playMusic(10);
+        playMusic(4);
     
         gameScreen = new BufferedImage(screen_width,screen_height,BufferedImage.TYPE_INT_ARGB_PRE);
         graphics2 = (Graphics2D)gameScreen.getGraphics();
