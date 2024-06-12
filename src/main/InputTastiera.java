@@ -22,60 +22,29 @@ public class InputTastiera implements KeyListener {
 
         int premuto = e.getKeyCode();
 
-        if(premuto == KeyEvent.VK_ESCAPE)  {
-            if (gp.fullScreenOn == true) {
-            
-                gp.fullScreenOn = false;
-            }
-            
-            if(gp.fullScreenOn == false)  {
 
-                gp.fullScreenOn = true;
-            }
-        }
-    
-        if (premuto == KeyEvent.VK_N){
-            if (gp.gameState == gp.pauseState){
-                 gp.gameState = gp.optionsState;
-            }
-            else if (gp.gameState == gp.optionsState){
-                        gp.gameState = gp.pauseState;
-            }
+if (gp.gameState == gp.titleState) {
+    if(premuto == KeyEvent.VK_W){
+          gp.stopMusic(10);
+          gp.playMusic(gp.eventHandler.currentMap);
+          gp.gameState = gp.playState;
+     }
 
-        }
-        
+}
+
+
+if (gp.gameState == gp.playState) {
+
         if(premuto == KeyEvent.VK_M){
-           if (gp.gameState == gp.playState){
             gp.gameState = gp.pauseState;
             gp.stopMusic(2);
-           }
-          else if (gp.gameState == gp.pauseState){
-            gp.gameState = gp.playState;
-            gp.playMusic(2);
-           } 
-           if (gp.gameState==gp.gameOver){
-            gp.gameState =gp.titleState;
-            gp.stopMusic(2);
-            gp.playMusic(0);
-            gp.giocatore.worldX= gp.ingame_size*25 ;
-            gp.giocatore.worldY = gp.ingame_size*25;
-            gp.giocatore.vita = gp.giocatore.vitaMax;
-           }
-        } 
-        
-        if(premuto == KeyEvent.VK_W){
-            if (gp.gameState == gp.playState) {
+      }
+       
+      if(premuto == KeyEvent.VK_W){
+          
             w=true;
-            }
-            if (gp.gameState == gp.titleState){
-                gp.stopMusic(0);
-                gp.playMusic(2);
-                gp.gameState = gp.playState;
-               
-
-            }
-        }      
-
+            
+        }   
         if(premuto == KeyEvent.VK_A){
             a=true;
         }
@@ -97,16 +66,90 @@ public class InputTastiera implements KeyListener {
         if(premuto == KeyEvent.VK_O){
             o=true;
 
+        }   
+}
+
+else if (gp.gameState == gp.pauseState){
+
+    if(premuto == KeyEvent.VK_M){
+            gp.gameState = gp.playState;
+            gp.playMusic(gp.eventHandler.currentMap);
+    }
+
+   if (premuto == KeyEvent.VK_N){
+            
+                 gp.gameState = gp.optionsState;
+            }
+            if(premuto == KeyEvent.VK_M){
+
         }
 
-        //debug
-        if(premuto == KeyEvent.VK_Z){
-            if(z==false){
-                z=true;
-            }else if (z==true){
-                z=false;
+
+
+else if (gp.gameState == gp.dialogueState){
+
+    if(premuto == KeyEvent.VK_M){
+          
+        gp.gameState = gp.playState;
+        
+    }   
+  }
+
+if (gp.gameState == gp.optionsState){
+    if (premuto == KeyEvent.VK_N){
+       
+                        gp.gameState = gp.pauseState;
+            
+   }
+     if(premuto == KeyEvent.VK_ESCAPE)  {
+            if (gp.fullScreenOn == true) {
+            
+                gp.fullScreenOn = false;
+            }
+            
+            if(gp.fullScreenOn == false)  {
+
+                gp.fullScreenOn = true;
             }
         }
+}
+
+
+else if (gp.gameState == gp.gameOver){
+
+    if(premuto == KeyEvent.VK_M){
+       gp.gameState =gp.titleState;
+            gp.stopMusic(2);
+            gp.playMusic(0);
+            gp.giocatore.worldX= gp.ingame_size*25 ;
+            gp.giocatore.worldY = gp.ingame_size*25;
+            gp.giocatore.vita = gp.giocatore.vitaMax;
+    }
+
+ }
+}
+
+
+
+
+
+   
+    
+     
+        
+   
+        
+       
+
+
+        //debug
+    //    if(premuto == KeyEvent.VK_Z){
+    //        if(z==false){
+    //            z=true;
+    //        }else if (z==true){
+    //            z=false;
+    //        }
+    //    }
 
     
     }
@@ -138,6 +181,7 @@ public class InputTastiera implements KeyListener {
         if(rilasciato == KeyEvent.VK_O){
             o=false;
         } 
+        
     }
     
 }

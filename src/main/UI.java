@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Font;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -26,6 +27,7 @@ public class UI {
     int messageCounter = 0;
     int message2Counter = 0;
     public boolean endGame;
+    public String currentDialogue = "la mamma di Enrico gioca a fare la gym bro alla McFit";
    
 
     public UI (Pannello gp) {
@@ -63,10 +65,12 @@ public class UI {
         this.graphics2=graphics2;
 
         drawTitleScreen();
-        drawPlayState();
+        drawPlayState();  
+        drawDialogueState();
         drawPauseScreen();
         drawGameOverScreen();
         drawEndScreen();
+      
     }
     
     
@@ -163,6 +167,32 @@ public class UI {
         graphics2.drawString(message, messageX, messageY);
     }
     
+    public void drawDialogueState () {
+       
+        if (gp.gameState == gp.dialogueState) {
+           
+            drawDialogueScreen();
+
+        }
+
+
+    }
+
+    public void drawDialogueScreen() {
+     
+        //window
+        int x = gp.ingame_size * 2;
+        int y = gp.ingame_size/2 ;
+        int height = gp.screen_height/4 ;
+        int width = gp.screen_width - (gp.ingame_size * 4)  ;
+        drawSubWindow(x,y,height,width);
+
+        graphics2.setFont(graphics2.getFont().deriveFont(Font.PLAIN));
+        x += gp.ingame_size;
+        y += gp.ingame_size;
+        graphics2.drawString(currentDialogue,x,y);
+
+    }
 
     public void drawPauseScreen () {
         
@@ -200,6 +230,17 @@ public class UI {
         int centeredX = gp.screen_width/2 - length/2;
         return centeredX;
     }
-      
+    public void drawSubWindow (int x,int y,int height, int width) {
+
+        Color c = new Color(0,0,0,180);
+        graphics2.setColor(c);
+        graphics2.fillRoundRect(x,y,width,height,35,35);
+        
+        c = new Color(255,255,255);
+        graphics2.setColor(c);
+        graphics2.setStroke(new BasicStroke(3));
+        graphics2.drawRoundRect(x+3,y+3,width-5,height-5,25,25);
+    
+    } 
 }
 

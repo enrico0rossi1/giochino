@@ -63,6 +63,7 @@ public class EventHandler {
       if (hitEvent(25,6, "any",startingWoodsMap)){teleportToDarkWoods();}
       if (hitEvent(41,25, "any",startingWoodsMap)){teleportToBeach();}
       
+      if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
 
     }
   }
@@ -138,6 +139,11 @@ public class EventHandler {
     gp.giocatore.worldX = gp.ingame_size * 25;
     gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = beachMap;
+  }
+  public void dialogueTest (int col,int row) {
+
+    gp.gameState = gp.dialogueState;
+    eventRect[col][row].happened = true ;
   }
 
 }
