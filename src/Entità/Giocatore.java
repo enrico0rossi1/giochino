@@ -32,8 +32,8 @@ public class Giocatore extends Entità {
         this.screenManager=screenManager;
        
         collArea = new Rectangle();
-        collArea.x=3;
-        collArea.y=10;
+        collArea.x=10;
+        collArea.y=15;
         solidAreaDefaultX = collArea.x;
         solidAreaDefaultY = collArea.y;
         collArea.width=gp.ingame_size-(collArea.x*2);

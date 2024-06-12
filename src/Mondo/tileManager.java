@@ -56,6 +56,7 @@ public class tileManager {
             setup(23,"DirtTile/Grassy_dirt_hor1",false);
             setup(24,"DirtTile/Grassy_dirt_hor2",false);
             setup(25, "Additional/Albero2", true);
+            setup(26,"GrassTile/grass3",false);
 
             
         } catch (Exception e) {

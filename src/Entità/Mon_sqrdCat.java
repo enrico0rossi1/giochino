@@ -12,10 +12,10 @@ public class Mon_sqrdCat extends Entità {
         vitaMax=4;
         vita=vitaMax;
 
-        collArea.x=gp.giocatore.collArea.x;
-        collArea.y=gp.giocatore.collArea.y;
-        collArea.width=gp.giocatore.collArea.width;;
-        collArea.height=gp.giocatore.collArea.height;
+        collArea.x=0;
+        collArea.y=0;
+        collArea.width=gp.ingame_size;
+        collArea.height=gp.ingame_size;
         solidAreaDefaultX=collArea.x;
         solidAreaDefaultY=collArea.y;
 
