@@ -7,6 +7,7 @@ public class Mon_sqrdCat extends Entità {
     public Mon_sqrdCat(Pannello gp){
         super(gp);
         name = "Squared_cat";
+        type=2;
         velocità=2;
         vitaMax=4;
         vita=vitaMax;

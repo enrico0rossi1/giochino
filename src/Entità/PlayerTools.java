@@ -1,8 +1,7 @@
 package Entità;
 
 import main.InputTastiera;
-import main.Pannello; 
-
+import main.Pannello;
 
 
 public class PlayerTools {
@@ -183,6 +182,7 @@ public class PlayerTools {
             //CHECK MONSTERS
             int monVerifier = gp.CollisionManager.checkEntity(gp.giocatore, gp.mon);
             interactMonster(monVerifier);
+            contactMonster(monVerifier);
             
 
             gp.eventHandler.checkEvent();
@@ -195,13 +195,30 @@ public class PlayerTools {
                     case "right": gp.giocatore.worldX += gp.giocatore.velocità*gp.screenManager.scaleX; break;
                     case "left": gp.giocatore.worldX-= gp.giocatore.velocità*gp.screenManager.scaleX; break;
                 }
-                
-
             }
         }
 
-        
+        if(gp.giocatore.invincible==true){
+            gp.giocatore.invincibleCounter++;
+            if(gp.giocatore.invincibleCounter>20){
+                gp.giocatore.invincible=false;
+                gp.giocatore.invincibleCounter=0;
+            }
+
+        }
     }
+
+    public void contactMonster(int monVerifier){
+        
+        if(monVerifier!=999 && gp.giocatore.invincible ==false){
+            
+            gp.giocatore.invincible=true;
+            gp.giocatore.vita--;
+            gp.giocatore.invincibleCounter--;
+
+        }
+    }
+            
     
 
 }

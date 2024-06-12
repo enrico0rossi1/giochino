@@ -188,7 +188,7 @@ public class CollisionManager {
                 }
 
                 // Check for collision
-                if (e.collArea.intersects(target[i].collArea)) {
+                if (e.collArea.intersects(target[i].collArea)&&target[i]!=e) {
                     System.out.println(e.direzione + " collision!");
                     
                     e.solid=true;
@@ -209,7 +209,11 @@ public class CollisionManager {
 
     }
 
-    public void checkPlayer(Entità e){
+    public boolean checkPlayer(Entità e){
+
+
+        boolean contactPlayer=false;
+
 
        // Backup original positions
         int originalCollAreaX = e.collArea.x;
@@ -240,6 +244,7 @@ public class CollisionManager {
         if (e.collArea.intersects(gp.giocatore.collArea)) {
             System.out.println(e.direzione + " collision!");
             
+            contactPlayer=true;
             e.solid=true;
             
         }
@@ -248,8 +253,10 @@ public class CollisionManager {
         e.collArea.y = originalCollAreaY;
         gp.giocatore.collArea.x = originalSolidAreaX;
         gp.giocatore.collArea.y = originalSolidAreaY;
+
+        return contactPlayer;
     
-     }
+    }
 
 
 

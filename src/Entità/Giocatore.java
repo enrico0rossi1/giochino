@@ -6,6 +6,9 @@ import main.InputTastiera;
 import main.Pannello;
 import main.ScreenManager;
 
+import java.awt.Font;
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
@@ -29,12 +32,12 @@ public class Giocatore extends Entità {
         this.screenManager=screenManager;
        
         collArea = new Rectangle();
-        collArea.x=6;
+        collArea.x=3;
         collArea.y=10;
         solidAreaDefaultX = collArea.x;
         solidAreaDefaultY = collArea.y;
         collArea.width=gp.ingame_size-(collArea.x*2);
-        collArea.height=gp.ingame_size-(collArea.y); //area di collisione del giocatore
+        collArea.height=gp.ingame_size-(collArea.y)-9; //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
@@ -90,7 +93,15 @@ public class Giocatore extends Entità {
     }
     
     public void draw(Graphics2D graphics2){
+        if(gp.giocatore.invincible){
+            gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+        }
         graphics2.drawImage(image, ScreenX, ScreenY,null);
+        gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        graphics2.setFont(new Font("Arial", Font.PLAIN, 26));
+        graphics2.setColor(Color.white);
+        graphics2.drawString(""+
+        invincibleCounter, 10,400 );
     }
         
 

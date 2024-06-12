@@ -29,6 +29,9 @@ public class Entità{
     public UtilityTool uTool = new UtilityTool();
     public int mapVerifier;
     public int worldY,worldX;
+    public boolean invincible=false;
+    public int invincibleCounter=0;
+    public int type; // 0 = player, 1 = npc, 2 = monster
     
 
     public BufferedImage[]UpAnimation=new BufferedImage[6];
@@ -112,7 +115,12 @@ public class Entità{
         
         
         gp.CollisionManager.checkTile(this);
-        gp.CollisionManager.checkPlayer(this);
+        boolean cPlayer=gp.CollisionManager.checkPlayer(this);
+
+        if(this.type==2 && cPlayer && gp.giocatore.invincible==false){
+            gp.giocatore.vita--;
+            gp.giocatore.invincible=true;
+        }
         if(solid==false){    
          switch (direzione) {
             case "up": 
