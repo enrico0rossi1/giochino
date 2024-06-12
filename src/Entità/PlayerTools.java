@@ -48,7 +48,7 @@ public class PlayerTools {
     private void handleKeyPickup(int i) {
         gp.obj[i] = null;
         gp.ui.showMessage("You got a key! That's cool.");
-        gp.playSFX(1);
+        gp.playSFX(11);
         gp.giocatore.numKeys++;
     }
 
@@ -57,7 +57,7 @@ public class PlayerTools {
             gp.obj[i] = null;
             gp.ui.showMessage("You unlocked a door! Let's go!");
             gp.giocatore.numKeys--;
-            gp.playSFX(1);
+            gp.playSFX(11);
         } else {
             gp.ui.showMessage2("No keys? So lame...");
         }
@@ -66,19 +66,19 @@ public class PlayerTools {
     private void handleGoldCoinPickup(int i) {
         gp.obj[i] = null;
         gp.ui.showMessage2("Richer!");
-        gp.playSFX(1);
+        gp.playSFX(11);
     }
 
     private void handleShoesPickup(int i) {
         gp.obj[i] = null;
         gp.giocatore.speedUp = true;
         gp.ui.showMessage("Press O to run.");
-        gp.playSFX(1);
+        gp.playSFX(11);
     }
 
     private void handleBigTreasurePickup(int i) {
         gp.obj[i] = null;
-        gp.playSFX(1);
+        gp.playSFX(11);
         gp.stopMusic(0);
         gp.ui.endGame = true;
     }
