@@ -22,10 +22,10 @@ public class EventHandler {
 
     while (col < gp.worldCol && row < gp.worldRow ){
       eventRect[col][row] = new EventRectangle();
-      eventRect[col][row].x = 12;
-      eventRect[col][row].y = 12;
-      eventRect[col][row].width = 8; 
-      eventRect[col][row].height = 8;
+      eventRect[col][row].x = 0;
+      eventRect[col][row].y = 0;
+      eventRect[col][row].width = gp.ingame_size; 
+      eventRect[col][row].height = gp.ingame_size;
       eventRect[col][row].eventRectDefaultX = eventRect[col][row].x;
       eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
     
@@ -59,8 +59,9 @@ public class EventHandler {
       if (hitEvent(20,27, "any",jungleMap)){teleportTostartingWoods();}
       if (hitEvent(19,25, "any",beachMap)){teleportTostartingWoods();}
       
-      //if (hitEvent(4,24, "any",startingWoodsMap)){teleportToJungle();}
-      if (hitEvent(25,6, "any",startingWoodsMap)){teleportToDarkWoods();}
+      if (hitEvent(39,25, "any",startingWoodsMap)){teleportToJungle();}
+      if (hitEvent(25,5, "any",startingWoodsMap)){teleportToDarkWoods();}
+      if (hitEvent(26,5, "any",startingWoodsMap)){teleportToDarkWoods();}
       //if (hitEvent(41,25, "any",startingWoodsMap)){teleportToBeach();}
       
       //if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
