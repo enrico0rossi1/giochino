@@ -63,7 +63,7 @@ public class EventHandler {
       if (hitEvent(25,6, "any",startingWoodsMap)){teleportToDarkWoods();}
       if (hitEvent(41,25, "any",startingWoodsMap)){teleportToBeach();}
       
-      if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
+      //if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
 
     }
   }

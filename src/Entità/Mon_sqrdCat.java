@@ -63,7 +63,7 @@ public class Mon_sqrdCat extends Entità {
         
         
         gp.CollisionManager.checkTile(this);
-        System.out.println(solid);
+        gp.CollisionManager.checkPlayer(this);
         if(solid==false){    
          switch (direzione) {
             case "up": 

@@ -58,6 +58,7 @@ public class CollisionManager {
         }
     }
     
+    //TILE COLLISION OF BOTH LAYERS OF MAP
     private void checkCollision(Entità e, Mappa map, int col1, int col2, int row1, int row2) {
         int[] groundTiles = {
             map.ground[row1][col1],
@@ -92,11 +93,8 @@ public class CollisionManager {
         }
     }
     
-    
-    
-    
- 
 
+    //OBJECT COLLISION
     public int checkObject(Entità e, boolean player) {
         int index = 999; // Initialize to a high number as a default "not found" value
 
@@ -153,6 +151,105 @@ public class CollisionManager {
 
         return index;
     }
+
+    //MONSTERS COLLISION
+    public int checkEntity(Entità e, Entità [] target){
+
+        int index = 999; // Initialize to a high number as a default "not found" value
+
+        for (int i = 0; i < target.length; i++) {
+            if (target[i] != null && target[i].mapVerifier == gp.eventHandler.currentMap) {
+                // Backup original positions
+                int originalCollAreaX = e.collArea.x;
+                int originalCollAreaY = e.collArea.y;
+                int originalSolidAreaX = target[i].collArea.x;
+                int originalSolidAreaY = target[i].collArea.y;
+
+                // Update positions based on current object
+                e.collArea.x = e.worldX + e.collArea.x;
+                e.collArea.y = e.worldY + e.collArea.y;
+                target[i].collArea.x = target[i].worldX + target[i].collArea.x;
+                target[i].collArea.y = target[i].worldY + target[i].collArea.y;
+
+                // Adjust collision area based on direction
+                switch (e.direzione) {
+                    case "up":
+                        e.collArea.y -= e.velocità;
+                        break;
+                    case "down":
+                        e.collArea.y += e.velocità;
+                        break;
+                    case "right":
+                        e.collArea.x += e.velocità;
+                        break;
+                    case "left":
+                        e.collArea.x -= e.velocità;
+                        break;
+                }
+
+                // Check for collision
+                if (e.collArea.intersects(target[i].collArea)) {
+                    System.out.println(e.direzione + " collision!");
+                    
+                    e.solid=true;
+                    index=i;
+                    
+                }
+
+                // Reset positions to original values
+                e.collArea.x = originalCollAreaX;
+                e.collArea.y = originalCollAreaY;
+                target[i].collArea.x = originalSolidAreaX;
+                target[i].collArea.y = originalSolidAreaY;
+            }
+        }
+
+        return index;
+
+
+    }
+
+    public void checkPlayer(Entità e){
+
+       // Backup original positions
+        int originalCollAreaX = e.collArea.x;
+        int originalCollAreaY = e.collArea.y;
+        int originalSolidAreaX = gp.giocatore.collArea.x;
+        int originalSolidAreaY = gp.giocatore.collArea.y;
+        // Update positions based on current object
+        e.collArea.x = e.worldX + e.collArea.x;
+        e.collArea.y = e.worldY + e.collArea.y;
+        gp.giocatore.collArea.x = gp.giocatore.worldX + gp.giocatore.collArea.x;
+        gp.giocatore.collArea.y = gp.giocatore.worldY + gp.giocatore.collArea.y;
+        // Adjust collision area based on direction
+        switch (e.direzione) {
+            case "up":
+                e.collArea.y -= e.velocità;
+                break;
+            case "down":
+                e.collArea.y += e.velocità;
+                break;
+            case "right":
+                e.collArea.x += e.velocità;
+                break;
+            case "left":
+                e.collArea.x -= e.velocità;
+                break;
+        }
+        // Check for collision
+        if (e.collArea.intersects(gp.giocatore.collArea)) {
+            System.out.println(e.direzione + " collision!");
+            
+            e.solid=true;
+            
+        }
+        // Reset positions to original values
+        e.collArea.x = originalCollAreaX;
+        e.collArea.y = originalCollAreaY;
+        gp.giocatore.collArea.x = originalSolidAreaX;
+        gp.giocatore.collArea.y = originalSolidAreaY;
+    
+     }
 
 
 

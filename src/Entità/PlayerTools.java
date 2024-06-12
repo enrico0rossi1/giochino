@@ -13,6 +13,12 @@ public class PlayerTools {
         this.gp=gp;
     }
 
+    public void interactMonster(int monVerifier){
+        if(monVerifier!=999){
+            System.out.println("you got hit");
+        }
+    }
+
     public void pickUpObj(int i) {
         if (i == 999) {
             return;
@@ -166,13 +172,17 @@ public class PlayerTools {
                 gp.giocatore.velocità=3;
             }
 
+            //CHECK TILE
             gp.giocatore.solid = false;
             gp.CollisionManager.checkTile(gp.giocatore);
-            int objVerifier=999;
-            //oggetti in base alla mappa
             
-            objVerifier = gp.CollisionManager.checkObject(gp.giocatore,true);
+            //CHECK OBJECT
+            int objVerifier = gp.CollisionManager.checkObject(gp.giocatore,true);
             pickUpObj(objVerifier);
+
+            //CHECK MONSTERS
+            int monVerifier = gp.CollisionManager.checkEntity(gp.giocatore, gp.mon);
+            interactMonster(monVerifier);
             
 
             gp.eventHandler.checkEvent();
