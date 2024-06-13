@@ -12,6 +12,7 @@ import main.UtilityTool;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.AlphaComposite;
+import java.awt.Color;
 
 
 public class Entità{
@@ -28,6 +29,7 @@ public class Entità{
     public int type; // 0 = player, 1 = npc, 2 = monster
     public int worldY,worldX;
     public int vitaMax,vita;
+    
     
 
     //GESTIONE ANIMAZIONI
@@ -48,11 +50,14 @@ public class Entità{
     public BufferedImage[]AttackUp = new BufferedImage[6];
     public BufferedImage[]AttackLeft = new BufferedImage[6];
     public BufferedImage[]AttackRight = new BufferedImage[6];
+    public BufferedImage[]DeathAnimation = new BufferedImage[4];
 
     //ELEMENTI DI GAMEPLAY
     public Rectangle attackArea=new Rectangle(0,0,0,0);
     public Rectangle collArea=new Rectangle(0,0,48,48);
     public boolean invincible=false;
+    public boolean alive=true;
+    public boolean dead = false;
     public boolean solid;
     public int solidAreaDefaultX, solidAreaDefaultY;
 
@@ -62,6 +67,7 @@ public class Entità{
     public boolean attacking;
     public int spriteCount=0;
     public int spriteNum=0;
+    public int deathCounter=60;
  
 
     public Entità(Pannello gp) {
@@ -116,7 +122,6 @@ public class Entità{
 
     public void movement(){
         
-        
         gp.CollisionManager.checkTile(this);
         boolean cPlayer=gp.CollisionManager.checkPlayer(this);
 
@@ -124,7 +129,7 @@ public class Entità{
             gp.giocatore.vita--;
             gp.giocatore.invincible=true;
         }
-        if(solid==false){    
+        if(solid==false && vita>0){    
          switch (direzione) {
             case "up": 
                 worldY-=velocità; 
@@ -173,6 +178,11 @@ public class Entità{
 
     }
 
+    public void damageReaction(){
+        actionLockCounter=0;
+        direzione=gp.giocatore.direzione;
+    }
+
     public void invincible(int time){
         if(invincible==true){
             invincibleCounter++;
@@ -183,8 +193,21 @@ public class Entità{
 
         }
     }  
-    
- 
+
+    public void checkStatus(){
+        if (vita<=0 ){
+            image=DeathAnimation[spriteNum];
+            deathCounter--;
+            if(deathCounter==0){
+                dead=true;
+                deathCounter=60;
+            }
+        }
+       
+        
+        
+    }
+
 
     public void update(){
         
@@ -208,11 +231,22 @@ public class Entità{
         worldY + gp.ingame_size>gp.giocatore.worldY-gp.giocatore.ScreenY &&
         worldY - gp.ingame_size<gp.giocatore.worldY+gp.giocatore.ScreenY){ 
             if(invincible){
-                gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
-            }else{
-                graphics2.drawImage(image, screenX, screenY,null);
-                gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+                gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.1f));
             }
+
+            graphics2.drawImage(image, screenX, screenY,null);
+            gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            
+        }
+
+        //MONSTER HEALT BAR
+        if(type==2){
+            double oneScale = (double)gp.ingame_size/vitaMax;
+            int hbValue = (int)oneScale*vita;
+            gp.graphics2.setColor(new Color(35,35,35));
+            gp.graphics2.fillRect(screenX-1, screenY-16, gp.ingame_size+2, 12);
+            gp.graphics2.setColor(new Color(255,0,30));
+            gp.graphics2.fillRect(screenX, screenY-15,hbValue, 10);
         }
       
     }

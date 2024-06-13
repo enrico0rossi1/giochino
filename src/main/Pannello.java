@@ -157,7 +157,11 @@ public class Pannello extends JPanel implements Runnable {
             for(int i=0; i<mon.length; i++){
                 if(mon[i]!=null && mon[i].mapVerifier == eventHandler.currentMap){
                     mon[i].update();
+                    if(mon[i].dead==true){
+                        mon[i]=null;
+                    }
                 }
+                
             }
         }
 

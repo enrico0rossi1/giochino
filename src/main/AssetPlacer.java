@@ -85,6 +85,7 @@ public class AssetPlacer {
 		switch (enemyType) {
 			case "Squared_cat":	return new Mon_sqrdCat(gp);
 			case "Bat":	return new Mon_Bat(gp);
+			case "Log": return new Mon_Log(gp);
 			default:
 				return null;
 		}
@@ -97,6 +98,13 @@ public class AssetPlacer {
 		setEnemy("Bat", 24, 27, 1, 1);
 		setEnemy("Bat", 26, 22, 1, 1);
 		setEnemy("Bat", 29, 29, 1, 1);
+
+		setEnemy("Log", 23, 25, 1, 2);
+		setEnemy("Log", 24, 27, 1, 2);
+		setEnemy("Log", 26, 22, 1, 2);
+		setEnemy("Log", 29, 29, 1, 2);
+
+
 	}
 
 

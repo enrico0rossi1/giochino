@@ -12,6 +12,8 @@ public class Mon_sqrdCat extends Entità {
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
+       
+
 
         collArea.x=0;
         collArea.y=0;

@@ -22,9 +22,7 @@ public class PlayerTools {
         if(i!=999 && gp.mon[i].invincible == false){
             gp.mon[i].vita--;
             gp.mon[i].invincible=true;
-            if(gp.mon[i].vita <=0){
-                gp.mon[i]=null;
-            }
+            gp.mon[i].damageReaction();
         }
          
     }
