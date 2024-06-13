@@ -56,7 +56,7 @@ public class EventHandler {
       if (hitEvent(25, 25, "any",0)) {healingPool();}
 
       if (hitEvent(20,27, "any",darkWoodsMap)){teleportTostartingWoods();}
-      if (hitEvent(20,27, "any",jungleMap)){teleportTostartingWoods();}
+      //if (hitEvent(20,27, "any",jungleMap)){teleportTostartingWoods();}
       if (hitEvent(19,25, "any",beachMap)){teleportTostartingWoods();}
       
       if (hitEvent(39,25, "any",startingWoodsMap)){teleportToJungle();}

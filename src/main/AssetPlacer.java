@@ -1,7 +1,6 @@
 package main;
 
-import Entità.Entità;
-import Entità.Mon_sqrdCat;
+import Entità.*;
 import object.*;
 
 public class AssetPlacer {
@@ -84,18 +83,20 @@ public class AssetPlacer {
 
 	private Entità createEnemy(String enemyType) {
 		switch (enemyType) {
-			case "Squared_cat":
-				return new Mon_sqrdCat(gp);
+			case "Squared_cat":	return new Mon_sqrdCat(gp);
+			case "Bat":	return new Mon_Bat(gp);
 			default:
 				return null;
 		}
 	}
 
 	public void placeEnemy () {
-		setEnemy("Squared_cat", 23, 25, 1, 1);
-		setEnemy("Squared_cat", 24, 27, 1, 1);
-		setEnemy("Squared_cat", 26, 30, 1, 1);
-		setEnemy("Squared_cat", 29, 29, 1, 1);
+		
+
+		setEnemy("Bat", 23, 25, 1, 1);
+		setEnemy("Bat", 24, 27, 1, 1);
+		setEnemy("Bat", 26, 22, 1, 1);
+		setEnemy("Bat", 29, 29, 1, 1);
 	}
 
 

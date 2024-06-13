@@ -135,7 +135,7 @@ public class PlayerTools {
     }
 
 
-    public void printSprite() {
+    public void chooseSprite() {
         Giocatore giocatore = gp.giocatore;
         InputTastiera keyh = gp.keyh;
         String direzione = giocatore.direzione;

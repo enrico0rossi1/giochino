@@ -44,10 +44,10 @@ public class Giocatore extends Entità {
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
 
         attacking =false;
-        attackArea.x=14;
-        attackArea.y=18;
-        attackArea.width=20;
-        attackArea.height=30;
+        attackArea.x=5;
+        attackArea.y=8;
+        attackArea.width=gp.ingame_size-(attackArea.x*2);
+        attackArea.height=gp.ingame_size-(attackArea.y*2);
 
         setValoriPredefiniti();
         getPlayerImage();
@@ -92,7 +92,7 @@ public class Giocatore extends Entità {
         mapVerifier=gp.eventHandler.currentMap;
         gp.pTools.moveOBJChecker();
         animationRoller();
-        gp.pTools.printSprite();
+        gp.pTools.chooseSprite();
 
     }
     

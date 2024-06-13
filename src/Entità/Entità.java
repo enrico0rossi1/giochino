@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-
 import main.Pannello;
 import main.UtilityTool;
 
@@ -78,7 +77,7 @@ public class Entità{
         
         if (currentTime - gp.lastTime >= frameInterval) {
             
-            gp.giocatore.spriteNum = (gp.giocatore.spriteNum + 1) % gp.giocatore.MoveDownAnimation.length;
+            spriteNum = (spriteNum+1) % MoveDownAnimation.length;
             gp.lastTime = currentTime;
         }
 
@@ -129,19 +128,19 @@ public class Entità{
          switch (direzione) {
             case "up": 
                 worldY-=velocità; 
-                image = MoveUpAnimation[0];
+                image = MoveUpAnimation[spriteNum];
             break;
             case "right": 
                 worldX+=velocità;
-                image = MoveRightAnimation[0]; 
+                image = MoveRightAnimation[spriteNum]; 
             break;
             case "left": 
                 worldX-=velocità; 
-                image = MoveLeftAnimation[0];
+                image = MoveLeftAnimation[spriteNum];
             break;
             case "down": 
                 worldY+=velocità; 
-                image = MoveDownAnimation[0];
+                image = MoveDownAnimation[spriteNum];
             break;
             }
         }
@@ -151,20 +150,20 @@ public class Entità{
         
         actionLockCounter++;
 
-        if(actionLockCounter==120){
+        if(actionLockCounter==40){
             Random random = new Random();
-            int i = random.nextInt(100)+1;
+            int i = random.nextInt(80)+1;
 
-            if(i>=0 && i<25){
+            if(i>=0 && i<20){
                 direzione="up";
             }
-            if(i>=25 && i<50){
+            if(i>=20 && i<40){
                 direzione="right";
             }
-            if(i>=50 && i<75){
+            if(i>=40 && i<60){
                 direzione="left";
             }
-            if(i>=75 && i<100){
+            if(i>=60 && i<80){
                 direzione="down";
             }
 
@@ -185,6 +184,8 @@ public class Entità{
         }
     }  
     
+ 
+
     public void update(){
         
         
