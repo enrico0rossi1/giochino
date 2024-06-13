@@ -16,11 +16,11 @@ public class CollisionManager {
 
     public void checkTile(Entità e){
 
-        if (gp.eventHandler.currentMap==0){
-            checkMap(e, gp.start);
-        }
-        if(gp.eventHandler.currentMap==1){
-            checkMap(e, gp.dungeon1);
+        for(int i=0; i<gp.mapMemory.mapHandler.length;i++){
+            if (i==gp.eventHandler.currentMap && gp.mapMemory.mapHandler[i]!=null){
+                checkMap(e,gp.mapMemory.mapHandler[i]);
+            }
+
         }
     }
 

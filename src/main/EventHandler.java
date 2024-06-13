@@ -9,7 +9,7 @@ public class EventHandler {
   public int currentMap =0;
   final int startingWoodsMap = 0;
   final int darkWoodsMap = 1;
- final int jungleMap = 2;
+  final int jungleMap = 2;
   final int beachMap = 3;
   
   public EventHandler (Pannello gp) {

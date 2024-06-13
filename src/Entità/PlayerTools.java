@@ -19,11 +19,14 @@ public class PlayerTools {
     }
 
     public void checkAttack(int i){
-        if(i!=999){
-            System.out.println("hit");
-        }else{
-            System.out.println("miss");
+        if(i!=999 && gp.mon[i].invincible == false){
+            gp.mon[i].vita--;
+            gp.mon[i].invincible=true;
+            if(gp.mon[i].vita <=0){
+                gp.mon[i]=null;
+            }
         }
+         
     }
 
     public void attacking(){
@@ -34,13 +37,14 @@ public class PlayerTools {
             int currentWorldY= gp.giocatore.worldY;
             int solidAreaWidth = gp.giocatore.collArea.width;
             int solidAreaHeight = gp.giocatore.collArea.height;
+            
 
             //SPOSTIAMO LA COLLISION AREA PER RENDERE L'ATTACCO
             switch (gp.giocatore.direzione) {
                 case "up":gp.giocatore.worldY-= gp.giocatore.attackArea.height;break;
                 case "down":gp.giocatore.worldY+= gp.giocatore.attackArea.height;break;
                 case "left":gp.giocatore.worldX-= gp.giocatore.attackArea.width;break;
-                case "right":gp.giocatore.worldY+= gp.giocatore.attackArea.width;break;
+                case "right":gp.giocatore.worldX+= gp.giocatore.attackArea.width;break;
             }
 
             //ATTACK DIVENTA COLLISION
@@ -242,14 +246,7 @@ public class PlayerTools {
             }
         }
 
-        if(gp.giocatore.invincible==true){
-            gp.giocatore.invincibleCounter++;
-            if(gp.giocatore.invincibleCounter>20){
-                gp.giocatore.invincible=false;
-                gp.giocatore.invincibleCounter=0;
-            }
-
-        }
+        gp.giocatore.invincible(gp.giocatore.invincibleTime);
     }
 
     public void contactMonster(int monVerifier){

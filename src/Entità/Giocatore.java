@@ -11,12 +11,11 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.awt.Rectangle;
 import java.awt.BasicStroke;
 
 public class Giocatore extends Entità {
 
-
+    Pannello gp;
     InputTastiera keyh;
     ScreenManager screenManager;
     public int ScreenX;
@@ -29,16 +28,17 @@ public class Giocatore extends Entità {
     public Giocatore(Pannello gp, InputTastiera keyh,ScreenManager screenManager){
 
         super(gp);
+        this.gp=gp;
         this.keyh=keyh;
         this.screenManager=screenManager;
        
-        collArea = new Rectangle();
+        invincibleTime=30;
         collArea.x=10;
-        collArea.y=15;
+        collArea.y=10;
         solidAreaDefaultX = collArea.x;
         solidAreaDefaultY = collArea.y;
         collArea.width=gp.ingame_size-(collArea.x*2);
-        collArea.height=gp.ingame_size-(collArea.y)-9; //area di collisione del giocatore
+        collArea.height=gp.ingame_size-(collArea.y*2); //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
@@ -104,8 +104,7 @@ public class Giocatore extends Entità {
         gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         graphics2.setFont(new Font("Arial", Font.PLAIN, 26));
         graphics2.setColor(Color.white);
-        graphics2.drawString(""+
-        invincibleCounter, 10,400 );
+        graphics2.drawString(""+invincibleCounter, 10,400 );
 
         // DEBUG
 		// AttackArea
@@ -120,6 +119,7 @@ public class Giocatore extends Entità {
 		gp.graphics2.setColor(Color.red);
         gp.graphics2.setStroke(new BasicStroke(1));
 		gp.graphics2.drawRect(tempScreenX, tempScreenY, attackArea.width, attackArea.height);
+        gp.graphics2.drawRect(ScreenX+collArea.x, ScreenY+collArea.y, collArea.height, collArea.width);
     }
         
 
