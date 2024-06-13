@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
+import java.awt.BasicStroke;
 
 public class Giocatore extends Entità {
 
@@ -41,6 +42,12 @@ public class Giocatore extends Entità {
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
+
+        attacking =false;
+        attackArea.x=14;
+        attackArea.y=18;
+        attackArea.width=20;
+        attackArea.height=30;
 
         setValoriPredefiniti();
         getPlayerImage();
@@ -86,10 +93,7 @@ public class Giocatore extends Entità {
         gp.pTools.moveOBJChecker();
         animationRoller();
         gp.pTools.printSprite();
-        
-        
 
-        
     }
     
     public void draw(Graphics2D graphics2){
@@ -102,6 +106,20 @@ public class Giocatore extends Entità {
         graphics2.setColor(Color.white);
         graphics2.drawString(""+
         invincibleCounter, 10,400 );
+
+        // DEBUG
+		// AttackArea
+		int tempScreenX = ScreenX + attackArea.x;
+		int tempScreenY = ScreenY + attackArea.y;		
+		switch(direzione) {
+		    case "up": tempScreenY = ScreenY - attackArea.height; break;
+		    case "down": tempScreenY = ScreenY + gp.ingame_size; break; 
+		    case "left": tempScreenX = ScreenX - attackArea.width; break;
+		    case "right": tempScreenX = ScreenX + gp.ingame_size; break;
+		}				
+		gp.graphics2.setColor(Color.red);
+        gp.graphics2.setStroke(new BasicStroke(1));
+		gp.graphics2.drawRect(tempScreenX, tempScreenY, attackArea.width, attackArea.height);
     }
         
 

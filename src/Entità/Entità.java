@@ -48,6 +48,8 @@ public class Entità{
     public BufferedImage[]AttackRight = new BufferedImage[6];
     
     public String attack;
+    public boolean attacking;
+    public Rectangle attackArea=new Rectangle(0,0,0,0);
     
 
     public int spriteCount=0;

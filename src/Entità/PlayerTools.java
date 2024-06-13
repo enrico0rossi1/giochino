@@ -14,7 +14,49 @@ public class PlayerTools {
 
     public void interactMonster(int monVerifier){
         if(monVerifier!=999){
-            System.out.println("you got hit");
+            System.out.println(" you got hit");
+        }
+    }
+
+    public void checkAttack(int i){
+        if(i!=999){
+            System.out.println("hit");
+        }else{
+            System.out.println("miss");
+        }
+    }
+
+    public void attacking(){
+        if(gp.giocatore.spriteNum>=2 && gp.giocatore.spriteNum<=4){
+            
+            //SALVIAMO LE COORDINATE CORRENTI
+            int currentWorldX= gp.giocatore.worldX;
+            int currentWorldY= gp.giocatore.worldY;
+            int solidAreaWidth = gp.giocatore.collArea.width;
+            int solidAreaHeight = gp.giocatore.collArea.height;
+
+            //SPOSTIAMO LA COLLISION AREA PER RENDERE L'ATTACCO
+            switch (gp.giocatore.direzione) {
+                case "up":gp.giocatore.worldY-= gp.giocatore.attackArea.height;break;
+                case "down":gp.giocatore.worldY+= gp.giocatore.attackArea.height;break;
+                case "left":gp.giocatore.worldX-= gp.giocatore.attackArea.width;break;
+                case "right":gp.giocatore.worldY+= gp.giocatore.attackArea.width;break;
+            }
+
+            //ATTACK DIVENTA COLLISION
+            gp.giocatore.collArea.width = gp.giocatore.attackArea.width;
+            gp.giocatore.collArea.height = gp.giocatore.attackArea.height;
+
+            //CHECK COLLISION
+            int monVerifier = gp.CollisionManager.checkEntity(gp.giocatore, gp.mon);
+            checkAttack(monVerifier);
+
+            //RITORNO AI VALORI STANDARD
+            gp.giocatore.worldX=currentWorldX;
+            gp.giocatore.worldY=currentWorldY;
+            gp.giocatore.collArea.width=solidAreaWidth;
+            gp.giocatore.collArea.height=solidAreaHeight;
+
         }
     }
 
@@ -53,7 +95,7 @@ public class PlayerTools {
     private void handleKeyPickup(int i) {
         gp.obj[i] = null;
         gp.ui.showMessage("You got a key! That's cool.");
-        gp.playSFX(11);
+        gp.playSFX(5);
         gp.giocatore.numKeys++;
     }
 
@@ -62,7 +104,7 @@ public class PlayerTools {
             gp.obj[i] = null;
             gp.ui.showMessage("You unlocked a door! Let's go!");
             gp.giocatore.numKeys--;
-            gp.playSFX(11);
+            gp.playSFX(5);
         } else {
             gp.ui.showMessage2("No keys? So lame...");
         }
@@ -71,19 +113,19 @@ public class PlayerTools {
     private void handleGoldCoinPickup(int i) {
         gp.obj[i] = null;
         gp.ui.showMessage2("Richer!");
-        gp.playSFX(11);
+        gp.playSFX(5);
     }
 
     private void handleShoesPickup(int i) {
         gp.obj[i] = null;
         gp.giocatore.speedUp = true;
         gp.ui.showMessage("Press O to run.");
-        gp.playSFX(11);
+        gp.playSFX(5);
     }
 
     private void handleBigTreasurePickup(int i) {
         gp.obj[i] = null;
-        gp.playSFX(11);
+        gp.playSFX(5);
         gp.stopMusic(0);
         gp.ui.endGame = true;
     }
@@ -96,6 +138,8 @@ public class PlayerTools {
         int spriteNum = giocatore.spriteNum;
         
         if (keyh.p) {
+            gp.giocatore.attacking=true;
+            attacking();
             switch (direzione) {
                 case "up":
                     giocatore.image = giocatore.AttackUp[spriteNum];

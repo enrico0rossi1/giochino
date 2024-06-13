@@ -1,13 +1,11 @@
 package main;
 
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.IOException;
-import java.io.InputStream;
+
 
 import object.ObjHeart;
 import object.ObjKey;

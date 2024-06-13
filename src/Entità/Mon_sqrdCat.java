@@ -8,7 +8,7 @@ public class Mon_sqrdCat extends Entità {
         super(gp);
         name = "Squared_cat";
         type=2;
-        velocità=2;
+        velocità=0;
         vitaMax=4;
         vita=vitaMax;
 
