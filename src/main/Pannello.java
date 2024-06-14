@@ -75,6 +75,8 @@ public class Pannello extends JPanel implements Runnable {
     public int gameOver = 5;
     public int endGame = 6;
 
+    public int lastKill = 1;
+
     public long lastTime = System.nanoTime();
     public long currentTime;
 
@@ -192,6 +194,10 @@ public class Pannello extends JPanel implements Runnable {
         mapMemory.loadToMapMemory(dungeon3);
         Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMap];
         currentMap.draw(graphics3, graphics2, tileManager);
+
+        if (currentMap.isComplete() && lastKill != 0) {
+            assetPlacer.setObject("Key",26,26,1,0);
+        }
 
         //AGGIUNGIAMO LE ENTITà ALLA LISTA
         

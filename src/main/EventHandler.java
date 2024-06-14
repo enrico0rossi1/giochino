@@ -7,6 +7,7 @@ public class EventHandler {
   int previousEventX,previousEventY;
   boolean canTouchEvent = true;
   public int currentMap =0;
+  public int nextMap;
   final int startingWoodsMap = 0;
   final int darkWoodsMap = 1;
   final int jungleMap = 2;
@@ -24,8 +25,8 @@ public class EventHandler {
       eventRect[col][row] = new EventRectangle();
       eventRect[col][row].x = 0;
       eventRect[col][row].y = 0;
-      eventRect[col][row].width = gp.ingame_size; 
-      eventRect[col][row].height = gp.ingame_size;
+      eventRect[col][row].width = gp.ingame_size + 5; 
+      eventRect[col][row].height = gp.ingame_size + 5;
       eventRect[col][row].eventRectDefaultX = eventRect[col][row].x;
       eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
     
@@ -55,14 +56,17 @@ public class EventHandler {
       if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
       if (hitEvent(25, 25, "any",0)) {healingPool();}
 
-      if (hitEvent(20,27, "any",darkWoodsMap)){teleportTostartingWoods();}
-      //if (hitEvent(20,27, "any",jungleMap)){teleportTostartingWoods();}
-      if (hitEvent(19,25, "any",beachMap)){teleportTostartingWoods();}
+      if (hitEvent(20,27, "any",darkWoodsMap )&& monChecker()){teleportTostartingWoods();}
+      if (hitEvent(20,27, "any",jungleMap )&& monChecker()){teleportTostartingWoods();}
+      if (hitEvent(19,25, "any",beachMap )&& monChecker()){teleportTostartingWoods();}
       
-      if (hitEvent(39,25, "any",startingWoodsMap)){teleportToJungle();}
-      if (hitEvent(25,5, "any",startingWoodsMap)){teleportToDarkWoods();}
-      if (hitEvent(26,5, "any",startingWoodsMap)){teleportToDarkWoods();}
-      if (hitEvent(9,25, "any",startingWoodsMap)){teleportToBeach();}
+     // if (hitEvent(39,25, "any",startingWoodsMap)){teleportToJungle();}
+      if (hitEvent(39,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
+      //if (hitEvent(25,5, "any",startingWoodsMap)){teleportToDarkWoods();}
+      if (hitEvent(26,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
+      if (hitEvent(25,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
+      if (hitEvent(9,25, "any",startingWoodsMap)){askForTeleport(beachMap);}
+    //  if (hitEvent(9,25, "any",startingWoodsMap)){teleportToBeach();}
       
       // eventi di prova
       //if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
@@ -99,6 +103,23 @@ public class EventHandler {
     return hit; 
   }
 
+
+//CONTROLLIAMO SE SONO RIMASTI MOSTRI NEL DUNGEON
+public boolean monChecker(){
+  boolean checker=true;
+  for(int a=0;a<gp.mon.length;a++){
+    if(gp.mon[a]!=null&&gp.mon[a].mapVerifier==gp.eventHandler.currentMap){
+      for(int i=a; i<gp.mon.length;i++){
+          if (gp.mon[i]!=null&& gp.mon[a]!=null&&gp.mon[i].name==gp.mon[a].name){
+            checker=false;
+          }
+        }
+      }
+  }
+
+  return checker;
+}
+  
   // fa danno una volta sola
   public void hiddenTrap (int col,int row){
       gp.giocatore.vita -= 1 ;
@@ -120,6 +141,9 @@ public class EventHandler {
   }
 
  public void teleportTostartingWoods() {
+
+
+
     gp.giocatore.worldX = gp.ingame_size * 25;
     gp.giocatore.worldY = gp.ingame_size * 25;
     gp.stopMusic(currentMap);
@@ -127,12 +151,49 @@ public class EventHandler {
     gp.playMusic(startingWoodsMap);
   }
 
-  public void teleportToDarkWoods() {
-    gp.giocatore.worldX = gp.ingame_size * 25;
-    gp.giocatore.worldY = gp.ingame_size * 25;
+  public void askForTeleport(int nextMap) { 
+     gp.gameState = gp.dialogueState;
+     gp.ui.dialogueChoice1 = "Fifone";
+     gp.ui.dialogueChoice2 = "Ebèèèè";
+     gp.ui.dialogueChoice = 1;
+
+     switch (nextMap) {
+     case darkWoodsMap:
+     nextMap = darkWoodsMap;
+     gp.ui.currentDialogue = "vuoi esplorare le foreste bule? Sconfiggi tutti\n i nemici per tornare indietro";
+   
+   
+
+     break;
+     case jungleMap:
+     nextMap = jungleMap;
+     gp.ui.currentDialogue = "vuoi esplorare la giungla? Sconfiggi tutti\n i nemici per tornare indietro";
+
+
+     break;
+     case beachMap: 
+     nextMap = beachMap;
+     gp.ui.currentDialogue = "vuoi esplorare la spiaggia? Sconfiggi tutti\n i nemici per tornare indietro";
+
+
+     break;
+     case startingWoodsMap: 
+     nextMap = startingWoodsMap;
+     gp.ui.currentDialogue = "stai per tornare al boschetto tranquillo";
+
+
+     break;
+     }
+
+     canTouchEvent = false;
+  }
+
+     public void teleportToDarkWoods() { 
+    //gp.giocatore.worldX = gp.ingame_size * 25;
+   //gp.giocatore.worldY = gp.ingame_size * 25;
     gp.stopMusic(currentMap);
-    currentMap = darkWoodsMap;
-  //gp.playMusic(darkWoodsMap);
+ //   currentMap = darkWoodsMap;
+  gp.playMusic(darkWoodsMap);
     }
 
 
@@ -148,6 +209,16 @@ public class EventHandler {
     gp.giocatore.worldY = gp.ingame_size * 25;
     currentMap = beachMap;
     //gp.playMusic(beachMap);
+  }
+
+  public void teleport(int nextmap) {
+  
+  gp.giocatore.worldX = gp.ingame_size * 25;
+  gp.giocatore.worldY = gp.ingame_size * 25;
+  gp.stopMusic(currentMap);
+  currentMap = nextmap;
+  gp.playMusic(nextmap);
+
   }
   public void dialogueTest (int col,int row) {
 

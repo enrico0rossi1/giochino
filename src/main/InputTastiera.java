@@ -86,9 +86,27 @@ else if (gp.gameState == gp.pauseState){
 
 else if (gp.gameState == gp.dialogueState){
 
+    if(premuto == KeyEvent.VK_D){
+        if (gp.ui.dialogueChoice ==1)
+        
+        gp.ui.dialogueChoice++;
+      
+    }
+   
+    if(premuto == KeyEvent.VK_A){
+        if (gp.ui.dialogueChoice ==2)
+       
+      gp.ui.dialogueChoice--;
+    
+        }
+
     if(premuto == KeyEvent.VK_ENTER){
           
         gp.gameState = gp.playState;
+
+        if (gp.ui.dialogueChoice == 2){
+            gp.eventHandler.teleport(gp.eventHandler.nextMap);
+        }
         
     }   
   }

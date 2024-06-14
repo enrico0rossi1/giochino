@@ -31,9 +31,12 @@ public class UI {
     int messageCounter = 0;
     int message2Counter = 0;
     public boolean endGame;
-    public String currentDialogue = "la mamma di Enrico gioca a fare la gym bro alla McFit e le \npiacciono i fagioli";
+    public String currentDialogue;
+    public String dialogueChoice1;
+    public String dialogueChoice2;
     int subState = 0;
     int commandNum = 0;
+    int dialogueChoice = 0;
    
 
     public UI (Pannello gp) {
@@ -105,7 +108,7 @@ public class UI {
                graphics2.setColor(Color.red);
                graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-80);
                graphics2.setColor(Color.WHITE);
-               graphics2.drawString("PRESS W TO START GAME", getCenteredXForText ("PRESS W TO START GAME",graphics2),gp.screen_height/2+180);
+               graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
                graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
            }
     
@@ -196,6 +199,7 @@ public class UI {
 
     }
 
+    // disegna i dialoghi
     public void drawDialogueScreen() {
      
         //window
@@ -203,6 +207,8 @@ public class UI {
         int y = gp.ingame_size/2 ;
         int height = gp.screen_height/4 ;
         int width = gp.screen_width - (gp.ingame_size * 4)  ;
+
+        // disegna la finestra in cui inserire i dialoghi
         drawSubWindow(x,y,height,width);
 
         graphics2.setFont(graphics2.getFont().deriveFont(Font.PLAIN));
@@ -213,6 +219,14 @@ public class UI {
         graphics2.drawString(line,x,y);
         y += 40;
        }
+       graphics2.drawString(dialogueChoice1,x*2,y);
+       if (dialogueChoice == 1) {
+        graphics2.drawString(">",x*2 - 20,y);
+    }
+       graphics2.drawString(dialogueChoice2,x*4,y);
+       if (dialogueChoice == 2) {
+        graphics2.drawString(">",x*4 - 20,y);
+    }
 
     }
 
@@ -252,29 +266,29 @@ public void options_top (int titleX,int titleY) {
     graphics2.setFont(winnerFont);
     graphics2.setColor(Color.BLUE);
 
-    int textX = getCenteredXForText("Options", graphics2);
+    int textX = getCenteredXForText("Opzioni", graphics2);
     int textY = titleY + gp.ingame_size;
     final int lineHeight = 64;
 
 
-    graphics2.drawString("Options",textX,textY);
+    graphics2.drawString("Opzioni",textX,textY);
     textY +=lineHeight;
     textX -=lineHeight * 2;
     graphics2.setColor(Color.WHITE);
 
 
-    graphics2.drawString("Full Screen  ",textX, textY);
+    graphics2.drawString("Schermo intero  ",textX, textY);
     if (commandNum == 0) {
         graphics2.drawString(">",textX - 25,textY);
     }
-    if (gp.fullScreenOn == true) {graphics2.drawString("ON",textX*2,textY);
+    if (gp.fullScreenOn == true) {graphics2.drawString(" ON",textX*2,textY);
 }
-else if (gp.fullScreenOn == false) {graphics2.drawString("OFF",textX*2,textY);
+else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
 }
     textY += lineHeight;
 
 
-    graphics2.drawString("Music Volume",textX,textY);
+    graphics2.drawString("Musica Volume",textX,textY);
     if (commandNum == 1) {
         graphics2.drawString(">",textX - 25,textY);
     }
@@ -293,21 +307,21 @@ else if (gp.fullScreenOn == false) {graphics2.drawString("OFF",textX*2,textY);
     textY += lineHeight;
 
 
-    graphics2.drawString("Controls",textX,textY);
+    graphics2.drawString("Comandi",textX,textY);
     if (commandNum == 3) {
         graphics2.drawString(">",textX - 25,textY);
     }
     textY += lineHeight;
 
 
-    graphics2.drawString("Quit Game",textX,textY);
+    graphics2.drawString("Esci",textX,textY);
     if (commandNum == 4) {
         graphics2.drawString(">",textX - 25,textY);
     }
     textY += lineHeight + 6;
 
 
-    graphics2.drawString("Back",textX,textY);
+    graphics2.drawString("Indietro",textX,textY);
     if (commandNum == 5) {
         graphics2.drawString(">",textX - 25,textY);
     }
@@ -338,13 +352,13 @@ else if (gp.fullScreenOn == false) {graphics2.drawString("OFF",textX*2,textY);
 
     public void quitGame(int titleX,int titleY) {
         
-        graphics2.setFont(winnerFont);
-        graphics2.setColor(Color.BLUE);
+        graphics2.setFont(arial_30);
+        graphics2.setColor(Color.GREEN);
     
-        int textX = getCenteredXForText("Options", graphics2);
+        int textX = getCenteredXForText("Rinunci da ex-avventuriero?", graphics2);
         int textY = titleY + gp.ingame_size;
 
-        graphics2.drawString("Vuoi davvero rinunciare a fama e gloria da \n avventuriero?",textX,textY);
+        graphics2.drawString("Rinunci da ex-avventuriero?",textX,textY);
       
         textY += 80;
 
