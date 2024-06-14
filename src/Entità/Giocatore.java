@@ -43,7 +43,6 @@ public class Giocatore extends Entità {
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali
 
-        attacking =false;
         attackArea.x=5;
         attackArea.y=8;
         attackArea.width=gp.ingame_size-(attackArea.x*2);

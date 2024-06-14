@@ -29,6 +29,7 @@ public class Entità{
     public int type; // 0 = player, 1 = npc, 2 = monster
     public int worldY,worldX;
     public int vitaMax,vita;
+    public int killNum = 1;
     
     
 
@@ -64,7 +65,7 @@ public class Entità{
     //VARIABILI PER LA GESTIONE DEI METODI
     public int actionLockCounter=0;
     public int invincibleCounter=0;
-    public boolean attacking;
+    public boolean checked = false;
     public int spriteCount=0;
     public int spriteNum=0;
     public int deathCounter=60;
@@ -200,6 +201,7 @@ public class Entità{
             deathCounter--;
             if(deathCounter==0){
                 dead=true;
+                gp.giocatore.killNum++;
                 deathCounter=60;
             }
         }

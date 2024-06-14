@@ -140,7 +140,6 @@ public class PlayerTools {
         int spriteNum = giocatore.spriteNum;
         
         if (keyh.p) {
-            gp.giocatore.attacking=true;
             attacking();
             switch (direzione) {
                 case "up":
