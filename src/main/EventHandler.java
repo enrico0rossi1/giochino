@@ -211,13 +211,13 @@ public boolean monChecker(){
     //gp.playMusic(beachMap);
   }
 
-  public void teleport(int nextmap) {
+  public void teleport(int map) {
   
   gp.giocatore.worldX = gp.ingame_size * 25;
   gp.giocatore.worldY = gp.ingame_size * 25;
   gp.stopMusic(currentMap);
-  currentMap = nextmap;
-  gp.playMusic(nextmap);
+  currentMap = map;
+  gp.playMusic(map);
 
   }
   public void dialogueTest (int col,int row) {

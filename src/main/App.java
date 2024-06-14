@@ -11,7 +11,7 @@ public class App {
        
         finestra = new JFrame();
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        finestra.setResizable(true);
+        finestra.setResizable(false);
         finestra.setTitle("Warrior Adventure");
         finestra.setUndecorated(false);
         Pannello pannello1 = new Pannello();
