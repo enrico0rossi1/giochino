@@ -96,6 +96,14 @@ public class Mappa {
             }
         }
     }
-    
-    
+
+    public boolean isComplete() {
+        boolean res=false;
+        if((gp.giocatore.killNum%(8))==0) {
+            res=true;
+        }
+      return res;
+      
+  }
+
 }
