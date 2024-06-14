@@ -32,7 +32,8 @@ public class UI {
     int message2Counter = 0;
     public boolean endGame;
     public String currentDialogue = "la mamma di Enrico gioca a fare la gym bro alla McFit e le \npiacciono i fagioli";
-    
+    int subState = 0;
+    int commandNum = 0;
    
 
     public UI (Pannello gp) {
@@ -83,6 +84,7 @@ public class UI {
         drawTitleScreen();
         drawPlayState();  
         drawDialogueState();
+        drawOptionsScreen();
         drawPauseScreen();
         drawGameOverScreen();
         drawEndScreen();
@@ -214,6 +216,151 @@ public class UI {
 
     }
 
+
+    
+    public void drawOptionsScreen() {
+
+        int x = gp.ingame_size * 5 ;
+        int y = gp.ingame_size;
+        int width = gp.ingame_size * 10;
+        int height = gp.ingame_size* 10;
+      
+
+        if (gp.gameState == gp.optionsState) {
+
+            drawSubWindow(x, y, width, height);
+
+            switch (subState) {
+
+                case 0: options_top(x,y); break;
+                case 1: showControls(x,y); break;
+
+                case 2: quitGame(x,y); break;
+
+
+
+            }
+
+        }
+
+}
+     
+public void options_top (int titleX,int titleY) {
+
+
+
+    graphics2.setFont(winnerFont);
+    graphics2.setColor(Color.BLUE);
+
+    int textX = getCenteredXForText("Options", graphics2);
+    int textY = titleY + gp.ingame_size;
+    final int lineHeight = 64;
+
+
+    graphics2.drawString("Options",textX,textY);
+    textY +=lineHeight;
+    textX -=lineHeight * 2;
+    graphics2.setColor(Color.WHITE);
+
+
+    graphics2.drawString("Full Screen  ",textX, textY);
+    if (commandNum == 0) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    if (gp.fullScreenOn == true) {graphics2.drawString("ON",textX*2,textY);
+}
+else if (gp.fullScreenOn == false) {graphics2.drawString("OFF",textX*2,textY);
+}
+    textY += lineHeight;
+
+
+    graphics2.drawString("Music Volume",textX,textY);
+    if (commandNum == 1) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
+    int volumeWidth = 24 * gp.music.volumeScale;
+    graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,volumeWidth,24);  // (textX+(gp.ingame_size*6))/ 5
+    textY += lineHeight;
+
+
+    graphics2.drawString("SFX Volume",textX,textY);
+    if (commandNum == 2) {
+        graphics2.drawString(">",textX - 25,textY);
+    }    graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
+    int sfxWidth = 24 * gp.sfx.volumeScale;
+    graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,sfxWidth,24);
+    textY += lineHeight;
+
+
+    graphics2.drawString("Controls",textX,textY);
+    if (commandNum == 3) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    textY += lineHeight;
+
+
+    graphics2.drawString("Quit Game",textX,textY);
+    if (commandNum == 4) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    textY += lineHeight + 6;
+
+
+    graphics2.drawString("Back",textX,textY);
+    if (commandNum == 5) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+
+   
+  
+} 
+
+    public void showControls(int textX, int textY) {
+
+    int x = textX +20;
+    int y = textY + gp.ingame_size*2;
+    final int lineHeight = 64;
+   
+
+    graphics2.setColor(Color.WHITE);
+    graphics2.drawString("Spostati        < WASD >",x,y);
+    y += lineHeight;
+    graphics2.drawString("Conferma/Indietro        < ENTER >",x,y);
+    y += lineHeight;
+    graphics2.drawString("Pausa      < M >",x,y);
+    y += lineHeight;
+    graphics2.drawString("Attacca      < P >",x,y);
+    y += lineHeight;
+    graphics2.drawString("Corrrrrrere      < O >",x,y);
+    y += lineHeight;
+    }
+
+    public void quitGame(int titleX,int titleY) {
+        
+        graphics2.setFont(winnerFont);
+        graphics2.setColor(Color.BLUE);
+    
+        int textX = getCenteredXForText("Options", graphics2);
+        int textY = titleY + gp.ingame_size;
+
+        graphics2.drawString("Vuoi davvero rinunciare a fama e gloria da \n avventuriero?",textX,textY);
+      
+        textY += 80;
+
+        graphics2.drawString("Sì, mi cago addosso?",textX,textY);
+         if (commandNum == 0) {
+            graphics2.drawString(">",textX - 25,textY);
+        }
+        textY += 60;
+
+
+        graphics2.drawString("No, sono un eroe",textX,textY);
+         if (commandNum == 1) {
+            graphics2.drawString(">",textX - 25,textY);
+        }
+    }
+
     public void drawPauseScreen () {
         
         if (gp.gameState==gp.pauseState){
@@ -240,7 +387,7 @@ public class UI {
     public void drawEndScreen(){
         if (endGame == true) {
             graphics2.setFont(winnerFont);
-            graphics2.drawString("Congratulations \r you are the Champion",(gp.screen_width)/4,gp.screen_height/2-80);
+            graphics2.drawString("Congratulations \n you are the Champion",(gp.screen_width)/4,gp.screen_height/2-80);
 
             gp.ThreadGioco = null;
         }

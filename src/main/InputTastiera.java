@@ -24,9 +24,10 @@ public class InputTastiera implements KeyListener {
 
 
 if (gp.gameState == gp.titleState) {
+  
     if(premuto == KeyEvent.VK_W){
-          gp.stopMusic(10);
-          gp.playMusic(gp.eventHandler.currentMap);
+          gp.stopMusic(4);
+          gp.playMusic(0);
           gp.gameState = gp.playState;
      }
 
@@ -76,7 +77,7 @@ else if (gp.gameState == gp.pauseState){
             gp.playMusic(gp.eventHandler.currentMap);
     }
 
-  else if (premuto == KeyEvent.VK_N){
+     if (premuto == KeyEvent.VK_N){
             
                  gp.gameState = gp.optionsState;
             }
@@ -85,42 +86,123 @@ else if (gp.gameState == gp.pauseState){
 
 else if (gp.gameState == gp.dialogueState){
 
-    if(premuto == KeyEvent.VK_W){
+    if(premuto == KeyEvent.VK_ENTER){
           
         gp.gameState = gp.playState;
         
     }   
   }
 
-if (gp.gameState == gp.optionsState){
-    if (premuto == KeyEvent.VK_N){
+else if (gp.gameState == gp.optionsState){
+   
+   int maxCommandNum = 5;
        
-                        gp.gameState = gp.pauseState;
-            
-   }
-     if(premuto == KeyEvent.VK_ESCAPE)  {
-            if (gp.fullScreenOn == true) {
-            
-                gp.fullScreenOn = false;
-            }
-            
-            if(gp.fullScreenOn == false)  {
+    if(premuto == KeyEvent.VK_W){
+        if (gp.ui.commandNum > 0)  
+      // gp.playSFX(1);
+        gp.ui.commandNum--;
+        
+    }  
+   
+    if(premuto == KeyEvent.VK_S){
+        if (gp.ui.subState == 0 && gp.ui.commandNum < maxCommandNum)
+          // gp.playSFX(1);
+        gp.ui.commandNum++;
+        if (gp.ui.subState == 2 && gp.ui.commandNum < 1)
+        gp.ui.commandNum++;
+    }
+   
+    if(premuto == KeyEvent.VK_A){
+        if (gp.ui.subState == 0 && gp.ui.commandNum ==1 && gp.music.volumeScale >0) {
+            gp.music.volumeScale--;
+            gp.music.checkVolume();
 
-                gp.fullScreenOn = true;
-            }
         }
-}
+        if (gp.ui.subState == 0 && gp.ui.commandNum ==2 && gp.sfx.volumeScale >0) {
+            gp.sfx.volumeScale--;
+            gp.sfx.checkVolume();
 
+        }
+    }
+
+
+    if(premuto == KeyEvent.VK_D){
+        if (gp.ui.subState == 0 && gp.ui.commandNum ==1 && gp.music.volumeScale <5) {
+            gp.music.volumeScale++;
+            gp.music.checkVolume();
+
+        }
+        if (gp.ui.subState == 0 && gp.ui.commandNum ==2 && gp.sfx.volumeScale <5) {
+            gp.sfx.volumeScale++;
+            gp.sfx.checkVolume();
+
+        }
+    }
+   
+   //
+   // if (premuto == KeyEvent.VK_N){
+   //    
+   //                     gp.gameState = gp.pauseState;
+   //         
+   //}
+    if(premuto == KeyEvent.VK_ENTER)  {
+        
+        if (gp.ui.subState == 0) {
+        maxCommandNum = 5;
+            if (gp.ui.commandNum == 0) {
+        if (gp.fullScreenOn == true) {
+           
+               gp.fullScreenOn = false;
+           }
+           
+          else if(gp.fullScreenOn == false)  {
+               gp.fullScreenOn = true;
+           }
+        }
+
+        if (gp.ui.commandNum == 3)
+        gp.ui.subState = 1;
+
+        if (gp.ui.commandNum == 4) {
+          gp.ui.subState = 2;
+          gp.ui.commandNum = 1;
+          
+        }
+
+        if (gp.ui.commandNum == 5) {
+            gp.gameState = gp.pauseState;
+        }
+       }
+       else if (gp.ui.subState == 1) {
+        gp.ui.subState = 0;
+       }
+
+       else if (gp.ui.subState ==2) {
+        maxCommandNum = 1;
+       
+        if (gp.ui.commandNum == 1)
+        gp.ui.subState = 0;
+        if (gp.ui.commandNum == 0) {
+        gp.gameState = gp.titleState;
+        gp.ui.subState = 0;
+        gp.playMusic(4);
+        }
+
+
+       }
+      }
+    }
 
 else if (gp.gameState == gp.gameOver){
 
     if(premuto == KeyEvent.VK_M){
        gp.gameState =gp.titleState;
-            gp.stopMusic(2);
-            gp.playMusic(0);
+            gp.stopMusic(gp.eventHandler.currentMap);
+            gp.playMusic(4);
             gp.giocatore.worldX= gp.ingame_size*25 ;
             gp.giocatore.worldY = gp.ingame_size*25;
             gp.giocatore.vita = gp.giocatore.vitaMax;
+            gp.eventHandler.currentMap = gp.eventHandler.startingWoodsMap;
     }
 
  }
