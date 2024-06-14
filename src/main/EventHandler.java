@@ -60,13 +60,13 @@ public class EventHandler {
       if (hitEvent(20,27, "any",jungleMap )&& monChecker()){teleportTostartingWoods();}
       if (hitEvent(19,25, "any",beachMap )&& monChecker()){teleportTostartingWoods();}
       
-     // if (hitEvent(39,25, "any",startingWoodsMap)){teleportToJungle();}
-      if (hitEvent(39,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
-      //if (hitEvent(25,5, "any",startingWoodsMap)){teleportToDarkWoods();}
+     
+     
+     if (hitEvent(39,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
       if (hitEvent(26,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
       if (hitEvent(25,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
       if (hitEvent(9,25, "any",startingWoodsMap)){askForTeleport(beachMap);}
-    //  if (hitEvent(9,25, "any",startingWoodsMap)){teleportToBeach();}
+  
       
       // eventi di prova
       //if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
@@ -151,13 +151,13 @@ public boolean monChecker(){
     gp.playMusic(startingWoodsMap);
   }
 
-  public void askForTeleport(int nextMap) { 
+  public void askForTeleport(int map) { 
      gp.gameState = gp.dialogueState;
      gp.ui.dialogueChoice1 = "Fifone";
      gp.ui.dialogueChoice2 = "Ebèèèè";
      gp.ui.dialogueChoice = 1;
 
-     switch (nextMap) {
+     switch (map) {
      case darkWoodsMap:
      nextMap = darkWoodsMap;
      gp.ui.currentDialogue = "vuoi esplorare le foreste bule? Sconfiggi tutti\n i nemici per tornare indietro";
@@ -219,18 +219,6 @@ public boolean monChecker(){
   currentMap = map;
   gp.playMusic(map);
 
-  }
-  public void dialogueTest (int col,int row) {
-
-    gp.gameState = gp.dialogueState;
-    gp.stopMusic(currentMap);
-    canTouchEvent = false;
-
-  }
-
-  public void stopMusicTest () {
-    gp.stopMusic(currentMap);
-    gp.playMusic(jungleMap);
   }
 
 }

@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 public class InputTastiera implements KeyListener {
 
-    public boolean w,a,s,d,p,o,m,n,f,esc,enter;
+    public boolean w,a,s,d,p,o,m,f,enter;
     Pannello gp;
     
     //debug 
@@ -77,7 +77,7 @@ else if (gp.gameState == gp.pauseState){
             gp.playMusic(gp.eventHandler.currentMap);
     }
 
-     if (premuto == KeyEvent.VK_N){
+     if (premuto == KeyEvent.VK_O){
             
                  gp.gameState = gp.optionsState;
             }

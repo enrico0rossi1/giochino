@@ -197,6 +197,7 @@ public class Pannello extends JPanel implements Runnable {
 
         if (currentMap.isComplete() && lastKill != 0) {
             assetPlacer.setObject("Key",26,26,1,0);
+            lastKill--;
         }
 
         //AGGIUNGIAMO LE ENTITà ALLA LISTA

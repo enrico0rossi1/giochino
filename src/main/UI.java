@@ -1,12 +1,15 @@
 package main;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
-
+import object.GoldCoin;
 import object.ObjHeart;
 import object.ObjKey;
 import object.ObjShoes;
@@ -17,12 +20,13 @@ public class UI {
     Pannello gp;
     Font arial_30;
     Font winnerFont;
-   // Font zeldaFont;
+    Font zeldaFont;
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjHeart heart;
     ObjKey key;
     ObjShoes shoes;
+    GoldCoin coin;
     
     public boolean messageOn = false;
     public boolean message2On = false;
@@ -45,22 +49,23 @@ public class UI {
         this.key = new ObjKey(gp);
         this.heart = new ObjHeart(gp);
         this.shoes = new ObjShoes(gp);
+        this.coin = new GoldCoin(gp);
         
         
         //elenco dei font utilizzati nell'interfaccia
        arial_30 = new Font ("Arial", Font.BOLD,30);
        winnerFont = new Font("Arial", Font.BOLD, 36);
        
-  //     InputStream is = getClass().getResourceAsStream("font/ZeldaFont.ttf");
-  //     
-  //     try {
-  //     zeldaFont = Font.createFont(Font.TRUETYPE_FONT, is);
-  //  } catch (FontFormatException e) {
-  //      e.printStackTrace();
-  //  } catch (IOException e)         {
-  //          e.printStackTrace();
-  //  }
-
+      // InputStream is = getClass().getResourceAsStream("font/ZeldaFont.ttf");
+       
+       try {
+        // Replace "path/to/font.ttf" with the actual path to your font file
+        zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("font/ZeldaFont.ttf")).deriveFont(16f);
+    } catch (IOException | FontFormatException e) {
+        e.printStackTrace();
+        // Handle the exception, e.g., fallback to a default font or display an error message
+        System.err.println("Error loading font: " + e.getMessage());
+    }
 }
 
 
@@ -248,7 +253,6 @@ public class UI {
 
                 case 0: options_top(x,y); break;
                 case 1: showControls(x,y); break;
-
                 case 2: quitGame(x,y); break;
 
 
@@ -378,10 +382,28 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
     public void drawPauseScreen () {
         
         if (gp.gameState==gp.pauseState){
-            // drawPauseScreen();
+           
+          
+            final int x = gp.screen_width/2+50;
+            final int y = 20 ;
+        
             graphics2.setFont(arial_30);
-            graphics2.drawString("Resting a bit",gp.screen_width/2+50,gp.screen_height/2+10);
-            graphics2.drawString("press M to resume",gp.screen_width/2+40,gp.screen_height/2+30); 
+            graphics2.setColor(Color.WHITE);
+        
+            int textX = x +20;
+            int textY = y + gp.ingame_size;
+            final int lineHeight = 48;
+        
+        
+            graphics2.drawString("RIPOSINO",textX,textY);
+            textY +=lineHeight*3;
+            graphics2.setColor(Color.BLACK);
+            graphics2.drawString("Premi M per continuare"+ gp.giocatore.vita+"/"+gp.giocatore.vitaMax,textX,textY);
+            textY += lineHeight*2;
+            textX += 10;
+            graphics2.drawString("Premi O per visitare le opzioni",textX,textY);
+            textY += lineHeight*2;
+
             drawCharacterScreen(); 
     }
        
@@ -438,7 +460,7 @@ public void drawCharacterScreen () {
 
     int textX = x +20;
     int textY = y + gp.ingame_size;
-    final int lineHeight = 32;
+    final int lineHeight = 48;
 
 
     graphics2.drawString("STATUS",textX,textY);
@@ -453,7 +475,16 @@ public void drawCharacterScreen () {
     if (gp.giocatore.speedUp == true) {graphics2.drawString("flash",textX,textY);
     graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight,null);
     textY += lineHeight;}
-    graphics2.drawString("povero",textX,textY);
+    if (gp.giocatore.rich == true) {graphics2.drawString("riccone",textX,textY);
+    graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - lineHeight,null);
+    textY += lineHeight;}
+    if (gp.giocatore.rich == false) {graphics2.drawString("povero",textX,textY);
+    textY += lineHeight;}
+    graphics2.drawString("avventura",textX,textY);
+    textY += lineHeight;
+    graphics2.drawString("",textX,textY);
+    textY += lineHeight;
+    graphics2.drawString("guerriero",textX,textY);
     textY += lineHeight;
 
 }

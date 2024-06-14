@@ -31,6 +31,7 @@ public class ScreenManager {
 
         screen_width = gp.screen_width;
         screen_height = gp.screen_height;
+  
 
     }
 

@@ -43,6 +43,8 @@ public class AssetPlacer {
 				return new ObjSpike(gp);
 			case "GoldCoin":
 				return new GoldCoin(gp);
+			case "Heart":
+				return new ObjHeart(gp);
 			default:
 				return null;
 		}
@@ -63,6 +65,7 @@ public class AssetPlacer {
 		setObject("Shoes",26,26,1,1);
 		setObject("Key",25,30,1,1);
 		setObject("GoldCoin", 26, 23, 1,1);
+		setObject("Heart",24,24,1,0);
 	}
 
 	//GESTIONE NEMICI
