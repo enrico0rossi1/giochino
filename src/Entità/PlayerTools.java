@@ -3,7 +3,6 @@ package Entità;
 import main.InputTastiera;
 import main.Pannello;
 
-
 public class PlayerTools {
 
     Pannello gp;
@@ -91,13 +90,16 @@ public class PlayerTools {
             case "BigTreasure":
                 handleBigTreasurePickup(i);
                 break;
+            case "ObjHeart":
+                handleHeartPickup(i);
+                break;
         }
     }
 
     private void handleKeyPickup(int i) {
         gp.obj[i] = null;
         gp.ui.showMessage("You got a key! That's cool.");
-        gp.playSFX(5);
+        gp.playSFX(6);
         gp.giocatore.numKeys++;
     }
 
@@ -106,7 +108,7 @@ public class PlayerTools {
             gp.obj[i] = null;
             gp.ui.showMessage("You unlocked a door! Let's go!");
             gp.giocatore.numKeys--;
-            gp.playSFX(5);
+            gp.playSFX(6);
         } else {
             gp.ui.showMessage2("No keys? So lame...");
         }
@@ -114,24 +116,46 @@ public class PlayerTools {
 
     private void handleGoldCoinPickup(int i) {
         gp.obj[i] = null;
+        gp.giocatore.rich = true;
+        gp.ui.currentDialogue = "Hai ottenute una moneta, ora sei DAVVERO ricco";
+        gp.ui.dialogueChoice1 = "";
+        gp.ui.dialogueChoice2 = "";
+        gp.ui.dialogueChoice = 3;
+        gp.gameState=gp.dialogueState;
         gp.ui.showMessage2("Richer!");
-        gp.playSFX(5);
+        gp.playSFX(6);
     }
 
     private void handleShoesPickup(int i) {
         gp.obj[i] = null;
         gp.giocatore.speedUp = true;
+        gp.ui.currentDialogue = "Hai ottenute le scarpe, ora puoi correre \npremendo O";
+        gp.ui.dialogueChoice1 = "";
+        gp.ui.dialogueChoice2 = "";
+        gp.ui.dialogueChoice = 3;
+        gp.gameState=gp.dialogueState;
         gp.ui.showMessage("Press O to run.");
-        gp.playSFX(5);
+        gp.playSFX(6);
     }
 
     private void handleBigTreasurePickup(int i) {
         gp.obj[i] = null;
-        gp.playSFX(5);
+        gp.playSFX(6);
         gp.stopMusic(0);
         gp.ui.endGame = true;
     }
+    private void handleHeartPickup(int i) {
+        gp.obj[i] = null;
+        gp.giocatore.vitaMax =+ 4;
+        gp.ui.currentDialogue = "Hai ottenute un cuore, la tua vitalità aumenta \nesponenzialmente";
+        gp.ui.dialogueChoice1 = "";
+        gp.ui.dialogueChoice2 = "";
+        gp.ui.dialogueChoice = 3;
+        gp.gameState=gp.dialogueState;
+        gp.ui.showMessage("Vitalità aumentata");
+        gp.playSFX(6);
 
+    }
 
     public void chooseSprite() {
         Giocatore giocatore = gp.giocatore;

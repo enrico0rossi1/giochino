@@ -23,6 +23,7 @@ public class Giocatore extends Entità {
     public BufferedImage image;
     public int numKeys=0;
     public boolean speedUp = false;
+    public boolean rich = false;
 
     
     public Giocatore(Pannello gp, InputTastiera keyh,ScreenManager screenManager){
