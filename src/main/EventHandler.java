@@ -58,9 +58,9 @@ public class EventHandler {
 
 
       // ritorno a startingWoods
-      if (hitEvent(20,27, "any",darkWoodsMap )&& monChecker()){askForTeleport(startingWoodsMap);}
-      if (hitEvent(20,27, "any",jungleMap )&& monChecker()){askForTeleport(startingWoodsMap);}
-      if (hitEvent(19,25, "any",beachMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if (hitEvent(18,18, "any",darkWoodsMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if (hitEvent(18,18, "any",jungleMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if (hitEvent(18,18, "any",beachMap )&& monChecker()){askForTeleport(startingWoodsMap);}
       
      
       //viaggio verso località diverse da startingWoods
@@ -184,29 +184,6 @@ public boolean monChecker(){
      }
 
      canTouchEvent = false;
-  }
-
-     public void teleportToDarkWoods() { 
-    //gp.giocatore.worldX = gp.ingame_size * 25;
-   //gp.giocatore.worldY = gp.ingame_size * 25;
-    gp.stopMusic(currentMap);
- //   currentMap = darkWoodsMap;
-  gp.playMusic(darkWoodsMap);
-    }
-
-
-  public void teleportToJungle() {
-    gp.giocatore.worldX = gp.ingame_size * 25;
-    gp.giocatore.worldY = gp.ingame_size * 25;
-    currentMap = jungleMap;
-   // gp.playMusic(jungleMap);
-  }
-
-  public void teleportToBeach() {
-    gp.giocatore.worldX = gp.ingame_size * 25;
-    gp.giocatore.worldY = gp.ingame_size * 25;
-    currentMap = beachMap;
-    //gp.playMusic(beachMap);
   }
 
   public void teleport(int map) {

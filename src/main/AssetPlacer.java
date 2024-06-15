@@ -39,8 +39,6 @@ public class AssetPlacer {
 				return new Door_Left(gp);
 			case "BigTreasure":
 				return new BigTreasure(gp);
-			case "Spike":
-				return new ObjSpike(gp);
 			case "GoldCoin":
 				return new GoldCoin(gp);
 			case "Heart":
@@ -55,21 +53,20 @@ public class AssetPlacer {
 	public void placeObject () {
 		// mappa StartingWoods
 		setObject("Shoes",26,26,1,0);
-		setObject("Key",23,24,1,0);
-		setObject("Key",28,24,1,0);
+	//	setObject("Key",23,24,1,0);
+	//	setObject("Key",28,24,1,0);
 		setObject("Door_Right", 26, 37, 1,0);
 		setObject("Door_Left", 25, 37, 1,0);
 		setObject("BigTreasure", 26, 40, 1,0);
-		setObject("Spike", 23, 23, 1,0);
-		setObject("GoldCoin", 26, 23, 1,0);
+		
 		// mappa DarkWoods
-		setObject("Shoes",26,26,1,1);
+		setObject("Shoes",34,18,1,1);
 		setObject("Key",25,30,1,1);
-		setObject("GoldCoin", 26, 23, 1,1);
-		//mappa Jungle
-
-		//mappa Beach
 	
+		//mappa Jungle
+		setObject("GoldCoin", 33, 20, 1,2);
+		//mappa Beach
+		setObject("Heart", 32, 17, 1,3);
 	}
 
 	//GESTIONE NEMICI
@@ -103,13 +100,13 @@ public class AssetPlacer {
 
 		setEnemy("Bat", 23, 25, 1, 1);
 		setEnemy("Bat", 24, 27, 1, 1);
-		setEnemy("Bat", 26, 22, 1, 1);
-		setEnemy("Bat", 29, 29, 1, 1);
+	//	setEnemy("Bat", 26, 22, 1, 1);
+	//	setEnemy("Bat", 29, 29, 1, 1);
 
 		setEnemy("Log", 23, 25, 1, 2);
 		setEnemy("Log", 24, 27, 1, 2);
-		setEnemy("Log", 26, 22, 1, 2);
-		setEnemy("Log", 29, 29, 1, 2);
+	//	setEnemy("Log", 26, 22, 1, 2);
+	//	setEnemy("Log", 29, 29, 1, 2);
 
 
 	}

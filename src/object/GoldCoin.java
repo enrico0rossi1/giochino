@@ -15,7 +15,7 @@ public class GoldCoin extends Entità {
         BufferedImage handle[]=new BufferedImage[1];
         handle = loadAnimation(1, "Objects/GoldCoin");
         image = handle[0];
-        image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
+        image = uTool.scaleImage(image,  gp.ingame_size/2,  gp.ingame_size/2);
 
         objWidth = 18;
         objHeight = 18;

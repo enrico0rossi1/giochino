@@ -25,6 +25,8 @@ public class InputTastiera implements KeyListener {
 
 if (gp.gameState == gp.titleState) {
   
+gp.retry();
+
     if(premuto == KeyEvent.VK_W){
           gp.stopMusic(4);
           gp.playMusic(0);
@@ -111,7 +113,10 @@ else if (gp.gameState == gp.dialogueState){
 
         if (gp.ui.dialogueChoice == 2){
             gp.eventHandler.teleport(gp.eventHandler.nextMap);
+            gp.playSFX(7);
         }
+        if (gp.ui.dialogueChoice == 1)
+        gp.playSFX(10);
         
     }   
   }
@@ -220,15 +225,33 @@ else if (gp.gameState == gp.optionsState){
 
 else if (gp.gameState == gp.gameOver){
 
-    if(premuto == KeyEvent.VK_M){
-       gp.gameState =gp.titleState;
-            gp.stopMusic(gp.eventHandler.currentMap);
+    if(premuto == KeyEvent.VK_ENTER){
+
+        if (gp.ui.gameOverChoice ==1){
+            gp.gameState =gp.titleState;
             gp.playMusic(4);
-            gp.giocatore.worldX= gp.ingame_size*25 ;
-            gp.giocatore.worldY = gp.ingame_size*25;
-            gp.giocatore.vita = gp.giocatore.vitaMax;
-            gp.eventHandler.currentMap = gp.eventHandler.startingWoodsMap;
+            gp.retry();
     }
+         if (gp.ui.gameOverChoice ==0){
+             gp.playMusic(gp.eventHandler.startingWoodsMap);
+             gp.retry();
+             gp.gameState = gp.playState;
+    }
+}
+
+    if(premuto == KeyEvent.VK_D){
+        if (gp.ui.gameOverChoice ==0)
+           gp.playSFX(11);
+           gp.ui.gameOverChoice=1;
+      
+    }
+   
+    if(premuto == KeyEvent.VK_A){
+        if (gp.ui.gameOverChoice ==1)
+           gp.playSFX(11);
+           gp.ui.gameOverChoice=0;
+    
+        }
 
  }
 

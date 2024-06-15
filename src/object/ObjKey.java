@@ -11,7 +11,7 @@ public class ObjKey extends Entità {
         super(gp); 
         name = "Key";
         BufferedImage handle[]=new BufferedImage[1];
-        handle = loadAnimation(1, "Objects/GoldKey");
+        handle = loadAnimation(1, "Objects/Key");
         image = handle[0];
         image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
     

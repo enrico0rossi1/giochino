@@ -40,6 +40,7 @@ public class UI {
     int subState = 0;
     int commandNum = 0;
     public int dialogueChoice = 0;
+    int gameOverChoice;
    
 
     public UI (Pannello gp) {
@@ -433,18 +434,45 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         
     public void drawGameOverScreen(){
         Image heartHalvedImage = heart.image2;
+        Image heartFullImage = heart.image;
         
         if (gp.gameState == gp.gameOver) {
-            // draw gOverScreen ();
-            graphics2.drawImage(heartHalvedImage,gp.screen_width/2,gp.screen_height/2+10,300,200,null);
-            graphics2.drawString("Wow,che scarso...",gp.screen_width/2+50,gp.screen_height/2+10);
+
+            int textX = gp.ingame_size*2;
+            final int textY = gp.ingame_size * 8 ;
+
+            graphics2.setColor(new Color(0,0,0,100));
+            graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
+            graphics2.setColor(Color.WHITE);
+            graphics2.setFont(zeldaFont60);
+            
+            graphics2.drawString("NOOOOOOOO... sei morto",(getCenteredXForText("NOOOOOOOO... sei morto", graphics2)),gp.screen_height/4+10);
+
+            graphics2.setFont(zeldaFont);
+            
+            graphics2.drawString("Riprova",textX,textY);
+            if (gameOverChoice == 0) {
+                graphics2.drawImage(heartFullImage,textX+36,textY-64,50,40,null);
+            }
+
+            textX = textX*7 ;
+        
+        
+            graphics2.drawString("Torna al menu",textX,textY);
+            if (gameOverChoice == 1) {
+                
+
+            graphics2.drawImage(heartHalvedImage,textX+68,textY-64,50,40,null);
+
+            }
+
         }
 
-    }
+    } 
     public void drawEndScreen(){
         if (endGame == true) {
             graphics2.setFont(zeldaFont60);
-            graphics2.drawString("Avventura Completata",(gp.screen_width)/4,gp.screen_height/2-80);
+            graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/2-80);
 
             gp.ThreadGioco = null;
         }

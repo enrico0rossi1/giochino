@@ -95,8 +95,8 @@ public class Pannello extends JPanel implements Runnable {
 
     public void setUpGioco() {
         gameState = titleState;
-        assetPlacer.placeObject();
-        assetPlacer.placeEnemy();
+     //   assetPlacer.placeObject();
+     //   assetPlacer.placeEnemy();
       
         playMusic(4);
     
@@ -239,6 +239,15 @@ public class Pannello extends JPanel implements Runnable {
         
     }
        
+  }
+
+  public void retry () {
+
+    giocatore.setValoriPredefiniti();
+    assetPlacer.placeEnemy();
+    assetPlacer.placeObject();
+    eventHandler.currentMap = eventHandler.startingWoodsMap;
+
   }
 
 
