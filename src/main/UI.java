@@ -55,14 +55,14 @@ public class UI {
        
     try {
      
-        zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("font/ZeldaFont.otf")).deriveFont(30f);
+        zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
     } catch (IOException | FontFormatException e) {
         e.printStackTrace();
       
         System.err.println("Error loading font: " + e.getMessage());
    try {
     
-         eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("font/8BitFont.otf")).deriveFont(20f);
+         eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
      } catch (IOException | FontFormatException f) {
          f.printStackTrace();
        
