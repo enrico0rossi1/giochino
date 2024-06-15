@@ -225,19 +225,19 @@ public class PlayerTools {
                 gp.keyh.a==true ||
                 gp.keyh.s==true ||
                 gp.keyh.d==true) && gp.keyh.o==true && gp.giocatore.speedUp==true ){
-                  gp.giocatore.velocità = 5 ;
+                  gp.giocatore.velocità = 4 ;
              } else if(
                 (gp.keyh.w==true ||
                  gp.keyh.a==true ||
                  gp.keyh.s==true ||
                  gp.keyh.d==true) && gp.keyh.o==true){
-                    gp.giocatore.velocità = 3;
+                    gp.giocatore.velocità = 2;
                  }
                   else {gp.giocatore.velocità = 0;
                     }
             
             if(gp.keyh.o==false){
-                gp.giocatore.velocità=3;
+                gp.giocatore.velocità=2;
             }
 
             //CHECK TILE

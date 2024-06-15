@@ -56,11 +56,15 @@ public class Giocatore extends Entità {
     public void setValoriPredefiniti(){
         worldX=gp.ingame_size*25;  
         worldY=gp.ingame_size*25; //posizione iniziale su mappa 
-        velocità=3;
+        velocità=2;
         direzione="down";
 
         vitaMax = 10;
         vita = vitaMax;
+        numKeys=0;
+        speedUp = false;
+        rich = false;
+        invincible=false;
     }
     
     public void getPlayerImage(){
@@ -87,6 +91,9 @@ public class Giocatore extends Entità {
     
         if (vita == 0) {
             gp.gameState = gp.gameOver;
+          
+            gp.stopMusic(gp.eventHandler.currentMap);
+            gp.playSFX(8);
         }
    
         mapVerifier=gp.eventHandler.currentMap;

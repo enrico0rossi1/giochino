@@ -241,7 +241,7 @@ public class Entità{
             
         }
 
-        //MONSTER HEALT BAR
+        //MONSTER HEALTH BAR
         if(type==2){
             double oneScale = (double)gp.ingame_size/vitaMax;
             int hbValue = (int)oneScale*vita;
