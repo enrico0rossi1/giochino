@@ -21,6 +21,7 @@ public class UI {
     Font arial_30;
     Font winnerFont;
     Font zeldaFont;
+    Font zeldaFont_36;
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjHeart heart;
@@ -35,12 +36,12 @@ public class UI {
     int messageCounter = 0;
     int message2Counter = 0;
     public boolean endGame;
-    public String currentDialogue;
-    public String dialogueChoice1;
-    public String dialogueChoice2;
+    public String currentDialogue = "";
+    public String dialogueChoice1 = "";
+    public String dialogueChoice2 = "";
     int subState = 0;
     int commandNum = 0;
-    int dialogueChoice = 0;
+    public int dialogueChoice = 0;
    
 
     public UI (Pannello gp) {
@@ -56,16 +57,24 @@ public class UI {
        arial_30 = new Font ("Arial", Font.BOLD,30);
        winnerFont = new Font("Arial", Font.BOLD, 36);
        
-      // InputStream is = getClass().getResourceAsStream("font/ZeldaFont.ttf");
-       
-       try {
-        // Replace "path/to/font.ttf" with the actual path to your font file
-        zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("font/ZeldaFont.ttf")).deriveFont(16f);
+    try {
+     
+        zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("font/ZeldaFont.otf")).deriveFont(30f);
     } catch (IOException | FontFormatException e) {
         e.printStackTrace();
-        // Handle the exception, e.g., fallback to a default font or display an error message
+      
         System.err.println("Error loading font: " + e.getMessage());
+
+     try {
+    
+         zeldaFont_36 = Font.createFont(Font.TRUETYPE_FONT, new File("font/ZeldaFont.otf")).deriveFont(36f);
+     } catch (IOException | FontFormatException f) {
+         f.printStackTrace();
+       
+         System.err.println("Error loading font: " + f.getMessage());
+     }
     }
+  
 }
 
 
@@ -106,7 +115,7 @@ public class UI {
             
               graphics2.setColor(new Color(0,40,80));
                graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
-               graphics2.setFont(winnerFont);
+               graphics2.setFont(zeldaFont);
                graphics2.setColor(Color.GRAY);
                graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-83);
            
@@ -267,7 +276,7 @@ public void options_top (int titleX,int titleY) {
 
 
 
-    graphics2.setFont(winnerFont);
+    graphics2.setFont(zeldaFont);
     graphics2.setColor(Color.BLUE);
 
     int textX = getCenteredXForText("Opzioni", graphics2);
@@ -277,7 +286,7 @@ public void options_top (int titleX,int titleY) {
 
     graphics2.drawString("Opzioni",textX,textY);
     textY +=lineHeight;
-    textX -=lineHeight * 2;
+    textX -=lineHeight * 2 +10;
     graphics2.setColor(Color.WHITE);
 
 
@@ -387,7 +396,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             final int x = gp.screen_width/2+50;
             final int y = 20 ;
         
-            graphics2.setFont(arial_30);
+            graphics2.setFont(zeldaFont);
             graphics2.setColor(Color.WHITE);
         
             int textX = x +20;
@@ -397,12 +406,22 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         
             graphics2.drawString("RIPOSINO",textX,textY);
             textY +=lineHeight*3;
+            graphics2.setColor(Color.WHITE);
+            graphics2.drawString("Premi M per continuare",textX,textY);
             graphics2.setColor(Color.BLACK);
-            graphics2.drawString("Premi M per continuare"+ gp.giocatore.vita+"/"+gp.giocatore.vitaMax,textX,textY);
+            graphics2.drawString("Premi M per continuare",textX-2,textY+2);
             textY += lineHeight*2;
             textX += 10;
-            graphics2.drawString("Premi O per visitare le opzioni",textX,textY);
-            textY += lineHeight*2;
+            graphics2.setColor(Color.WHITE);
+            graphics2.drawString("Premi O per visitare",textX,textY);
+            graphics2.setColor(Color.BLACK);
+            graphics2.drawString("Premi O per visitare",textX-2,textY+2);
+            textY += lineHeight;
+            textX += 30;
+            graphics2.setColor(Color.WHITE);
+            graphics2.drawString("   le opzioni",textX,textY);
+            graphics2.setColor(Color.BLACK);
+            graphics2.drawString("   le opzioni",textX-2,textY+2);
 
             drawCharacterScreen(); 
     }
@@ -416,14 +435,14 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         if (gp.gameState == gp.gameOver) {
             // draw gOverScreen ();
             graphics2.drawImage(heartHalvedImage,gp.screen_width/2,gp.screen_height/2+10,300,200,null);
-            graphics2.drawString("LOSER",gp.screen_width/2+50,gp.screen_height/2+10);
+            graphics2.drawString("Wow,che scarso...",gp.screen_width/2+50,gp.screen_height/2+10);
         }
 
     }
     public void drawEndScreen(){
         if (endGame == true) {
             graphics2.setFont(winnerFont);
-            graphics2.drawString("Congratulations \n you are the Champion",(gp.screen_width)/4,gp.screen_height/2-80);
+            graphics2.drawString("Avventura Completata",(gp.screen_width)/4,gp.screen_height/2-80);
 
             gp.ThreadGioco = null;
         }
@@ -455,7 +474,7 @@ public void drawCharacterScreen () {
 
     drawSubWindow(x, y, height, width);
 
-    graphics2.setFont(winnerFont);
+    graphics2.setFont(zeldaFont);
     graphics2.setColor(Color.BLUE);
 
     int textX = x +20;
@@ -473,10 +492,10 @@ public void drawCharacterScreen () {
     if (gp.giocatore.speedUp == false) {graphics2.drawString("no drip",textX,textY);
     textY += lineHeight;}
     if (gp.giocatore.speedUp == true) {graphics2.drawString("flash",textX,textY);
-    graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight,null);
+    graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight/4*3,null);
     textY += lineHeight;}
     if (gp.giocatore.rich == true) {graphics2.drawString("riccone",textX,textY);
-    graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - lineHeight,null);
+    graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - lineHeight/4*3,null);
     textY += lineHeight;}
     if (gp.giocatore.rich == false) {graphics2.drawString("povero",textX,textY);
     textY += lineHeight;}
