@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-
 import object.GoldCoin;
 import object.ObjHeart;
 import object.ObjKey;
@@ -18,10 +17,9 @@ import object.ObjShoes;
 public class UI {
 
     Pannello gp;
-    Font arial_30;
-    Font winnerFont;
     Font zeldaFont;
-    Font zeldaFont_36;
+    Font zeldaFont60;
+    Font eightBitFont;
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjHeart heart;
@@ -54,8 +52,6 @@ public class UI {
         
         
         //elenco dei font utilizzati nell'interfaccia
-       arial_30 = new Font ("Arial", Font.BOLD,30);
-       winnerFont = new Font("Arial", Font.BOLD, 36);
        
     try {
      
@@ -64,17 +60,22 @@ public class UI {
         e.printStackTrace();
       
         System.err.println("Error loading font: " + e.getMessage());
-
-     try {
+   try {
     
-         zeldaFont_36 = Font.createFont(Font.TRUETYPE_FONT, new File("font/ZeldaFont.otf")).deriveFont(36f);
+         eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("font/8BitFont.otf")).deriveFont(20f);
      } catch (IOException | FontFormatException f) {
          f.printStackTrace();
        
          System.err.println("Error loading font: " + f.getMessage());
      }
     }
-  
+
+
+
+       zeldaFont60 = zeldaFont.deriveFont(60f);
+
+
+
 }
 
 
@@ -115,7 +116,7 @@ public class UI {
             
               graphics2.setColor(new Color(0,40,80));
                graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
-               graphics2.setFont(zeldaFont);
+               graphics2.setFont(zeldaFont60);
                graphics2.setColor(Color.GRAY);
                graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-83);
            
@@ -123,7 +124,7 @@ public class UI {
                graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-80);
                graphics2.setColor(Color.WHITE);
                graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
-               graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-80,gp.screen_height/2,160,120,null);
+               graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-60,gp.screen_height/2,160,120,null);
            }
     
     }
@@ -161,7 +162,7 @@ public class UI {
         Image keyImage = key.image;
         
         if (gp.gameState == gp.playState) {
-            graphics2.setFont(arial_30);
+            graphics2.setFont(eightBitFont);
             graphics2.setColor(Color.red);
             graphics2.drawString(" = " + gp.giocatore.numKeys, 32, 553);
             graphics2.drawImage(keyImage, 10, 530, 25, 25, null);
@@ -349,7 +350,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
     int y = textY + gp.ingame_size*2;
     final int lineHeight = 64;
    
-
+    graphics2.setFont(zeldaFont);
     graphics2.setColor(Color.WHITE);
     graphics2.drawString("Spostati        < WASD >",x,y);
     y += lineHeight;
@@ -365,12 +366,13 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
 
     public void quitGame(int titleX,int titleY) {
         
-        graphics2.setFont(arial_30);
+        graphics2.setFont(zeldaFont);
         graphics2.setColor(Color.GREEN);
     
         int textX = getCenteredXForText("Rinunci da ex-avventuriero?", graphics2);
         int textY = titleY + gp.ingame_size;
 
+        graphics2.setFont(eightBitFont);
         graphics2.drawString("Rinunci da ex-avventuriero?",textX,textY);
       
         textY += 80;
@@ -441,7 +443,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
     }
     public void drawEndScreen(){
         if (endGame == true) {
-            graphics2.setFont(winnerFont);
+            graphics2.setFont(zeldaFont60);
             graphics2.drawString("Avventura Completata",(gp.screen_width)/4,gp.screen_height/2-80);
 
             gp.ThreadGioco = null;

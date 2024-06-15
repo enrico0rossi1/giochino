@@ -53,6 +53,7 @@ public class AssetPlacer {
 
 	
 	public void placeObject () {
+		// mappa StartingWoods
 		setObject("Shoes",26,26,1,0);
 		setObject("Key",23,24,1,0);
 		setObject("Key",28,24,1,0);
@@ -61,11 +62,14 @@ public class AssetPlacer {
 		setObject("BigTreasure", 26, 40, 1,0);
 		setObject("Spike", 23, 23, 1,0);
 		setObject("GoldCoin", 26, 23, 1,0);
-		
+		// mappa DarkWoods
 		setObject("Shoes",26,26,1,1);
 		setObject("Key",25,30,1,1);
 		setObject("GoldCoin", 26, 23, 1,1);
-		setObject("Heart",24,24,1,0);
+		//mappa Jungle
+
+		//mappa Beach
+	
 	}
 
 	//GESTIONE NEMICI

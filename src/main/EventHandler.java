@@ -23,7 +23,7 @@ public class EventHandler {
 
     while (col < gp.worldCol && row < gp.worldRow ){
       eventRect[col][row] = new EventRectangle();
-      eventRect[col][row].x = 0;
+      eventRect[col][row].x = 0-5;
       eventRect[col][row].y = 0;
       eventRect[col][row].width = gp.ingame_size + 5; 
       eventRect[col][row].height = gp.ingame_size + 5;
@@ -56,21 +56,19 @@ public class EventHandler {
       if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
       if (hitEvent(25, 25, "any",0)) {healingPool();}
 
-      if (hitEvent(20,27, "any",darkWoodsMap )&& monChecker()){teleportTostartingWoods();}
-      if (hitEvent(20,27, "any",jungleMap )&& monChecker()){teleportTostartingWoods();}
-      if (hitEvent(19,25, "any",beachMap )&& monChecker()){teleportTostartingWoods();}
+
+      // ritorno a startingWoods
+      if (hitEvent(20,27, "any",darkWoodsMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if (hitEvent(20,27, "any",jungleMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if (hitEvent(19,25, "any",beachMap )&& monChecker()){askForTeleport(startingWoodsMap);}
       
      
-     
-     if (hitEvent(39,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
+      //viaggio verso località diverse da startingWoods
+      if (hitEvent(39,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
       if (hitEvent(26,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
       if (hitEvent(25,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
       if (hitEvent(9,25, "any",startingWoodsMap)){askForTeleport(beachMap);}
   
-      
-      // eventi di prova
-      //if (hitEvent(24,7, "any",startingWoodsMap)){dialogueTest(24,7);}
-      //if (hitEvent(30,23, "any",startingWoodsMap)){stopMusicTest();}
     }
   }
   
@@ -153,33 +151,33 @@ public boolean monChecker(){
 
   public void askForTeleport(int map) { 
      gp.gameState = gp.dialogueState;
-     gp.ui.dialogueChoice1 = "Fifone";
-     gp.ui.dialogueChoice2 = "Ebèèèè";
+     gp.ui.dialogueChoice1 = "No,grazie";
+     gp.ui.dialogueChoice2 = "Sì";
      gp.ui.dialogueChoice = 1;
 
      switch (map) {
      case darkWoodsMap:
      nextMap = darkWoodsMap;
-     gp.ui.currentDialogue = "vuoi esplorare le foreste bule? Sconfiggi tutti\n i nemici per tornare indietro";
+     gp.ui.currentDialogue = "Vuoi esplorare le foreste bule? Sconfiggi tutti\n i nemici per tornare indietro";
    
    
 
      break;
      case jungleMap:
      nextMap = jungleMap;
-     gp.ui.currentDialogue = "vuoi esplorare la giungla? Sconfiggi tutti\n i nemici per tornare indietro";
+     gp.ui.currentDialogue = "Vuoi esplorare la giungla? Sconfiggi tutti\n i nemici per tornare indietro";
 
 
      break;
      case beachMap: 
      nextMap = beachMap;
-     gp.ui.currentDialogue = "vuoi esplorare la spiaggia? Sconfiggi tutti\n i nemici per tornare indietro";
+     gp.ui.currentDialogue = "Vuoi esplorare la spiaggia? Sconfiggi tutti\n i nemici per tornare indietro";
 
 
      break;
      case startingWoodsMap: 
      nextMap = startingWoodsMap;
-     gp.ui.currentDialogue = "stai per tornare al boschetto tranquillo";
+     gp.ui.currentDialogue = "Stai per tornare al boschetto tranquillo, ti va?";
 
 
      break;
