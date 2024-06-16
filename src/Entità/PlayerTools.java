@@ -68,7 +68,7 @@ public class PlayerTools {
         }
 
         Entità obj = gp.obj[i];
-        if (obj == null || gp.eventHandler.currentMap != obj.mapVerifier) {
+        if (obj == null || gp.eventHandler.currentMapIndex != obj.mapVerifier) {
             return;
         }
 

@@ -92,11 +92,11 @@ public class Giocatore extends Entità {
         if (vita == 0) {
             gp.gameState = gp.gameOver;
           
-            gp.stopMusic(gp.eventHandler.currentMap);
+            gp.stopMusic(gp.eventHandler.currentMapIndex);
             gp.playSFX(8);
         }
    
-        mapVerifier=gp.eventHandler.currentMap;
+        mapVerifier=gp.eventHandler.currentMapIndex;
         gp.pTools.moveOBJChecker();
         animationRoller();
         gp.pTools.chooseSprite();
