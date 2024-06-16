@@ -147,6 +147,7 @@ public class Pannello extends JPanel {
             mapMemory.loadToMapMemory(dungeon3);
             Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMap];
             currentMap.draw(graphics3, graphics2, tileManager);
+          
 
             if (currentMap.isComplete() && lastKill != 0) {
                 assetPlacer.setObject("Key", 26, 26, 1, 0);
@@ -209,4 +210,5 @@ public class Pannello extends JPanel {
         sfx.setFile(i);
         sfx.play();
     }
+    
 }

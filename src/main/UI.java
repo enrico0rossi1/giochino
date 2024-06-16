@@ -6,8 +6,12 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import object.GoldCoin;
 import object.ObjHeart;
 import object.ObjKey;
@@ -20,6 +24,7 @@ public class UI {
     Font zeldaFont;
     Font zeldaFont60;
     Font eightBitFont;
+    Font eightBitFont15;
     Graphics2D graphics2;
     InputTastiera keyh;
     ObjHeart heart;
@@ -56,7 +61,7 @@ public class UI {
 
         try {
 
-            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/ZeldaFont.otf")).deriveFont(30f);
+            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,7 +69,7 @@ public class UI {
         }
 
         try {
-            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/8BitFont.ttf")).deriveFont(20f);
+            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
         } catch (IOException | FontFormatException f) {
             f.printStackTrace();
             System.err.println("Error loading font: " + f.getMessage());
@@ -72,24 +77,10 @@ public class UI {
 
 
         zeldaFont60 = zeldaFont.deriveFont(60f);
+        eightBitFont15 = eightBitFont.deriveFont(15f);
     }
 
 
-    public void showMessage (String text){
-        messageOn = true;
-        message = text;
-        messageCounter = 1;
-      
-
-    }
-
-    public void showMessage2 (String text){
-        message2On = true;
-        message2 = text;
-        message2Counter = 1;
-      
-
-    }  
     
     public void draw (Graphics2D graphics2) {
         
@@ -109,23 +100,31 @@ public class UI {
     public void drawTitleScreen(){
 
         if (gp.gameState == gp.titleState) {
+
             
-              graphics2.setColor(new Color(0,40,80));
-               graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
+            BufferedImage titleScreen = loadImage("main/WarriorAdventureTitleScreen.jpeg");
+
+               graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
                graphics2.setFont(zeldaFont60);
                graphics2.setColor(Color.GRAY);
                graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
-           
                graphics2.setColor(Color.red);
                graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
                graphics2.setColor(Color.WHITE);
                graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
-               graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-60,gp.screen_height/2,160,120,null);
+              
            }
     
     }
 
-  
+    private static BufferedImage loadImage(String imagePath) {
+        try {
+            return ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     public void drawPlayState() {
         
@@ -195,6 +194,22 @@ public class UI {
           graphics2.drawImage(keyImage, x+5, y+8, 25, 25, null);
 
     }
+
+    public void showMessage (String text){
+        messageOn = true;
+        message = text;
+        messageCounter = 1;
+      
+
+    }
+
+    public void showMessage2 (String text){
+        message2On = true;
+        message2 = text;
+        message2Counter = 1;
+      
+
+    }  
     private void drawMessages() {
         if (messageOn) {
             drawMessage(message, messageCounter);
@@ -219,7 +234,9 @@ public class UI {
     }
     
     private void drawMessage(String message, int counter, int offsetY) {
-        int messageX = (gp.screen_width / 2) - 80;
+        graphics2.setFont(eightBitFont15);
+        graphics2.setColor(Color.WHITE);
+        int messageX = (gp.screen_width / 4*3);
         int messageY = gp.screen_height - (gp.screen_height / 6) + offsetY;
         graphics2.drawString(message, messageX, messageY);
     }
@@ -247,7 +264,7 @@ public class UI {
         // disegna la finestra in cui inserire i dialoghi
         drawSubWindow(x,y,height,width);
 
-        graphics2.setFont(graphics2.getFont().deriveFont(Font.PLAIN));
+        graphics2.setFont(eightBitFont);
         x += gp.ingame_size;
         y += gp.ingame_size;
 

@@ -58,6 +58,7 @@ public class tileManager {
             setup(25, "Additional/Albero2", true);
             setup(26,"GrassTile/grass3",false);
             setup(27, "Additional/dungeonEntrance1",true);
+            setup(28,"Additional/teleport",false);
 
             
         } catch (Exception e) {
