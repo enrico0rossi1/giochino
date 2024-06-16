@@ -115,7 +115,7 @@ public class Pannello extends JPanel {
             giocatore.update();
 
             for (int i = 0; i < mon.length; i++) {
-                if (mon[i] != null && mon[i].mapVerifier == eventHandler.currentMap) {
+                if (mon[i] != null && mon[i].mapVerifier == eventHandler.currentMapIndex) {
                     mon[i].update();
                     if (mon[i].dead == true) {
                         mon[i] = null;
@@ -145,7 +145,7 @@ public class Pannello extends JPanel {
             mapMemory.loadToMapMemory(dungeon1);
             mapMemory.loadToMapMemory(dungeon2);
             mapMemory.loadToMapMemory(dungeon3);
-            Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMap];
+            Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
             currentMap.draw(graphics3, graphics2, tileManager);
           
 
@@ -167,7 +167,7 @@ public class Pannello extends JPanel {
 
             // DISEGNIAMO LE ENTITà
             for (int i = 0; i < entityList.size(); i++) {
-                if (entityList.get(i).mapVerifier == eventHandler.currentMap) {
+                if (entityList.get(i).mapVerifier == eventHandler.currentMapIndex) {
                     entityList.get(i).draw(graphics2);
                 }
             }
@@ -193,7 +193,8 @@ public class Pannello extends JPanel {
         giocatore.setValoriPredefiniti();
         assetPlacer.placeEnemy();
         assetPlacer.placeObject();
-        eventHandler.currentMap = eventHandler.startingWoodsMap;
+        eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
+        eventHandler.eventRect[25][25].happened = false ;
     }
 
     public void playMusic(int i) {

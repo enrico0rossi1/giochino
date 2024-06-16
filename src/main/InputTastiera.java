@@ -30,7 +30,7 @@ gp.retry();
     if(premuto == KeyEvent.VK_W){
           gp.stopMusic(4);
           gp.playMusic(0);
-          gp.eventHandler.currentMap = 0;
+          gp.eventHandler.currentMapIndex = 0;
           gp.gameState = gp.playState;
      }
 
@@ -81,7 +81,7 @@ else if (gp.gameState == gp.pauseState){
             gp.gameState = gp.playState;
             gp.playSFX(10);
             gp.stopMusic(5);
-            gp.playMusic(gp.eventHandler.currentMap);
+            gp.playMusic(gp.eventHandler.currentMapIndex);
     }
 
      if (premuto == KeyEvent.VK_O){

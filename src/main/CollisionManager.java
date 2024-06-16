@@ -17,7 +17,7 @@ public class CollisionManager {
     public void checkTile(Entità e){
 
         for(int i=0; i<gp.mapMemory.mapHandler.length;i++){
-            if (i==gp.eventHandler.currentMap && gp.mapMemory.mapHandler[i]!=null){
+            if (i==gp.eventHandler.currentMapIndex && gp.mapMemory.mapHandler[i]!=null){
                 checkMap(e,gp.mapMemory.mapHandler[i]);
             }
 
@@ -99,7 +99,7 @@ public class CollisionManager {
         int index = 999; // Initialize to a high number as a default "not found" value
 
         for (int i = 0; i < gp.obj.length; i++) {
-            if (gp.obj[i] != null && gp.obj[i].mapVerifier == gp.eventHandler.currentMap) {
+            if (gp.obj[i] != null && gp.obj[i].mapVerifier == gp.eventHandler.currentMapIndex) {
                 // Backup original positions
                 int originalCollAreaX = e.collArea.x;
                 int originalCollAreaY = e.collArea.y;
@@ -158,7 +158,7 @@ public class CollisionManager {
         int index = 999; // Initialize to a high number as a default "not found" value
 
         for (int i = 0; i < target.length; i++) {
-            if (target[i] != null && target[i].mapVerifier == gp.eventHandler.currentMap) {
+            if (target[i] != null && target[i].mapVerifier == gp.eventHandler.currentMapIndex) {
                 // Backup original positions
                 int originalCollAreaX = e.collArea.x;
                 int originalCollAreaY = e.collArea.y;

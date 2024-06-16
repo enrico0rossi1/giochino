@@ -131,12 +131,15 @@ public class UI {
         
         if (gp.gameState == gp.playState) {
             
-            drawPlayerKeys();
+         
          
         
             // Disegna la vita del giocatore
             drawPlayerLife();
-    
+
+            // Disegna le chiavi del giocatore
+            drawPlayerKeys();
+
             // Disegna i messaggi
             drawMessages();
         }
@@ -181,7 +184,7 @@ public class UI {
         
     public void drawPlayerKeys() {
         int x = 5;
-        int y = gp.screen_height - (gp.ingame_size*2) ;
+        int y = gp.screen_height - (gp.ingame_size*3/2) ;
         int height = 40;
         int width = 25 * 3;
         Image keyImage = key.image;
@@ -280,6 +283,8 @@ public class UI {
        if (dialogueChoice == 2) {
         graphics2.drawString(">",x*4 - 20,y);
     }
+       graphics2.setFont(eightBitFont15);
+       graphics2.drawString("Premi Enter per continuare", x+gp.ingame_size*7, y+40);
 
     }
 
@@ -576,7 +581,7 @@ public void drawCharacterScreen () {
     graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight/4*3,null);
     textY += lineHeight;}
     if (gp.giocatore.rich == true) {graphics2.drawString("riccone",textX,textY);
-    graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - lineHeight/4*3,null);
+    graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - (lineHeight/4*2)+5,null);
     textY += lineHeight;}
     if (gp.giocatore.rich == false) {graphics2.drawString("povero",textX,textY);
     textY += lineHeight;}

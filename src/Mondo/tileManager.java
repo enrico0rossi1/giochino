@@ -22,7 +22,7 @@ public class tileManager {
     public tileManager(Pannello gp){
         this.gp=gp;
 
-        Tile= new tile[30];
+        Tile= new tile[50];
         
         
         getTileImage();
@@ -59,6 +59,16 @@ public class tileManager {
             setup(26,"GrassTile/grass3",false);
             setup(27, "Additional/dungeonEntrance1",true);
             setup(28,"Additional/teleport",false);
+            setup(29,"WaterTile/WaterPool",true);
+            setup(30,"WaterTile/BigPoolLeftUp",true);
+            setup(31,"WaterTile/BigPoolRightUp",true);
+            setup(32,"WaterTile/BigPoolLeftDown",true);
+            setup(33,"WaterTile/BigPoolRightDown",true);
+            setup(34,"WaterTile/MediumPoolLeft",true);
+            setup(35,"WaterTile/MediumPoolRight",true);
+            setup(36,"WaterTile/SmallPool",true);
+            setup(37, "Additional/Albero3", true);
+            
 
             
         } catch (Exception e) {

@@ -6,7 +6,7 @@ public class EventHandler {
   EventRectangle eventRect[][];
   int previousEventX,previousEventY;
   boolean canTouchEvent = true;
-  public int currentMap =0;
+  public int currentMapIndex =0;
   public int nextMap;
   final int startingWoodsMap = 0;
   final int darkWoodsMap = 1;
@@ -50,6 +50,7 @@ public class EventHandler {
     }
     
     if (canTouchEvent == true) {
+      if (hitEvent(25,25, "any", startingWoodsMap)){presentation(25,25);}
       if (hitEvent(23, 23, "any",0)) {hiddenTrap(23,23);}
       if (hitEvent(10, 23, "any",0)) {damagePool(10,23);}
       if (hitEvent(11, 23, "any",0)) {damagePool(11,23);}
@@ -59,7 +60,7 @@ public class EventHandler {
 
       // ritorno a startingWoods
       if (hitEvent(18,18, "any",darkWoodsMap )&& monChecker()){askForTeleport(startingWoodsMap);}
-      if (hitEvent(18,18, "any",jungleMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if (hitEvent(18,19, "any",jungleMap )&& monChecker()){askForTeleport(startingWoodsMap);}
       if (hitEvent(18,18, "any",beachMap )&& monChecker()){askForTeleport(startingWoodsMap);}
       
      
@@ -83,7 +84,7 @@ public class EventHandler {
     eventRect[col][row].y = row*gp.ingame_size + eventRect[col][row].y ;
         
     if(gp.giocatore.collArea.intersects(eventRect[col][row]) && eventRect[col][row].happened == false
-        && mapindex==currentMap) {
+        && mapindex==currentMapIndex) {
       
       if (gp.giocatore.direzione.contentEquals(reqDirection) || reqDirection.contentEquals("any") ) {
         hit = true;
@@ -106,7 +107,7 @@ public class EventHandler {
 public boolean monChecker(){
   boolean checker=true;
   for(int a=0;a<gp.mon.length;a++){
-    if(gp.mon[a]!=null&&gp.mon[a].mapVerifier==gp.eventHandler.currentMap){
+    if(gp.mon[a]!=null&&gp.mon[a].mapVerifier==gp.eventHandler.currentMapIndex){
       for(int i=a; i<gp.mon.length;i++){
           if (gp.mon[i]!=null&& gp.mon[a]!=null&&gp.mon[i].name==gp.mon[a].name){
             checker=false;
@@ -129,7 +130,17 @@ public boolean monChecker(){
   public void damagePool (int col,int row){
     gp.giocatore.vita -= 1 ;
     canTouchEvent = false;
-    //  eventRect[col][row].happened = true ;
+   
+  }
+
+  public void presentation(int col,int row) {
+   
+    gp.ui.currentDialogue = "Esplora per trovare la chiave che aprirà la porta per \nil tesoro della cripta"; 
+    gp.ui.dialogueChoice1 = "";
+    gp.ui.dialogueChoice2 = "";
+    gp.ui.dialogueChoice = 3;
+    gp.gameState = gp.dialogueState;
+    eventRect[col][row].happened = true ;
   }
 
   public void healingPool() {
@@ -185,8 +196,8 @@ public boolean monChecker(){
   
   gp.giocatore.worldX = gp.ingame_size * 25;
   gp.giocatore.worldY = gp.ingame_size * 25;
-  gp.stopMusic(currentMap);
-  currentMap = map;
+  gp.stopMusic(currentMapIndex);
+  currentMapIndex = map;
   gp.playMusic(map);
 
   }
