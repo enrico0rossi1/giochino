@@ -34,11 +34,11 @@ public class Giocatore extends Entità {
         this.screenManager=screenManager;
        
         invincibleTime=30;
-        collArea.x=10;
+        collArea.x=12;
         collArea.y=10;
         solidAreaDefaultX = collArea.x;
         solidAreaDefaultY = collArea.y;
-        collArea.width=gp.ingame_size-(collArea.x*2);
+        collArea.width=gp.ingame_size-(collArea.x*2)-4;
         collArea.height=gp.ingame_size-(collArea.y*2); //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
@@ -56,7 +56,7 @@ public class Giocatore extends Entità {
     public void setValoriPredefiniti(){
         worldX=gp.ingame_size*25;  
         worldY=gp.ingame_size*25; //posizione iniziale su mappa 
-        velocità=2;
+        speed=2;
         direzione="down";
 
         vitaMax = 10;

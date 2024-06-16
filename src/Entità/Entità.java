@@ -23,7 +23,7 @@ public class Entità{
     //ATTRIBUTI FONDAMENTALI
     public String name;
     public String direzione="down";
-    public int velocità;
+    public int speed;
     public int mapVerifier; 
     public int invincibleTime;
     public int type; // 0 = player, 1 = npc, 2 = monster
@@ -133,19 +133,19 @@ public class Entità{
         if(solid==false && vita>0){    
          switch (direzione) {
             case "up": 
-                worldY-=velocità; 
+                worldY-=speed; 
                 image = MoveUpAnimation[spriteNum];
             break;
             case "right": 
-                worldX+=velocità;
+                worldX+=speed;
                 image = MoveRightAnimation[spriteNum]; 
             break;
             case "left": 
-                worldX-=velocità; 
+                worldX-=speed; 
                 image = MoveLeftAnimation[spriteNum];
             break;
             case "down": 
-                worldY+=velocità; 
+                worldY+=speed; 
                 image = MoveDownAnimation[spriteNum];
             break;
             }

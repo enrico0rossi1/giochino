@@ -219,25 +219,25 @@ public class PlayerTools {
                 gp.giocatore.direzione="left";
             }
 
-            //GESTIONE VELOCITà PLAYER
+            //GESTIONE speedPLAYER
             if(
                (gp.keyh.w==true ||
                 gp.keyh.a==true ||
                 gp.keyh.s==true ||
                 gp.keyh.d==true) && gp.keyh.o==true && gp.giocatore.speedUp==true ){
-                  gp.giocatore.velocità = 4 ;
+                  gp.giocatore.speed= 4 ;
              } else if(
                 (gp.keyh.w==true ||
                  gp.keyh.a==true ||
                  gp.keyh.s==true ||
                  gp.keyh.d==true) && gp.keyh.o==true){
-                    gp.giocatore.velocità = 2;
+                    gp.giocatore.speed= 2;
                  }
-                  else {gp.giocatore.velocità = 0;
+                  else {gp.giocatore.speed= 0;
                     }
             
             if(gp.keyh.o==false){
-                gp.giocatore.velocità=2;
+                gp.giocatore.speed=2;
             }
 
             //CHECK TILE
@@ -259,10 +259,10 @@ public class PlayerTools {
 
             if (gp.giocatore.solid == false){
                 switch(gp.giocatore.direzione){
-                    case "up": gp.giocatore.worldY -= gp.giocatore.velocità*gp.screenManager.scaleY; break;
-                    case "down": gp.giocatore.worldY += gp.giocatore.velocità*gp.screenManager.scaleY; break;
-                    case "right": gp.giocatore.worldX += gp.giocatore.velocità*gp.screenManager.scaleX; break;
-                    case "left": gp.giocatore.worldX-= gp.giocatore.velocità*gp.screenManager.scaleX; break;
+                    case "up": gp.giocatore.worldY -= gp.giocatore.speed*gp.screenManager.scaleY; break;
+                    case "down": gp.giocatore.worldY += gp.giocatore.speed*gp.screenManager.scaleY; break;
+                    case "right": gp.giocatore.worldX += gp.giocatore.speed*gp.screenManager.scaleX; break;
+                    case "left": gp.giocatore.worldX-= gp.giocatore.speed*gp.screenManager.scaleX; break;
                 }
             }
         }
