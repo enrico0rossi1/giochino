@@ -40,19 +40,19 @@ public class CollisionManager {
     
         switch (e.direzione) {
             case "up":
-                newRow = (entitàTopBound - e.speed) / gp.ingame_size;
+                newRow = (entitàTopBound - (e.speed)) / gp.ingame_size;
                 checkCollision(e, map, entitàLeftCol, entitàRightCol, newRow, newRow);
                 break;
             case "down":
-                newRow = (entitàBottomBound + e.speed) / gp.ingame_size;
+                newRow = (entitàBottomBound + (e.speed+5)) / gp.ingame_size;
                 checkCollision(e, map, entitàLeftCol, entitàRightCol, newRow, newRow);
                 break;
             case "right":
-                newCol = (entitàRightBound + e.speed) / gp.ingame_size;
+                newCol = (entitàRightBound + (e.speed+5)) / gp.ingame_size;
                 checkCollision(e, map, newCol, newCol, entitàTopRow, entitàBottomRow);
                 break;
             case "left":
-                newCol = (entitàLeftBound - e.speed) / gp.ingame_size;
+                newCol = (entitàLeftBound - (e.speed)-5) / gp.ingame_size;
                 checkCollision(e, map, newCol, newCol, entitàTopRow, entitàBottomRow);
                 break;
         }

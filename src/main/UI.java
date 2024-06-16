@@ -54,26 +54,26 @@ public class UI {
         
         //elenco dei font utilizzati nell'interfaccia
        
-    try {
-     
-        zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
-    } catch (IOException | FontFormatException e) {
-        e.printStackTrace();
-      
-        System.err.println("Error loading font: " + e.getMessage());
-   try {
-    
-         eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
-     } catch (IOException | FontFormatException f) {
-         f.printStackTrace();
-       
-         System.err.println("Error loading font: " + f.getMessage());
-     }
-    }
+    // try {
+    //  
+        // zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
+    // } catch (IOException | FontFormatException e) {
+        // e.printStackTrace();
+    //   
+        // System.err.println("Error loading font: " + e.getMessage());
+//    try {
+    // 
+        //  eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
+    //  } catch (IOException | FontFormatException f) {
+        //  f.printStackTrace();
+    //    
+        //  System.err.println("Error loading font: " + f.getMessage());
+    //  }
+    // }
+// 
 
 
-
-       zeldaFont60 = zeldaFont.deriveFont(60f);
+    //zeldaFont60 = zeldaFont.deriveFont(60f);
 
 
 
@@ -502,7 +502,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             graphics2.setFont(zeldaFont60);
             graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/2-80);
 
-            gp.ThreadGioco = null;
+            gp.gameTimer = null;
         }
         
     }

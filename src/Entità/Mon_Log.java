@@ -9,7 +9,7 @@ public class Mon_Log extends Entità{
         
         name = "Log";
         type=2;
-        velocità=1;
+        speed=1;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;

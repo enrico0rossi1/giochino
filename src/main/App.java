@@ -21,7 +21,7 @@ public class App {
         finestra.setVisible(true);
       
         pannello1.setUpGioco();
-        pannello1.startThreadGioco();
+        pannello1.startGameTimer();
         
        
 
