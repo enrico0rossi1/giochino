@@ -13,7 +13,7 @@ public class PlayerTools {
 
     public void interactMonster(int monVerifier){
         if(monVerifier!=999){
-            System.out.println(" you got hit");
+            gp.ui.showMessage2("hai subito danno");
         }
     }
 
@@ -22,6 +22,7 @@ public class PlayerTools {
             gp.mon[i].vita--;
             gp.mon[i].invincible=true;
             gp.mon[i].damageReaction();
+            gp.ui.showMessage("colpito");
         }
          
     }
@@ -98,7 +99,11 @@ public class PlayerTools {
 
     private void handleKeyPickup(int i) {
         gp.obj[i] = null;
-        gp.ui.showMessage("You got a key! That's cool.");
+        gp.ui.currentDialogue = "Hai ottenute la chiave, ora potrai accedere al tesoro\n della cripta";
+        gp.ui.dialogueChoice1 = "";
+        gp.ui.dialogueChoice2 = "";
+        gp.ui.dialogueChoice = 3;
+        gp.gameState=gp.dialogueState;
         gp.playSFX(6);
         gp.giocatore.numKeys++;
     }
@@ -106,11 +111,11 @@ public class PlayerTools {
     private void handleDoorUnlock(int i) {
         if (gp.giocatore.numKeys > 0) {
             gp.obj[i] = null;
-            gp.ui.showMessage("You unlocked a door! Let's go!");
+            gp.ui.showMessage("Hai sbloccato una porta!");
             gp.giocatore.numKeys--;
             gp.playSFX(6);
         } else {
-            gp.ui.showMessage2("No keys? So lame...");
+            gp.ui.showMessage2("Niente chiavi? Peccato...");
         }
     }
 
@@ -122,7 +127,6 @@ public class PlayerTools {
         gp.ui.dialogueChoice2 = "";
         gp.ui.dialogueChoice = 3;
         gp.gameState=gp.dialogueState;
-        gp.ui.showMessage2("Richer!");
         gp.playSFX(6);
     }
 
@@ -134,7 +138,6 @@ public class PlayerTools {
         gp.ui.dialogueChoice2 = "";
         gp.ui.dialogueChoice = 3;
         gp.gameState=gp.dialogueState;
-        gp.ui.showMessage("Press O to run.");
         gp.playSFX(6);
     }
 
