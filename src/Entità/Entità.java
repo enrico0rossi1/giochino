@@ -174,6 +174,7 @@ public class Entità{
             }
 
             actionLockCounter=0;
+
         }
 
 
