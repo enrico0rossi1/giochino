@@ -87,6 +87,7 @@ else if (gp.gameState == gp.pauseState){
      if (premuto == KeyEvent.VK_O){
             
                  gp.gameState = gp.optionsState;
+                 gp.playSFX(11);
             }
 
     }
@@ -108,7 +109,10 @@ else if (gp.gameState == gp.dialogueState){
         }
 
     if(premuto == KeyEvent.VK_ENTER){
-          
+          if (gp.fullScreenOn == true && gp.ui.currentDialogue =="Per ridurre le dimensioni dello schermo riavviare il gioco."){
+          gp.playSFX(10);
+          gp.gameState = gp.optionsState;}
+          else {
         gp.gameState = gp.playState;
 
         if (gp.ui.dialogueChoice == 2){
@@ -117,7 +121,7 @@ else if (gp.gameState == gp.dialogueState){
         }
         if (gp.ui.dialogueChoice == 1)
         gp.playSFX(10);
-        
+    }
     }   
   }
 
@@ -177,8 +181,11 @@ else if (gp.gameState == gp.optionsState){
             if (gp.ui.commandNum == 0) {
                 gp.playSFX(9);
         if (gp.fullScreenOn == true) {
-           
-               gp.fullScreenOn = false;
+            gp.ui.currentDialogue = "Per ridurre le dimensioni dello schermo riavviare il gioco.";
+            gp.ui.dialogueChoice1 = "";
+            gp.ui.dialogueChoice2 = "";
+            gp.ui.dialogueChoice = 3;
+             gp.gameState = gp.dialogueState;
            }
            
           else if(gp.fullScreenOn == false)  {

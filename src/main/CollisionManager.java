@@ -40,19 +40,19 @@ public class CollisionManager {
     
         switch (e.direzione) {
             case "up":
-                newRow = (entitàTopBound - e.velocità) / gp.ingame_size;
+                newRow = (entitàTopBound - e.speed) / gp.ingame_size;
                 checkCollision(e, map, entitàLeftCol, entitàRightCol, newRow, newRow);
                 break;
             case "down":
-                newRow = (entitàBottomBound + e.velocità) / gp.ingame_size;
+                newRow = (entitàBottomBound + e.speed) / gp.ingame_size;
                 checkCollision(e, map, entitàLeftCol, entitàRightCol, newRow, newRow);
                 break;
             case "right":
-                newCol = (entitàRightBound + e.velocità) / gp.ingame_size;
+                newCol = (entitàRightBound + e.speed) / gp.ingame_size;
                 checkCollision(e, map, newCol, newCol, entitàTopRow, entitàBottomRow);
                 break;
             case "left":
-                newCol = (entitàLeftBound - e.velocità) / gp.ingame_size;
+                newCol = (entitàLeftBound - e.speed) / gp.ingame_size;
                 checkCollision(e, map, newCol, newCol, entitàTopRow, entitàBottomRow);
                 break;
         }
@@ -115,16 +115,16 @@ public class CollisionManager {
                 // Adjust collision area based on direction
                 switch (e.direzione) {
                     case "up":
-                        e.collArea.y -= e.velocità;
+                        e.collArea.y -= e.speed;
                         break;
                     case "down":
-                        e.collArea.y += e.velocità;
+                        e.collArea.y += e.speed;
                         break;
                     case "right":
-                        e.collArea.x += e.velocità;
+                        e.collArea.x += e.speed;
                         break;
                     case "left":
-                        e.collArea.x -= e.velocità;
+                        e.collArea.x -= e.speed;
                         break;
                 }
 
@@ -174,16 +174,16 @@ public class CollisionManager {
                 // Adjust collision area based on direction
                 switch (e.direzione) {
                     case "up":
-                        e.collArea.y -= e.velocità;
+                        e.collArea.y -= e.speed;
                         break;
                     case "down":
-                        e.collArea.y += e.velocità;
+                        e.collArea.y += e.speed;
                         break;
                     case "right":
-                        e.collArea.x += e.velocità;
+                        e.collArea.x += e.speed;
                         break;
                     case "left":
-                        e.collArea.x -= e.velocità;
+                        e.collArea.x -= e.speed;
                         break;
                 }
 
@@ -228,16 +228,16 @@ public class CollisionManager {
         // Adjust collision area based on direction
         switch (e.direzione) {
             case "up":
-                e.collArea.y -= e.velocità;
+                e.collArea.y -= e.speed;
                 break;
             case "down":
-                e.collArea.y += e.velocità;
+                e.collArea.y += e.speed;
                 break;
             case "right":
-                e.collArea.x += e.velocità;
+                e.collArea.x += e.speed;
                 break;
             case "left":
-                e.collArea.x -= e.velocità;
+                e.collArea.x -= e.speed;
                 break;
         }
         // Check for collision

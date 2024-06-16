@@ -119,10 +119,10 @@ public class UI {
                graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
                graphics2.setFont(zeldaFont60);
                graphics2.setColor(Color.GRAY);
-               graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-83);
+               graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
            
                graphics2.setColor(Color.red);
-               graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-80);
+               graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
                graphics2.setColor(Color.WHITE);
                graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
                graphics2.drawImage(gp.giocatore.AttackDown[1],gp.screen_width/2-60,gp.screen_height/2,160,120,null);
@@ -130,18 +130,43 @@ public class UI {
     
     }
 
-    public void drawPlayerLife() {
+  
+    
+    public void drawPlayState() {
+        
+        
+        if (gp.gameState == gp.playState) {
+            
+            drawPlayerKeys();
+         
+        
+            // Disegna la vita del giocatore
+            drawPlayerLife();
+    
+            // Disegna i messaggi
+            drawMessages();
+        }
+    }
+      public void drawPlayerLife() {
         Image heartFullImage = heart.image;
         Image heartHalvedImage = heart.image2;
         Image heartVoidImage = heart.image3;
     
         int x = gp.pix_row / 2;
-        int y = gp.pix_cols / 2;
+        int y = gp.pix_cols / 2; 
+        int height = gp.ingame_size;
+        int width = gp.ingame_size * 4;
+      
+
+        Color bg = new Color(0,0,0,180);
+        Color bord = new Color(255,0,0);
+          
+          drawColoredSubWindow(x,y,height,width,bg,bord);
         
         // Disegna cuori vuoti
         for (int i = 0; i < gp.giocatore.vitaMax / 2; i++) {
             graphics2.drawImage(heartVoidImage, x, y, null);
-            x += 2 * gp.pix_row;
+            x += 3 * gp.pix_row;
         }
     
         // Ripristina le coordinate per disegnare i cuori pieni e mezzi
@@ -150,7 +175,7 @@ public class UI {
         
         for (int i = 0; i < vita / 2; i++) {
             graphics2.drawImage(heartFullImage, x, y, null);
-            x += 2 * gp.pix_row;
+            x += 3 * gp.pix_row;
         }
         
         // Disegna mezzo cuore se la vita è dispari
@@ -158,24 +183,23 @@ public class UI {
             graphics2.drawImage(heartHalvedImage, x, y, null);
         }
     }
-    
-    public void drawPlayState() {
-        Image keyImage = key.image;
+
         
-        if (gp.gameState == gp.playState) {
-            graphics2.setFont(eightBitFont);
-            graphics2.setColor(Color.red);
-            graphics2.drawString(" = " + gp.giocatore.numKeys, 32, 553);
-            graphics2.drawImage(keyImage, 10, 530, 25, 25, null);
-    
-            // Disegna la vita del giocatore
-            drawPlayerLife();
-    
-            // Disegna i messaggi
-            drawMessages();
-        }
+    public void drawPlayerKeys() {
+        int x = 5;
+        int y = gp.screen_height - (gp.ingame_size*2) ;
+        int height = 40;
+        int width = 25 * 3;
+        Image keyImage = key.image;
+        Color bg = new Color(0,0,0,180);
+        Color bord = new Color(204,119,34);
+          
+          graphics2.setFont(eightBitFont);
+          drawColoredSubWindow(x,y,height,width,bg,bord);
+          graphics2.drawString(" x " + gp.giocatore.numKeys, x + 25, y + 27);
+          graphics2.drawImage(keyImage, x+5, y+8, 25, 25, null);
+
     }
-    
     private void drawMessages() {
         if (messageOn) {
             drawMessage(message, messageCounter);
@@ -193,7 +217,8 @@ public class UI {
             }
         }
     }
-    
+
+
     private void drawMessage(String message, int counter) {
         drawMessage(message, counter, 0);
     }
@@ -348,10 +373,13 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
     public void showControls(int textX, int textY) {
 
     int x = textX +20;
-    int y = textY + gp.ingame_size*2;
+    int y = textY + gp.ingame_size;
     final int lineHeight = 64;
    
     graphics2.setFont(zeldaFont);
+    graphics2.setColor(Color.RED);
+    graphics2.drawString("COMANDI",getCenteredXForText("COMANDI", graphics2),y);
+    y += lineHeight;
     graphics2.setColor(Color.WHITE);
     graphics2.drawString("Spostati        < WASD >",x,y);
     y += lineHeight;
@@ -378,7 +406,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
       
         textY += 80;
 
-        graphics2.drawString("Sì, mi cago addosso?",textX,textY);
+        graphics2.drawString("Sì, ho paura",textX,textY);
          if (commandNum == 0) {
             graphics2.drawString(">",textX - 25,textY);
         }
@@ -493,7 +521,18 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         c = new Color(255,255,255);
         graphics2.setColor(c);
         graphics2.setStroke(new BasicStroke(3));
-        graphics2.drawRoundRect(x+3,y+3,width-5,height-5,25,25);
+        graphics2.drawRoundRect(x,y,width-2,height-2,25,25);
+    
+    } 
+    public void drawColoredSubWindow (int x,int y,int height, int width,Color background,Color border) {
+
+       
+        graphics2.setColor(background);
+        graphics2.fillRoundRect(x,y,width,height,35,35);
+        
+        graphics2.setColor(border);
+        graphics2.setStroke(new BasicStroke(3));
+        graphics2.drawRoundRect(x,y,width-2,height-2,25,25);
     
     } 
 public void drawCharacterScreen () {

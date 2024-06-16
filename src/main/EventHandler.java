@@ -54,7 +54,7 @@ public class EventHandler {
       if (hitEvent(10, 23, "any",0)) {damagePool(10,23);}
       if (hitEvent(11, 23, "any",0)) {damagePool(11,23);}
       if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
-      if (hitEvent(25, 25, "any",0)) {healingPool();}
+      if (hitEvent(22, 26, "any",0)) {healingPool();}
 
 
       // ritorno a startingWoods
@@ -132,22 +132,17 @@ public boolean monChecker(){
     //  eventRect[col][row].happened = true ;
   }
 
-  //accade fintanto che ci stai sopra
   public void healingPool() {
     if (gp.giocatore.vita < gp.giocatore.vitaMax)
-    gp.giocatore.vita += 1 ;
+    gp.giocatore.vita = gp.giocatore.vitaMax;
+    gp.ui.currentDialogue = "Una strana energia ti rinvigorisce, recuperi tutta la vita"; 
+    gp.ui.dialogueChoice1 = "";
+    gp.ui.dialogueChoice2 = "";
+    gp.ui.dialogueChoice = 3;
+    gp.gameState = gp.dialogueState;
+    canTouchEvent = false;
   }
 
- public void teleportTostartingWoods() {
-
-
-
-    gp.giocatore.worldX = gp.ingame_size * 25;
-    gp.giocatore.worldY = gp.ingame_size * 25;
-    gp.stopMusic(currentMap);
-    currentMap = startingWoodsMap;
-    gp.playMusic(startingWoodsMap);
-  }
 
   public void askForTeleport(int map) { 
      gp.gameState = gp.dialogueState;
