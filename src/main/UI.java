@@ -53,31 +53,26 @@ public class UI {
         
         
         //elenco dei font utilizzati nell'interfaccia
-       
-    // try {
-    //  
-        // zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
-    // } catch (IOException | FontFormatException e) {
-        // e.printStackTrace();
-    //   
-        // System.err.println("Error loading font: " + e.getMessage());
-//    try {
-    // 
-        //  eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
-    //  } catch (IOException | FontFormatException f) {
-        //  f.printStackTrace();
-    //    
-        //  System.err.println("Error loading font: " + f.getMessage());
-    //  }
-    // }
-// 
+
+        try {
+
+            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/ZeldaFont.otf")).deriveFont(30f);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error loading font: " + e.getMessage());
+        }
+
+        try {
+            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/8BitFont.ttf")).deriveFont(20f);
+        } catch (IOException | FontFormatException f) {
+            f.printStackTrace();
+            System.err.println("Error loading font: " + f.getMessage());
+        } 
 
 
-    //zeldaFont60 = zeldaFont.deriveFont(60f);
-
-
-
-}
+        zeldaFont60 = zeldaFont.deriveFont(60f);
+    }
 
 
     public void showMessage (String text){
