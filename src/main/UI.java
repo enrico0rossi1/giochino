@@ -104,11 +104,15 @@ public class UI {
         if (gp.gameState == gp.titleState) {
 
             
-            BufferedImage titleScreen = loadImage("main/WarriorAdventureTitleScreen.jpeg");
-
+        Color bg = new Color(0,0,0,150);
+        Color bord = new Color(0,127,255);       
+        BufferedImage titleScreen = loadImage("main/WarriorAdventureTitleScreen.jpeg");
+        
+               
                graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
                graphics2.setFont(zeldaFont80);
                graphics2.setColor(Color.BLUE);
+               drawColoredSubWindow(getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-8,gp.screen_height/4 - 60,gp.ingame_size*2,gp.screen_width - gp.ingame_size*3/2,bg,bord);
                graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
                graphics2.setColor(Color.YELLOW);
                graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
@@ -526,9 +530,14 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
     } 
     public void drawEndScreen(){
         if (gp.gameState == gp.endGame) {
-            BufferedImage endGameScreen = loadImage("main/gameEnding.jpeg");
-            graphics2.drawImage(endGameScreen,0,0,gp.screen_width,gp.screen_height,null);
+            
+        Color bg = new Color(0,0,0,100);
+        Color bord = new Color(255,0,0);
+        BufferedImage endGameScreen = loadImage("main/gameEnding.jpeg");
+
+            graphics2.drawImage(endGameScreen,0,0,gp.screen_width,gp.screen_height,null);  
             graphics2.setFont(zeldaFont60);
+            drawColoredSubWindow(getCenteredXForText("Avventura Completata", graphics2)-8,gp.screen_height/6-10,gp.ingame_size*3/2,gp.screen_width/3*2+3,bg,bord);  
             graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/4);
             graphics2.drawString("Sei il miglior GUERO",(getCenteredXForText("Sei il miglior GUERO", graphics2)),gp.screen_height*2/3);
             graphics2.setFont(eightBitFont);
