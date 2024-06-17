@@ -135,7 +135,7 @@ public boolean monChecker(){
 
   public void presentation(int col,int row) {
    
-    gp.ui.currentDialogue = "Esplora per trovare la chiave che aprirà la porta per \nil tesoro della cripta"; 
+    gp.ui.currentDialogue = "Esplora il mondo per trovare la chiave che aprirà la porta \nper il tesoro della cripta"; 
     gp.ui.dialogueChoice1 = "";
     gp.ui.dialogueChoice2 = "";
     gp.ui.dialogueChoice = 3;
