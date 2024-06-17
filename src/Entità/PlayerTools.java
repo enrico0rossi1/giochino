@@ -98,6 +98,7 @@ public class PlayerTools {
     }
 
     private void handleKeyPickup(int i) {
+        gp.progressObj[i]=gp.obj[i];
         gp.obj[i] = null;
         gp.ui.currentDialogue = "Hai ottenute la chiave, ora potrai accedere al tesoro\n della cripta";
         gp.ui.dialogueChoice1 = "";
@@ -110,6 +111,7 @@ public class PlayerTools {
 
     private void handleDoorUnlock(int i) {
         if (gp.giocatore.numKeys > 0) {
+            gp.progressObj[i]=gp.obj[i];
             gp.obj[i] = null;
             gp.ui.showMessage("Hai sbloccato una porta!");
             gp.giocatore.numKeys--;
@@ -120,6 +122,7 @@ public class PlayerTools {
     }
 
     private void handleGoldCoinPickup(int i) {
+        gp.progressObj[i]=gp.obj[i];
         gp.obj[i] = null;
         gp.giocatore.rich = true;
         gp.ui.currentDialogue = "Hai ottenute una moneta, ora sei DAVVERO ricco";
@@ -131,6 +134,7 @@ public class PlayerTools {
     }
 
     private void handleShoesPickup(int i) {
+        gp.progressObj[i]=gp.obj[i];
         gp.obj[i] = null;
         gp.giocatore.speedUp = true;
         gp.ui.currentDialogue = "Hai ottenute le scarpe, ora puoi correre \npremendo O";
@@ -149,6 +153,7 @@ public class PlayerTools {
         gp.gameState = gp.endGame;
     }
     private void handleHeartPickup(int i) {
+        gp.progressObj[i]=gp.obj[i];
         gp.obj[i] = null;
         gp.giocatore.vitaMax += 4;
         gp.giocatore.vita = gp.giocatore.vitaMax;

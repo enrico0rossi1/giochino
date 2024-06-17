@@ -51,6 +51,8 @@ public class Pannello extends JPanel {
     public CollisionManager CollisionManager = new CollisionManager(this);
     public Entità obj[] = new Entità[20];
     public Entità mon[] = new Entità[20];
+    public Entità progressObj[]=new Entità[20];
+    public Entità progressMon[]=new Entità[20];
     public Entità e = new Entità(this);
     public AssetPlacer assetPlacer = new AssetPlacer(this);
     public EventHandler eventHandler = new EventHandler(this);
@@ -96,8 +98,8 @@ public class Pannello extends JPanel {
 
     public void setUpGioco() {
         gameState = titleState;
-         assetPlacer.placeObject();
-         assetPlacer.placeEnemy();
+        assetPlacer.placeObject();
+        assetPlacer.placeEnemy();
 
         playMusic(4);
 
@@ -118,6 +120,7 @@ public class Pannello extends JPanel {
                 if (mon[i] != null && mon[i].mapVerifier == eventHandler.currentMapIndex) {
                     mon[i].update();
                     if (mon[i].dead == true) {
+                        progressMon[i]=mon[i];
                         mon[i] = null;
                     }
                 }
@@ -191,8 +194,6 @@ public class Pannello extends JPanel {
 
     public void retry() {
         giocatore.setValoriPredefiniti();
-      //  assetPlacer.placeEnemy();
-        assetPlacer.placeObject();
         eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
         eventHandler.eventRect[25][25].happened = false ;
     }

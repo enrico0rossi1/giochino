@@ -104,23 +104,24 @@ public class UI {
         if (gp.gameState == gp.titleState) {
 
             
-        Color bg = new Color(0,0,0,150);
-        Color bord = new Color(0,127,255);       
-        BufferedImage titleScreen = loadImage("main/WarriorAdventureTitleScreen.jpeg");
-        
-               
-               graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
-               graphics2.setFont(zeldaFont80);
-               graphics2.setColor(Color.BLUE);
-               drawColoredSubWindow(getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-8,gp.screen_height/4 - 60,gp.ingame_size*2,gp.screen_width - gp.ingame_size*3/2,bg,bord);
-               graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
-               graphics2.setColor(Color.YELLOW);
-               graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
-               graphics2.setFont(zeldaFont60);
-               graphics2.setColor(Color.WHITE);
-               graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
-              
-           }
+            Color bg = new Color(0,0,0,150);
+            Color bord = new Color(0,127,255);       
+            BufferedImage titleScreen = loadImage("main/GameScreens/WarriorAdventureTitleScreen.jpeg");
+            
+
+            graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
+            graphics2.setFont(zeldaFont80);
+            drawColoredSubWindow(getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-15,gp.screen_height/4 - 60,gp.ingame_size*2,gp.screen_width - gp.ingame_size*3/2+5,bg,bord);
+            graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
+            graphics2.setColor(Color.YELLOW);
+            graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
+            graphics2.setFont(zeldaFont60);
+            drawColoredSubWindow(getCenteredXForText ("PREMI W PER COMINCIARE",graphics2)-10,gp.screen_height/2+120,gp.ingame_size*2-20,gp.screen_width-150,bg,bord);
+            graphics2.setColor(Color.BLUE); 
+            graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
+            graphics2.setColor(Color.YELLOW);
+            graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2)+2,gp.screen_height/2+182);              
+        }
     
     }
 
