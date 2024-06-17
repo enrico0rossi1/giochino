@@ -58,6 +58,7 @@ public class AssetPlacer {
 		setObject("Door_Right", 26, 37, 1,0);
 		setObject("Door_Left", 25, 37, 1,0);
 		setObject("BigTreasure", 26, 40, 1,0);
+		setObject("BigTreasure", 26, 25, 1,0);
 		
 		// mappa DarkWoods
 		setObject("Shoes",34,18,1,1);

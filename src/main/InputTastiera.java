@@ -260,9 +260,19 @@ else if (gp.gameState == gp.gameOver){
     
         }
 
- }
+   }
+ else if (gp.gameState == gp.endGame){
 
+    if(premuto == KeyEvent.VK_ENTER){
 
+     
+            gp.gameState =gp.titleState;
+            gp.stopMusic(12);
+            gp.playMusic(4);
+            gp.retry();
+    
+      }
+   }
 
  }
 

@@ -142,10 +142,11 @@ public class PlayerTools {
     }
 
     private void handleBigTreasurePickup(int i) {
-        gp.obj[i] = null;
-        gp.playMusic(6);
-        gp.stopMusic(0);
-        gp.ui.endGame = true;
+        gp.obj[i] = null;  
+        gp.stopMusic(gp.eventHandler.currentMapIndex);
+        gp.playMusic(12);
+      
+        gp.gameState = gp.endGame;
     }
     private void handleHeartPickup(int i) {
         gp.obj[i] = null;

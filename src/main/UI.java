@@ -38,7 +38,7 @@ public class UI {
     public String message2= "";
     int messageCounter = 0;
     int message2Counter = 0;
-    public boolean endGame;
+
     public String currentDialogue = "";
     public String dialogueChoice1 = "";
     public String dialogueChoice2 = "";
@@ -155,15 +155,13 @@ public class UI {
         int width = gp.ingame_size * 4;
       
 
-        Color bg = new Color(0,0,0,180);
+        Color bg = new Color(0,0,0,140);
         Color bord = new Color(255,0,0);
 
-         if (gp.giocatore.lifeUp == false){ 
-            drawColoredSubWindow(x,y,height,width,bg,bord);
-         }
-         else if (gp.giocatore.lifeUp == true){
-            drawColoredSubWindow(x,y,height,width + gp.ingame_size,bg,bord);
-         }
+          //  drawColoredSubWindow(x,y,height,width,bg,bord);
+      
+            drawColoredSubWindow(x,y,height,width + gp.ingame_size*3/2,bg,bord);
+         
         // Disegna cuori vuoti
         for (int i = 0; i < gp.giocatore.vitaMax / 2; i++) {
             graphics2.drawImage(heartVoidImage, x, y, null);
@@ -519,10 +517,10 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
 
     } 
     public void drawEndScreen(){
-        if (endGame == true) {
+        if (gp.gameState == gp.endGame) {
             graphics2.setFont(zeldaFont60);
-            graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/2-80);
-
+            graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/4);
+            graphics2.drawString("Sei il migliore avventuriero",(getCenteredXForText("Sei il miglior avventuriero", graphics2)),gp.screen_height*2/3);
             gp.gameTimer = null;
         }
         
