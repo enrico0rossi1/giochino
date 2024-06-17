@@ -30,7 +30,7 @@ public class Mon_sqrdCat extends Entità {
         MoveDownAnimation = loadAnimation(1, "Monsters/Sprites/Down");
         MoveLeftAnimation = loadAnimation(1, "Monsters/Sprites/Left");
         MoveRightAnimation = loadAnimation(1, "Monsters/Sprites/Right");
-        DeathAnimation = loadAnimation(1, null);
+       
     }
 
     public void update(){

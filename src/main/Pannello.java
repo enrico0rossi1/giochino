@@ -17,7 +17,7 @@ public class Pannello extends JPanel {
 
     public final int character_size = 16;
     public final int scale = 3;
-    public final int ingame_size = character_size * scale;
+    public final int ingame_size = character_size * scale; // 48
     public final int pix_row = 12;  // for full screen 20
     public final int pix_cols = 20; // for full screen 40
     public final int screen_width = ingame_size * pix_cols;

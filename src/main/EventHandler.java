@@ -56,6 +56,7 @@ public class EventHandler {
       if (hitEvent(11, 23, "any",0)) {damagePool(11,23);}
       if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
       if (hitEvent(22, 26, "any",0)) {healingPool();}
+      if (hitEvent(25, 23, "any",0)) {damagePool(25,23);}
 
 
       // ritorno a startingWoods
@@ -129,7 +130,7 @@ public boolean monChecker(){
   //fa danno ogni volta che ci passi sopra
   public void damagePool (int col,int row){
     gp.giocatore.vita -= 1 ;
-    canTouchEvent = false;
+   // canTouchEvent = false;
    
   }
 

@@ -62,7 +62,7 @@ public class UI {
 
         try {
 
-            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/ZeldaFont.otf")).deriveFont(30f);
+            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class UI {
         }
 
         try {
-            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/8BitFont.ttf")).deriveFont(20f);
+            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
         } catch (IOException | FontFormatException f) {
             f.printStackTrace();
             System.err.println("Error loading font: " + f.getMessage());
@@ -104,7 +104,7 @@ public class UI {
         if (gp.gameState == gp.titleState) {
 
             
-            BufferedImage titleScreen = loadImage("src/main/WarriorAdventureTitleScreen.jpeg");
+            BufferedImage titleScreen = loadImage("main/WarriorAdventureTitleScreen.jpeg");
 
                graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
                graphics2.setFont(zeldaFont80);
@@ -490,7 +490,9 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
 
             int textX = gp.ingame_size*2;
             final int textY = gp.ingame_size * 8 ;
+            BufferedImage deathImage = loadImage("Entità/Sprites/NewSprites/Death/death2.png");
 
+            graphics2.drawImage(deathImage,gp.screen_width/3 - 30,64,gp.screen_width/2,gp.screen_height/2,null);
             graphics2.setColor(new Color(0,0,0,100));
             graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
             graphics2.setColor(Color.WHITE);
@@ -521,9 +523,11 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
     } 
     public void drawEndScreen(){
         if (gp.gameState == gp.endGame) {
+            BufferedImage endGameScreen = loadImage("main/gameEnding.jpeg");
+            graphics2.drawImage(endGameScreen,0,0,gp.screen_width,gp.screen_height,null);
             graphics2.setFont(zeldaFont60);
             graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/4);
-            graphics2.drawString("Sei il miglior avventuriero",(getCenteredXForText("Sei il miglior avventuriero", graphics2)),gp.screen_height*2/3);
+            graphics2.drawString("Sei il miglior GUERO",(getCenteredXForText("Sei il miglior GUERO", graphics2)),gp.screen_height*2/3);
             graphics2.setFont(eightBitFont);
             graphics2.setColor(new Color(0,0,0));
             graphics2.drawString("Premi Enter per tornare al menù principale",getCenteredXForText("Premi Enter per tornare al menù principale",graphics2),gp.screen_height - 40);

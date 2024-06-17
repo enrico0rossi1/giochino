@@ -13,7 +13,7 @@ public class PlayerTools {
 
     public void interactMonster(int monVerifier){
         if(monVerifier!=999){
-            gp.ui.showMessage2("hai subito danno");
+            gp.ui.showMessage2("hai subito danni!");
         }
     }
 
@@ -22,7 +22,7 @@ public class PlayerTools {
             gp.mon[i].vita--;
             gp.mon[i].invincible=true;
             gp.mon[i].damageReaction();
-            gp.ui.showMessage("colpito");
+            gp.ui.showMessage("colpo a segno");
         }
          
     }

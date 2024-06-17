@@ -86,6 +86,7 @@ public class Entità{
             
             spriteNum = (spriteNum+1) % MoveDownAnimation.length;
             gp.lastTime = currentTime;
+           
         }
 
     }
