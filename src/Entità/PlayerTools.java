@@ -142,7 +142,7 @@ public class PlayerTools {
     }
 
     private void handleBigTreasurePickup(int i) {
-        gp.obj[i] = null;  
+          
         gp.stopMusic(gp.eventHandler.currentMapIndex);
         gp.playMusic(12);
       

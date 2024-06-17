@@ -23,6 +23,7 @@ public class UI {
     Pannello gp;
     Font zeldaFont;
     Font zeldaFont60;
+    Font zeldaFont80;
     Font eightBitFont;
     Font eightBitFont15;
     Graphics2D graphics2;
@@ -77,6 +78,7 @@ public class UI {
 
 
         zeldaFont60 = zeldaFont.deriveFont(60f);
+        zeldaFont80 = zeldaFont.deriveFont(80f);
         eightBitFont15 = eightBitFont.deriveFont(15f);
     }
 
@@ -105,11 +107,12 @@ public class UI {
             BufferedImage titleScreen = loadImage("src/main/WarriorAdventureTitleScreen.jpeg");
 
                graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
-               graphics2.setFont(zeldaFont60);
-               graphics2.setColor(Color.GRAY);
+               graphics2.setFont(zeldaFont80);
+               graphics2.setColor(Color.BLUE);
                graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
-               graphics2.setColor(Color.red);
+               graphics2.setColor(Color.YELLOW);
                graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
+               graphics2.setFont(zeldaFont60);
                graphics2.setColor(Color.WHITE);
                graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
               
@@ -155,7 +158,7 @@ public class UI {
         int width = gp.ingame_size * 4;
       
 
-        Color bg = new Color(0,0,0,140);
+        Color bg = new Color(0,0,0,100);
         Color bord = new Color(255,0,0);
 
           //  drawColoredSubWindow(x,y,height,width,bg,bord);
@@ -521,6 +524,9 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             graphics2.setFont(zeldaFont60);
             graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/4);
             graphics2.drawString("Sei il migliore avventuriero",(getCenteredXForText("Sei il miglior avventuriero", graphics2)),gp.screen_height*2/3);
+            graphics2.setFont(eightBitFont);
+            graphics2.setColor(new Color(0,0,0));
+            graphics2.drawString("Premi Enter per tornare al menù principale",getCenteredXForText("Premi Enter per tornare al menù principale",graphics2),gp.screen_height - 20);
             gp.gameTimer = null;
         }
         
