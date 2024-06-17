@@ -488,11 +488,10 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         
         if (gp.gameState == gp.gameOver) {
 
-            int textX = gp.ingame_size*2;
+            int textX = gp.ingame_size*2 + 8;
             final int textY = gp.ingame_size * 8 ;
             BufferedImage deathImage = loadImage("Entità/Sprites/NewSprites/Death/death2.png");
 
-            graphics2.drawImage(deathImage,gp.screen_width/3 - 30,64,gp.screen_width/2,gp.screen_height/2,null);
             graphics2.setColor(new Color(0,0,0,100));
             graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
             graphics2.setColor(Color.WHITE);
@@ -501,7 +500,9 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             graphics2.drawString("NOOOOOOOO... sei morto",(getCenteredXForText("NOOOOOOOO... sei morto", graphics2)),gp.screen_height/4+10);
 
             graphics2.setFont(zeldaFont);
-            
+
+            graphics2.drawImage(deathImage,gp.screen_width/4 - 25,gp.screen_height/4,gp.screen_width/2,gp.screen_height/2,null);
+          
             graphics2.drawString("Riprova",textX,textY);
             if (gameOverChoice == 0) {
                 graphics2.drawImage(heartFullImage,textX+36,textY-64,50,40,null);
@@ -517,6 +518,8 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             graphics2.drawImage(heartHalvedImage,textX+68,textY-64,50,40,null);
 
             }
+            
+           
 
         }
 
