@@ -17,6 +17,6 @@ public class ObjHeart extends Entità {
         image= handle[0];
         image2=handle[1];
         image3=handle[2];
-        
+        solid=true;
     }
 }

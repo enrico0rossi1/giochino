@@ -61,7 +61,7 @@ public class UI {
 
         try {
 
-            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/ZeldaFont.otf")).deriveFont(30f);
+            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/ZeldaFont.otf")).deriveFont(30f);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class UI {
         }
 
         try {
-            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("Font/8BitFont.ttf")).deriveFont(20f);
+            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/8BitFont.ttf")).deriveFont(20f);
         } catch (IOException | FontFormatException f) {
             f.printStackTrace();
             System.err.println("Error loading font: " + f.getMessage());
@@ -102,7 +102,7 @@ public class UI {
         if (gp.gameState == gp.titleState) {
 
             
-            BufferedImage titleScreen = loadImage("main/WarriorAdventureTitleScreen.jpeg");
+            BufferedImage titleScreen = loadImage("src/main/WarriorAdventureTitleScreen.jpeg");
 
                graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
                graphics2.setFont(zeldaFont60);
@@ -157,9 +157,13 @@ public class UI {
 
         Color bg = new Color(0,0,0,180);
         Color bord = new Color(255,0,0);
-          
-          drawColoredSubWindow(x,y,height,width,bg,bord);
-        
+
+         if (gp.giocatore.lifeUp == false){ 
+            drawColoredSubWindow(x,y,height,width,bg,bord);
+         }
+         else if (gp.giocatore.lifeUp == true){
+            drawColoredSubWindow(x,y,height,width + gp.ingame_size,bg,bord);
+         }
         // Disegna cuori vuoti
         for (int i = 0; i < gp.giocatore.vitaMax / 2; i++) {
             graphics2.drawImage(heartVoidImage, x, y, null);

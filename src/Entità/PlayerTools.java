@@ -151,6 +151,7 @@ public class PlayerTools {
         gp.obj[i] = null;
         gp.giocatore.vitaMax += 4;
         gp.giocatore.vita = gp.giocatore.vitaMax;
+        gp.giocatore.lifeUp = true;
         gp.ui.currentDialogue = "Hai ottenute un cuore, la tua vitalità aumenta \nesponenzialmente";
         gp.ui.dialogueChoice1 = "";
         gp.ui.dialogueChoice2 = "";

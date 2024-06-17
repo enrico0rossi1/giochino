@@ -24,6 +24,7 @@ public class Giocatore extends Entità {
     public int numKeys=0;
     public boolean speedUp = false;
     public boolean rich = false;
+    public boolean lifeUp = false;
 
     
     public Giocatore(Pannello gp, InputTastiera keyh,ScreenManager screenManager){
