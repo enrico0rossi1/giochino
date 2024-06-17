@@ -91,7 +91,7 @@ public class PlayerTools {
             case "BigTreasure":
                 handleBigTreasurePickup(i);
                 break;
-            case "ObjHeart":
+            case "Heart":
                 handleHeartPickup(i);
                 break;
         }
@@ -143,13 +143,14 @@ public class PlayerTools {
 
     private void handleBigTreasurePickup(int i) {
         gp.obj[i] = null;
-        gp.playSFX(6);
+        gp.playMusic(6);
         gp.stopMusic(0);
         gp.ui.endGame = true;
     }
     private void handleHeartPickup(int i) {
         gp.obj[i] = null;
-        gp.giocatore.vitaMax =+ 4;
+        gp.giocatore.vitaMax += 4;
+        gp.giocatore.vita = gp.giocatore.vitaMax;
         gp.ui.currentDialogue = "Hai ottenute un cuore, la tua vitalità aumenta \nesponenzialmente";
         gp.ui.dialogueChoice1 = "";
         gp.ui.dialogueChoice2 = "";
