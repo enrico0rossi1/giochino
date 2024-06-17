@@ -109,6 +109,8 @@ public class AssetPlacer {
 	//	setEnemy("Log", 26, 22, 1, 2);
 	//	setEnemy("Log", 29, 29, 1, 2);
 
+		setEnemy("Squared_cat", 24, 30, 1, gp.eventHandler.beachMap);
+
 
 	}
 

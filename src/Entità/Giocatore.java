@@ -24,7 +24,6 @@ public class Giocatore extends Entità {
     public int numKeys=0;
     public boolean speedUp = false;
     public boolean rich = false;
-    public boolean lifeUp = false;
 
     
     public Giocatore(Pannello gp, InputTastiera keyh,ScreenManager screenManager){
@@ -84,7 +83,6 @@ public class Giocatore extends Entità {
         AttackUp=loadAnimation(6, "Sprites/NewSprites/Up/attackUp");
         AttackLeft=loadAnimation(6, "Sprites/NewSprites/Left/attackLeft");
         AttackRight=loadAnimation(6, "Sprites/NewSprites/Right/attackRight");
-
         
     }
    

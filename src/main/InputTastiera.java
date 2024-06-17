@@ -24,8 +24,6 @@ public class InputTastiera implements KeyListener {
 
 
 if (gp.gameState == gp.titleState) {
-  
-gp.retry();
 
     if(premuto == KeyEvent.VK_W){
           gp.stopMusic(4);
@@ -235,7 +233,7 @@ else if (gp.gameState == gp.gameOver){
     if(premuto == KeyEvent.VK_ENTER){
 
         if (gp.ui.gameOverChoice ==1){
-            gp.gameState =gp.titleState;
+            gp.gameState = gp.titleState;
             gp.playMusic(4);
             gp.retry();
     }

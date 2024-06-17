@@ -8,7 +8,7 @@ public class Mon_sqrdCat extends Entità {
         super(gp);
         name = "Squared_cat";
         type=2;
-        speed=0;
+        speed=1;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
@@ -30,10 +30,12 @@ public class Mon_sqrdCat extends Entità {
         MoveDownAnimation = loadAnimation(1, "Monsters/Sprites/Down");
         MoveLeftAnimation = loadAnimation(1, "Monsters/Sprites/Left");
         MoveRightAnimation = loadAnimation(1, "Monsters/Sprites/Right");
+        DeathAnimation = loadAnimation(1, null);
     }
 
     public void update(){
         
+        checkStatus();
         setAction();
         movement();
         invincible(invincibleTime);

@@ -96,8 +96,8 @@ public class Pannello extends JPanel {
 
     public void setUpGioco() {
         gameState = titleState;
-        // assetPlacer.placeObject();
-        // assetPlacer.placeEnemy();
+         assetPlacer.placeObject();
+         assetPlacer.placeEnemy();
 
         playMusic(4);
 
@@ -148,7 +148,7 @@ public class Pannello extends JPanel {
             Mappa currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
             currentMap.draw(graphics3, graphics2, tileManager);
           
-
+            
             if (currentMap.isComplete() && lastKill != 0) {
                 assetPlacer.setObject("Key", 26, 26, 1, 0);
                 lastKill--;
@@ -191,7 +191,7 @@ public class Pannello extends JPanel {
 
     public void retry() {
         giocatore.setValoriPredefiniti();
-        assetPlacer.placeEnemy();
+      //  assetPlacer.placeEnemy();
         assetPlacer.placeObject();
         eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
         eventHandler.eventRect[25][25].happened = false ;

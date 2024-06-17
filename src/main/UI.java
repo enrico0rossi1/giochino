@@ -523,10 +523,10 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         if (gp.gameState == gp.endGame) {
             graphics2.setFont(zeldaFont60);
             graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/4);
-            graphics2.drawString("Sei il migliore avventuriero",(getCenteredXForText("Sei il miglior avventuriero", graphics2)),gp.screen_height*2/3);
+            graphics2.drawString("Sei il miglior avventuriero",(getCenteredXForText("Sei il miglior avventuriero", graphics2)),gp.screen_height*2/3);
             graphics2.setFont(eightBitFont);
             graphics2.setColor(new Color(0,0,0));
-            graphics2.drawString("Premi Enter per tornare al menù principale",getCenteredXForText("Premi Enter per tornare al menù principale",graphics2),gp.screen_height - 20);
+            graphics2.drawString("Premi Enter per tornare al menù principale",getCenteredXForText("Premi Enter per tornare al menù principale",graphics2),gp.screen_height - 40);
             gp.gameTimer = null;
         }
         
