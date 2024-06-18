@@ -33,6 +33,7 @@ public class UI {
     ObjShoes shoes;
     GoldCoin coin;
     
+    int titleSubState = 0;
     public boolean messageOn = false;
     public boolean message2On = false;
     public String message = "";
@@ -102,56 +103,144 @@ public class UI {
     
     public void drawTitleScreen(){
 
+        int frameX = gp.ingame_size;
+        int frameY = gp.ingame_size;
         if (gp.gameState == gp.titleState) {
 
-            int textY = gp.screen_height/2+100;
-            Color bg = new Color(0,0,0,150);
-            Color bord = new Color(0,127,255);       
-            BufferedImage titleScreen = loadImage("main/GameScreens/WarriorAdventureTitleScreen.jpeg");
+           BufferedImage titleScreen = loadImage("main/GameScreens/WarriorAdventureTitleScreen.jpeg");
             
 
-            graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
+               graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
+              
+            switch (titleSubState) {
+                  case 0: titleScreen(); break;
+                  case 1: titleOptions(); break;
+                  case 2: drawSubWindow(frameX, frameY, gp.screen_height-frameX*3, gp.screen_width - frameY*2);
+                  showControls(frameX,frameY); break;
+                  case 3: drawFullScreenAlert(); break;
+                  case 4: graphics2.drawString("Premi ENTER per tornare indietro",20,0); break;
 
-            graphics2.setFont(zeldaFont80);
-            drawColoredSubWindow(getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-15,gp.screen_height/4 - 60,gp.ingame_size*2,gp.screen_width - gp.ingame_size*3/2+5,bg,bord);
-            graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
-            graphics2.setColor(Color.YELLOW);
-            graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
-            
-            graphics2.setFont(zeldaFont60);
-            drawColoredSubWindow(getCenteredXForText ("NUOVA AVVENTURA",graphics2)-44,textY-gp.ingame_size-10,gp.ingame_size*5,gp.screen_width*2/3,bg,bord);
-            graphics2.setColor(bord); 
-            graphics2.drawString("NUOVA AVVENTURA", getCenteredXForText ("NUOVA AVVENTURA",graphics2),textY);
-            graphics2.setColor(Color.YELLOW);
-            if (titleChoice == 0) {
-                graphics2.drawString(">",getCenteredXForText ("NUOVA AVVENTURA",graphics2) - 20,textY);
-            graphics2.drawString("NUOVA AVVENTURA", getCenteredXForText ("NUOVA AVVENTURA",graphics2)+2,textY+2);  }
-            graphics2.setColor(bord); 
-            textY+=80;
+            }
+        }   
+    }
+   public void titleScreen() {
 
-            graphics2.drawString("OPZIONI", getCenteredXForText ("OPZIONI",graphics2),textY);
-            graphics2.setColor(Color.YELLOW);
-            if (titleChoice == 1) {
-                graphics2.drawString(">",getCenteredXForText ("OPZIONI",graphics2) - 20,textY);
-            graphics2.drawString("OPZIONI", getCenteredXForText ("OPZIONI",graphics2)+2,textY+2);}
-            textY+=80;
+         int textY = gp.screen_height/2+75;
+        
+         Color bg = new Color(0,0,0,100);
+         Color bord = new Color(0,127,255);       
 
-            graphics2.setColor(bord); 
-            graphics2.drawString("SWAG", getCenteredXForText ("SWAG",graphics2),textY);
-            graphics2.setColor(Color.YELLOW);
-            if (titleChoice == 2) {
-                graphics2.drawString(">",getCenteredXForText ("OPZIONI",graphics2) - 20,textY);
-            graphics2.drawString("SWAG", getCenteredXForText ("SWAG",graphics2)+2,textY+2); }           
-        }
+
+         graphics2.setFont(zeldaFont80);
+         drawColoredSubWindow(getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-15,gp.screen_height/4 - 90,gp.ingame_size*2,gp.screen_width - gp.ingame_size*3/2+5,bg,bord);
+         graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-160);
+         graphics2.setColor(Color.YELLOW);
+         graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-156);
+
+         graphics2.setFont(zeldaFont60);
+         drawColoredSubWindow(getCenteredXForText ("NUOVA AVVENTURA",graphics2)-44,textY-gp.ingame_size-10,gp.ingame_size*5,gp.screen_width*2/3,bg,bord);
+         graphics2.setColor(bord); 
+         graphics2.drawString("NUOVA AVVENTURA", getCenteredXForText ("NUOVA AVVENTURA",graphics2),textY);
+         graphics2.setColor(Color.YELLOW);
+         if (titleChoice == 0) {
+             graphics2.drawString(">",getCenteredXForText ("NUOVA AVVENTURA",graphics2) - 30,textY);
+         graphics2.drawString("NUOVA AVVENTURA", getCenteredXForText ("NUOVA AVVENTURA",graphics2)+2,textY+2);  }
+         graphics2.setColor(bord); 
+         textY+=80;
+
+         graphics2.drawString("OPZIONI", getCenteredXForText ("OPZIONI",graphics2),textY);
+         graphics2.setColor(Color.YELLOW);
+         if (titleChoice == 1) {
+             graphics2.drawString(">",getCenteredXForText ("OPZIONI",graphics2) - 30,textY);
+         graphics2.drawString("OPZIONI", getCenteredXForText ("OPZIONI",graphics2)+2,textY+2);}
+         textY+=80;
+
+         graphics2.setColor(bord); 
+         graphics2.drawString("SWAG", getCenteredXForText ("SWAG",graphics2),textY);
+         graphics2.setColor(Color.YELLOW);
+         if (titleChoice == 2) {
+             graphics2.drawString(">",getCenteredXForText ("SWAG",graphics2) - 30,textY);
+         graphics2.drawString("SWAG", getCenteredXForText ("SWAG",graphics2)+2,textY+2); }           
+}       
+    public void titleOptions(){
+
+       // int textY = gp.screen_height/2+75;
+        Color bg = new Color(0,0,0,60);
+        Color bord = new Color(0,127,255); 
+        graphics2.setFont(zeldaFont);
+       
+       
+        int titleY = gp.ingame_size*2;
+        int titleX = getCenteredXForText("Opzioni", graphics2)-30; 
+        int textX = titleX - gp.ingame_size;
+        int textY = titleY + gp.ingame_size/2;
+        final int lineHeight = 64;
+
+  
+  
+    textY +=lineHeight;
+    textX -=lineHeight * 2 +10;
+
+    drawColoredSubWindow(textX-lineHeight, titleY-lineHeight, gp.screen_height*2/3+80,gp.screen_width*2/3, bg, bord); 
+    graphics2.drawString("Opzioni",titleX,titleY);
+    graphics2.setColor(Color.WHITE);
+
+ 
+    graphics2.drawString("Schermo intero  ",textX, textY);
+    if (titleChoice == 0) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    if (gp.fullScreenOn == true) {graphics2.drawString(" ON",textX*3,textY);
+}
+else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*5/2,textY);
+}
+    textY += lineHeight;
+
+    graphics2.drawString("Musica Volume",textX,textY);
+    if (titleChoice == 1) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
+    int volumeWidth = 24 * gp.music.volumeScale;
+    graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,volumeWidth,24);  // (textX+(gp.ingame_size*6))/ 5
+    textY += lineHeight;
+
+
+    graphics2.drawString("SFX Volume",textX,textY);
+    if (titleChoice == 2) {
+        graphics2.drawString(">",textX - 25,textY);
+    }    graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
+    int sfxWidth = 24 * gp.sfx.volumeScale;
+    graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,sfxWidth,24);
+    textY += lineHeight;
+
+
+    graphics2.drawString("Comandi",textX,textY);
+    if (titleChoice == 3) {
+        graphics2.drawString(">",textX - 25,textY);
+    }
+    textY += lineHeight;
+
+
+
+
+    graphics2.drawString("Indietro",textX,textY);
+    if (titleChoice == 4) {
+        graphics2.drawString(">",textX - 25,textY);
     }
 
-    private static BufferedImage loadImage(String imagePath) {
-        try {
-            return ImageIO.read(new File(imagePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+}
+
+private void drawFullScreenAlert () {
+    String alert = "Riavvia il gioco per disattivare lo schermo intero" ;
+    graphics2.setColor(Color.YELLOW);
+    graphics2.drawString(alert,18,38);
+    graphics2.setColor(Color.WHITE);
+    graphics2.drawString(alert,20,40);
+
+
+
+
     }
     
     public void drawPlayState() {
@@ -506,7 +595,49 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
 
             drawCharacterScreen(); 
     }
-       
+}
+    
+    public void drawCharacterScreen () {
+        final int x = gp.ingame_size;
+        final int y = gp.ingame_size ;
+        final int width = gp.ingame_size*5;
+        final int height = gp.ingame_size*10 ;
+    
+        drawSubWindow(x, y, height, width);
+    
+        graphics2.setFont(zeldaFont);
+        graphics2.setColor(Color.BLUE);
+    
+        int textX = x +20;
+        int textY = y + gp.ingame_size;
+        final int lineHeight = 48;
+    
+    
+        graphics2.drawString("STATUS",textX,textY);
+        textY +=lineHeight;
+        graphics2.setColor(Color.WHITE);
+        graphics2.drawString("vita  "+ gp.giocatore.vita+"/"+gp.giocatore.vitaMax,textX,textY);
+        textY += lineHeight;
+        graphics2.drawString("armato",textX,textY);
+        textY += lineHeight;
+        if (gp.giocatore.speedUp == false) {graphics2.drawString("no drip",textX,textY);
+        textY += lineHeight;}
+        if (gp.giocatore.speedUp == true) {graphics2.drawString("flash",textX,textY);
+        graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight/4*3,null);
+        textY += lineHeight;}
+        if (gp.giocatore.rich == true) {graphics2.drawString("riccone",textX,textY);
+        graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - (lineHeight/4*2)+5,null);
+        textY += lineHeight;}
+        if (gp.giocatore.rich == false) {graphics2.drawString("povero",textX,textY);
+        textY += lineHeight;}
+        graphics2.drawString("avventura",textX,textY);
+        textY += lineHeight;
+        graphics2.drawString("",textX,textY);
+        textY += lineHeight;
+        graphics2.drawString("guerriero",textX,textY);
+        textY += lineHeight;
+    
+    
     
     }  
         
@@ -571,8 +702,18 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         }
         
     }
+
+    private static BufferedImage loadImage(String imagePath) {
+        try {
+            return ImageIO.read(new File(imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int getCenteredXForText (String text,Graphics2D graphics2) {
-         //   graphics2.setFont(arial_30);
+       
         int length = (int)graphics2.getFontMetrics().getStringBounds(text, graphics2).getWidth();
         int centeredX = gp.screen_width/2 - length/2;
         return centeredX;
@@ -600,47 +741,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         graphics2.drawRoundRect(x,y,width-2,height-2,25,25);
     
     } 
-public void drawCharacterScreen () {
-    final int x = gp.ingame_size;
-    final int y = gp.ingame_size ;
-    final int width = gp.ingame_size*5;
-    final int height = gp.ingame_size*10 ;
 
-    drawSubWindow(x, y, height, width);
-
-    graphics2.setFont(zeldaFont);
-    graphics2.setColor(Color.BLUE);
-
-    int textX = x +20;
-    int textY = y + gp.ingame_size;
-    final int lineHeight = 48;
-
-
-    graphics2.drawString("STATUS",textX,textY);
-    textY +=lineHeight;
-    graphics2.setColor(Color.WHITE);
-    graphics2.drawString("vita  "+ gp.giocatore.vita+"/"+gp.giocatore.vitaMax,textX,textY);
-    textY += lineHeight;
-    graphics2.drawString("armato",textX,textY);
-    textY += lineHeight;
-    if (gp.giocatore.speedUp == false) {graphics2.drawString("no drip",textX,textY);
-    textY += lineHeight;}
-    if (gp.giocatore.speedUp == true) {graphics2.drawString("flash",textX,textY);
-    graphics2.drawImage(shoes.image,textX + (gp.ingame_size*2),textY - lineHeight/4*3,null);
-    textY += lineHeight;}
-    if (gp.giocatore.rich == true) {graphics2.drawString("riccone",textX,textY);
-    graphics2.drawImage(coin.image,textX + (gp.ingame_size*3),textY - (lineHeight/4*2)+5,null);
-    textY += lineHeight;}
-    if (gp.giocatore.rich == false) {graphics2.drawString("povero",textX,textY);
-    textY += lineHeight;}
-    graphics2.drawString("avventura",textX,textY);
-    textY += lineHeight;
-    graphics2.drawString("",textX,textY);
-    textY += lineHeight;
-    graphics2.drawString("guerriero",textX,textY);
-    textY += lineHeight;
-
-}
 
 }
 
