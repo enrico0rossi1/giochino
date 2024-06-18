@@ -22,7 +22,7 @@ public class tileManager {
     public tileManager(Pannello gp){
         this.gp=gp;
 
-        Tile= new tile[50];
+        Tile= new tile[100];
         
         
         getTileImage();
@@ -69,6 +69,17 @@ public class tileManager {
             setup(36,"WaterTile/SmallPool",true);
             setup(37, "Additional/Albero3", true);
             setup(38, "DirtTile/dirtGrass", false);
+            setup(39,"DirtTile/dirtUp",false);
+            setup(40,"DirtTile/dirtRight",false);
+            setup(41,"DirtTile/dirtLeft",false);
+            setup(42,"DirtTile/dirtBottom",false);
+            setup(43, "DirtTile/dirtCenter", false);
+            setup(44,"GrassTile/grassTop",false);
+            setup(45,"GrassTile/grassBottom",false);
+            setup(46, "GrassTile/grassLeft", false);
+
+        
+            
             
 
             
