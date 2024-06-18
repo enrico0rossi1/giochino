@@ -294,7 +294,10 @@ public class UI {
         graphics2.drawString(">",x*4 - 20,y);
     }
        graphics2.setFont(eightBitFont15);
-       graphics2.drawString("Premi Enter per continuare", x+gp.ingame_size*7, y+40);
+       graphics2.setColor(Color.BLACK);
+       graphics2.drawString("Premi Enter per confermare", x+gp.ingame_size*7-2, y+38);
+       graphics2.setColor(Color.WHITE);
+       graphics2.drawString("Premi Enter per confermare", x+gp.ingame_size*7, y+40);
 
     }
 
@@ -534,13 +537,13 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             
         Color bg = new Color(0,0,0,100);
         Color bord = new Color(255,0,0);
-        BufferedImage endGameScreen = loadImage("main/gameEnding.jpeg");
+        BufferedImage endGameScreen = loadImage("main/GameScreens/gameEnding.jpeg");
 
             graphics2.drawImage(endGameScreen,0,0,gp.screen_width,gp.screen_height,null);  
             graphics2.setFont(zeldaFont60);
             drawColoredSubWindow(getCenteredXForText("Avventura Completata", graphics2)-8,gp.screen_height/6-10,gp.ingame_size*3/2,gp.screen_width/3*2+3,bg,bord);  
             graphics2.drawString("Avventura Completata",(getCenteredXForText("Avventura Completata", graphics2)),gp.screen_height/4);
-            graphics2.drawString("Sei il miglior GUERO",(getCenteredXForText("Sei il miglior GUERO", graphics2)),gp.screen_height*2/3);
+            graphics2.drawString("Sei il miglior GUERRO",(getCenteredXForText("Sei il miglior GUERRO", graphics2)),gp.screen_height*2/3);
             graphics2.setFont(eightBitFont);
             graphics2.setColor(new Color(0,0,0));
             graphics2.drawString("Premi Enter per tornare al menù principale",getCenteredXForText("Premi Enter per tornare al menù principale",graphics2),gp.screen_height - 40);
