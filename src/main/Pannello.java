@@ -115,12 +115,11 @@ public class Pannello extends JPanel {
     public void update() {
         if (gameState == playState) {
             giocatore.update();
-
+            
             for (int i = 0; i < mon.length; i++) {
                 if (mon[i] != null && mon[i].mapVerifier == eventHandler.currentMapIndex) {
                     mon[i].update();
                     if (mon[i].dead == true) {
-                        progressMon[i]=mon[i];
                         mon[i] = null;
                     }
                 }
@@ -194,6 +193,8 @@ public class Pannello extends JPanel {
 
     public void retry() {
         giocatore.setValoriPredefiniti();
+        assetPlacer.restartPlaceObject();
+        assetPlacer.restartPlaceEnemies();
         eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
         eventHandler.eventRect[25][25].happened = false ;
     }

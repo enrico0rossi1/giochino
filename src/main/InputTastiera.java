@@ -44,6 +44,7 @@ public class InputTastiera implements KeyListener {
         if (premuto == KeyEvent.VK_W) {
             gp.stopMusic(4);
             gp.playMusic(0);
+            gp.retry();
             gp.eventHandler.currentMapIndex = 0;
             gp.gameState = gp.playState;
         }
