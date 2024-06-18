@@ -236,12 +236,6 @@ private void drawFullScreenAlert () {
     String alert = "Riavvia il gioco per disattivare lo schermo intero" ;
     graphics2.setColor(Color.YELLOW);
     graphics2.drawString(alert,18,38);
-    graphics2.setColor(Color.WHITE);
-    graphics2.drawString(alert,20,40);
-
-
-
-
     }
     
     public void drawPlayState() {
