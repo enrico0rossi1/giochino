@@ -51,10 +51,10 @@ public class tileManager {
             setup(16,"DarkTile/darkMid",false);
             setup(17,"Additional/alberosciucco",true);
             setup(20,"WaterTile/Water1",true);
-            setup(21,"DirtTile/Grassy_dirt_vert1",false);
-            setup(22,"DirtTile/Grassy_dirt_vert2",false);
-            setup(23,"DirtTile/Grassy_dirt_hor1",false);
-            setup(24,"DirtTile/Grassy_dirt_hor2",false);
+            setup(21,"DirtTile/dirtTopLeft",false);
+            setup(22,"DirtTile/dirtTopRight",false);
+            setup(23,"DirtTile/dirtBottomRight",false);
+            setup(24,"DirtTile/dirtBottomLeft",false);
             setup(25, "Additional/Albero2", true);
             setup(26,"GrassTile/grass3",false);
             setup(27, "Additional/dungeonEntrance1",true);
@@ -68,6 +68,9 @@ public class tileManager {
             setup(35,"WaterTile/MediumPoolRight",true);
             setup(36,"WaterTile/SmallPool",true);
             setup(37, "Additional/Albero3", true);
+            setup(38, "DirtTile/dirtGrass", false);
+            
+
             
 
             
