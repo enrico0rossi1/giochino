@@ -45,6 +45,7 @@ public class UI {
     public String dialogueChoice2 = "";
     int subState = 0;
     int commandNum = 0;
+    int titleChoice = 0;
     public int dialogueChoice = 0;
     int gameOverChoice;
    
@@ -103,26 +104,45 @@ public class UI {
 
         if (gp.gameState == gp.titleState) {
 
-            
+            int textY = gp.screen_height/2+100;
             Color bg = new Color(0,0,0,150);
             Color bord = new Color(0,127,255);       
             BufferedImage titleScreen = loadImage("main/GameScreens/WarriorAdventureTitleScreen.jpeg");
             
 
             graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
+
             graphics2.setFont(zeldaFont80);
             drawColoredSubWindow(getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-15,gp.screen_height/4 - 60,gp.ingame_size*2,gp.screen_width - gp.ingame_size*3/2+5,bg,bord);
             graphics2.drawString("WARRIOR ADVENTURE",getCenteredXForText ("WARRIOR ADVENTURE",graphics2)-2,gp.screen_height/2-130);
             graphics2.setColor(Color.YELLOW);
             graphics2.drawString("WARRIOR ADVENTURE", getCenteredXForText ("WARRIOR ADVENTURE",graphics2),gp.screen_height/2-126);
+            
             graphics2.setFont(zeldaFont60);
-            drawColoredSubWindow(getCenteredXForText ("PREMI W PER COMINCIARE",graphics2)-10,gp.screen_height/2+120,gp.ingame_size*2-20,gp.screen_width-150,bg,bord);
-            graphics2.setColor(Color.BLUE); 
-            graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2),gp.screen_height/2+180);
+            drawColoredSubWindow(getCenteredXForText ("NUOVA AVVENTURA",graphics2)-44,textY-gp.ingame_size-10,gp.ingame_size*5,gp.screen_width*2/3,bg,bord);
+            graphics2.setColor(bord); 
+            graphics2.drawString("NUOVA AVVENTURA", getCenteredXForText ("NUOVA AVVENTURA",graphics2),textY);
             graphics2.setColor(Color.YELLOW);
-            graphics2.drawString("PREMI W PER COMINCIARE", getCenteredXForText ("PREMI W PER COMINCIARE",graphics2)+2,gp.screen_height/2+182);              
+            if (titleChoice == 0) {
+                graphics2.drawString(">",getCenteredXForText ("NUOVA AVVENTURA",graphics2) - 20,textY);
+            graphics2.drawString("NUOVA AVVENTURA", getCenteredXForText ("NUOVA AVVENTURA",graphics2)+2,textY+2);  }
+            graphics2.setColor(bord); 
+            textY+=80;
+
+            graphics2.drawString("OPZIONI", getCenteredXForText ("OPZIONI",graphics2),textY);
+            graphics2.setColor(Color.YELLOW);
+            if (titleChoice == 1) {
+                graphics2.drawString(">",getCenteredXForText ("OPZIONI",graphics2) - 20,textY);
+            graphics2.drawString("OPZIONI", getCenteredXForText ("OPZIONI",graphics2)+2,textY+2);}
+            textY+=80;
+
+            graphics2.setColor(bord); 
+            graphics2.drawString("SWAG", getCenteredXForText ("SWAG",graphics2),textY);
+            graphics2.setColor(Color.YELLOW);
+            if (titleChoice == 2) {
+                graphics2.drawString(">",getCenteredXForText ("OPZIONI",graphics2) - 20,textY);
+            graphics2.drawString("SWAG", getCenteredXForText ("SWAG",graphics2)+2,textY+2); }           
         }
-    
     }
 
     private static BufferedImage loadImage(String imagePath) {
