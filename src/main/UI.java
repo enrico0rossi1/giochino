@@ -118,7 +118,10 @@ public class UI {
                   case 2: drawSubWindow(frameX, frameY, gp.screen_height-frameX*3, gp.screen_width - frameY*2);
                   showControls(frameX,frameY); break;
                   case 3: drawFullScreenAlert(); break;
-                  case 4: graphics2.drawString("Premi ENTER per tornare indietro",20,0); break;
+                  case 4: graphics2.setFont(zeldaFont);
+                  graphics2.setColor(Color.WHITE);
+                  graphics2.drawString("Premi ENTER per tornare indietro",10,gp.screen_height-30);
+                  break;
 
             }
         }   
@@ -178,56 +181,54 @@ public class UI {
 
   
   
-    textY +=lineHeight;
-    textX -=lineHeight * 2 +10;
-
-    drawColoredSubWindow(textX-lineHeight, titleY-lineHeight, gp.screen_height*2/3+80,gp.screen_width*2/3, bg, bord); 
-    graphics2.drawString("Opzioni",titleX,titleY);
-    graphics2.setColor(Color.WHITE);
-
- 
-    graphics2.drawString("Schermo intero  ",textX, textY);
-    if (titleChoice == 0) {
-        graphics2.drawString(">",textX - 25,textY);
-    }
-    if (gp.fullScreenOn == true) {graphics2.drawString(" ON",textX*3,textY);
-}
-else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*5/2,textY);
-}
-    textY += lineHeight;
-
-    graphics2.drawString("Musica Volume",textX,textY);
-    if (titleChoice == 1) {
-        graphics2.drawString(">",textX - 25,textY);
-    }
-    graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
-    int volumeWidth = 24 * gp.music.volumeScale;
-    graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,volumeWidth,24);  // (textX+(gp.ingame_size*6))/ 5
-    textY += lineHeight;
+             textY +=lineHeight;
+             textX -=lineHeight * 2 +10;
+                
+             drawColoredSubWindow(textX-lineHeight, titleY-lineHeight, gp.screen_height*2/3+80,gp.screen_width*2/3, bg, bord); 
+             graphics2.drawString("Opzioni",titleX,titleY);
 
 
-    graphics2.drawString("SFX Volume",textX,textY);
-    if (titleChoice == 2) {
-        graphics2.drawString(">",textX - 25,textY);
-    }    graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
-    int sfxWidth = 24 * gp.sfx.volumeScale;
-    graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,sfxWidth,24);
-    textY += lineHeight;
+             graphics2.setColor(Color.WHITE);   
+             graphics2.drawString("Schermo intero  ",textX, textY);
 
+             if (titleChoice == 0) {
+                      graphics2.drawString(">",textX - 25,textY);
+                  }
+                  if (gp.fullScreenOn == true) {graphics2.drawString(" ON",textX*3,textY);
+                  }
+                  else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*5/2,textY);
+                  }
+                  
+                  textY += lineHeight;
+                  graphics2.drawString("Musica Volume",textX,textY);
 
-    graphics2.drawString("Comandi",textX,textY);
-    if (titleChoice == 3) {
-        graphics2.drawString(">",textX - 25,textY);
-    }
-    textY += lineHeight;
-
-
-
-
-    graphics2.drawString("Indietro",textX,textY);
-    if (titleChoice == 4) {
-        graphics2.drawString(">",textX - 25,textY);
-    }
+             if (titleChoice == 1) {
+                            graphics2.drawString(">",textX - 25,textY);
+                        }
+                        graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
+                        int volumeWidth = 24 * gp.music.volumeScale;
+                        graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,volumeWidth,24);  // (textX+(gp.ingame_size*6))/ 5
+                        textY += lineHeight;
+                    
+                    
+                        graphics2.drawString("SFX Volume",textX,textY);
+                 if (titleChoice == 2) {
+                            graphics2.drawString(">",textX - 25,textY);
+                        }    
+                        graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,120,24);
+                        int sfxWidth = 24 * gp.sfx.volumeScale;
+                        graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -lineHeight/3,sfxWidth,24);
+                    
+                        textY += lineHeight;
+                        graphics2.drawString("Comandi",textX,textY);
+                 if (titleChoice == 3) {
+                            graphics2.drawString(">",textX - 25,textY);
+                        }
+                        textY += lineHeight;
+                        graphics2.drawString("Indietro",textX,textY);
+                 if (titleChoice == 4) {
+                        graphics2.drawString(">",textX - 25,textY);
+                 }
 
 }
 

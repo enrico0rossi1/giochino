@@ -85,7 +85,8 @@ public class InputTastiera implements KeyListener {
     }
 }
        else if (premuto == KeyEvent.VK_ENTER) {
-            handleTitleEnter();
+            handleTitleEnter(); 
+            gp.playSFX(9);
        
         }
     }
@@ -96,7 +97,7 @@ public class InputTastiera implements KeyListener {
                    gp.playMusic(0);
                    gp.retry();
                    gp.eventHandler.currentMapIndex = 0;
-                   gp.gameState = gp.playState;
+                   gp.gameState = gp.dialogueState;
             }
 
             if (gp.ui.titleChoice==1){
@@ -109,7 +110,7 @@ public class InputTastiera implements KeyListener {
         }
             else if (gp.ui.titleSubState == 1) {
                     if(gp.ui.titleChoice==0) {
-                       gp.playSFX(9);
+                      
                             if (gp.fullScreenOn == true) {
                             gp.ui.titleSubState = 3;
                             } else {
