@@ -41,14 +41,104 @@ public class InputTastiera implements KeyListener {
     }
 
     private void handleTitleState(int premuto) {
+      
         if (premuto == KeyEvent.VK_W) {
-            gp.stopMusic(4);
-            gp.playMusic(0);
-            gp.retry();
-            gp.eventHandler.currentMapIndex = 0;
-            gp.gameState = gp.playState;
+          if (gp.ui.titleChoice > 0) {
+                gp.playSFX(11);
+                gp.ui.titleChoice--;
+            }
+           
+        } else if (premuto == KeyEvent.VK_S) {
+            if (gp.ui.titleSubState == 0 ) {
+                if (gp.ui.titleChoice < 2) {
+                    gp.playSFX(11);
+                    gp.ui.titleChoice++;
+            }
+        }
+         else if (gp.ui.titleSubState == 1) {
+            if (gp.ui.titleChoice < 4) {
+                    gp.playSFX(11);
+                    gp.ui.titleChoice++;
+            }
         }
     }
+      
+          else if (premuto == KeyEvent.VK_A) {
+                 if (gp.ui.titleSubState == 1) {
+                      if (gp.ui.titleChoice == 1 && gp.music.volumeScale > 0) {
+                         gp.music.volumeScale--;
+                         gp.music.checkVolume();
+        } else if (gp.ui.titleChoice == 2 && gp.sfx.volumeScale > 0) {
+                gp.sfx.volumeScale--;
+                gp.playSFX(11);
+        }
+    }
+        } else if (premuto == KeyEvent.VK_D) {
+              if (gp.ui.subState == 0) {
+                if (gp.ui.titleChoice == 1 && gp.music.volumeScale < 5) {
+                   gp.music.volumeScale++;
+                   gp.music.checkVolume();
+        } else if (gp.ui.titleChoice == 2 && gp.sfx.volumeScale < 5) {
+                gp.sfx.volumeScale++;
+                gp.playSFX(11);
+        }
+    }
+}
+       else if (premuto == KeyEvent.VK_ENTER) {
+            handleTitleEnter(); 
+            gp.playSFX(9);
+       
+        }
+    }
+    private void handleTitleEnter() {
+            if(gp.ui.titleSubState == 0){
+                if (gp.ui.titleChoice==0){
+                   gp.stopMusic(4);
+                   gp.playMusic(0);
+                   gp.retry();
+                   gp.eventHandler.currentMapIndex = 0;
+                   gp.gameState = gp.dialogueState;
+            }
+
+            if (gp.ui.titleChoice==1){
+                gp.ui.titleSubState = 1;
+              
+            }
+            if (gp.ui.titleChoice ==2){
+              gp.ui.titleSubState=4;
+            } 
+        }
+            else if (gp.ui.titleSubState == 1) {
+                    if(gp.ui.titleChoice==0) {
+                      
+                            if (gp.fullScreenOn == true) {
+                            gp.ui.titleSubState = 3;
+                            } else {
+                                gp.fullScreenOn = true;
+                            }  
+                    }
+                    if(gp.ui.titleChoice==3) {
+                        gp.ui.titleSubState = 2;
+                    }
+                    if(gp.ui.titleChoice==4) {
+                        gp.ui.titleSubState = 0;
+                        gp.ui.titleChoice = 1;
+                    }
+            }
+            else if(gp.ui.titleSubState == 2){
+                gp.ui.titleSubState = 1;
+                gp.ui.titleChoice = 0;
+            }
+
+            else if(gp.ui.titleSubState == 3){
+                gp.ui.titleSubState = 1;
+                gp.ui.titleChoice = 0;
+            }
+            else if (gp.ui.titleSubState==4){
+                gp.ui.titleSubState=0;
+                gp.ui.titleChoice=0;
+            }
+}
 
     private void handlePlayState(int premuto) {
         if (premuto == KeyEvent.VK_M) {
