@@ -98,11 +98,13 @@ public class Mappa {
     }
 
     public boolean isComplete() {
-        boolean res=false;
-        if((gp.giocatore.killNum%(5))==0) {
-            res=true;
+        boolean res=true;
+        for(int i=0;i<gp.mon.length;i++){
+            if(gp.mon[i]!=null){
+                res=false;
+            }
         }
-      return res;
+        return res;
       
   }
 
