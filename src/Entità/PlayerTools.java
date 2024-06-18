@@ -94,6 +94,9 @@ public class PlayerTools {
             case "Heart":
                 handleHeartPickup(i);
                 break;
+                case "BigHeart":
+                handleBigHeartPickup(i);
+                break;
         }
     }
 
@@ -117,7 +120,7 @@ public class PlayerTools {
             gp.giocatore.numKeys--;
             gp.playSFX(6);
         } else {
-            gp.ui.showMessage2("Niente chiavi? Peccato...");
+            gp.ui.showMessage2("Niente chiave? Peccato...");
         }
     }
 
@@ -153,6 +156,20 @@ public class PlayerTools {
         gp.gameState = gp.endGame;
     }
     private void handleHeartPickup(int i) {
+        gp.progressObj[i]=gp.obj[i];
+        gp.obj[i] = null;
+        gp.giocatore.vita = gp.giocatore.vitaMax;
+        gp.ui.currentDialogue = "Una strana energia ti rinvigorisce, recuperi tutta la vita"; 
+        gp.ui.dialogueChoice1 = "";
+        gp.ui.dialogueChoice2 = "";
+        gp.ui.dialogueChoice = 3;
+        gp.gameState = gp.dialogueState;
+        gp.ui.showMessage("Vitalità aumentata");
+        gp.playSFX(6);
+
+    }
+
+    private void handleBigHeartPickup(int i) {
         gp.progressObj[i]=gp.obj[i];
         gp.obj[i] = null;
         gp.giocatore.vitaMax += 4;
