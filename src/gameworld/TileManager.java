@@ -73,7 +73,7 @@ public class TileManager {
             setup(40,"DirtTile/dirtRight",false);
             setup(41,"DirtTile/dirtLeft",false);
             setup(42,"DirtTile/dirtBottom",false);
-            setup(43, "DirtTile/dirtCenter", false);
+    
             setup(44,"GrassTile/grassTop",false);
             setup(45,"GrassTile/grassBottom",false);
             setup(46, "GrassTile/grassLeft", false);
@@ -88,19 +88,24 @@ public class TileManager {
             setup(55, "GrassTile/grassBottomLeft", false);
             setup(56, "GrassTile/grassBottomLeftAngle", false);
             setup(57, "GrassTile/grassTopLeftAngle", false);
+            setup(58,"DirtTile/dirtWater",false);
+            setup(59, "WaterTile/watered", false);
+            setup(60,"WaterTile/waterBottomLeft",true);
+            setup(61,"WaterTile/waterBottomLeftAngle",true);
+            setup(62,"WaterTile/waterTopLeft",true);
+            setup(63,"WaterTile/waterTopLeftAngle",true);
+            setup(64,"DirtTile/dirtCenterLeft",false);
+            setup(65,"DirtTile/dirtCenterRight",false);
+            setup(66,"DirtTile/dirtGrass2",false);
+            setup(67,"GrassTile/switchGrassTopLeft", false);
+            setup(68,"GrassTile/switchGrassLeft", false);
+            setup(69,"GrassTile/switchGrassBottomRight", false);
+            setup(70, "DirtTile/dirtEnd", false);
+            setup(71, "DirtTile/dirtStart", false);
+            setup(72,"GrassTile/switchGrassTopRightAngle", false);
+            setup(73,"GrassTile/switch", false);
 
 
-
-
-
-
-        
-            
-            
-
-            
-
-            
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -64,7 +63,7 @@ public class UserInterface {
 
         try {
 
-            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/ZeldaFont.otf")).deriveFont(30f);
+            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("main_rsc/Font/ZeldaFont.otf")).deriveFont(30f);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +71,7 @@ public class UserInterface {
         }
 
         try {
-            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/8BitFont.ttf")).deriveFont(20f);
+            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("main_rsc/Font/8BitFont.ttf")).deriveFont(20f);
         } catch (IOException | FontFormatException f) {
             f.printStackTrace();
             System.err.println("Error loading font: " + f.getMessage());
@@ -107,7 +106,7 @@ public class UserInterface {
         int frameY = gp.ingame_size;
         if (gp.gameState == gp.titleState) {
 
-           BufferedImage titleScreen = loadImage("GameScreens/WarriorAdventureTitleScreen.jpeg");
+           BufferedImage titleScreen = loadImage("main_rsc/GameScreens/WarriorAdventureTitleScreen.jpeg");
             
 
                graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
@@ -683,7 +682,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
             
         Color bg = new Color(0,0,0,100);
         Color bord = new Color(255,0,0);
-        BufferedImage endGameScreen = loadImage("main/GameScreens/gameEnding.jpeg");
+        BufferedImage endGameScreen = loadImage("main_rsc/GameScreens/gameEnding.jpeg");
 
             graphics2.drawImage(endGameScreen,0,0,gp.screen_width,gp.screen_height,null);  
             graphics2.setFont(zeldaFont60);

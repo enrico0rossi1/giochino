@@ -52,8 +52,8 @@ public class Player extends GameEntity {
     }
 
     public void setValoriPredefiniti(){
-        worldX=gp.ingame_size*25;  
-        worldY=gp.ingame_size*25; //posizione iniziale su mappa 
+        worldX=gp.ingame_size*25+23;  
+        worldY=gp.ingame_size*25-13; //posizione iniziale su mappa 
         speed=2;
         direzione="down";
 
@@ -112,18 +112,20 @@ public class Player extends GameEntity {
 
         // DEBUG
 		// AttackArea
-		int tempScreenX = ScreenX + attackArea.x;
-		int tempScreenY = ScreenY + attackArea.y;		
-		switch(direzione) {
-		    case "up": tempScreenY = ScreenY - attackArea.height; break;
-		    case "down": tempScreenY = ScreenY + gp.ingame_size; break; 
-		    case "left": tempScreenX = ScreenX - attackArea.width; break;
-		    case "right": tempScreenX = ScreenX + gp.ingame_size; break;
-		}				
-		gp.graphics2.setColor(Color.red);
-        gp.graphics2.setStroke(new BasicStroke(1));
-		gp.graphics2.drawRect(tempScreenX, tempScreenY, attackArea.width, attackArea.height);
-        gp.graphics2.drawRect(ScreenX+collArea.x, ScreenY+collArea.y, collArea.height, collArea.width);
+		// int tempScreenX = ScreenX + attackArea.x;
+		// int tempScreenY = ScreenY + attackArea.y;		
+		// switch(direzione) {
+		    // case "up": tempScreenY = ScreenY - attackArea.height; break;
+		    // case "down": tempScreenY = ScreenY + gp.ingame_size; break; 
+		    // case "left": tempScreenX = ScreenX - attackArea.width; break;
+		    // case "right": tempScreenX = ScreenX + gp.ingame_size; break;
+		// }				
+		// gp.graphics2.setColor(Color.red);
+        // gp.graphics2.setStroke(new BasicStroke(1));
+        
+        
+		// gp.graphics2.drawRect(tempScreenX, tempScreenY, attackArea.width, attackArea.height);
+        // gp.graphics2.drawRect(ScreenX+collArea.x, ScreenY+collArea.y, collArea.height, collArea.width);
     }
         
 
