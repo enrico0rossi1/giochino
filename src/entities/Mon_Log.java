@@ -1,19 +1,19 @@
-package entities.monsters;
+package entities;
 
-import entities.GameEntity;
-import main.GamePanel;
+import main.Pannello;
 
-public class Mon_Bat extends GameEntity{
+public class Mon_Log extends Entità{
 
-    public Mon_Bat(GamePanel gp){
+    public Mon_Log(Pannello gp){
         super(gp);
-
-        name = "Bat";
+        
+        name = "Log";
         type=2;
         speed=1;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
+        
         
         collArea.x=0;
         collArea.y=0;
@@ -27,11 +27,11 @@ public class Mon_Bat extends GameEntity{
 
     public void getImage(){
 
-        MoveUpAnimation = loadAnimation(3, "MonsterSprites/Bat/Up");
-        MoveDownAnimation = loadAnimation(3, "MonsterSprites/Bat/Down");
-        MoveLeftAnimation = loadAnimation(3, "MonsterSprites/Bat/Left");
-        MoveRightAnimation = loadAnimation(3, "MonsterSprites/Bat/Right");
-        DeathAnimation = loadAnimation(4, "MonsterSprites/Bat/Death");
+        MoveUpAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Up");
+        MoveDownAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Down");
+        MoveLeftAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Left");
+        MoveRightAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Right");
+        DeathAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Death");
 
     }
 
@@ -45,6 +45,8 @@ public class Mon_Bat extends GameEntity{
             }else if (spriteNum==1){
                 spriteNum=2;
             }else if (spriteNum==2){
+                spriteNum=3;
+            }else if(spriteNum==3){
                 spriteNum=0;
             }
             spriteCount=0;
@@ -54,7 +56,6 @@ public class Mon_Bat extends GameEntity{
         movement();
         System.out.println(spriteNum);
         invincible(invincibleTime);
-        
+
     }
-    
 }

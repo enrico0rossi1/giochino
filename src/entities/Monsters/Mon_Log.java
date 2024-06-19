@@ -1,4 +1,4 @@
-package entities.monsters;
+package entities.Monsters;
 
 import entities.GameEntity;
 import main.GamePanel;

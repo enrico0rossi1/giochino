@@ -1,10 +1,11 @@
-package Entità;
+package entities.Monsters;
 
-import main.Pannello;
+import entities.GameEntity;
+import main.GamePanel;
 
-public class Mon_Bat extends Entità{
+public class Mon_Bat extends GameEntity{
 
-    public Mon_Bat(Pannello gp){
+    public Mon_Bat(GamePanel gp){
         super(gp);
 
         name = "Bat";
@@ -26,11 +27,11 @@ public class Mon_Bat extends Entità{
 
     public void getImage(){
 
-        MoveUpAnimation = loadAnimation(3, "Monsters/MonsterSprites/Bat/Up");
-        MoveDownAnimation = loadAnimation(3, "Monsters/MonsterSprites/Bat/Down");
-        MoveLeftAnimation = loadAnimation(3, "Monsters/MonsterSprites/Bat/Left");
-        MoveRightAnimation = loadAnimation(3, "Monsters/MonsterSprites/Bat/Right");
-        DeathAnimation = loadAnimation(4, "Monsters/MonsterSprites/Bat/Death");
+        MoveUpAnimation = loadAnimation(3, "MonsterSprites/Bat/Up");
+        MoveDownAnimation = loadAnimation(3, "MonsterSprites/Bat/Down");
+        MoveLeftAnimation = loadAnimation(3, "MonsterSprites/Bat/Left");
+        MoveRightAnimation = loadAnimation(3, "MonsterSprites/Bat/Right");
+        DeathAnimation = loadAnimation(4, "MonsterSprites/Bat/Death");
 
     }
 

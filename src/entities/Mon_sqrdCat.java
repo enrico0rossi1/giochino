@@ -1,11 +1,10 @@
-package entities.monsters;
+package entities;
 
-import entities.GameEntity;
-import main.GamePanel;
+import main.Pannello;
 
-public class Mon_sqrdCat extends GameEntity {
+public class Mon_sqrdCat extends Entità {
 
-    public Mon_sqrdCat(GamePanel gp){
+    public Mon_sqrdCat(Pannello gp){
         super(gp);
         name = "Squared_cat";
         type=2;
@@ -27,11 +26,11 @@ public class Mon_sqrdCat extends GameEntity {
     }
     
     public void getImage(){
-        MoveUpAnimation = loadAnimation(1, " MonsterSprites/Squared_Cat/Up");
-        MoveDownAnimation = loadAnimation(1, "MonsterSprites/Squared_Cat/Down");
-        MoveLeftAnimation = loadAnimation(1, "MonsterSprites/Squared_Cat/Left");
-        MoveRightAnimation = loadAnimation(1, "MonsterSprites/Squared_Cat/Right");
-        DeathAnimation = loadAnimation(1, "MonsterSprites/Squared_Cat/Death");
+        MoveUpAnimation = loadAnimation(1, "Monsters/Sprites/Up");
+        MoveDownAnimation = loadAnimation(1, "Monsters/Sprites/Down");
+        MoveLeftAnimation = loadAnimation(1, "Monsters/Sprites/Left");
+        MoveRightAnimation = loadAnimation(1, "Monsters/Sprites/Right");
+       
     }
 
     public void update(){
