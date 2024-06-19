@@ -1,13 +1,13 @@
-package Entità;
+package entities;
 
-import main.InputTastiera;
-import main.Pannello;
+import main.KeyboardInput;
+import main.GamePanel;
 
 public class PlayerTools {
 
-    Pannello gp;
+    GamePanel gp;
 
-    public PlayerTools(Pannello gp){
+    public PlayerTools(GamePanel gp){
         this.gp=gp;
     }
 
@@ -67,7 +67,7 @@ public class PlayerTools {
             return;
         }
 
-        Entità obj = gp.obj[i];
+        GameEntity obj = gp.obj[i];
         if (obj == null || gp.eventHandler.currentMapIndex != obj.mapVerifier) {
             return;
         }
@@ -185,8 +185,8 @@ public class PlayerTools {
     }
 
     public void chooseSprite() {
-        Giocatore giocatore = gp.giocatore;
-        InputTastiera keyh = gp.keyh;
+        Player giocatore = gp.giocatore;
+        KeyboardInput keyh = gp.keyh;
         String direzione = giocatore.direzione;
         int spriteNum = giocatore.spriteNum;
         
