@@ -1,12 +1,15 @@
 package main;
 
-import Entità.*;
-import object.*;
+import entities.*;
+import entities.gameobjects.*;
+import entities.monsters.Mon_Bat;
+import entities.monsters.Mon_Log;
+import entities.monsters.Mon_sqrdCat;
 
 public class AssetPlacer {
-	Pannello gp;
+	GamePanel gp;
 
-	public AssetPlacer (Pannello gp){
+	public AssetPlacer (GamePanel gp){
 		this.gp = gp;
 		
 	}
@@ -31,7 +34,7 @@ public class AssetPlacer {
 		}
 	}
 	
-	private Entità createObject(String objectName) {
+	private GameEntity createObject(String objectName) {
 		switch (objectName) {
 			case "Shoes":
 				return new ObjShoes(gp);
@@ -44,7 +47,7 @@ public class AssetPlacer {
 			case "BigTreasure":
 				return new BigTreasure(gp);
 			case "GoldCoin":
-				return new GoldCoin(gp);
+				return new ObjCoin(gp);
 			case "Heart":
 				return new ObjHeart(gp);
 			case "BigHeart":
@@ -58,21 +61,15 @@ public class AssetPlacer {
 	
 	public void placeObject () {
 		// mappa StartingWoods
-		setObject("Shoes",26,26,1,0);
-	//	setObject("Key",23,24,1,0);
-	//	setObject("Key",28,24,1,0);
 		setObject("Door_Right", 26, 37, 1,0);
 		setObject("Door_Left", 25, 37, 1,0);
 		setObject("BigTreasure", 26, 40, 1,0);
-		setObject("BigTreasure", 36, 40, 1,0);
 		setObject("Heart", 22, 23, 1,0);
 		setObject("Heart", 22, 27, 1,0);
 		setObject("Heart", 29, 23, 1,0);
 		
 		// mappa DarkWoods
 		setObject("Shoes",34,18,1,1);
-		setObject("Key",25,30,1,1);
-	
 		//mappa Jungle
 		setObject("GoldCoin", 33, 20, 1,2);
 		//mappa Beach
@@ -108,7 +105,7 @@ public class AssetPlacer {
 		}
 	}
 
-	private Entità createEnemy(String enemyType) {
+	private GameEntity createEnemy(String enemyType) {
 		switch (enemyType) {
 			case "Squared_cat":	return new Mon_sqrdCat(gp);
 			case "Bat":	return new Mon_Bat(gp);

@@ -14,7 +14,7 @@ public class App {
         finestra.setResizable(false);
         finestra.setTitle("Warrior Adventure");
         finestra.setUndecorated(false);
-        Pannello pannello1 = new Pannello();
+        GamePanel pannello1 = new GamePanel();
         finestra.add(pannello1);
         finestra.pack();
         finestra.setLocationRelativeTo(null);

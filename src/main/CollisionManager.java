@@ -1,20 +1,20 @@
 package main;
 
 
-import Entità.Entità;
-import Mondo.Mappa;
+import entities.GameEntity;
+import gameworld.Map;
 
 public class CollisionManager {
 
-    Pannello gp;
+    GamePanel gp;
     public int index;
 
-    public CollisionManager(Pannello gp){
+    public CollisionManager(GamePanel gp){
         this.gp=gp;
 
     }
 
-    public void checkTile(Entità e){
+    public void checkTile(GameEntity e){
 
         for(int i=0; i<gp.mapMemory.mapHandler.length;i++){
             if (i==gp.eventHandler.currentMapIndex && gp.mapMemory.mapHandler[i]!=null){
@@ -25,7 +25,7 @@ public class CollisionManager {
     }
 
 
-    public void checkMap(Entità e, Mappa map) {
+    public void checkMap(GameEntity e, Map map) {
         int entitàLeftBound = e.worldX + e.collArea.x;
         int entitàRightBound = e.worldX + e.collArea.x + e.collArea.width;
         int entitàTopBound = e.worldY + e.collArea.y;
@@ -59,7 +59,7 @@ public class CollisionManager {
     }
     
     //TILE COLLISION OF BOTH LAYERS OF MAP
-    private void checkCollision(Entità e, Mappa map, int col1, int col2, int row1, int row2) {
+    private void checkCollision(GameEntity e, Map map, int col1, int col2, int row1, int row2) {
         int[] groundTiles = {
             map.ground[row1][col1],
             map.ground[row1][col2],
@@ -95,7 +95,7 @@ public class CollisionManager {
     
 
     //OBJECT COLLISION
-    public int checkObject(Entità e, boolean player) {
+    public int checkObject(GameEntity e, boolean player) {
         int index = 999; // Initialize to a high number as a default "not found" value
 
         for (int i = 0; i < gp.obj.length; i++) {
@@ -153,7 +153,7 @@ public class CollisionManager {
     }
 
     //MONSTERS COLLISION
-    public int checkEntity(Entità e, Entità [] target){
+    public int checkEntity(GameEntity e, GameEntity [] target){
 
         int index = 999; // Initialize to a high number as a default "not found" value
 
@@ -209,7 +209,7 @@ public class CollisionManager {
 
     }
 
-    public boolean checkPlayer(Entità e){
+    public boolean checkPlayer(GameEntity e){
 
 
         boolean contactPlayer=false;

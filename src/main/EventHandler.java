@@ -2,7 +2,7 @@ package main;
 
 public class EventHandler {
 
-  Pannello gp;
+  GamePanel gp;
   EventRectangle eventRect[][];
   int previousEventX,previousEventY;
   boolean canTouchEvent = true;
@@ -13,7 +13,7 @@ public class EventHandler {
   final int jungleMap = 2;
   final int beachMap = 3;
   
-  public EventHandler (Pannello gp) {
+  public EventHandler (GamePanel gp) {
     
     this.gp = gp;
     eventRect = new EventRectangle[gp.worldCol][gp.worldRow];

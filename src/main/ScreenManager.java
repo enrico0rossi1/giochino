@@ -6,12 +6,12 @@ import java.awt.Graphics;
 
 public class ScreenManager {
 
-    Pannello gp;
+    GamePanel gp;
     int screen_height,screen_width;
     public double scaleX;
     public double scaleY;
 
-    public ScreenManager(Pannello gp){
+    public ScreenManager(GamePanel gp){
         this.gp=gp;
     }
 
