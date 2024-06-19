@@ -59,7 +59,7 @@ public class tileManager {
             setup(26,"GrassTile/grass3",false);
             setup(27, "Additional/dungeonEntrance1",true);
             setup(28,"Additional/teleport",false);
-            setup(29,"WaterTile/WaterPool",true);
+            //setup(29,"WaterTile/WaterPool",true);
             setup(30,"WaterTile/BigPoolLeftUp",true);
             setup(31,"WaterTile/BigPoolRightUp",true);
             setup(32,"WaterTile/BigPoolLeftDown",true);
@@ -77,6 +77,22 @@ public class tileManager {
             setup(44,"GrassTile/grassTop",false);
             setup(45,"GrassTile/grassBottom",false);
             setup(46, "GrassTile/grassLeft", false);
+            setup(47, "WaterTile/waterRight", true);
+            setup(48, "WaterTile/waterTopRight", true);
+            setup(49, "WaterTile/waterUp", true);
+            setup(50, "WaterTile/waterBottomRight", true);
+            setup(51, "WaterTile/waterBottomRightAngle", true);
+            setup(52, "WaterTile/waterTopRightAngle", true);
+            setup(53, "WaterTile/waterDown", true);
+            setup(54, "GrassTile/grassTopLeft", false);
+            setup(55, "GrassTile/grassBottomLeft", false);
+            setup(56, "GrassTile/grassBottomLeftAngle", false);
+            setup(57, "GrassTile/grassTopLeftAngle", false);
+
+
+
+
+
 
         
             
