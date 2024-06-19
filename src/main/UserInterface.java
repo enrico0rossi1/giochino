@@ -64,7 +64,7 @@ public class UserInterface {
 
         try {
 
-            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/ZeldaFont.otf")).deriveFont(30f);
+            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/ZeldaFont.otf")).deriveFont(30f);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class UserInterface {
         }
 
         try {
-            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/8BitFont.ttf")).deriveFont(20f);
+            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/Font/8BitFont.ttf")).deriveFont(20f);
         } catch (IOException | FontFormatException f) {
             f.printStackTrace();
             System.err.println("Error loading font: " + f.getMessage());
@@ -107,7 +107,7 @@ public class UserInterface {
         int frameY = gp.ingame_size;
         if (gp.gameState == gp.titleState) {
 
-           BufferedImage titleScreen = loadImage("main/GameScreens/WarriorAdventureTitleScreen.jpeg");
+           BufferedImage titleScreen = loadImage("GameScreens/WarriorAdventureTitleScreen.jpeg");
             
 
                graphics2.drawImage(titleScreen,0,0,gp.screen_width,gp.screen_height, null);
@@ -698,9 +698,9 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
         
     }
 
-    private static BufferedImage loadImage(String imagePath) {
+    private BufferedImage loadImage(String imagePath) {
         try {
-            return ImageIO.read(new File(imagePath));
+            return ImageIO.read(getClass().getResourceAsStream(imagePath));
         } catch (IOException e) {
             e.printStackTrace();
             return null;

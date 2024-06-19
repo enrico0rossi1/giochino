@@ -33,7 +33,7 @@ public class TileManager {
     public void getTileImage(){
         try {
             setup(0,"DirtTile/Dirt1",false);
-            setup(1,"GrassTile/grass",false);
+            setup(1,"GrassTile/grass1",false);
             setup(2,"WaterTile/Water",true);
             setup(3,"Additional/FencesVert",true);
             setup(4,"Additional/Albero1",true);

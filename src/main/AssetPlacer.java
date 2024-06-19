@@ -2,9 +2,9 @@ package main;
 
 import entities.*;
 import entities.gameobjects.*;
-import entities.monsters.Mon_Bat;
-import entities.monsters.Mon_Log;
-import entities.monsters.Mon_sqrdCat;
+import entities.Mon_Bat;
+import entities.Mon_Log;
+import entities.Mon_sqrdCat;
 
 public class AssetPlacer {
 	GamePanel gp;
@@ -67,6 +67,7 @@ public class AssetPlacer {
 		setObject("Heart", 22, 23, 1,0);
 		setObject("Heart", 22, 27, 1,0);
 		setObject("Heart", 29, 23, 1,0);
+		setObject("Shoes",26,26,1,0);
 		
 		// mappa DarkWoods
 		setObject("Shoes",34,18,1,1);

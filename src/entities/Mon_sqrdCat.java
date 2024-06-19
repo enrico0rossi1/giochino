@@ -1,10 +1,10 @@
 package entities;
 
-import main.Pannello;
+import main.GamePanel;
 
-public class Mon_sqrdCat extends Entità {
+public class Mon_sqrdCat extends GameEntity {
 
-    public Mon_sqrdCat(Pannello gp){
+    public Mon_sqrdCat(GamePanel gp){
         super(gp);
         name = "Squared_cat";
         type=2;

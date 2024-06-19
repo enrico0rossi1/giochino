@@ -1,10 +1,10 @@
 package entities;
 
-import main.Pannello;
+import main.GamePanel;
 
-public class Mon_Bat extends Entità{
+public class Mon_Bat extends GameEntity{
 
-    public Mon_Bat(Pannello gp){
+    public Mon_Bat(GamePanel gp){
         super(gp);
 
         name = "Bat";
