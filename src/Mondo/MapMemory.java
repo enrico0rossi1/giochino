@@ -1,14 +1,14 @@
-package Mondo;
+package gameworld;
 
 public class MapMemory {
 
-    public Mappa[]mapHandler=new Mappa[6];
+    public Map[]mapHandler=new Map[6];
 
     public MapMemory(){
         
     }
 
-    public void loadToMapMemory (Mappa map){
+    public void loadToMapMemory (Map map){
 
         int counter=1;
         for (int i=0; i<mapHandler.length; i++){
