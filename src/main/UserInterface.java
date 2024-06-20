@@ -560,7 +560,12 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
           
             final int x = gp.screen_width/2+50;
             final int y = 20 ;
-        
+            Color bg = new Color(0,0,0,120);
+            Color border = new Color(100,0,0);
+
+
+        drawColoredSubWindow(x, y, x, gp.ingame_size*8, bg, border);
+
             graphics2.setFont(zeldaFont);
             graphics2.setColor(Color.WHITE);
         
