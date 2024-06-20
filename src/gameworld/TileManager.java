@@ -44,10 +44,10 @@ public class TileManager {
             setup(9,"Additional/topWall",true);
             setup(10,"Additional/wooden_doorLeft",true);
             setup(11,"Additional/wooden_doorRight",true);
-            setup(12,"DarkTile/darkdown",false);
-            setup(13,"DarkTile/darkleft",false);
-            setup(14,"DarkTile/darkright",false);
-            setup(15,"DarkTile/dark1",false);
+            setup(12,"DarkTile/darkGrassTop",false);
+            setup(13,"DarkTile/darkGrassLeft",false);
+            setup(14,"DarkTile/darkGrassRight",false);
+            setup(15,"DarkTile/darkTopRight",false);
             setup(16,"DarkTile/darkMid",false);
             setup(17,"Additional/alberosciucco",true);
             setup(20,"WaterTile/Water1",true);
@@ -113,6 +113,11 @@ public class TileManager {
             setup(80,"DirtTile/dirtWaterUp", false);
             setup(81,"DirtTile/dirtWaterLeft", false);
             setup(82,"DirtTile/dirtWaterDungeon", false);
+            setup(83, "DarkTile/darkTopRightAngle", false);
+            setup(84, "DarkTile/darkTopLeft", false);
+            setup(85, "DarkTile/darkTopLeftAngle", false);
+
+
             
         } catch (Exception e) {
             e.printStackTrace();
