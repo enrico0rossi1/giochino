@@ -59,7 +59,7 @@ public class TileManager {
             setup(26,"GrassTile/grass3",false);
             setup(27, "Additional/dungeonEntrance1",true);
             setup(28,"Additional/teleport",false);
-            //setup(29,"WaterTile/WaterPool",true);
+            setup(29,"DirtTile/dirtStartLight", false);
             setup(30,"WaterTile/BigPoolLeftUp",true);
             setup(31,"WaterTile/BigPoolRightUp",true);
             setup(32,"WaterTile/BigPoolLeftDown",true);
@@ -73,7 +73,7 @@ public class TileManager {
             setup(40,"DirtTile/dirtRight",false);
             setup(41,"DirtTile/dirtLeft",false);
             setup(42,"DirtTile/dirtBottom",false);
-    
+            setup(43,"DirtTile/dirtWaterDungeon", false);
             setup(44,"GrassTile/grassTop",false);
             setup(45,"GrassTile/grassBottom",false);
             setup(46, "GrassTile/grassLeft", false);
@@ -104,6 +104,22 @@ public class TileManager {
             setup(71, "DirtTile/dirtStart", false);
             setup(72,"GrassTile/switchGrassTopRightAngle", false);
             setup(73,"GrassTile/switch", false);
+            setup(74,"DirtTile/dirtWaterBottomLeft", false);
+            setup(75,"DirtTile/dirtWaterBottomRight", false);
+            setup(76,"DirtTile/dirtWaterTopLeft", false);
+            setup(77,"DirtTile/dirtWaterTopRight", false);
+            setup(78,"DirtTile/dirtWaterBottom", false);
+            setup(79,"DirtTile/dirtWaterRight", false);
+            setup(80,"DirtTile/dirtWaterUp", false);
+            setup(81,"DirtTile/dirtWaterLeft", false);
+            setup(82,"DirtTile/dirtWaterDungeon", false);
+            
+
+
+
+
+
+
 
 
         } catch (Exception e) {
