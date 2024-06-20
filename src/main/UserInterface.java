@@ -643,7 +643,7 @@ else if (gp.fullScreenOn == false) {graphics2.drawString(" OFF",textX*2,textY);
 
             int textX = gp.ingame_size*2 + 8;
             final int textY = gp.ingame_size * 8 ;
-            BufferedImage deathImage = loadImage("entities/Sprites/NewSprites/Death/death2.png");
+            BufferedImage deathImage = loadImage("main_rsc/GameScreens/death2.png");
 
             graphics2.setColor(new Color(0,0,0,100));
             graphics2.fillRect(0,0,gp.screen_width,gp.screen_height);
