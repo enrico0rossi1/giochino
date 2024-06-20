@@ -1,6 +1,7 @@
 package entities;
 
 import main.GamePanel;
+import java.util.Random;
 
 public class Mon_Bat extends GameEntity{
 
@@ -20,6 +21,14 @@ public class Mon_Bat extends GameEntity{
         collArea.height=gp.ingame_size;
         solidAreaDefaultX=collArea.x;
         solidAreaDefaultY=collArea.y;
+        Random random = new Random();
+        int i = random.nextInt(4);
+        switch (i) {
+            case 0:direzione="up";break;
+            case 1:direzione="down";break;
+            case 2: direzione="right";break;
+            case 3: direzione="left";break;
+        }
 
         getImage();
     }
@@ -50,8 +59,9 @@ public class Mon_Bat extends GameEntity{
         }
         
         checkStatus();
-        movement();
-        System.out.println(spriteNum);
+        if(gp.eventHandler.currentMapIndex==this.mapVerifier){
+            movement();
+        }
         invincible(invincibleTime);
         
     }

@@ -131,7 +131,7 @@ public class GameEntity{
             gp.giocatore.vita--;
             gp.giocatore.invincible=true;
         }
-        if(solid==false && vita>0){    
+        if(solid==false && vita>0 && gp.eventHandler.currentMapIndex==this.mapVerifier ){    
          switch (direzione) {
             case "up": 
                 worldY-=speed; 
@@ -180,7 +180,6 @@ public class GameEntity{
         actionLockCounter++;
         int offsetY=Math.abs(gp.giocatore.worldY-this.worldY);
         int offsetX=Math.abs(gp.giocatore.worldX-this.worldX);
-        System.out.println(offsetX);
         
 
         if(actionLockCounter==40){
@@ -254,10 +253,7 @@ public class GameEntity{
                 gp.giocatore.killNum++;
                 deathCounter=60;
             }
-        }
-       
-        
-        
+        } 
     }
 
 

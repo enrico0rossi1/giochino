@@ -192,11 +192,17 @@ public class GamePanel extends JPanel {
     }
 
     public void retry() {
+        //SETTIAMO GLI ATTRIBUTI AI VALORI DI PARTENZA
         giocatore.setValoriPredefiniti();
         assetPlacer.restartPlaceObject();
         assetPlacer.restartPlaceEnemies();
         eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
         eventHandler.eventRect[25][25].happened = false ;
+        for(int i=0; i<mon.length; i++){
+            if(mon[i]!=null){
+                mon[i].vita=mon[i].vitaMax;
+            }
+        }
     }
 
     public void playMusic(int i) {

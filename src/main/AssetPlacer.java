@@ -119,15 +119,15 @@ public class AssetPlacer {
 	public void placeEnemy () {
 		
 
-		setEnemy("Bat", 23, 25, 1, 1);
-		setEnemy("Bat", 24, 27, 1, 1);
-	//	setEnemy("Bat", 26, 22, 1, 1);
-	//	setEnemy("Bat", 29, 29, 1, 1);
+		setEnemy("Bat", 23, 18, 1, 1);
+		setEnemy("Bat", 30, 27, 1, 1);
+		setEnemy("Bat", 18, 32, 1, 1);
+		setEnemy("Bat", 29, 29, 1, 1);
 
 		setEnemy("Log", 23, 25, 1, 2);
 		setEnemy("Log", 24, 27, 1, 2);
-	//	setEnemy("Log", 26, 22, 1, 2);
-	//	setEnemy("Log", 29, 29, 1, 2);
+		setEnemy("Log", 26, 22, 1, 2);
+		setEnemy("Log", 29, 29, 1, 2);
 
 		//setEnemy("Squared_cat", 24, 30, 1, gp.eventHandler.beachMap);
 
