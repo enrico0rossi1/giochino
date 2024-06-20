@@ -114,14 +114,6 @@ public class TileManager {
             setup(81,"DirtTile/dirtWaterLeft", false);
             setup(82,"DirtTile/dirtWaterDungeon", false);
             
-
-
-
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

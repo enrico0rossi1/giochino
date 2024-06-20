@@ -119,6 +119,7 @@ public class UserInterface {
                   case 3: drawFullScreenAlert(); break;
                   case 4: graphics2.setFont(zeldaFont);
                   graphics2.setColor(Color.WHITE);
+                  drawSubWindow(0, 500, gp.screen_height/8, gp.screen_width/2+30);
                   graphics2.drawString("Premi ENTER per tornare indietro",10,gp.screen_height-30);
                   break;
 
@@ -129,7 +130,7 @@ public class UserInterface {
 
          int textY = gp.screen_height/2+75;
         
-         Color bg = new Color(0,0,0,100);
+         Color bg = new Color(0,0,0,150);
          Color bord = new Color(0,127,255);       
 
 
@@ -170,7 +171,7 @@ public class UserInterface {
     public void titleOptions(){
 
        // int textY = gp.screen_height/2+75;
-        Color bg = new Color(0,0,0,60);
+        Color bg = new Color(0,0,0,180);
         Color bord = new Color(0,127,255); 
         graphics2.setFont(zeldaFont);
        
