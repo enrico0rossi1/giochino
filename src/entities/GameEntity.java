@@ -153,25 +153,74 @@ public class GameEntity{
         }
     }
 
+    public void playerChaserX(){
+        
+
+        if(this.worldX>gp.giocatore.worldX){
+            direzione = "left";
+        }
+        if(this.worldX<gp.giocatore.worldX){
+            direzione = "right";
+        }
+        
+    }
+
+    public void playerChaserY(){
+
+        if(this.worldY<gp.giocatore.worldY){
+            direzione = "down";
+        }
+        if(this.worldY>gp.giocatore.worldY){
+            direzione = "up";
+        }
+    }
+
     public void setAction(){
         
         actionLockCounter++;
+        int offsetY=Math.abs(gp.giocatore.worldY-this.worldY);
+        int offsetX=Math.abs(gp.giocatore.worldX-this.worldX);
+        System.out.println(offsetX);
+        
 
         if(actionLockCounter==40){
             Random random = new Random();
             int i = random.nextInt(80)+1;
 
             if(i>=0 && i<20){
-                direzione="up";
+                if(offsetX>offsetY){
+            
+                    playerChaserX();
+                }else if (offsetY>offsetX){
+                    playerChaserY();
+                }
+                
             }
             if(i>=20 && i<40){
-                direzione="right";
+
+                if(offsetX>offsetY){
+            
+                    playerChaserX();
+                }else if (offsetY>offsetX){
+                    playerChaserY();
+                }
             }
             if(i>=40 && i<60){
-                direzione="left";
+                if(offsetX>offsetY){
+            
+                    playerChaserX();
+                }else if (offsetY>offsetX){
+                    playerChaserY();
+                }
             }
             if(i>=60 && i<80){
-                direzione="down";
+
+                if(offsetX>offsetY){
+            
+                    playerChaserX();
+                }else if (offsetY>offsetX){
+                    playerChaserY();
+                }
             }
 
             actionLockCounter=0;

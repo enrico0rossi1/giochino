@@ -9,7 +9,7 @@ public class Mon_Log extends GameEntity{
         
         name = "Log";
         type=2;
-        speed=1;
+        speed=2;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
