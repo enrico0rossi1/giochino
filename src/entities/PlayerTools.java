@@ -14,6 +14,7 @@ public class PlayerTools {
     public void interactMonster(int monVerifier){
         if(monVerifier!=999){
             gp.ui.showMessage2("hai subito danni!");
+            gp.playSFX(13);
         }
     }
 
@@ -22,6 +23,7 @@ public class PlayerTools {
             gp.mon[i].vita--;
             gp.mon[i].invincible=true;
             gp.mon[i].damageReaction();
+            gp.playSFX(14);
             gp.ui.showMessage("colpo a segno");
         }
          
@@ -300,10 +302,11 @@ public class PlayerTools {
     public void contactMonster(int monVerifier){
         
         if(monVerifier!=999 && gp.giocatore.invincible ==false){
-            
+
             gp.giocatore.invincible=true;
             gp.giocatore.vita--;
             gp.giocatore.invincibleCounter--;
+           
 
         }
     }
