@@ -55,7 +55,6 @@ public class Mon_Log extends GameEntity{
         
         checkStatus();
         movement();
-        System.out.println(spriteNum);
         invincible(invincibleTime);
 
     }

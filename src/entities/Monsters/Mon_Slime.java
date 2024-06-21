@@ -1,11 +1,11 @@
-package entities;
+package entities.Monsters;
 
+import entities.GameEntity;
 import main.GamePanel;
-import java.util.Random;
 
-public class Mon_Log extends GameEntity{
+public class Mon_Slime extends GameEntity{
 
-    public Mon_Log(GamePanel gp){
+    public Mon_Slime(GamePanel gp){
         super(gp);
         
         name = "Log";
@@ -22,26 +22,17 @@ public class Mon_Log extends GameEntity{
         collArea.height=gp.ingame_size;
         solidAreaDefaultX=collArea.x;
         solidAreaDefaultY=collArea.y;
-        Random random = new Random();
-        int i = random.nextInt(4);
-        switch (i) {
-            case 0:direzione="up";break;
-            case 1:direzione="down";break;
-            case 2: direzione="right";break;
-            case 3: direzione="left";break;
-        }
-
 
         getImage();
     }
 
     public void getImage(){
 
-        MoveUpAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Up");
-        MoveDownAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Down");
-        MoveLeftAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Left");
-        MoveRightAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Right");
-        DeathAnimation = loadAnimation(4, "Monsters/MonsterSprites/Log/Death");
+        MoveUpAnimation = loadAnimation(6, "MonsterSprites/Slime/Up");
+        MoveDownAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
+        MoveLeftAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
+        MoveRightAnimation = loadAnimation(6, "MonsterSprites/Slime/Right");
+        //DeathAnimation = loadAnimation(4, "MonsterSprites/Log/Death");
 
     }
 
@@ -57,6 +48,10 @@ public class Mon_Log extends GameEntity{
             }else if (spriteNum==2){
                 spriteNum=3;
             }else if(spriteNum==3){
+                spriteNum=4;
+            }else if(spriteNum==4){
+                spriteNum=5;
+            }else if(spriteNum==5){
                 spriteNum=0;
             }
             spriteCount=0;

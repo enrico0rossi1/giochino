@@ -9,6 +9,8 @@ import gameworld.MapMemory;
 import gameworld.TileManager;
 
 import java.awt.*;
+import java.util.Collections;
+import java.util.Comparator;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -166,6 +168,15 @@ public class GamePanel extends JPanel {
                 }
             }
             entityList.add(giocatore);
+
+            //SORTING
+            Collections.sort(entityList, new Comparator<GameEntity>() {
+                @Override
+                public int compare(GameEntity e1, GameEntity e2){
+                    int result = Integer.compare(e1.worldY, e2.worldY);
+                    return result;
+                }
+            });
 
             // DISEGNIAMO LE ENTITà
             for (int i = 0; i < entityList.size(); i++) {

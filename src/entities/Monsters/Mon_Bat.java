@@ -52,7 +52,6 @@ public class Mon_Bat extends GameEntity{
         
         checkStatus();
         movement();
-        System.out.println(spriteNum);
         invincible(invincibleTime);
         
     }

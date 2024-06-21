@@ -2,9 +2,8 @@ package main;
 
 import entities.*;
 import entities.gameobjects.*;
-import entities.Mon_Bat;
-import entities.Mon_Log;
-import entities.Mon_sqrdCat;
+import entities.Monsters.*;
+
 
 public class AssetPlacer {
 	GamePanel gp;
@@ -61,8 +60,8 @@ public class AssetPlacer {
 	
 	public void placeObject () {
 		// mappa StartingWoods
-		setObject("Door_Right", 26, 37, 1,0);
-		setObject("Door_Left", 25, 37, 1,0);
+		// setObject("Door_Right", 26, 37, 1,0);
+		// setObject("Door_Left", 25, 37, 1,0);
 		setObject("BigTreasure", 26, 40, 1,0);
 		setObject("Heart", 22, 23, 1,0);
 		setObject("Heart", 22, 27, 1,0);
@@ -108,9 +107,10 @@ public class AssetPlacer {
 
 	private GameEntity createEnemy(String enemyType) {
 		switch (enemyType) {
-			case "Squared_cat":	return new Mon_sqrdCat(gp);
+			case "Slime":	return new Mon_Slime(gp);
 			case "Bat":	return new Mon_Bat(gp);
 			case "Log": return new Mon_Log(gp);
+
 			default:
 				return null;
 		}
@@ -121,7 +121,7 @@ public class AssetPlacer {
 
 		setEnemy("Bat", 23, 18, 1, 1);
 		setEnemy("Bat", 30, 27, 1, 1);
-		setEnemy("Bat", 18, 32, 1, 1);
+		setEnemy("Bat", 18, 18, 1, 1);
 		setEnemy("Bat", 29, 29, 1, 1);
 
 		setEnemy("Log", 23, 25, 1, 2);
@@ -129,7 +129,7 @@ public class AssetPlacer {
 		setEnemy("Log", 26, 22, 1, 2);
 		setEnemy("Log", 29, 29, 1, 2);
 
-		//setEnemy("Squared_cat", 24, 30, 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 24, 23, 1, gp.eventHandler.beachMap);
 
 
 	}
