@@ -10,7 +10,7 @@ import java.net.URL;
 public class Sound {
   
   Clip clip;
-  URL soundURL[] = new URL[13];
+  URL soundURL[] = new URL[15];
   FloatControl fc;
   public int volumeScale= 3;
   float volume;
@@ -29,6 +29,8 @@ public class Sound {
     soundURL[10] = getClass().getResource("/audio/sfx/CancelSFX.wav");
     soundURL[11] = getClass().getResource("/audio/sfx/MenuSFX.wav");
     soundURL[12]  = getClass().getResource("/audio/music/EndGame.wav");
+    soundURL[13] = getClass().getResource("/audio/sfx/HitSFX.wav");
+    soundURL[14] = getClass().getResource("/audio/sfx/SwordSFX.wav");
   }
 
   public void setFile(int i){
