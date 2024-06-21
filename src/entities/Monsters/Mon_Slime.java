@@ -32,31 +32,14 @@ public class Mon_Slime extends GameEntity{
         MoveDownAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
         MoveLeftAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
         MoveRightAnimation = loadAnimation(6, "MonsterSprites/Slime/Right");
-        //DeathAnimation = loadAnimation(4, "MonsterSprites/Log/Death");
+        DeathAnimation = loadAnimation(6, "MonsterSprites/Slime/Death");
 
     }
 
     public void update(){
         
         setAction();
-        spriteCount++;
-        if(spriteCount>5){
-            if(spriteNum==0){
-                spriteNum=1;
-            }else if (spriteNum==1){
-                spriteNum=2;
-            }else if (spriteNum==2){
-                spriteNum=3;
-            }else if(spriteNum==3){
-                spriteNum=4;
-            }else if(spriteNum==4){
-                spriteNum=5;
-            }else if(spriteNum==5){
-                spriteNum=0;
-            }
-            spriteCount=0;
-        }
-        
+        animationRoller();
         checkStatus();
         movement();
         invincible(invincibleTime);

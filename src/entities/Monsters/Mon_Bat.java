@@ -38,18 +38,7 @@ public class Mon_Bat extends GameEntity{
     public void update(){
         
         setAction();
-        spriteCount++;
-        if(spriteCount>5){
-            if(spriteNum==0){
-                spriteNum=1;
-            }else if (spriteNum==1){
-                spriteNum=2;
-            }else if (spriteNum==2){
-                spriteNum=0;
-            }
-            spriteCount=0;
-        }
-        
+        animationRoller();
         checkStatus();
         movement();
         invincible(invincibleTime);

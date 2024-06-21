@@ -69,6 +69,8 @@ public class GameEntity{
     public int spriteCount=0;
     public int spriteNum=0;
     public int deathCounter=60;
+    public int times=1;
+    
  
 
     public GameEntity(GamePanel gp) {
@@ -78,15 +80,23 @@ public class GameEntity{
 
     //ENTITY TOOLS
     public void animationRoller(){
-        final int frameInterval = 200* 1000000;
-        long currentTime = System.nanoTime();
+        spriteCount++;
         
-        
-        if (currentTime - gp.lastTime >= frameInterval) {
-            
-            spriteNum = (spriteNum+1) % MoveDownAnimation.length;
-            gp.lastTime = currentTime;
-           
+        if(vita>0){
+            if(spriteCount==5){
+                spriteNum++;
+                if(spriteNum==MoveDownAnimation.length){
+                    spriteNum=0;
+                }
+               spriteCount=0;
+            }
+        }else if(vita<=0 && times==1 && spriteCount==10){
+            spriteNum++;
+            if(spriteNum==DeathAnimation.length){
+                spriteNum=DeathAnimation.length-1;
+                times--;
+            }
+            spriteCount=0;
         }
 
     }
