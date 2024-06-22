@@ -70,7 +70,8 @@ public class GameEntity{
     public int spriteNum=0;
     public int deathCounter=60;
     public int times=1;
-    
+    public int restart=1;
+
  
 
     public GameEntity(GamePanel gp) {
@@ -82,23 +83,31 @@ public class GameEntity{
     public void animationRoller(){
         spriteCount++;
         
-        if(vita>0){
-            if(spriteCount==5){
-                spriteNum++;
-                if(spriteNum==MoveDownAnimation.length){
-                    spriteNum=0;
-                }
-               spriteCount=0;
+       
+        if(spriteCount==5){
+            spriteNum++;
+            if(spriteNum==MoveDownAnimation.length){
+                spriteNum=0;
             }
-        }else if(vita<=0 && times==1 && spriteCount==10){
+           spriteCount=0;
+        }
+    }
+
+    public void deathAnimationRoller(){
+        spriteCount++;
+        if(restart!=0){
+            spriteNum=0;
+            restart--;
+        }
+        
+        if(spriteCount==5){
             spriteNum++;
             if(spriteNum==DeathAnimation.length){
                 spriteNum=DeathAnimation.length-1;
-                times--;
             }
-            spriteCount=0;
+           spriteCount=0;
         }
-
+        
     }
 
     public BufferedImage[] loadAnimation(int dimension, String importPath) {

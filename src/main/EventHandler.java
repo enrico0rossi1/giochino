@@ -61,9 +61,9 @@ public class EventHandler {
 
       // ritorno a startingWoods
       if(monChecker()){
-        if (hitEvent(18,18, "any",darkWoodsMap )){askForTeleport(startingWoodsMap);}
+        if (hitEvent(18,19, "any",darkWoodsMap )){askForTeleport(startingWoodsMap);}
         if (hitEvent(18,19, "any",jungleMap )){askForTeleport(startingWoodsMap);}
-        if (hitEvent(18,18, "any",beachMap )){askForTeleport(startingWoodsMap);}
+        if (hitEvent(18,19, "any",beachMap )){askForTeleport(startingWoodsMap);}
       }else{
         if (hitEvent(18,18, "any",darkWoodsMap )){deniesTeleport();}
         if (hitEvent(18,19, "any",jungleMap )){deniesTeleport();}

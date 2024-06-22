@@ -10,7 +10,7 @@ public class Mon_Log extends GameEntity{
         
         name = "Log";
         type=2;
-        speed=1;
+        speed=3;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
@@ -39,7 +39,11 @@ public class Mon_Log extends GameEntity{
     public void update(){
         
         setAction();
-        animationRoller();
+        if(vita>0){
+            animationRoller();
+        }else{
+            deathAnimationRoller();
+        }
         checkStatus();
         movement();
         invincible(invincibleTime);

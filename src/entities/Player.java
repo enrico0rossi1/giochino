@@ -76,10 +76,10 @@ public class Player extends GameEntity {
         RightAnimation=loadAnimation(6, "PlayerSprites/NewSprites/Right/right");
         LeftAnimation=loadAnimation(6, "PlayerSprites/NewSprites/Left/left");
 
-        AttackDown=loadAnimation(6, "PlayerSprites/NewSprites/Down/attackDown");
-        AttackUp=loadAnimation(6, "PlayerSprites/NewSprites/Up/attackUp");
-        AttackLeft=loadAnimation(6, "PlayerSprites/NewSprites/Left/attackLeft");
-        AttackRight=loadAnimation(6, "PlayerSprites/NewSprites/Right/attackRight");
+        AttackDown=loadAnimation(4, "PlayerSprites/NewSprites/Down/attackDown");
+        AttackUp=loadAnimation(4, "PlayerSprites/NewSprites/Up/attackUp");
+        AttackLeft=loadAnimation(4, "PlayerSprites/NewSprites/Left/attackLeft");
+        AttackRight=loadAnimation(4, "PlayerSprites/NewSprites/Right/attackRight");
         
     }
    
@@ -94,7 +94,12 @@ public class Player extends GameEntity {
    
         mapVerifier=gp.eventHandler.currentMapIndex;
         gp.pTools.moveOBJChecker();
-        animationRoller();
+        
+        if(this.keyh.p){
+            gp.pTools.attackAnimationRoller();
+        }else{
+            animationRoller();
+        }
         gp.pTools.chooseSprite();
 
     }

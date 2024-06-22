@@ -10,7 +10,7 @@ public class Mon_Bat extends GameEntity{
 
         name = "Bat";
         type=2;
-        speed=1;
+        speed=3;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
@@ -31,14 +31,18 @@ public class Mon_Bat extends GameEntity{
         MoveDownAnimation = loadAnimation(3, "MonsterSprites/Bat/Down");
         MoveLeftAnimation = loadAnimation(3, "MonsterSprites/Bat/Left");
         MoveRightAnimation = loadAnimation(3, "MonsterSprites/Bat/Right");
-        DeathAnimation = loadAnimation(4, "MonsterSprites/Bat/Death");
+        DeathAnimation = loadAnimation(3, "MonsterSprites/Bat/Death");
 
     }
 
     public void update(){
         
         setAction();
-        animationRoller();
+        if(vita>0){
+            animationRoller();
+        }else{
+            deathAnimationRoller();
+        }
         checkStatus();
         movement();
         invincible(invincibleTime);

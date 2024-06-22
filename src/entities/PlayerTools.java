@@ -6,6 +6,7 @@ import main.GamePanel;
 public class PlayerTools {
 
     GamePanel gp;
+    
 
     public PlayerTools(GamePanel gp){
         this.gp=gp;
@@ -62,6 +63,23 @@ public class PlayerTools {
             gp.giocatore.collArea.height=solidAreaHeight;
 
         }
+    }
+
+    public void attackAnimationRoller(){
+        gp.giocatore.spriteCount++;
+        if(gp.giocatore.spriteNum>=gp.giocatore.AttackDown.length){
+            gp.giocatore.spriteNum=0;
+        }
+
+        if(gp.giocatore.spriteCount==5){
+            gp.giocatore.spriteNum++;
+            if(gp.giocatore.spriteNum==gp.giocatore.AttackDown.length){
+                gp.giocatore.spriteNum=0;
+            }
+
+            gp.giocatore.spriteCount=0;
+        }
+        
     }
 
     public void pickUpObj(int i) {

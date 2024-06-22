@@ -10,7 +10,7 @@ public class Mon_Slime extends GameEntity{
         
         name = "Log";
         type=2;
-        speed=2;
+        speed=3;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
@@ -32,14 +32,18 @@ public class Mon_Slime extends GameEntity{
         MoveDownAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
         MoveLeftAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
         MoveRightAnimation = loadAnimation(6, "MonsterSprites/Slime/Right");
-        DeathAnimation = loadAnimation(6, "MonsterSprites/Slime/Death");
+        DeathAnimation = loadAnimation(5, "MonsterSprites/Slime/Death");
 
     }
 
     public void update(){
         
         setAction();
-        animationRoller();
+        if(vita>0){
+            animationRoller();
+        }else{
+            deathAnimationRoller();
+        }
         checkStatus();
         movement();
         invincible(invincibleTime);

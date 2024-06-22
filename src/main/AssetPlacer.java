@@ -92,10 +92,10 @@ public class AssetPlacer {
 		int x = randomX.nextInt(18,33);
 		int y =randomY.nextInt(19, 30);
 		if(x==25){
-			x=+2;
+			x=27;
 			
 		}else if(y==25){
-			y=+2;
+			y=27;
 		}
 		for (int i = 0; i < gp.mon.length && times > 0; i++) {
 			if (gp.mon[i] == null) {
