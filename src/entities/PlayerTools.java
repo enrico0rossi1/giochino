@@ -15,7 +15,6 @@ public class PlayerTools {
     public void interactMonster(int monVerifier){
         if(monVerifier!=999){
             gp.ui.showMessage2("hai subito danni!");
-            gp.playSFX(13);
         }
     }
 
@@ -324,6 +323,7 @@ public class PlayerTools {
             gp.giocatore.invincible=true;
             gp.giocatore.vita--;
             gp.giocatore.invincibleCounter--;
+            gp.playSFX(13);
            
 
         }

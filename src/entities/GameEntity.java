@@ -149,6 +149,7 @@ public class GameEntity{
         if(this.type==2 && cPlayer && gp.giocatore.invincible==false){
             gp.giocatore.vita--;
             gp.giocatore.invincible=true;
+            gp.playSFX(13);
         }
         if(solid==false && vita>0 && gp.eventHandler.currentMapIndex==this.mapVerifier ){    
          switch (direzione) {
