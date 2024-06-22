@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Random;
+
 import entities.*;
 import entities.gameobjects.*;
 import entities.Monsters.*;
@@ -60,20 +62,18 @@ public class AssetPlacer {
 	
 	public void placeObject () {
 		// mappa StartingWoods
-		// setObject("Door_Right", 26, 37, 1,0);
-		// setObject("Door_Left", 25, 37, 1,0);
-		setObject("BigTreasure", 26, 40, 1,0);
-		setObject("Heart", 22, 23, 1,0);
-		setObject("Heart", 22, 27, 1,0);
-		setObject("Heart", 29, 23, 1,0);
-		setObject("Shoes",26,26,1,0);
+		setObject("BigTreasure", 26, 42, 1,gp.eventHandler.startingWoodsMap);
+		setObject("Heart", 22, 23, 1,gp.eventHandler.startingWoodsMap);
+		setObject("Heart", 22, 27, 1,gp.eventHandler.startingWoodsMap);
+		setObject("Heart", 29, 23, 1,gp.eventHandler.startingWoodsMap);
+		setObject("Shoes",26,26,1,gp.eventHandler.startingWoodsMap);
 		
 		// mappa DarkWoods
-		setObject("Shoes",34,18,1,1);
+		setObject("Shoes",34,18,1,gp.eventHandler.darkWoodsMap);
 		//mappa Jungle
-		setObject("GoldCoin", 33, 20, 1,2);
+		setObject("GoldCoin", 33, 20, 1,gp.eventHandler.jungleMap);
 		//mappa Beach
-		setObject("BigHeart", 32, 17, 1,3);
+		setObject("BigHeart", 32, 17, 1,gp.eventHandler.beachMap);
 	}
 
 	public void restartPlaceObject(){
@@ -86,7 +86,17 @@ public class AssetPlacer {
 
 	//GESTIONE NEMICI
 
-	public void setEnemy(String enemyType, int x, int y, int times, int mapVerifier) {
+	public void setEnemy(String enemyType, int times, int mapVerifier) {
+		Random randomX= new Random();
+		Random randomY= new Random();
+		int x = randomX.nextInt(18,33);
+		int y =randomY.nextInt(19, 30);
+		if(x==25){
+			x=+2;
+			
+		}else if(y==25){
+			y=+2;
+		}
 		for (int i = 0; i < gp.mon.length && times > 0; i++) {
 			if (gp.mon[i] == null) {
 				gp.mon[i] = createEnemy(enemyType);
@@ -107,7 +117,7 @@ public class AssetPlacer {
 
 	private GameEntity createEnemy(String enemyType) {
 		switch (enemyType) {
-			case "Slime":	return new Mon_Slime(gp);
+			case "Slime": return new Mon_Slime(gp);
 			case "Bat":	return new Mon_Bat(gp);
 			case "Log": return new Mon_Log(gp);
 
@@ -119,17 +129,29 @@ public class AssetPlacer {
 	public void placeEnemy () {
 		
 
-		setEnemy("Bat", 23, 18, 1, 1);
-		setEnemy("Bat", 30, 27, 1, 1);
-		setEnemy("Bat", 18, 18, 1, 1);
-		setEnemy("Bat", 29, 29, 1, 1);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 
-		setEnemy("Log", 23, 25, 1, 2);
-		setEnemy("Log", 24, 27, 1, 2);
-		setEnemy("Log", 26, 22, 1, 2);
-		setEnemy("Log", 29, 29, 1, 2);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 
-		setEnemy("Slime", 24, 23, 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+
+
+
 
 
 	}

@@ -60,9 +60,16 @@ public class EventHandler {
 
 
       // ritorno a startingWoods
-      if (hitEvent(18,18, "any",darkWoodsMap )&& monChecker()){askForTeleport(startingWoodsMap);}
-      if (hitEvent(18,19, "any",jungleMap )&& monChecker()){askForTeleport(startingWoodsMap);}
-      if (hitEvent(18,18, "any",beachMap )&& monChecker()){askForTeleport(startingWoodsMap);}
+      if(monChecker()){
+        if (hitEvent(18,18, "any",darkWoodsMap )){askForTeleport(startingWoodsMap);}
+        if (hitEvent(18,19, "any",jungleMap )){askForTeleport(startingWoodsMap);}
+        if (hitEvent(18,18, "any",beachMap )){askForTeleport(startingWoodsMap);}
+      }else{
+        if (hitEvent(18,18, "any",darkWoodsMap )){deniesTeleport();}
+        if (hitEvent(18,19, "any",jungleMap )){deniesTeleport();}
+        if (hitEvent(18,18, "any",beachMap )){deniesTeleport();}
+
+      }
       
      
       //viaggio verso località diverse da startingWoods
@@ -153,6 +160,12 @@ public boolean monChecker(){
     gp.ui.dialogueChoice = 3;
     gp.gameState = gp.dialogueState;
     canTouchEvent = false;
+  }
+
+  public void deniesTeleport(){
+    gp.gameState = gp.dialogueState;
+    gp.ui.currentDialogue = "Non puoi tornare indietro finchè non sconfiggi \ntutti i nemici !!";
+    gp.ui.dialogueChoice1 = "Abbi coraggio";
   }
 
 

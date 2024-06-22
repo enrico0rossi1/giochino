@@ -30,7 +30,7 @@ public class PlayerTools {
     }
 
     public void attacking(){
-        if(gp.giocatore.spriteNum>=2 && gp.giocatore.spriteNum<=4){
+        if(gp.giocatore.spriteNum>=1 && gp.giocatore.spriteNum<=5){
             
             //SALVIAMO LE COORDINATE CORRENTI
             int currentWorldX= gp.giocatore.worldX;
