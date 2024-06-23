@@ -53,6 +53,8 @@ public class AssetPlacer {
 				return new ObjHeart(gp);
 			case "BigHeart":
 				return new ObjBigHeart(gp);
+			case "Teleport" :
+				return new Teleport(gp);
 			default:
 				return null;
 		}

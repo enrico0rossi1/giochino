@@ -146,19 +146,14 @@ public class GamePanel extends JPanel {
         if (gameState == titleState) {
             ui.draw(graphics2);
         } else {
-            // MAPPA
+            
+            //CARICHIAMO LE MAPPE
+    
             mapMemory.loadToMapMemory(start);
             mapMemory.loadToMapMemory(dungeon1);
             mapMemory.loadToMapMemory(dungeon2);
             mapMemory.loadToMapMemory(dungeon3);
-            Map currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
-            currentMap.draw(graphics3, graphics2, tileManager);
-          
-            
-            if (currentMap.isComplete() && lastKill != 0) {
-                assetPlacer.setObject("Key", 26, 26, 1, 0);
-                lastKill--;
-            }
+            gameProgress();
 
             // AGGIUNGIAMO LE ENTITà ALLA LISTA
             for (int i = 0; i < obj.length; i++) {
@@ -202,6 +197,26 @@ public class GamePanel extends JPanel {
                 System.out.println("drawTime: " + passed);
             }
         }
+    }
+
+    public void gameProgress(){
+
+        Map currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
+        currentMap.draw(graphics3, graphics2, tileManager);
+        if (currentMap.isComplete() && lastKill != 0) {
+            assetPlacer.setObject("Key", 26, 26, 1, 0);
+            lastKill--;
+        }
+        if(eventHandler.monChecker()){
+            assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.darkWoodsMap);
+        }
+        if(eventHandler.monChecker()){
+            assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.jungleMap);
+        }
+        if(eventHandler.monChecker()){
+            assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.beachMap);
+        }
+
     }
 
     public void retry() {
