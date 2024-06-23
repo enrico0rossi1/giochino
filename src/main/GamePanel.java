@@ -41,6 +41,7 @@ public class GamePanel extends JPanel {
     Timer gameTimer;
 
     public KeyboardInput keyh = new KeyboardInput(this);
+    public GameScreens gScreens = new GameScreens(this);
     public PlayerTools pTools = new PlayerTools(this);
     public Map start = new Map(this, "maps/StartingWoods", "maps/StartingWoodsDeco"); // mappa n 0
     public Map dungeon1 = new Map(this, "maps/DarkWoods", "maps/DarkWoodsDeco"); // mappa n 1
