@@ -13,7 +13,7 @@ public class ObjHeart extends GameEntity {
         super(gp);  
         name = "Heart";
         BufferedImage handle[] = new BufferedImage[3];
-        handle= loadAnimation(3, "objectssprites/Heart");
+        handle= loadAnimation(3, "objectssprites/Heart",true);
         image= handle[0];
         image2=handle[1];
         image3=handle[2];

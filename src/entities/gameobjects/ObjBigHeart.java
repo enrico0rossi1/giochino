@@ -12,7 +12,7 @@ public class ObjBigHeart extends GameEntity {
         super(gp);  
         name = "BigHeart";
         BufferedImage handle[] = new BufferedImage[1];
-        handle= loadAnimation(1, "objectssprites/BigHeart");
+        handle= loadAnimation(1, "objectssprites/BigHeart",true);
         image= handle[0];
        
         solid=true;

@@ -9,7 +9,7 @@ public class Teleport extends GameEntity{
         super(gp); 
         name = "Teleport";
         BufferedImage handle[]=new BufferedImage[1];
-        handle = loadAnimation(1, "objectssprites/teleport");
+        handle = loadAnimation(1, "objectssprites/teleport",true);
         image = handle[0];
         image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
         

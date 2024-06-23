@@ -27,11 +27,11 @@ public class Mon_Bat extends GameEntity{
 
     public void getImage(){
 
-        MoveUpAnimation = loadAnimation(3, "MonsterSprites/Bat/Up");
-        MoveDownAnimation = loadAnimation(3, "MonsterSprites/Bat/Down");
-        MoveLeftAnimation = loadAnimation(3, "MonsterSprites/Bat/Left");
-        MoveRightAnimation = loadAnimation(3, "MonsterSprites/Bat/Right");
-        DeathAnimation = loadAnimation(3, "MonsterSprites/Bat/Death");
+        MoveUpAnimation = loadAnimation(3, "MonsterSprites/Bat/Up",true);
+        MoveDownAnimation = loadAnimation(3, "MonsterSprites/Bat/Down",true);
+        MoveLeftAnimation = loadAnimation(3, "MonsterSprites/Bat/Left",true);
+        MoveRightAnimation = loadAnimation(3, "MonsterSprites/Bat/Right",true);
+        DeathAnimation = loadAnimation(3, "MonsterSprites/Bat/Death",true);
 
     }
 

@@ -28,11 +28,11 @@ public class Mon_Log extends GameEntity{
 
     public void getImage(){
 
-        MoveUpAnimation = loadAnimation(4, "MonsterSprites/Log/Up");
-        MoveDownAnimation = loadAnimation(4, "MonsterSprites/Log/Down");
-        MoveLeftAnimation = loadAnimation(4, "MonsterSprites/Log/Left");
-        MoveRightAnimation = loadAnimation(4, "MonsterSprites/Log/Right");
-        DeathAnimation = loadAnimation(4, "MonsterSprites/Log/Death");
+        MoveUpAnimation = loadAnimation(4, "MonsterSprites/Log/Up",true);
+        MoveDownAnimation = loadAnimation(4, "MonsterSprites/Log/Down",true);
+        MoveLeftAnimation = loadAnimation(4, "MonsterSprites/Log/Left",true);
+        MoveRightAnimation = loadAnimation(4, "MonsterSprites/Log/Right",true);
+        DeathAnimation = loadAnimation(4, "MonsterSprites/Log/Death",true);
 
     }
 

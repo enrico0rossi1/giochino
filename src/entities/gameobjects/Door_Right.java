@@ -11,7 +11,7 @@ public class Door_Right extends GameEntity{
         super(gp); 
         name = "Door_Right";
         BufferedImage handle[]=new BufferedImage[1];
-        handle = loadAnimation(1, "objectssprites/wooden_doorRight");
+        handle = loadAnimation(1, "objectssprites/wooden_doorRight",true);
         image = handle[0];
         image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
        

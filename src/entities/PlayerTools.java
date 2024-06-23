@@ -70,7 +70,7 @@ public class PlayerTools {
             gp.giocatore.spriteNum=0;
         }
 
-        if(gp.giocatore.spriteCount==5){
+        if(gp.giocatore.spriteCount==3){
             gp.giocatore.spriteNum++;
             if(gp.giocatore.spriteNum==gp.giocatore.AttackDown.length){
                 gp.giocatore.spriteNum=0;

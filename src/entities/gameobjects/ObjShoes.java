@@ -11,7 +11,7 @@ public class ObjShoes extends GameEntity {
         super(gp); 
         name = "Shoes";
         BufferedImage handle[]=new BufferedImage[1];
-        handle = loadAnimation(1, "objectssprites/Shoes");
+        handle = loadAnimation(1, "objectssprites/Shoes",true);
         image = handle[0];
         image = uTool.scaleImage(image,  gp.ingame_size,  gp.ingame_size);
         

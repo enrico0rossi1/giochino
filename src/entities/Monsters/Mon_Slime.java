@@ -28,11 +28,11 @@ public class Mon_Slime extends GameEntity{
 
     public void getImage(){
 
-        MoveUpAnimation = loadAnimation(6, "MonsterSprites/Slime/Up");
-        MoveDownAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
-        MoveLeftAnimation = loadAnimation(6, "MonsterSprites/Slime/Left");
-        MoveRightAnimation = loadAnimation(6, "MonsterSprites/Slime/Right");
-        DeathAnimation = loadAnimation(5, "MonsterSprites/Slime/Death");
+        MoveUpAnimation = loadAnimation(6, "MonsterSprites/Slime/Up",true);
+        MoveDownAnimation = loadAnimation(6, "MonsterSprites/Slime/Left",true);
+        MoveLeftAnimation = loadAnimation(6, "MonsterSprites/Slime/Left",true);
+        MoveRightAnimation = loadAnimation(6, "MonsterSprites/Slime/Right",true);
+        DeathAnimation = loadAnimation(5, "MonsterSprites/Slime/Death",true);
 
     }
 

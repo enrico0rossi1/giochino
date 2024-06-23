@@ -84,7 +84,7 @@ public class GameEntity{
         spriteCount++;
         
        
-        if(spriteCount==5){
+        if(spriteCount==3){
             spriteNum++;
             if(spriteNum==MoveDownAnimation.length){
                 spriteNum=0;
@@ -110,12 +110,12 @@ public class GameEntity{
         
     }
 
-    public BufferedImage[] loadAnimation(int dimension, String importPath) {
+    public BufferedImage[] loadAnimation(int dimension, String importPath, boolean scale) {
         BufferedImage[] animation = new BufferedImage[dimension];
         UtilityTool uTool = new UtilityTool();
         int ingameSize = gp.ingame_size; // Variabile locale per migliorare leggibilità e ridurre chiamate ripetitive
 
-        if (dimension==1){
+        if (dimension==1 && scale==true){
            try {
 
                 BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + ".png"));
@@ -124,7 +124,7 @@ public class GameEntity{
                 catch (Exception e) {
                 e.printStackTrace();
             }
-        }else if(dimension>1){
+        }else if(dimension>1 && scale==true){
             try {
                 for (int i = 0; i < dimension; i++) {
                     BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + (i + 1) + ".png"));
@@ -134,6 +134,15 @@ public class GameEntity{
                 e.printStackTrace();
             } 
 
+        }else if(dimension>1 && scale==false){
+            try {
+                for (int i = 0; i < dimension; i++) {
+                    BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + (i + 1) + ".png"));
+                    animation[i] = image;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } 
         }
         
 
