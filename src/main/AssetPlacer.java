@@ -53,8 +53,6 @@ public class AssetPlacer {
 				return new ObjHeart(gp);
 			case "BigHeart":
 				return new ObjBigHeart(gp);
-			case "Teleport" :
-				return new Teleport(gp);
 			default:
 				return null;
 		}
@@ -71,11 +69,11 @@ public class AssetPlacer {
 		setObject("Shoes",26,26,1,gp.eventHandler.startingWoodsMap);
 		
 		// mappa DarkWoods
-		setObject("Shoes",34,18,1,gp.eventHandler.darkWoodsMap);
+		setObject("Shoes",33,19,1,gp.eventHandler.darkWoodsMap);
 		//mappa Jungle
-		setObject("GoldCoin", 33, 20, 1,gp.eventHandler.jungleMap);
+		setObject("GoldCoin", 33, 19, 1,gp.eventHandler.jungleMap);
 		//mappa Beach
-		setObject("BigHeart", 32, 17, 1,gp.eventHandler.beachMap);
+		setObject("BigHeart", 33, 19, 1,gp.eventHandler.beachMap);
 	}
 
 	public void restartPlaceObject(){

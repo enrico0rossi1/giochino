@@ -50,24 +50,16 @@ public class EventHandler {
     }
     
     if (canTouchEvent == true) {
-      if (hitEvent(25,25, "any", startingWoodsMap)){presentation(25,25);}
-      if (hitEvent(23, 23, "any",0)) {hiddenTrap(23,23);}
-      if (hitEvent(10, 23, "any",0)) {damagePool(10,23);}
-      if (hitEvent(11, 23, "any",0)) {damagePool(11,23);}
-      if (hitEvent(12, 23, "any",0)) {damagePool(12,23);}
-      //  if (hitEvent(22, 26, "any",0)) {healingPool();}
-      //  if (hitEvent(25, 23, "any",0)) {damagePool(25,23);}
-
-
+  
       // ritorno a startingWoods
       if(monChecker()){
         if (hitEvent(18,19, "any",darkWoodsMap )){askForTeleport(startingWoodsMap);}
         if (hitEvent(18,19, "any",jungleMap )){askForTeleport(startingWoodsMap);}
         if (hitEvent(18,19, "any",beachMap )){askForTeleport(startingWoodsMap);}
       }else{
-        if (hitEvent(18,18, "any",darkWoodsMap )){deniesTeleport();}
+        if (hitEvent(18,19, "any",darkWoodsMap )){deniesTeleport();}
         if (hitEvent(18,19, "any",jungleMap )){deniesTeleport();}
-        if (hitEvent(18,18, "any",beachMap )){deniesTeleport();}
+        if (hitEvent(18,19, "any",beachMap )){deniesTeleport();}
 
       }
       
@@ -111,33 +103,33 @@ public class EventHandler {
   }
 
 
-  //CONTROLLIAMO SE SONO RIMASTI MOSTRI NEL DUNGEON
-  public boolean monChecker(){
-    boolean checker=true;
-    for(int a=0;a<gp.mon.length;a++){
-      if(gp.mon[a]!=null&&gp.mon[a].mapVerifier==gp.eventHandler.currentMapIndex){
-        for(int i=a; i<gp.mon.length;i++){
-            if (gp.mon[i]!=null&& gp.mon[a]!=null&&gp.mon[i].name==gp.mon[a].name){
-              checker=false;
-            }
+//CONTROLLIAMO SE SONO RIMASTI MOSTRI NEL DUNGEON
+public boolean monChecker(){
+  boolean checker=true;
+  for(int a=0;a<gp.mon.length;a++){
+    if(gp.mon[a]!=null&&gp.mon[a].mapVerifier==gp.eventHandler.currentMapIndex){
+      for(int i=a; i<gp.mon.length;i++){
+          if (gp.mon[i]!=null&& gp.mon[a]!=null&&gp.mon[i].name==gp.mon[a].name){
+            checker=false;
           }
         }
-    }
-
-    return checker;
+      }
   }
+
+  return checker;
+}
   
   // fa danno una volta sola
   public void hiddenTrap (int col,int row){
-    gp.giocatore.vita -= 1 ;
-    
-    eventRect[col][row].happened = true ;
+      gp.giocatore.vita -= 1 ;
+      
+      eventRect[col][row].happened = true ;
   }
   
   //fa danno ogni volta che ci passi sopra
   public void damagePool (int col,int row){
     gp.giocatore.vita -= 1 ;
-    // canTouchEvent = false;
+   // canTouchEvent = false;
    
   }
 
@@ -152,62 +144,70 @@ public class EventHandler {
   }
 
   public void healingPool() {
-    if (gp.giocatore.vita < gp.giocatore.vitaMax){
-      gp.giocatore.vita = gp.giocatore.vitaMax;
-      gp.ui.currentDialogue = "Una strana energia ti rinvigorisce, recuperi tutta la vita"; 
-      gp.ui.dialogueChoice1 = "";
-      gp.ui.dialogueChoice2 = "";
-      gp.ui.dialogueChoice = 3;
-      gp.gameState = gp.dialogueState;
-      canTouchEvent = false;
-    }
+    if (gp.giocatore.vita < gp.giocatore.vitaMax)
+    gp.giocatore.vita = gp.giocatore.vitaMax;
+    gp.ui.currentDialogue = "Una strana energia ti rinvigorisce, recuperi tutta la vita"; 
+    gp.ui.dialogueChoice1 = "";
+    gp.ui.dialogueChoice2 = "";
+    gp.ui.dialogueChoice = 3;
+    gp.gameState = gp.dialogueState;
+    canTouchEvent = false;
   }
 
   public void deniesTeleport(){
     gp.gameState = gp.dialogueState;
     gp.ui.currentDialogue = "Non puoi tornare indietro finchè non sconfiggi \ntutti i nemici !!";
     gp.ui.dialogueChoice1 = "Abbi coraggio";
+    gp.ui.dialogueChoice2 = "";
+    gp.ui.dialogueChoice = 3;
+    canTouchEvent = false;
   }
 
 
   public void askForTeleport(int map) { 
-    gp.gameState = gp.dialogueState;
-    gp.ui.dialogueChoice1 = "No,grazie";
-    gp.ui.dialogueChoice2 = "Sì";
-    gp.ui.dialogueChoice = 1;
-    
-    switch (map) {
-      case darkWoodsMap:
-        nextMap = darkWoodsMap;
-        gp.ui.currentDialogue = "Vuoi esplorare le foreste bule? Sconfiggi tutti\n i nemici per tornare indietro";
-      break;
-      
-      case jungleMap:
-        nextMap = jungleMap;
-        gp.ui.currentDialogue = "Vuoi esplorare la giungla? Sconfiggi tutti\n i nemici per tornare indietro";
-      break;
+     gp.gameState = gp.dialogueState;
+     gp.ui.dialogueChoice1 = "No,grazie";
+     gp.ui.dialogueChoice2 = "Sì";
+     gp.ui.dialogueChoice = 1;
 
-      case beachMap: 
-        nextMap = beachMap;
-        gp.ui.currentDialogue = "Vuoi esplorare la spiaggia? Sconfiggi tutti\n i nemici per tornare indietro";
-      break;
+     switch (map) {
+     case darkWoodsMap:
+     nextMap = darkWoodsMap;
+     gp.ui.currentDialogue = "Vuoi esplorare le foreste bule? Sconfiggi tutti\n i nemici per tornare indietro";
+   
+   
 
-      case startingWoodsMap: 
-        nextMap = startingWoodsMap;
-        gp.ui.currentDialogue = "Stai per tornare al boschetto tranquillo, ti va?";
-      break;
+     break;
+     case jungleMap:
+     nextMap = jungleMap;
+     gp.ui.currentDialogue = "Vuoi esplorare la giungla? Sconfiggi tutti\n i nemici per tornare indietro";
+
+
+     break;
+     case beachMap: 
+     nextMap = beachMap;
+     gp.ui.currentDialogue = "Vuoi esplorare la spiaggia? Sconfiggi tutti\n i nemici per tornare indietro";
+
+
+     break;
+     case startingWoodsMap: 
+     nextMap = startingWoodsMap;
+     gp.ui.currentDialogue = "Stai per tornare al boschetto tranquillo, ti va?";
+
+
+     break;
      }
 
-    canTouchEvent = false;
+     canTouchEvent = false;
   }
 
   public void teleport(int map) {
   
-    gp.giocatore.worldX = gp.ingame_size * 25;
-    gp.giocatore.worldY = gp.ingame_size * 25;
-    gp.stopMusic(currentMapIndex);
-    currentMapIndex = map;
-    gp.playMusic(map);
+  gp.giocatore.worldX = gp.ingame_size * 25;
+  gp.giocatore.worldY = gp.ingame_size * 25;
+  gp.stopMusic(currentMapIndex);
+  currentMapIndex = map;
+  gp.playMusic(map);
 
   }
   
