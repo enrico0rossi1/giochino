@@ -85,7 +85,7 @@ public class GamePanel extends JPanel {
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screen_width, screen_height));
-        this.setBackground(new Color(173, 255, 47));
+        this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyh);
         this.setFocusable(true);

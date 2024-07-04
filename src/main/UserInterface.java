@@ -214,8 +214,9 @@ public class UserInterface {
     }
 
     public void drawFullScreenAlert () {
+        drawSubWindow (12,4,gp.ingame_size, gp.ingame_size*15-16);
         String alert = "Riavvia il gioco per disattivare lo schermo intero" ;
-        graphics2.setColor(Color.YELLOW);
+        graphics2.setColor(Color.WHITE);
         graphics2.drawString(alert,18,38);
     }
     
@@ -231,9 +232,7 @@ public class UserInterface {
         message2On = true;
         message2 = text;
         message2Counter = 1;
-      
-
-    }  
+        }  
     
     public void drawMessage(String message, int counter) {
         drawMessage(message, counter, 0);
@@ -368,8 +367,10 @@ public class UserInterface {
         final int y = gp.ingame_size ;
         final int width = gp.ingame_size*5;
         final int height = gp.ingame_size*10 ;
+        Color bg = new Color(0,0,0,150);
     
-        drawSubWindow(x, y, height, width);
+        //drawSubWindow(x, y, height, width);
+        drawColoredSubWindow(x, y, height, width,bg ,Color.BLUE  );
     
         graphics2.setFont(zeldaFont);
         graphics2.setColor(Color.BLUE);

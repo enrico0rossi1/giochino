@@ -180,12 +180,11 @@ public class GameScreens{
         
         if (gp.gameState==gp.pauseState){
            
-            final int x = gp.screen_width/2+50;
+            final int x = gp.screen_width/2+60;
             final int y = 20 ;
-            Color bg = new Color(0,0,0,120);
-            Color border = new Color(100,0,0);
+            Color bg = new Color(0,0,0,150);
             
-            gp.ui.drawColoredSubWindow(x, y, x, gp.ingame_size*8, bg, border);
+            gp.ui.drawColoredSubWindow(x, y, x-20, gp.ingame_size*8, bg, Color.YELLOW);
 
             gp.graphics2.setFont(gp.ui.zeldaFont);
             gp.graphics2.setColor(Color.WHITE);
@@ -193,26 +192,18 @@ public class GameScreens{
             int textX = x +20;
             int textY = y + gp.ingame_size;
             final int LINE_HEIGHT = 48;
-        
-        
+            gp.graphics2.setColor(Color.YELLOW);
             gp.graphics2.drawString("RIPOSINO",textX,textY);
             textY +=LINE_HEIGHT*3;
             gp.graphics2.setColor(Color.WHITE);
             gp.graphics2.drawString("Premi M per continuare",textX,textY);
-            gp.graphics2.setColor(Color.BLACK);
-            gp.graphics2.drawString("Premi M per continuare",textX-2,textY+2);
             textY += LINE_HEIGHT*2;
             textX += 10;
-            gp.graphics2.setColor(Color.WHITE);
-            gp.graphics2.drawString("Premi O per visitare",textX,textY);
-            gp.graphics2.setColor(Color.BLACK);
             gp.graphics2.drawString("Premi O per visitare",textX-2,textY+2);
             textY += LINE_HEIGHT;
             textX += 30;
             gp.graphics2.setColor(Color.WHITE);
             gp.graphics2.drawString("   le opzioni",textX,textY);
-            gp.graphics2.setColor(Color.BLACK);
-            gp.graphics2.drawString("   le opzioni",textX-2,textY+2);
 
             gp.ui.drawCharacterScreen(); 
         }
