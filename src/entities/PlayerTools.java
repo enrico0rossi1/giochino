@@ -13,13 +13,13 @@ public class PlayerTools {
     }
 
     public void interactMonster(int monVerifier){
-        if(monVerifier!=999){
+        if(monVerifier!=Integer.MAX_VALUE){
             gp.ui.showMessage2("hai subito danni!");
         }
     }
 
     public void checkAttack(int i){
-        if(i!=999 && gp.mon[i].invincible == false){
+        if(i!=Integer.MAX_VALUE && gp.mon[i].invincible == false){
             gp.mon[i].vita--;
             gp.mon[i].invincible=true;
             gp.mon[i].damageReaction();
@@ -82,7 +82,7 @@ public class PlayerTools {
     }
 
     public void pickUpObj(int i) {
-        if (i == 999) {
+        if (i == Integer.MAX_VALUE) {
             return;
         }
 
@@ -271,19 +271,19 @@ public class PlayerTools {
                 gp.keyh.a==true ||
                 gp.keyh.s==true ||
                 gp.keyh.d==true) && gp.keyh.o==true && gp.giocatore.speedUp==true ){
-                  gp.giocatore.speed= 4 ;
+                  gp.giocatore.speed= 7 ;
              } else if(
                 (gp.keyh.w==true ||
                  gp.keyh.a==true ||
                  gp.keyh.s==true ||
                  gp.keyh.d==true) && gp.keyh.o==true){
-                    gp.giocatore.speed= 2;
+                    gp.giocatore.speed= 4;
                  }
                   else {gp.giocatore.speed= 0;
                     }
             
             if(gp.keyh.o==false){
-                gp.giocatore.speed=2;
+                gp.giocatore.speed=4;
             }
 
             //CHECK TILE
@@ -318,7 +318,7 @@ public class PlayerTools {
 
     public void contactMonster(int monVerifier){
         
-        if(monVerifier!=999 && gp.giocatore.invincible ==false){
+        if(monVerifier!=Integer.MAX_VALUE && gp.giocatore.invincible ==false){
 
             gp.giocatore.invincible=true;
             gp.giocatore.vita--;

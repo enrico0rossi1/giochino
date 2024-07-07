@@ -4,7 +4,7 @@ import main.KeyboardInput;
 import main.GamePanel;
 import main.ScreenManager;
 
-import java.awt.BasicStroke;
+///import java.awt.BasicStroke;
 import java.awt.Font;
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -130,7 +130,7 @@ public class Player extends GameEntity {
         graphics2.drawString(""+invincibleCounter, 10,400 );
 
         // DEBUG		
-		switch(direzione) {
+	/* 	switch(direzione) {
 		    case "up": tempScreenY = ScreenY - attackArea.height; break;
 		    case "down": tempScreenY = ScreenY + gp.ingame_size; break; 
 		    case "left": tempScreenX = ScreenX - attackArea.width; break;
@@ -141,7 +141,7 @@ public class Player extends GameEntity {
         
         
 		gp.graphics2.drawRect(tempScreenX+attackArea.x, tempScreenY+attackArea.y, attackArea.width, attackArea.height);
-        gp.graphics2.drawRect(ScreenX+collArea.x, ScreenY+collArea.y, collArea.height, collArea.width);
+        gp.graphics2.drawRect(ScreenX+collArea.x, ScreenY+collArea.y, collArea.height, collArea.width);*/
     }
         
 
