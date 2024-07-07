@@ -99,11 +99,9 @@ public class KeyboardInput implements KeyListener {
                    gp.eventHandler.currentMapIndex = 0;
                    gp.gameState = gp.playState;
             }
-
             if (gp.ui.titleChoice==1){
                 gp.ui.titleSubState = 1;
-              
-            }
+              }
             if (gp.ui.titleChoice ==2){
               gp.ui.titleSubState=4;
             } 
@@ -295,7 +293,6 @@ public class KeyboardInput implements KeyListener {
             if (gp.ui.gameOverChoice == 1) {
                 gp.gameState = gp.titleState;
                 gp.playMusic(4);
-                gp.retry();
             } else if (gp.ui.gameOverChoice == 0) {
                 gp.playMusic(gp.eventHandler.startingWoodsMap);
                 gp.retry();

@@ -58,8 +58,6 @@ public class AssetPlacer {
 		}
 	}
 	
-
-	
 	public void placeObject () {
 		// mappa StartingWoods
 		setObject("BigTreasure", 26, 42, 1,gp.eventHandler.startingWoodsMap);
@@ -69,7 +67,6 @@ public class AssetPlacer {
 		setObject("Shoes",26,26,1,gp.eventHandler.startingWoodsMap);
 		setObject("Door_Left", 25, 38, 1,gp.eventHandler.startingWoodsMap);
 		setObject("Door_Right",26,38,1,gp.eventHandler.startingWoodsMap);
-		
 		
 		// mappa DarkWoods
 		setObject("Shoes",33,19,1,gp.eventHandler.darkWoodsMap);

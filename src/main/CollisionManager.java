@@ -96,7 +96,7 @@ public class CollisionManager {
 
     //OBJECT COLLISION
     public int checkObject(GameEntity e, boolean player) {
-        int index = 999; // Initialize to a high number as a default "not found" value
+        int index = Integer.MAX_VALUE ; // Initialize to a high number as a default "not found" value
 
         for (int i = 0; i < gp.obj.length; i++) {
             if (gp.obj[i] != null && gp.obj[i].mapVerifier == gp.eventHandler.currentMapIndex) {
@@ -155,7 +155,7 @@ public class CollisionManager {
     //MONSTERS COLLISION
     public int checkEntity(GameEntity e, GameEntity [] target){
 
-        int index = 999; // Initialize to a high number as a default "not found" value
+        int index = Integer.MAX_VALUE; // Initialize to a high number as a default "not found" value
 
         for (int i = 0; i < target.length; i++) {
             if (target[i] != null && target[i].mapVerifier == gp.eventHandler.currentMapIndex) {

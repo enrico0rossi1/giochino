@@ -38,12 +38,14 @@ public class UserInterface {
     public String message2= "";
     int messageCounter = 0;
     int message2Counter = 0;
-
+    
+   
     public String currentDialogue = "";
     public String dialogueChoice1 = "";
     public String dialogueChoice2 = "";
     int subState = 0;
     int commandNum = 0;
+
     int titleChoice = 0;
     public int dialogueChoice = 0;
     int gameOverChoice;
@@ -187,7 +189,7 @@ public class UserInterface {
 
         graphics2.drawRect(textX+(gp.ingame_size*6),textY+ -LINE_HEIGHT/3,120,24);
         int volumeWidth = 24 * gp.music.volumeScale;
-        graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -LINE_HEIGHT/3,volumeWidth,24);  // (textX+(gp.ingame_size*6))/ 5
+        graphics2.fillRect(textX+(gp.ingame_size*6),textY+ -LINE_HEIGHT/3,volumeWidth,24); 
         textY += LINE_HEIGHT;
         graphics2.drawString("SFX Volume",textX,textY);
 
@@ -338,7 +340,7 @@ public class UserInterface {
     public void quitGame(int titleX,int titleY) {
         
         graphics2.setFont(zeldaFont);
-        graphics2.setColor(Color.GREEN);
+        graphics2.setColor(Color.WHITE);
     
         int textX = getCenteredXForText("Rinunci da ex-avventuriero?", graphics2);
         int textY = titleY + gp.ingame_size;
@@ -355,7 +357,6 @@ public class UserInterface {
         }
         textY += 60;
 
-
         graphics2.drawString("No, sono un eroe",textX,textY);
         if (commandNum == 1) {
             graphics2.drawString(">",textX - 25,textY);
@@ -369,17 +370,16 @@ public class UserInterface {
         final int height = gp.ingame_size*10 ;
         Color bg = new Color(0,0,0,150);
     
-        //drawSubWindow(x, y, height, width);
         drawColoredSubWindow(x, y, height, width,bg ,Color.BLUE  );
     
         graphics2.setFont(zeldaFont);
-        graphics2.setColor(Color.BLUE);
+        
     
         int textX = x +20;
         int textY = y + gp.ingame_size;
         final int LINE_HEIGHT = 48;
-    
-    
+ 
+        graphics2.setColor(Color.BLUE);
         graphics2.drawString("STATUS",textX,textY);
         textY +=LINE_HEIGHT;
         graphics2.setColor(Color.WHITE);

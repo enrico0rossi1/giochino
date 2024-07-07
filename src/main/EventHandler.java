@@ -23,9 +23,9 @@ public class EventHandler {
 
     while (col < gp.worldCol && row < gp.worldRow ){
       eventRect[col][row] = new EventRectangle();
-      eventRect[col][row].x = 0-5;
+      eventRect[col][row].x = 0-7;
       eventRect[col][row].y = 0;
-      eventRect[col][row].width = gp.ingame_size + 5; 
+      eventRect[col][row].width = gp.ingame_size + 20; 
       eventRect[col][row].height = gp.ingame_size + 5;
       eventRect[col][row].eventRectDefaultX = eventRect[col][row].x;
       eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
@@ -126,10 +126,9 @@ public boolean monChecker(){
       eventRect[col][row].happened = true ;
   }
   
-  //fa danno ogni volta che ci passi sopra
+  //fa danno dintanto che ci stai sopra
   public void damagePool (int col,int row){
     gp.giocatore.vita -= 1 ;
-   // canTouchEvent = false;
    
   }
 
@@ -141,17 +140,6 @@ public boolean monChecker(){
     gp.ui.dialogueChoice = 3;
     gp.gameState = gp.dialogueState;
     eventRect[col][row].happened = true ;
-  }
-
-  public void healingPool() {
-    if (gp.giocatore.vita < gp.giocatore.vitaMax)
-    gp.giocatore.vita = gp.giocatore.vitaMax;
-    gp.ui.currentDialogue = "Una strana energia ti rinvigorisce, recuperi tutta la vita"; 
-    gp.ui.dialogueChoice1 = "";
-    gp.ui.dialogueChoice2 = "";
-    gp.ui.dialogueChoice = 3;
-    gp.gameState = gp.dialogueState;
-    canTouchEvent = false;
   }
 
   public void deniesTeleport(){

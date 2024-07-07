@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.*;
 
-import audio.Sound;
+import audio.SoundHandler;
 import entities.*;
 import gameworld.Map;
 import gameworld.MapMemory;
@@ -63,8 +63,8 @@ public class GamePanel extends JPanel {
 
     public UserInterface ui = new UserInterface(this);
 
-    public Sound music = new Sound();
-    Sound sfx = new Sound();
+    public SoundHandler music = new SoundHandler();
+    public SoundHandler sfx = new SoundHandler();
 
     public int gameState;
     public int titleState = 0;
@@ -90,7 +90,7 @@ public class GamePanel extends JPanel {
         this.addKeyListener(keyh);
         this.setFocusable(true);
 
-        gameTimer = new Timer(1000/(int)FPS, new ActionListener() {
+        gameTimer = new Timer(2400/(int)FPS, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 update();
                 drawToSizedScreen();
@@ -137,11 +137,6 @@ public class GamePanel extends JPanel {
     }
 
     public void drawToSizedScreen() {
-        // Debug
-        long drawStart = 0;
-        if (keyh.z == true) {
-            drawStart = System.nanoTime();
-        }
 
         // SCHERMATA INIZIALE
         if (gameState == titleState) {
@@ -188,15 +183,7 @@ public class GamePanel extends JPanel {
 
             // INTERFACCIA
             ui.draw(graphics2);
-
-            // Debug
-            if (keyh.z == true) {
-                long drawEnd = System.nanoTime();
-                long passed = drawEnd - drawStart;
-                graphics2.setColor(Color.WHITE);
-                graphics2.drawString("drawTime: " + passed, 10, 400);
-                System.out.println("drawTime: " + passed);
-            }
+        
         }
     }
 
@@ -208,7 +195,7 @@ public class GamePanel extends JPanel {
             assetPlacer.setObject("Key", 26, 26, 1, 0);
             lastKill--;
         }
-        if(eventHandler.monChecker()){
+        if(currentMap.isComplete()){
             assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.darkWoodsMap);
         }
         if(eventHandler.monChecker()){
