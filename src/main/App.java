@@ -14,14 +14,15 @@ public class App {
         finestra.setResizable(false);
         finestra.setTitle("Warrior Adventure");
         finestra.setUndecorated(false);
-        GamePanel pannello1 = new GamePanel();
-        finestra.add(pannello1);
+        GamePanel pannello = new GamePanel();   
+        pannello.setUpGioco();
+        pannello.startGameTimer();
+        finestra.add(pannello);
         finestra.pack();
         finestra.setLocationRelativeTo(null);
         finestra.setVisible(true);
       
-        pannello1.setUpGioco();
-        pannello1.startGameTimer();
+     
         
        
 
