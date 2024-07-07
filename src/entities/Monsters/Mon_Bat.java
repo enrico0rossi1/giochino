@@ -10,8 +10,8 @@ public class Mon_Bat extends GameEntity{
 
         name = "Bat";
         type=2;
-        speed=3;
-        vitaMax=4;
+        speed=7;
+        vitaMax=2;
         vita=vitaMax;
         invincibleTime=20;
         

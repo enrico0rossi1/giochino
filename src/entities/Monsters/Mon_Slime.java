@@ -8,9 +8,9 @@ public class Mon_Slime extends GameEntity{
     public Mon_Slime(GamePanel gp){
         super(gp);
         
-        name = "Log";
+        name = "Slime";
         type=2;
-        speed=3;
+        speed=5;
         vitaMax=4;
         vita=vitaMax;
         invincibleTime=20;
