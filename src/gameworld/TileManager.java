@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.UtilityTool;
 
-
 public class TileManager {
     
     GamePanel gp;
@@ -116,7 +115,7 @@ public class TileManager {
             setup(83, "DarkTile/darkTopRightAngle", false);
             setup(84, "DarkTile/darkTopLeft", false);
             setup(85, "DarkTile/darkTopLeftAngle", false);
-
+            setup(86, "GrassTile/GrassCenter", false);
 
             
         } catch (Exception e) {
