@@ -4,10 +4,7 @@ import main.KeyboardInput;
 import main.GamePanel;
 import main.ScreenManager;
 
-///import java.awt.BasicStroke;
-import java.awt.Font;
 import java.awt.AlphaComposite;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -125,23 +122,9 @@ public class Player extends GameEntity {
         }
         graphics2.drawImage(image, tempScreenX, tempScreenY,null);
         gp.graphics2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-        graphics2.setFont(new Font("Arial", Font.PLAIN, 26));
-        graphics2.setColor(Color.white);
-        graphics2.drawString(""+invincibleCounter, 10,400 );
+     
 
-        // DEBUG		
-	/* 	switch(direzione) {
-		    case "up": tempScreenY = ScreenY - attackArea.height; break;
-		    case "down": tempScreenY = ScreenY + gp.ingame_size; break; 
-		    case "left": tempScreenX = ScreenX - attackArea.width; break;
-		    case "right": tempScreenX = ScreenX + gp.ingame_size; break;
-		}				
 
-        gp.graphics2.setStroke(new BasicStroke(1));
-        
-        
-		gp.graphics2.drawRect(tempScreenX+attackArea.x, tempScreenY+attackArea.y, attackArea.width, attackArea.height);
-        gp.graphics2.drawRect(ScreenX+collArea.x, ScreenY+collArea.y, collArea.height, collArea.width);*/
     }
         
 

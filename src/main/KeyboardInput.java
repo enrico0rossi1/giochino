@@ -6,9 +6,6 @@ public class KeyboardInput implements KeyListener {
 
     public boolean w, a, s, d, p, o, m, f, enter;
     GamePanel gp;
-    
-    // debug
-    public boolean z = false;
 
     public KeyboardInput(GamePanel gp) {
         this.gp = gp;

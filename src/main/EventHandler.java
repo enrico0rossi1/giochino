@@ -51,6 +51,9 @@ public class EventHandler {
     
     if (canTouchEvent == true) {
   
+      //messaggio di presentazione
+      if (hitEvent(25, 25, "any", startingWoodsMap)){presentation(25,25);}
+
       // ritorno a startingWoods
       if(monChecker()){
         if (hitEvent(18,19, "any",darkWoodsMap )){askForTeleport(startingWoodsMap);}

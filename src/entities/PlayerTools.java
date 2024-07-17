@@ -12,12 +12,6 @@ public class PlayerTools {
         this.gp=gp;
     }
 
-    public void interactMonster(int monVerifier){
-        if(monVerifier!=Integer.MAX_VALUE){
-            gp.ui.showMessage2("hai subito danni!");
-        }
-    }
-
     public void checkAttack(int i){
         if(i!=Integer.MAX_VALUE && gp.mon[i].invincible == false){
             gp.mon[i].vita--;
@@ -296,7 +290,6 @@ public class PlayerTools {
 
             //CHECK MONSTERS
             int monVerifier = gp.CollisionManager.checkEntity(gp.giocatore, gp.mon);
-            interactMonster(monVerifier);
             contactMonster(monVerifier);
             
 
@@ -318,6 +311,9 @@ public class PlayerTools {
 
     public void contactMonster(int monVerifier){
         
+        if(monVerifier!=Integer.MAX_VALUE){
+            gp.ui.showMessage2("hai subito danni!");
+        }
         if(monVerifier!=Integer.MAX_VALUE && gp.giocatore.invincible ==false){
 
             gp.giocatore.invincible=true;

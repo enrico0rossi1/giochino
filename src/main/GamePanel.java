@@ -128,10 +128,7 @@ public class GamePanel extends JPanel {
                 }
             }
         }
-
-        if (gameState == pauseState) {
-            // Gestione stato di pausa
-        }
+        
         System.out.println(giocatore.worldX/ingame_size+" "+giocatore.worldY/ingame_size);
         
     }
@@ -212,6 +209,8 @@ public class GamePanel extends JPanel {
         giocatore.setValoriPredefiniti();
         assetPlacer.restartPlaceObject();
         assetPlacer.restartPlaceEnemies();
+        ui.message = "";
+        ui.message2= "";
         eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
         eventHandler.eventRect[25][25].happened = false ;
         for(int i=0; i<mon.length; i++){
