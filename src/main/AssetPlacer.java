@@ -33,6 +33,7 @@ public class AssetPlacer {
 				}
 			}
 		}
+		
 	}
 	
 	private GameEntity createObject(String objectName) {
@@ -78,8 +79,9 @@ public class AssetPlacer {
 
 	public void restartPlaceObject(){
 		for (int i=0; i<gp.progressObj.length;i++){
-			if(gp.progressObj[i]!= null && gp.obj[i]==null){
+			if(gp.progressObj[i]!=null && gp.obj[i]==null){
 				gp.obj[i]=gp.progressObj[i];
+				
 			}
 		}
 	}
@@ -129,31 +131,26 @@ public class AssetPlacer {
 	public void placeEnemy () {
 		
 
+		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 
-		setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 
+		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		setEnemy("Slime", 1, gp.eventHandler.beachMap);
-
-
-
-
-
 	}
 
 	public void restartPlaceEnemies(){
@@ -161,6 +158,9 @@ public class AssetPlacer {
 		for (int i=0; i<gp.progressMon.length;i++){
 			if(gp.progressMon[i]!= null && gp.mon[i]==null){
 				gp.mon[i]=gp.progressMon[i];
+			}
+			if(gp.mon[i]!=null){
+				gp.mon[i].vita=gp.mon[i].vitaMax;
 			}
 		}
 	}

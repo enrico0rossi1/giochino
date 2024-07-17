@@ -74,8 +74,8 @@ public class GamePanel extends JPanel {
     public int optionsState = 4;
     public int gameOver = 5;
     public int endGame = 6;
+    public boolean lastKill=false;
 
-    public int lastKill = 1;
 
     public long lastTime = System.nanoTime();
     public long currentTime;
@@ -114,11 +114,12 @@ public class GamePanel extends JPanel {
     public void startGameTimer() {
         gameTimer.start();
     }
+    
 
     public void update() {
         if (gameState == playState) {
             giocatore.update();
-            
+
             for (int i = 0; i < mon.length; i++) {
                 if (mon[i] != null && mon[i].mapVerifier == eventHandler.currentMapIndex) {
                     mon[i].update();
@@ -127,9 +128,12 @@ public class GamePanel extends JPanel {
                     }
                 }
             }
+        }if(gameState==titleState && keyh.started==true){
+            retry();
         }
-        
         System.out.println(giocatore.worldX/ingame_size+" "+giocatore.worldY/ingame_size);
+        
+      
         
     }
 
@@ -146,7 +150,13 @@ public class GamePanel extends JPanel {
             mapMemory.loadToMapMemory(dungeon1);
             mapMemory.loadToMapMemory(dungeon2);
             mapMemory.loadToMapMemory(dungeon3);
-            gameProgress();
+            Map currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
+            currentMap.draw(graphics3, graphics2, tileManager);
+            if (currentMap.isComplete() && lastKill == false) {
+                assetPlacer.setObject("Key", 26, 26, 1, 0);
+                lastKill=true;
+            }
+           
 
             // AGGIUNGIAMO LE ENTITà ALLA LISTA
             for (int i = 0; i < obj.length; i++) {
@@ -174,7 +184,7 @@ public class GamePanel extends JPanel {
                     entityList.get(i).draw(graphics2);
                 }
             }
-
+            
             // SVUOTIAMO LA LISTA
             entityList.clear();
 
@@ -184,40 +194,19 @@ public class GamePanel extends JPanel {
         }
     }
 
-    public void gameProgress(){
-
-        Map currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
-        currentMap.draw(graphics3, graphics2, tileManager);
-        if (currentMap.isComplete() && lastKill != 0) {
-            assetPlacer.setObject("Key", 26, 26, 1, 0);
-            lastKill--;
-        }
-        if(currentMap.isComplete()){
-            assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.darkWoodsMap);
-        }
-        if(eventHandler.monChecker()){
-            assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.jungleMap);
-        }
-        if(eventHandler.monChecker()){
-            assetPlacer.setObject("Teleport", 18, 19, 1, eventHandler.beachMap);
-        }
-
-    }
 
     public void retry() {
         //SETTIAMO GLI ATTRIBUTI AI VALORI DI PARTENZA
+        eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
         giocatore.setValoriPredefiniti();
         assetPlacer.restartPlaceObject();
         assetPlacer.restartPlaceEnemies();
+        lastKill=false;
         ui.message = "";
         ui.message2= "";
-        eventHandler.currentMapIndex = eventHandler.startingWoodsMap;
+        
         eventHandler.eventRect[25][25].happened = false ;
-        for(int i=0; i<mon.length; i++){
-            if(mon[i]!=null){
-                mon[i].vita=mon[i].vitaMax;
-            }
-        }
+
     }
 
     public void playMusic(int i) {

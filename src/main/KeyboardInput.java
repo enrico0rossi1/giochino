@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 public class KeyboardInput implements KeyListener {
 
     public boolean w, a, s, d, p, o, m, f, enter;
+    public boolean started=false;
     GamePanel gp;
 
     public KeyboardInput(GamePanel gp) {
@@ -24,6 +25,7 @@ public class KeyboardInput implements KeyListener {
             handleTitleState(premuto);
         } else if (gp.gameState == gp.playState) {
             handlePlayState(premuto);
+            started=true;
         } else if (gp.gameState == gp.pauseState) {
             handlePauseState(premuto);
         } else if (gp.gameState == gp.dialogueState) {
@@ -92,7 +94,6 @@ public class KeyboardInput implements KeyListener {
                 if (gp.ui.titleChoice==0){
                    gp.stopMusic(4);
                    gp.playMusic(0);
-                   gp.retry();
                    gp.eventHandler.currentMapIndex = 0;
                    gp.gameState = gp.playState;
             }
@@ -292,7 +293,6 @@ public class KeyboardInput implements KeyListener {
                 gp.playMusic(4);
             } else if (gp.ui.gameOverChoice == 0) {
                 gp.playMusic(gp.eventHandler.startingWoodsMap);
-                gp.retry();
                 gp.gameState = gp.playState;
             }
         } else if (premuto == KeyEvent.VK_D) {
@@ -313,7 +313,6 @@ public class KeyboardInput implements KeyListener {
             gp.gameState = gp.titleState;
             gp.stopMusic(12);
             gp.playMusic(4);
-            gp.retry();
         }
     }
 

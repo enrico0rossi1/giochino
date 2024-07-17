@@ -134,7 +134,7 @@ public class CollisionManager {
 
                     if (gp.obj[i].solid) {
                         e.solid = true;
-
+                        
                         if (player) {
                             index = i;
                         }
