@@ -5,8 +5,9 @@ import java.awt.image.BufferedImage;
 
 
 import javax.imageio.ImageIO;
-import main.GamePanel;
-import main.UtilityTool;
+
+import warrioradventure.GamePanel;
+import warrioradventure.ImageOptimizer;
 
 public class TileManager {
     
@@ -125,7 +126,7 @@ public class TileManager {
 
     public void setup(int index, String imagePath, boolean collision){
 
-        UtilityTool uTool = new UtilityTool();
+        ImageOptimizer uTool = new ImageOptimizer();
         try {
             Tile[index]=new Tile();
             Tile[index].image=ImageIO.read(getClass().getResourceAsStream("buildings/"+imagePath+".png"));

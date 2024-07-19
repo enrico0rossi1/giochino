@@ -2,10 +2,11 @@ package gameworld;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import warrioradventure.GamePanel;
+
 import java.io.BufferedReader;
 import java.awt.Graphics2D;
-
-import main.GamePanel;
 
 public class Map {
 
