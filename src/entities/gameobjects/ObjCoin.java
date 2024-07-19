@@ -15,7 +15,7 @@ public class ObjCoin extends GameEntity {
         BufferedImage handle[]=new BufferedImage[1];
         handle = loadAnimation(1, "objectssprites/GoldCoin",true);
         image = handle[0];
-        image = uTool.scaleImage(image,  gp.ingame_size/2,  gp.ingame_size/2);
+        image = imgOpt.scaleImage(image,  gp.ingame_size/2,  gp.ingame_size/2);
 
         objWidth = 18;
         objHeight = 18;
