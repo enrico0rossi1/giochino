@@ -3,7 +3,7 @@ package entities.gameobjects;
 import java.awt.image.BufferedImage;
 
 import entities.GameEntity;
-import main.GamePanel;
+import warrioradventure.GamePanel;
 public class ObjBigHeart extends GameEntity {
 
     GamePanel gp;

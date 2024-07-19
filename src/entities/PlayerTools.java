@@ -1,7 +1,7 @@
 package entities;
 
-import main.KeyboardInput;
-import main.GamePanel;
+import warrioradventure.GamePanel;
+import warrioradventure.KeyboardInput;
 
 public class PlayerTools {
 

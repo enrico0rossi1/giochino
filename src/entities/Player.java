@@ -1,18 +1,18 @@
 package entities;
 
-import main.KeyboardInput;
-import main.GamePanel;
-import main.ScreenManager;
-
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import warrioradventure.GamePanel;
+import warrioradventure.KeyboardInput;
+import warrioradventure.ScreenSizeManager;
 
 public class Player extends GameEntity {
 
     GamePanel gp;
     KeyboardInput keyh;
-    ScreenManager screenManager;
+    ScreenSizeManager screenManager;
     public int ScreenX;
     public int ScreenY;
     public BufferedImage image;
@@ -21,7 +21,7 @@ public class Player extends GameEntity {
     public boolean rich = false;
 
     
-    public Player(GamePanel gp, KeyboardInput keyh,ScreenManager screenManager){
+    public Player(GamePanel gp, KeyboardInput keyh,ScreenSizeManager screenManager){
 
         super(gp);
         this.gp=gp;

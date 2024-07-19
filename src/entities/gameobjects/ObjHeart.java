@@ -4,7 +4,7 @@ package entities.gameobjects;
 import java.awt.image.BufferedImage;
 
 import entities.GameEntity;
-import main.GamePanel;
+import warrioradventure.GamePanel;
 public class ObjHeart extends GameEntity {
 
     GamePanel gp;

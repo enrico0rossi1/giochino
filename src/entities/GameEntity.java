@@ -6,8 +6,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-import main.GamePanel;
-import main.UtilityTool;
+import warrioradventure.GamePanel;
+import warrioradventure.ImageOptimizer;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -18,7 +18,7 @@ import java.awt.Color;
 public class GameEntity{
 
     public GamePanel gp;
-    public UtilityTool uTool = new UtilityTool();
+    public ImageOptimizer uTool = new ImageOptimizer();
 
     //ATTRIBUTI FONDAMENTALI
     public String name;
@@ -112,7 +112,7 @@ public class GameEntity{
 
     public BufferedImage[] loadAnimation(int dimension, String importPath, boolean scale) {
         BufferedImage[] animation = new BufferedImage[dimension];
-        UtilityTool uTool = new UtilityTool();
+        ImageOptimizer uTool = new ImageOptimizer();
         int ingameSize = gp.ingame_size; // Variabile locale per migliorare leggibilità e ridurre chiamate ripetitive
 
         if (dimension==1 && scale==true){
