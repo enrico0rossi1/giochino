@@ -18,7 +18,7 @@ import java.awt.Color;
 public class GameEntity{
 
     public GamePanel gp;
-    public ImageOptimizer uTool = new ImageOptimizer();
+    public ImageOptimizer imgOpt = new ImageOptimizer();
 
     //ATTRIBUTI FONDAMENTALI
     public String name;
@@ -112,14 +112,14 @@ public class GameEntity{
 
     public BufferedImage[] loadAnimation(int dimension, String importPath, boolean scale) {
         BufferedImage[] animation = new BufferedImage[dimension];
-        ImageOptimizer uTool = new ImageOptimizer();
+        ImageOptimizer imgOpt = new ImageOptimizer();
         int ingameSize = gp.ingame_size; // Variabile locale per migliorare leggibilità e ridurre chiamate ripetitive
 
         if (dimension==1 && scale==true){
            try {
 
                 BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + ".png"));
-                animation[0]=uTool.scaleImage(image, ingameSize, ingameSize);
+                animation[0]=imgOpt.scaleImage(image, ingameSize, ingameSize);
             }
                 catch (Exception e) {
                 e.printStackTrace();
@@ -128,7 +128,7 @@ public class GameEntity{
             try {
                 for (int i = 0; i < dimension; i++) {
                     BufferedImage image = ImageIO.read(getClass().getResourceAsStream(importPath + (i + 1) + ".png"));
-                    animation[i] = uTool.scaleImage(image, ingameSize, ingameSize);
+                    animation[i] = imgOpt.scaleImage(image, ingameSize, ingameSize);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
