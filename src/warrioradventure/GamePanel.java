@@ -128,14 +128,24 @@ public class GamePanel extends JPanel {
                     }
                 }
             }
-        }if(gameState==titleState && keyh.started==true){
-            retry();
         }
-        System.out.println(giocatore.worldX/ingame_size+" "+giocatore.worldY/ingame_size);
+        
+        // System.out.println(giocatore.worldX/ingame_size+" "+giocatore.worldY/ingame_size);
+        for(int i=0; i<mon.length;i++){
+            if(mon[i]!=null){
+                System.out.println(i+": "+mon[i].name);
+            }else{
+                System.out.println(i+": null");
+            }
+        }
 
-        
-      
-        
+        for(int i=0; i<progressMon.length;i++){
+            if(progressMon[i]!=null){
+                System.out.println(i+": "+progressMon[i].name);
+            }else{
+                System.out.println(i+": null");
+            }
+        }
     }
 
     public void drawToSizedScreen() {
@@ -153,11 +163,10 @@ public class GamePanel extends JPanel {
             mapMemory.loadToMapMemory(dungeon3);
             Map currentMap = mapMemory.mapHandler[eventHandler.currentMapIndex];
             currentMap.draw(graphics3, graphics2, tileManager);
-            if (currentMap.isComplete() && lastKill == false) {
-                assetPlacer.setObject("Key", 26, 26, 1, 0);
+            if(currentMap.isComplete()&&lastKill==false){
+                assetPlacer.setObject("Key", 27, 27, 1, 0);
                 lastKill=true;
             }
-           
 
             // AGGIUNGIAMO LE ENTITà ALLA LISTA
             for (int i = 0; i < obj.length; i++) {
@@ -168,6 +177,7 @@ public class GamePanel extends JPanel {
                     entityList.add(obj[i]);
                 }
             }
+            
             entityList.add(giocatore);
 
             //SORTING
@@ -203,6 +213,7 @@ public class GamePanel extends JPanel {
         assetPlacer.restartPlaceObject();
         assetPlacer.restartPlaceEnemies();
         lastKill=false;
+        assetPlacer.removeObject("Key");
         ui.message = "";
         ui.message2= "";
         

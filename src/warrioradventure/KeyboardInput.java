@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 public class KeyboardInput implements KeyListener {
 
     public boolean w, a, s, d, p, o, m, f, enter;
-    public boolean started=false;
     GamePanel gp;
 
     public KeyboardInput(GamePanel gp) {
@@ -25,7 +24,6 @@ public class KeyboardInput implements KeyListener {
             handleTitleState(premuto);
         } else if (gp.gameState == gp.playState) {
             handlePlayState(premuto);
-            started=true;
         } else if (gp.gameState == gp.pauseState) {
             handlePauseState(premuto);
         } else if (gp.gameState == gp.dialogueState) {

@@ -32,11 +32,23 @@ public class AssetPlacer {
 					times--;
 				}
 			}
+			
 		}
 		
 	}
+
+	public GameEntity[] removeObject(String obj){
+		
+		for (int i=0; i<gp.obj.length; i++ ){
+			if(gp.obj[i]!= null && gp.obj[i].name == obj){
+				gp.obj[i]=null;
+			}
+		}
+		return gp.obj;
+	}
 	
-	private GameEntity createObject(String objectName) {
+	
+	public GameEntity createObject(String objectName) {
 		switch (objectName) {
 			case "Shoes":
 				return new ObjShoes(gp);
@@ -54,6 +66,8 @@ public class AssetPlacer {
 				return new ObjHeart(gp);
 			case "BigHeart":
 				return new ObjBigHeart(gp);
+			case "void":
+				return new ObjVoid(gp);
 			default:
 				return null;
 		}
@@ -79,8 +93,10 @@ public class AssetPlacer {
 
 	public void restartPlaceObject(){
 		for (int i=0; i<gp.progressObj.length;i++){
-			if(gp.progressObj[i]!=null && gp.obj[i]==null){
-				gp.obj[i]=gp.progressObj[i];
+			if(gp.progressObj[i]!=null && gp.obj[i]!=null){
+				if(gp.obj[i].name=="void"){
+					gp.obj[i]=gp.progressObj[i];
+				}
 				
 			}
 		}
@@ -135,26 +151,26 @@ public class AssetPlacer {
 		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 
 		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 
 		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		setEnemy("Slime", 1, gp.eventHandler.beachMap);
 	}
 
 	public void restartPlaceEnemies(){
-
+		System.out.println("restart mostri chiamato");
 		for (int i=0; i<gp.progressMon.length;i++){
 			if(gp.progressMon[i]!= null && gp.mon[i]==null){
 				gp.mon[i]=gp.progressMon[i];

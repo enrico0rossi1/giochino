@@ -126,7 +126,7 @@ public class PlayerTools {
 
     private void handleDoorUnlock(int i) {
         if (gp.giocatore.numKeys > 0) {
-            gp.obj[i] = null;
+            gp.obj[i] = gp.assetPlacer.createObject("void");
             gp.ui.showMessage("Hai sbloccato una porta!");
             gp.giocatore.numKeys--;
             gp.playSFX(6);
@@ -136,7 +136,7 @@ public class PlayerTools {
     }
 
     private void handleGoldCoinPickup(int i) {
-        gp.obj[i] = null;
+        gp.obj[i] = gp.assetPlacer.createObject("void");
         gp.giocatore.rich = true;
         gp.ui.currentDialogue = "Hai ottenute una moneta, ora sei DAVVERO ricco";
         gp.ui.dialogueChoice1 = "";
@@ -147,7 +147,7 @@ public class PlayerTools {
     }
 
     private void handleShoesPickup(int i) {
-        gp.obj[i] = null;
+        gp.obj[i] = gp.assetPlacer.createObject("void");
         gp.giocatore.speedUp = true;
         gp.ui.currentDialogue = "Hai ottenute le scarpe, ora puoi correre \npremendo O";
         gp.ui.dialogueChoice1 = "";
@@ -164,7 +164,7 @@ public class PlayerTools {
         gp.gameState = gp.endGame;
     }
     private void handleHeartPickup(int i) {
-        gp.obj[i] = null;
+        gp.obj[i] = gp.assetPlacer.createObject("void");
         gp.giocatore.vita = gp.giocatore.vitaMax;
         gp.ui.currentDialogue = "Una strana energia ti rinvigorisce, recuperi tutta la vita"; 
         gp.ui.dialogueChoice1 = "";
@@ -177,7 +177,7 @@ public class PlayerTools {
     }
 
     private void handleBigHeartPickup(int i) {
-        gp.obj[i] = null;
+        gp.obj[i] = gp.assetPlacer.createObject("void");
         gp.giocatore.vitaMax += 4;
         gp.giocatore.vita = gp.giocatore.vitaMax;
         gp.ui.currentDialogue = "Hai ottenute un cuore, la tua vitalità aumenta \nesponenzialmente";
