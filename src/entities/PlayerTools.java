@@ -171,7 +171,7 @@ public class PlayerTools {
         gp.ui.dialogueChoice2 = "";
         gp.ui.dialogueChoice = 3;
         gp.gameState = gp.dialogueState;
-        gp.ui.showMessage("Vitalità aumentata");
+        gp.ui.showMessage("Vitalità ripristinata");
         gp.playSFX(6);
 
     }
