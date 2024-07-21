@@ -19,10 +19,10 @@ import entities.gameobjects.ObjShoes;
 public class UserInterface {
 
     GamePanel gp;
-    Font zeldaFont;
+    Font zeldaFont30;
     Font zeldaFont60;
     Font zeldaFont80;
-    Font eightBitFont;
+    Font eightBitFont20;
     Font eightBitFont15;
     Graphics2D graphics2;
     KeyboardInput keyh;
@@ -64,7 +64,7 @@ public class UserInterface {
 
         try {
 
-            zeldaFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("main_rsc/Font/ZeldaFont.otf")).deriveFont(30f);
+            zeldaFont30 = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("main_rsc/Font/ZeldaFont.otf")).deriveFont(30f);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,16 +72,16 @@ public class UserInterface {
         }
 
         try {
-            eightBitFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("main_rsc/Font/8BitFont.ttf")).deriveFont(20f);
+            eightBitFont20 = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("main_rsc/Font/8BitFont.ttf")).deriveFont(20f);
         } catch (IOException | FontFormatException f) {
             f.printStackTrace();
             System.err.println("Error loading font: " + f.getMessage());
         } 
 
 
-        zeldaFont60 = zeldaFont.deriveFont(60f);
-        zeldaFont80 = zeldaFont.deriveFont(80f);
-        eightBitFont15 = eightBitFont.deriveFont(15f);
+        zeldaFont60 = zeldaFont30.deriveFont(60f);
+        zeldaFont80 = zeldaFont30.deriveFont(80f);
+        eightBitFont15 = eightBitFont20.deriveFont(15f);
     }
 
 
@@ -154,7 +154,7 @@ public class UserInterface {
        // int textY = gp.screen_height/2+75;
         Color bg = new Color(0,0,0,180);
         Color bord = new Color(0,127,255); 
-        graphics2.setFont(zeldaFont);
+        graphics2.setFont(zeldaFont30);
        
         int titleY = gp.ingame_size*2;
         int titleX = getCenteredXForText("Opzioni", graphics2)-30; 
@@ -241,17 +241,18 @@ public class UserInterface {
     }
     
     public void drawMessage(String message, int counter, int offsetY) {
-        graphics2.setFont(eightBitFont15);
+        graphics2.setFont(eightBitFont20);
         graphics2.setColor(Color.WHITE);
-        int messageX = (gp.screen_width / 4*3);
-        int messageY = gp.screen_height - (gp.screen_height / 6) + offsetY;
+        int messageX = (gp.screen_width / 6*4);
+        int messageY = gp.screen_height - (gp.screen_height / 4) + offsetY;
         graphics2.drawString(message, messageX, messageY);
+    
     }
 
 
      
     public void options_top (int titleX,int titleY) {
-        graphics2.setFont(zeldaFont);
+        graphics2.setFont(zeldaFont30);
         graphics2.setColor(Color.BLUE);
 
         int textX = getCenteredXForText("Opzioni", graphics2);
@@ -320,7 +321,7 @@ public class UserInterface {
         int y = textY + gp.ingame_size;
         final int LINE_HEIGHT = 64;
         
-        graphics2.setFont(zeldaFont);
+        graphics2.setFont(zeldaFont30);
         graphics2.setColor(Color.RED);
         graphics2.drawString("COMANDI",getCenteredXForText("COMANDI", graphics2),y);
         y += LINE_HEIGHT;
@@ -339,13 +340,13 @@ public class UserInterface {
 
     public void quitGame(int titleX,int titleY) {
         
-        graphics2.setFont(zeldaFont);
+        graphics2.setFont(zeldaFont30);
         graphics2.setColor(Color.WHITE);
     
         int textX = getCenteredXForText("Rinunci da ex-avventuriero?", graphics2);
         int textY = titleY + gp.ingame_size;
 
-        graphics2.setFont(eightBitFont);
+        graphics2.setFont(eightBitFont20);
         graphics2.drawString("Rinunci da ex-avventuriero?",textX,textY);
       
         textY += 80;
@@ -372,7 +373,7 @@ public class UserInterface {
     
         drawColoredSubWindow(x, y, height, width,bg ,Color.BLUE  );
     
-        graphics2.setFont(zeldaFont);
+        graphics2.setFont(zeldaFont30);
         
     
         int textX = x +20;

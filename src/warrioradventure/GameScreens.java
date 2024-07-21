@@ -29,7 +29,7 @@ public class GameScreens{
                 case 2: gp.ui.drawSubWindow(frameX, frameY, gp.screen_height-frameX*3, gp.screen_width - frameY*2);
                         gp.ui.showControls(frameX,frameY); break;
                 case 3: gp.ui.drawFullScreenAlert(); break;
-                case 4: gp.graphics2.setFont(gp.ui.zeldaFont);
+                case 4: gp.graphics2.setFont(gp.ui.zeldaFont30);
                         gp.graphics2.setColor(Color.WHITE);
                         gp.ui.drawSubWindow(0, 500, gp.screen_height/8, gp.screen_width/2+30);
                         gp.ui.graphics2.drawString("Premi ENTER per tornare indietro",10,gp.screen_height-30);
@@ -93,7 +93,7 @@ public class GameScreens{
         Color bg = new Color(0,0,0,180);
         Color bord = new Color(204,119,34);
           
-        gp.graphics2.setFont(gp.ui.eightBitFont);
+        gp.graphics2.setFont(gp.ui.eightBitFont20);
         gp.ui.drawColoredSubWindow(x,y,height,width,bg,bord);
         gp.graphics2.drawString(" x " + gp.giocatore.numKeys, x + 25, y + 27);
         gp.graphics2.drawImage(keyImage, x+5, y+8, 25, 25, null);
@@ -104,15 +104,15 @@ public class GameScreens{
         if (gp.ui.messageOn) {
             gp.ui.drawMessage(gp.ui.message, gp.ui.messageCounter);
             gp.ui.messageCounter++;
-            if (gp.ui.messageCounter > gp.FPS * 5) {
+            if (gp.ui.messageCounter > gp.FPS * 3) {
                 gp.ui.messageOn = false;
             }
         }
     
         if (gp.ui.message2On) {
-            gp.ui.drawMessage(gp.ui.message2, gp.ui.message2Counter, -20);
+            gp.ui.drawMessage(gp.ui.message2, gp.ui.message2Counter, -30);
             gp.ui.message2Counter++;
-            if (gp.ui.message2Counter > gp.FPS * 5) {
+            if (gp.ui.message2Counter > gp.FPS * 3) {
                 gp.ui.message2On = false;
             }
         }
@@ -129,7 +129,7 @@ public class GameScreens{
             // disegna la finestra in cui inserire i dialoghi
             gp.ui.drawSubWindow(x,y,height,width);
 
-            gp.graphics2.setFont(gp.ui.eightBitFont);
+            gp.graphics2.setFont(gp.ui.eightBitFont20);
             x += gp.ingame_size;
             y += gp.ingame_size;
 
@@ -186,7 +186,7 @@ public class GameScreens{
             
             gp.ui.drawColoredSubWindow(x, y, x-20, gp.ingame_size*8, bg, Color.YELLOW);
 
-            gp.graphics2.setFont(gp.ui.zeldaFont);
+            gp.graphics2.setFont(gp.ui.zeldaFont30);
             gp.graphics2.setColor(Color.WHITE);
         
             int textX = x +20;
@@ -226,7 +226,7 @@ public class GameScreens{
          
             gp.graphics2.drawString("NOOOOOOOO... sei morto",(gp.ui.getCenteredXForText("NOOOOOOOO... sei morto", gp.graphics2)),gp.screen_height/4+10);
 
-            gp.graphics2.setFont(gp.ui.zeldaFont);
+            gp.graphics2.setFont(gp.ui.zeldaFont30);
             gp.graphics2.drawImage(deathImage,gp.screen_width/4 - 25,gp.screen_height/4,gp.screen_width/2,gp.screen_height/2,null);
           
             gp.graphics2.drawString("Riprova",textX,textY);
@@ -252,17 +252,27 @@ public class GameScreens{
         if (gp.gameState == gp.endGame) {
             
             Color bg = new Color(0,0,0,100);
-            Color bord = new Color(255,0,0);
+            Color bord = new Color(0,127,255);
             BufferedImage endGameScreen = gp.ui.loadImage("main_rsc/GameScreens/gameEnding.jpeg");
 
             gp.graphics2.drawImage(endGameScreen,0,0,gp.screen_width,gp.screen_height,null);  
-            gp.graphics2.setFont(gp.ui.zeldaFont60);
-            gp.ui.drawColoredSubWindow(gp.ui.getCenteredXForText("Avventura Completata", gp.ui.graphics2)-8,gp.screen_height/6-10,gp.ingame_size*3/2,gp.screen_width/3*2+3,bg,bord);  
-            gp.graphics2.drawString("Avventura Completata",(gp.ui.getCenteredXForText("Avventura Completata", gp.graphics2)),gp.screen_height/4);
+            gp.graphics2.setFont(gp.ui.zeldaFont80); 
+            gp.graphics2.setColor(Color.YELLOW);
+            gp.ui.drawColoredSubWindow(gp.ui.getCenteredXForText("Avventura Completata", gp.ui.graphics2)-20,gp.screen_height/6-78,gp.ingame_size*2,gp.screen_width-80,bg,Color.YELLOW);  
+            gp.graphics2.drawString("Avventura Completata",(gp.ui.getCenteredXForText("Avventura Completata", gp.graphics2))-4,gp.screen_height/6-5);
+            gp.graphics2.setColor(bord);
+            gp.graphics2.drawString("Avventura Completata",(gp.ui.getCenteredXForText("Avventura Completata", gp.graphics2)),gp.screen_height/6);
+          
+      
+            gp.ui.drawColoredSubWindow(gp.ui.getCenteredXForText("Sei il miglior GUERRO", gp.ui.graphics2)-20,gp.screen_height*2/3-77,gp.ingame_size*2,gp.screen_width-80,bg,bord);  
             gp.graphics2.drawString("Sei il miglior GUERRO",(gp.ui.getCenteredXForText("Sei il miglior GUERRO", gp.graphics2)),gp.screen_height*2/3);
-            gp.graphics2.setFont(gp.ui.eightBitFont);
-            gp.graphics2.setColor(new Color(0,0,0));
-            gp.graphics2.drawString("Premi Enter per tornare al menù principale",gp.ui.getCenteredXForText("Premi Enter per tornare al menù principale",gp.graphics2),gp.screen_height - 40);
+            gp.graphics2.setColor(Color.YELLOW);
+            gp.graphics2.drawString("Sei il miglior GUERRO",(gp.ui.getCenteredXForText("Sei il miglior GUERRO", gp.graphics2))-4,gp.screen_height*2/3-5);
+            
+            gp.graphics2.setFont(gp.ui.eightBitFont20);
+            gp.graphics2.setColor(Color.WHITE);
+            gp.ui.drawSubWindow(0, 520, gp.screen_height/15, gp.screen_width/2+40);
+            gp.ui.graphics2.drawString("Premi ENTER per tornare al menu principale",10,gp.screen_height-30);
             gp.gameTimer = null;
         }
         
