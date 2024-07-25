@@ -34,7 +34,7 @@ public class Player extends GameEntity {
         solidAreaDefaultX = collArea.x;
         solidAreaDefaultY = collArea.y;
         collArea.width=gp.ingame_size-(collArea.x*2);
-        collArea.height=gp.ingame_size-(collArea.y*2); //area di collisione del giocatore
+        collArea.height=gp.ingame_size-(collArea.y*2)+10; //area di collisione del giocatore
         
         ScreenX = (gp.screen_width/2)-(gp.ingame_size/2);
         ScreenY = (gp.screen_height/2)-(gp.ingame_size/2); //coordinate centrali

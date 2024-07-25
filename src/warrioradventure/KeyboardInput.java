@@ -32,6 +32,7 @@ public class KeyboardInput implements KeyListener {
             handleOptionsState(premuto);
         } else if (gp.gameState == gp.gameOver) {
             handleGameOverState(premuto);
+            gp.retry();
         } else if (gp.gameState == gp.endGame) {
             handleEndGameState(premuto);
         }

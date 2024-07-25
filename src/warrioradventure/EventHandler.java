@@ -68,7 +68,7 @@ public class EventHandler {
       
      
       //viaggio verso località diverse da startingWoods
-      if (hitEvent(39,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
+      if (hitEvent(38,25, "any",startingWoodsMap)){askForTeleport(jungleMap);}
       if (hitEvent(26,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
       if (hitEvent(25,5, "any",startingWoodsMap)){askForTeleport(darkWoodsMap);}
       if (hitEvent(9,25, "any",startingWoodsMap)){askForTeleport(beachMap);}
@@ -83,8 +83,8 @@ public class EventHandler {
     
     gp.giocatore.collArea.x = gp.giocatore.worldX + gp.giocatore.collArea.x ; 
     gp.giocatore.collArea.y = gp.giocatore.worldY + gp.giocatore.collArea.y ;
-    eventRect[col][row].x = col*gp.ingame_size + eventRect[col][row].x ;
-    eventRect[col][row].y = row*gp.ingame_size + eventRect[col][row].y ;
+    eventRect[col][row].x = (col*gp.ingame_size + eventRect[col][row].x)+20 ;
+    eventRect[col][row].y = row*gp.ingame_size + eventRect[col][row].y+10 ;
         
     if(gp.giocatore.collArea.intersects(eventRect[col][row]) && eventRect[col][row].happened == false
         && mapindex==currentMapIndex) {
