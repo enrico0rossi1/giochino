@@ -131,6 +131,7 @@ public class GamePanel extends JPanel {
         }
         
         // System.out.println(giocatore.worldX/ingame_size+" "+giocatore.worldY/ingame_size);
+        //DEBUG
         for(int i=0; i<mon.length;i++){
             if(mon[i]!=null){
                 System.out.println(i+": "+mon[i].name);

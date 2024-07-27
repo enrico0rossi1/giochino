@@ -19,10 +19,10 @@ public class ScreenSizeManager {
     public void setFullScreen() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
-        gd.setFullScreenWindow(WarriorAdventureGame.finestra);
+        gd.setFullScreenWindow(WarriorAdventureGame.window);
 
-        screen_width = WarriorAdventureGame.finestra.getWidth();
-        screen_height = WarriorAdventureGame.finestra.getHeight();
+        screen_width = WarriorAdventureGame.window.getWidth();
+        screen_height = WarriorAdventureGame.window.getHeight();
        
 
     }
