@@ -147,24 +147,24 @@ public class AssetPlacer {
 	public void placeEnemy () {
 		
 
-		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
-		// setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
+		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 		setEnemy("Bat", 1, gp.eventHandler.darkWoodsMap);
 
-		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
-		// setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
+		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 		setEnemy("Log", 1, gp.eventHandler.jungleMap);
 
-		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
-		// setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
+		setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		setEnemy("Slime", 1, gp.eventHandler.beachMap);
 		setEnemy("Slime", 1, gp.eventHandler.beachMap);
 	}
