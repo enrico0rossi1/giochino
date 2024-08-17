@@ -132,21 +132,7 @@ public class GamePanel extends JPanel {
         
         // System.out.println(giocatore.worldX/ingame_size+" "+giocatore.worldY/ingame_size);
         //DEBUG
-        for(int i=0; i<mon.length;i++){
-            if(mon[i]!=null){
-                System.out.println(i+": "+mon[i].name);
-            }else{
-                System.out.println(i+": null");
-            }
-        }
 
-        for(int i=0; i<progressMon.length;i++){
-            if(progressMon[i]!=null){
-                System.out.println(i+": "+progressMon[i].name);
-            }else{
-                System.out.println(i+": null");
-            }
-        }
     }
 
     public void drawToSizedScreen() {

@@ -26,34 +26,34 @@ public class CollisionManager {
 
 
     public void checkMap(GameEntity e, Map map) {
-        int entitàLeftBound = e.worldX + e.collArea.x;
-        int entitàRightBound = e.worldX + e.collArea.x + e.collArea.width;
-        int entitàTopBound = e.worldY + e.collArea.y;
-        int entitàBottomBound = e.worldY + e.collArea.y + e.collArea.height;
+        int entityLeftBound = e.worldX + e.collArea.x;
+        int entityRightBound = e.worldX + e.collArea.x + e.collArea.width;
+        int entityTopBound = e.worldY + e.collArea.y;
+        int entityBottomBound = e.worldY + e.collArea.y + e.collArea.height;
     
-        int entitàLeftCol = entitàLeftBound / gp.ingame_size;
-        int entitàRightCol = entitàRightBound / gp.ingame_size;
-        int entitàTopRow = entitàTopBound / gp.ingame_size;
-        int entitàBottomRow = entitàBottomBound / gp.ingame_size;
+        int entityLeftCol = entityLeftBound / gp.ingame_size;
+        int entityRightCol = entityRightBound / gp.ingame_size;
+        int entityTopRow = entityTopBound / gp.ingame_size;
+        int entityBottomRow = entityBottomBound / gp.ingame_size;
     
         int newRow, newCol;
     
         switch (e.direzione) {
             case "up":
-                newRow = (entitàTopBound - (int)(gp.giocatore.speed*gp.screenManager.scaleY)) / gp.ingame_size;
-                checkCollision(e, map, entitàLeftCol, entitàRightCol, newRow, newRow);
+                newRow = (entityTopBound - (int)(gp.giocatore.speed*gp.screenManager.scaleY)) / gp.ingame_size;
+                checkCollision(e, map, entityLeftCol, entityRightCol, newRow, newRow);
                 break;
             case "down":
-                newRow = (entitàBottomBound + (int)(gp.giocatore.speed*gp.screenManager.scaleY)) / gp.ingame_size;
-                checkCollision(e, map, entitàLeftCol, entitàRightCol, newRow, newRow);
+                newRow = (entityBottomBound + (int)(gp.giocatore.speed*gp.screenManager.scaleY)) / gp.ingame_size;
+                checkCollision(e, map, entityLeftCol, entityRightCol, newRow, newRow);
                 break;
             case "right":
-                newCol = (entitàRightBound + (int)(gp.giocatore.speed*gp.screenManager.scaleX)) / gp.ingame_size;
-                checkCollision(e, map, newCol, newCol, entitàTopRow, entitàBottomRow);
+                newCol = (entityRightBound + (int)(gp.giocatore.speed*gp.screenManager.scaleX)) / gp.ingame_size;
+                checkCollision(e, map, newCol, newCol, entityTopRow, entityBottomRow);
                 break;
             case "left":
-                newCol = (entitàLeftBound - (int)(gp.giocatore.speed*gp.screenManager.scaleX)) / gp.ingame_size;
-                checkCollision(e, map, newCol, newCol, entitàTopRow, entitàBottomRow);
+                newCol = (entityLeftBound - (int)(gp.giocatore.speed*gp.screenManager.scaleX)) / gp.ingame_size;
+                checkCollision(e, map, newCol, newCol, entityTopRow, entityBottomRow);
                 break;
         }
     }

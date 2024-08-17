@@ -39,9 +39,9 @@ public class TileManager {
             setup(4,"Additional/Albero1",true);
             setup(5,"Additional/vuoto",false);
             setup(6,"Additional/FencesHor",true);
-            setup(7,"Additional/wallBottom",true);
-            setup(8,"Additional/wallMid",true);
-            setup(9,"Additional/topWall",true);
+            setup(7,"Additional/wallBottom",false);
+            setup(8,"Additional/wallMid",false);
+            setup(9,"Additional/topWall",false);
             setup(10,"Additional/wooden_doorLeft",true);
             setup(11,"Additional/wooden_doorRight",true);
             setup(12,"DarkTile/darkGrassTop",false);
