@@ -79,7 +79,6 @@ public class AssetPlacer {
 		setObject("Heart", 22, 23, 1,gp.eventHandler.startingWoodsMap);
 		setObject("Heart", 22, 27, 1,gp.eventHandler.startingWoodsMap);
 		setObject("Heart", 29, 23, 1,gp.eventHandler.startingWoodsMap);
-		setObject("Shoes",26,26,1,gp.eventHandler.startingWoodsMap);
 		setObject("Door_Left", 25, 38, 1,gp.eventHandler.startingWoodsMap);
 		setObject("Door_Right",26,38,1,gp.eventHandler.startingWoodsMap);
 		
