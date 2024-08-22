@@ -4,9 +4,7 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-import warrioradventure.GamePanel;
-import warrioradventure.KeyboardInput;
-import warrioradventure.ScreenSizeManager;
+import warrioradventure.*;
 
 public class Player extends GameEntity {
 
