@@ -1,41 +1,108 @@
-versione aggiornata al 26/04/2024 \n
+# 🎮 Warrior Adventure (Giochino)
 
-NOVITà
+A 2D top-down Java game built as a personal engineering project to practice **game architecture, event systems, collision logic, UI state management, and iterative debugging**.
 
-aggiunta di mappa DarkWoods da modificare e implementare
+> Designed and developed by [Enrico Rossi](https://github.com/enrico0rossi1)
 
-aggiunta clsse per gestire eventi come trappole,recupero vita e teletrasporto chiamata EventHandler
+---
 
-cambiato colore dello sfondo in verde perché nasconde un po' lo sfarfallio
+## 🚀 Why this project matters
 
-aggiunte classi ObjHeart,ObjShoes,ObjSpike
+This is not just a “school assignment” game — it’s a hands-on software engineering sandbox where I implemented and improved:
 
-aggiunto attributo vita e vitaMax per entità e giocatore
+- Object-oriented game structure in Java
+- Entity management and collision detection
+- Event-driven mechanics (traps, healing, teleport)
+- Game states (menu, gameplay, pause, game over)
+- HUD updates (health hearts, key counters, notifications)
+- Audio integration (background music + SFX)
+- Feature iteration with bug tracking and refactoring
 
-aggiunto indicatore di vita con cuori in alto a sinistra che si aggiorna con la variazione della vita del giocatore
+---
 
-aggiunto il menù principale
+## 🕹️ Gameplay Highlights
 
-ridenominazione della calsse AssetSetter in ObjectPlacer per eliminare ambiguità e rendere il nome più esplicativo \n
+- Explore tile-based maps
+- Collect items and keys
+- Unlock movement upgrades (run after collecting shoes)
+- Avoid hazards and manage health
+- Reach the final treasure to complete the run
 
-ingrandimento dell' arrray degli oggetti e aggiunta di oggetti nel momdo di gioco \n
+---
 
-aggiunta di interfaccia rudimentale con contatore chiavi e notifiche diverse alla collisione con vari oggetti
+## 🧱 Tech Stack
 
-ora per correre è necessario raccogliere prima le jordan e poi si potrà correre premendo il tasto O \n
+- **Language:** Java
+- **Paradigm:** OOP
+- **Architecture:** modular packages (`entities`, `gameworld`, `audio`, game core)
+- **Assets:** sprite-based rendering + audio effects
 
-aggiunta di musica ed effetti sonori (una canzone durante il gioco e un effetto sonoro alla raccolta di ogggetti o apertura porte)
+---
 
-la collisione con l'oggetto BigTreasure causa la fine del gioco
+## 🧭 Controls
 
-aggiunto un menù di pausa da attivare e disattivare col tasto "m"
+- **W / A / S / D** (or arrows): Move  
+- **P**: Attack  
+- **O**: Run (after unlocking shoes)  
+- **M**: Pause / Resume  
 
-PROBLEMI da risolvere notati finora
+---
 
-l'animazione dell'attacco causa un blocco temporaneo delle animazioni forse a causa el fatto che sono 4 immagini mentre il ciclo di animazione ne ha 6
+## 📂 Project Structure
 
-l'animazione dell'attacco prosegue solo fintanto che il tasto P è premuto e non prosegue fino al termine naturale in caso di rilascio del pulsante
+```text
+src/
+  entities/          # Player and entity logic
+  gameworld/         # World/map logic
+  warrioradventure/  # Main game loop and core systems
+  audio/             # Music and sound effects
+```
 
-mentre il gioco è in pausa il personaggio viene animato quando si tenta di farlo muovere nella direzione a cui punta o attaccare, si potrebbe ignorare il problema e coprire il personaggio con un'interfaccia
+---
 
-tenere premuto il tasto m attiva e disattiva ripetutamente il menù di pausa
+## 🛠️ Run Locally
+
+### Option A — IDE (recommended)
+1. Clone the repository
+   ```bash
+   git clone https://github.com/enrico0rossi1/giochino.git
+   ```
+2. Open in IntelliJ / Eclipse / VS Code
+3. Run the main class (`warrioradventure.Main`, or your configured entry point)
+
+### Option B — Command line (example)
+```bash
+javac -d out $(find src -name "*.java")
+java -cp out warrioradventure.Main
+```
+
+---
+
+## 📈 Engineering Roadmap
+
+- [ ] Improve attack animation state transitions
+- [ ] Add input debouncing for pause/action keys
+- [ ] Expand and polish DarkWoods map
+- [ ] Improve enemy variety and balancing
+- [ ] Add save/load support
+- [ ] Add lightweight tests for core mechanics
+
+---
+
+## 🧠 What I learned
+
+This project strengthened my practical skills in:
+
+- Breaking complex behavior into modular systems
+- Debugging real-time interactions in a game loop
+- Refactoring while keeping gameplay stable
+- Shipping features incrementally and documenting known issues
+
+---
+
+## 👨‍💻 About Me
+
+I’m an **AI Engineering student** building practical software projects to improve both system design and implementation quality.
+
+If you’re a recruiter or engineer reviewing this repo, feedback is welcome.  
+GitHub: [@enrico0rossi1](https://github.com/enrico0rossi1)
